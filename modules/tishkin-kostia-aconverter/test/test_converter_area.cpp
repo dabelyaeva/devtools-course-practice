@@ -288,7 +288,7 @@ TEST(Converterarea, Can_Convert_METER_To_WEAVING) {
 
 TEST(Converterarea, Can_Convert_CENTIMETER_To_HECTARE) {
     // Arrange
-    const double value = 1000.0;
+    const double value = 0.001;
     const Type type = Type::CENTIMETER;
     ConverterArea area(value, type);
 
@@ -297,7 +297,7 @@ TEST(Converterarea, Can_Convert_CENTIMETER_To_HECTARE) {
     area.converter(type1);
 
     // Assert
-    const double expected_val = 1000.0;
+    const double expected_val = 100000.0;
     EXPECT_DOUBLE_EQ(area.getValue(), expected_val);
 }
 

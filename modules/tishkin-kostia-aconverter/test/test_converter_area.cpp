@@ -151,7 +151,7 @@ TEST(Converterarea, Can_Convert_WEAVING_To_HECTARE) {
     A.converter(type1);
 
     // Assert
-    const double expected_val = 0;
+    const double expected_val = 0.1;
     EXPECT_DOUBLE_EQ(A.getValue(), expected_val);
 }
 
@@ -215,7 +215,7 @@ TEST(Converterarea, Can_Convert_WEAVING_To_CENTIMETER) {
 
 TEST(Converterarea, Can_Convert_METER_To_HECTARE) {
     // Arrange
-    const double value = 1.0;
+    const double value = 1000.0;
     const Type type = Type::HECTARE;
     ConverterArea A(value, type);
 
@@ -224,8 +224,8 @@ TEST(Converterarea, Can_Convert_METER_To_HECTARE) {
     A.converter(type1);
 
     // Assert
-    const double expected_value = 0;
-    EXPECT_DOUBLE_EQ(A.getValue(), expected_value);
+    const double expected_val = 0.01;
+    EXPECT_DOUBLE_EQ(A.getValue(), expected_val);
 }
 
 TEST(Converterarea, Cant_Convert_METER_To_Negative_HECTARE) {

@@ -36,7 +36,7 @@ void ConverterArea::converter(const Type type) {
                     }
                 break;
             case Type::CENTIMETER:
-                if ( area_ < 0.0) {
+                if (area_ < 0.0) {
                     retcode_ = false;
                 } else {
                     area_ = area_ * 100000000;

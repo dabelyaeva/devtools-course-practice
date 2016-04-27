@@ -48,7 +48,7 @@ void ConverterArea::converter(const Type type) {
     case Type::WEAVING:
             switch (type_) {
             case Type::HECTARE:
-                area_ = area_ * 0, 01;
+                area_ = area_ * 0.01;
                 type_ = type;
                 break;
             case Type::WEAVING:
@@ -67,11 +67,11 @@ void ConverterArea::converter(const Type type) {
     case Type::METER:
             switch (type_) {
             case Type::HECTARE:
-                area_ = area_ * 0, 00001;
+                area_ = area_ * 0.00001;
                 type_ = type;
                 break;
             case Type::WEAVING:
-                area_ = 0, 01 * area_;
+                area_ = 0.01 * area_;
                 type_ = type;
                 break;
             case Type::METER:

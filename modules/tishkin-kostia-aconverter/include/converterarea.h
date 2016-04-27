@@ -1,7 +1,7 @@
 // Copyright 2016 Tishkin Konstantin
 
-#ifndef MODULES_TISHKIN_KOSTIA_ACONVERTER_INCLUDE_AREA_CONVERTER_H_
-#define MODULES_TISHKIN_KOSTIA_ACONVERTER_INCLUDE_AREA_CONVERTER_H_
+#ifndef MODULES_TISHKIN_KOSTIA_ACONVERTER_INCLUDE_CONVERTERAREA_H_
+#define MODULES_TISHKIN_KOSTIA_ACONVERTER_INCLUDE_CONVERTERAREA_H_
 
 enum class Type { HECTARE, WEAVING, METER, CENTIMETER };
 
@@ -15,10 +15,10 @@ class ConverterArea {
     explicit ConverterArea(const double, const Type);
     void converter(const Type);
     bool getRetCode(void);
-    void setValue(double);
+    void setValue(const double);
     double getValue(void)const;
     Type getType(void)const;
     void setType(const Type);
 };
 
-#endif  //MODULES_TISHKIN-KOSTIA-ACONVERTER_INCLUDE_AREA_CONVERTER_H_
+#endif  // MODULES_TISHKIN_KOSTIA_ACONVERTER_INCLUDE_CONVERTERAREA_H_

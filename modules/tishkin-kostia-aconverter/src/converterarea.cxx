@@ -36,7 +36,7 @@ void ConverterArea::converter(const Type type) {
                     }
                 break;
             case Type::CENTIMETER:
-                if ( area_ < 0.0 || area_ > 10) {
+                if ( area_ < 0.0) {
                     retcode_ = false;
                 } else {
                     area_ = area_ * 100000000;
@@ -48,7 +48,7 @@ void ConverterArea::converter(const Type type) {
     case Type::WEAVING:
             switch (type_) {
             case Type::HECTARE:
-                area_ = area_ * 0,01;
+                area_ = area_ * 0, 01;
                 type_ = type;
                 break;
             case Type::WEAVING:
@@ -67,11 +67,11 @@ void ConverterArea::converter(const Type type) {
     case Type::METER:
             switch (type_) {
             case Type::HECTARE:
-                area_ = area_ * 0,00001;
+                area_ = area_ * 0, 00001;
                 type_ = type;
                 break;
             case Type::WEAVING:
-                area_ = 0,01 * area_;
+                area_ = 0, 01 * area_;
                 type_ = type;
                 break;
             case Type::METER:
@@ -114,7 +114,7 @@ double ConverterArea::getValue()const {
     return area_;
 }
 
-void ConverterArea::setValue(double val){
+void ConverterArea::setValue(double val) {
     area_ = val;
 }
 

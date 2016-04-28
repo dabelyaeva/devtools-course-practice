@@ -29,7 +29,5 @@ class AreaConverter {
 
     std::string ConvertToString(const area_unit &unit,
         double value, int precision = 2) const;
-
 };
-
 #endif  // MODULES_TISHKIN_KOSTIA_ACONVERTER_INCLUDE_CONVERTERAREA_H_

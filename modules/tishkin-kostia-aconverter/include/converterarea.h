@@ -1,24 +1,32 @@
 // Copyright 2016 Tishkin Konstantin
 
-#ifndef MODULES_TISHKIN_KOSTIA_ACONVERTER_INCLUDE_CONVERTERAREA_H_
-#define MODULES_TISHKIN_KOSTIA_ACONVERTER_INCLUDE_CONVERTERAREA_H_
+#ifndef MODULES_TISHKIN_KOSTIA_AREA_CONVERTER_INCLUDE_AREA_CONVERTER_H_
+#define MODULES_TISHKIN_KOSTIA_AREA_CONVERTER_INCLUDE_AREA_CONVERTER_H_
 
-enum class Type { HECTARE, WEAVING, METER, CENTIMETER };
+#include <vector>
+#include <string>
+#include <utility>
+
+#include "include/unitarea.h"
+
+using std::vector;
 
 class AreaConverter {
- private:
-    bool status;
-    double area_;
-    Type type_;
-
+    vector<area_unit> unit_;
+    
  public:
-    explicit AreaConverter(const double, const Type);
-    double convert(const Type);
-    bool getRetCode(void);
-    void setarea_(const double);
-    double getarea_(void)const;
-    Type getType(void)const;
-    void setType(const Type);
+    explicit AreaConverter(const std::vector<area_unit> &units = DefaultAreaUnits);
+
+    void AddUnit(const area_unit);
+
+    std::vector<area_unit> GetUnit() const;
+
+    void ClearUnit();
+
+    double Convert(const area_unit Area_from, const area_unit Area_to, double Number) const;
+
+    std::string ConvertToString(const area_unit &unit, double value, int precision = 2) const;
+
 };
 
-#endif  // MODULES_TISHKIN_KOSTIA_ACONVERTER_INCLUDE_CONVERTERAREA_H_
+#endif // MODULES_TISHKIN_KOSTIA_AREA_CONVERTER_INCLUDE_AREA_CONVERTER_H_

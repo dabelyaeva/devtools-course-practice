@@ -1,144 +1,64 @@
 // Copyright 2016 Tishkin Konstantin
 
+#include <stdexcept>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <utility>
+#include <sstream>
+#include <iomanip>
+
 #include "include/converterarea.h"
 
-AreaConverter::AreaConverter(const double a, const Type type) {
-    if ((a < 0.0) && (type == Type::HECTARE)) {
-        status = false;
-    } else {
-        status = true;
-        area_ = a;
-        type_ = type;
-        }
+
+AreaConverter::AreaConverter(const std::vector<area_unit> &units ) {
+    this->unit_ = std::vector<area_unit>(units);
+
+    auto last = std::unique(this->unit_.begin(),
+                            this->unit_.end(),
+                            [](const area_unit &a, const area_unit &b) {
+                                return a.Get_Area_type_() == b.Get_Area_type_();
+                            });
+
+    if (last != this->unit_.end())
+        throw std::invalid_argument("unit qualifiers must be unique");
 }
 
-double AreaConverter::convert(const Type type) {
-    switch (type) {
-    case Type::HECTARE:
-            switch (type_) {
-            case Type::HECTARE:
-                type_ = type;
-                return area_;
-                break;
-            case Type::WEAVING:
-                if (area_ < 0.0) {
-                    status = false;
-                } else {
-                    area_ = area_* 100;
-                    type_ = type;
-                    }
-                return area_;
-                break;
-            case Type::METER:
-                if (area_  < 0.0) {
-                    status = false;
-                } else {
-                    area_ = (area_ * 10000);
-                    type_ = type;
-                    }
-                return area_;
-                break;
-            case Type::CENTIMETER:
-                if (area_ < 0.0) {
-                    status = false;
-                } else {
-                    area_ = area_ * 100000000;
-                    type_ = type;
-                    }
-                return area_;
-                break;
-            }
-        break;
-    case Type::WEAVING:
-            switch (type_) {
-            case Type::HECTARE:
-                area_ = area_ * 0.01;
-                type_ = type;
-                return area_;
-                break;
-            case Type::WEAVING:
-                type_ = type;
-                return area_;
-                break;
-            case Type::METER:
-                area_ = area_ * 100;
-                type_ = type;
-                return area_;
-                break;
-            case Type::CENTIMETER:
-                area_ = 10000 * area_;
-                type_ = type;
-                return area_;
-                break;
-            }
-        break;
-    case Type::METER:
-            switch (type_) {
-            case Type::HECTARE:
-                area_ = area_ * 0.00001;
-                type_ = type;
-                return area_;
-                break;
-            case Type::WEAVING:
-                area_ = 0.01 * area_;
-                type_ = type;
-                return area_;
-                break;
-            case Type::METER:
-                type_ = type;
-                return area_;
-                break;
-            case Type::CENTIMETER:
-                area_ = area_ * 100;
-                type_ = type;
-                return area_;
-                break;
-            }
-        break;
-    case Type::CENTIMETER:
-            switch (type_) {
-            case Type::HECTARE:
-                area_ = 0.0000000001 * area_;
-                type_ = type;
-                return area_;
-                break;
-            case Type::WEAVING:
-                area_ = area_ * 0.0001;
-                type_ = type;
-                return area_;
-                break;
-            case Type::METER:
-                area_ = area_ * 0.01;
-                type_ = type;
-                return area_;
-                break;
-            case Type::CENTIMETER:
-                type_ = type;
-                return area_;
-                break;
-            }
-        break;
+void AreaConverter::AddUnit(const area_unit new_unit) {
+    for (auto &unit : unit_) {
+        if (unit.Get_Area_type_() == new_unit.Get_Area_type_())
+            throw std::invalid_argument("unit is already added to converter");
     }
-return area_;
+
+    unit_.push_back(new_unit);
 }
 
-bool AreaConverter::getRetCode() {
-    return status;
-    status = true;
+std::vector<area_unit> AreaConverter::GetUnit() const {
+    return unit_;
 }
 
-double AreaConverter::getarea_()const {
-    return area_;
+void AreaConverter::ClearUnit() {
+    unit_.clear();
 }
 
-void AreaConverter::setarea_(double val) {
-    area_ = val;
+double AreaConverter::Convert(const area_unit from, const area_unit to, double value) const {
+    if (value < 0)
+        throw std::invalid_argument("value must be not negative");
+
+    double conversion_coefficient = from.Get_Coefficient() / to.Get_Coefficient();
+
+    return value * conversion_coefficient;
 }
 
-Type AreaConverter::getType()const {
-    return type_;
+std::string AreaConverter::ConvertToString(const area_unit &unit, double value, int precision) const {
+    if (precision < 0)
+        throw std::invalid_argument("precision must be positive");
+
+    std::ostringstream stringStream;
+    stringStream << std::fixed << std::setprecision(precision) << value;
+    stringStream << " ";
+    stringStream << unit.Get_Area_type_();
+    return stringStream.str();
 }
 
-void AreaConverter::setType(const Type type) {
-    type_ = type;
-}
+

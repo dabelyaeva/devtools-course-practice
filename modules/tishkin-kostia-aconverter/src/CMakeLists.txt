@@ -1,9 +1,8 @@
 set(target ${LIBRARY})
 
 file(GLOB srcs "*.cxx")
-file(GLOB hrcs "../include/*.h")
 
-add_library(${target} STATIC ${hrcs} ${srcs})
+add_library(${target} STATIC ${srcs} ../include/converterarea.h ../include/unitarea.h)
 set_target_properties(${target}
     PROPERTIES OUTPUT_NAME ${MODULE})
 

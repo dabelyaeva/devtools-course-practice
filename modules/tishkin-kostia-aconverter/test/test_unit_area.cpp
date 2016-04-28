@@ -20,17 +20,20 @@ TEST(AreaUnitTest, Can_Create) {
 
 TEST(AreaUnitTest, Can_Create_Coefficient_Is_Negative) {
     // Act&Assert
-    EXPECT_THROW(new area_unit(-1, "ar"), std::invalid_argument);
+    EXPECT_THROW(new area_unit(-1, "ar"),
+std::invalid_argument);
 }
 
 TEST(AreaUnitTest, Can_Create_Area_Type_Is_Empty) {
     // Act&Assert
-    EXPECT_THROW(new area_unit(-1, ""), std::invalid_argument);
+    EXPECT_THROW(new area_unit(-1, ""),
+std::invalid_argument);
 }
 
 TEST(AreaUnitTest, Throws_When_Qualifier_Contains_Spaces) {
     // Act&Assert
-    EXPECT_THROW(new area_unit(-1, "ar k"), std::invalid_argument);
+    EXPECT_THROW(new area_unit(-1, "ar k"),
+std::invalid_argument);
 }
 
 TEST(AreaUnitTest, Can_Create_Copying_Unit) {

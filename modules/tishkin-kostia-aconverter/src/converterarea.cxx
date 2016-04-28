@@ -41,7 +41,8 @@ void AreaConverter::ClearUnit() {
     unit_.clear();
 }
 
-double AreaConverter::Convert(const area_unit from, const area_unit to, double value) const {
+double AreaConverter::Convert(const area_unit from,
+const area_unit to, double value) const {
     if (value < 0)
         throw std::invalid_argument("value must be not negative");
 
@@ -50,7 +51,8 @@ double AreaConverter::Convert(const area_unit from, const area_unit to, double v
     return value * conversion_coefficient;
 }
 
-std::string AreaConverter::ConvertToString(const area_unit &unit, double value, int precision) const {
+std::string AreaConverter::ConvertToString(const area_unit &unit,
+double value, int precision) const {
     if (precision < 0)
         throw std::invalid_argument("precision must be positive");
 

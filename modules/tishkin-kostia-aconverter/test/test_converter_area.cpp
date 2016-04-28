@@ -149,7 +149,8 @@ TEST(AreaConverterTest, Can_Clear_Unit) {
     EXPECT_TRUE(convert.GetUnit().empty());
 }
 
-TEST(AreaConverterTest, Can_Convert_Weaving_To_String_With_Default_Precision) {
+TEST(AreaConverterTest,
+Can_Convert_Weaving_To_String_With_Default_Precision) {
     // Arrange
     AreaConverter convert;
     double value = 10.01;
@@ -162,7 +163,8 @@ TEST(AreaConverterTest, Can_Convert_Weaving_To_String_With_Default_Precision) {
     EXPECT_EQ(result, _result);
 }
 
-TEST(AreaConverterTest, Can_Convert_Weaving_To_String_With_Custom_Precision) {
+TEST(AreaConverterTest,
+Can_Convert_Weaving_To_String_With_Custom_Precision) {
     // Arrange
     AreaConverter convert;
     double value = 20.1234;
@@ -175,7 +177,8 @@ TEST(AreaConverterTest, Can_Convert_Weaving_To_String_With_Custom_Precision) {
     EXPECT_EQ(result, expected_result);
 }
 
-TEST(AreaConverterTest, Can_Create_Precision_Is_Negative) {
+TEST(AreaConverterTest,
+Can_Create_Precision_Is_Negative) {
     // Arrange
     AreaConverter convert;
     double value = 5.0;

@@ -46,7 +46,8 @@ const area_unit to, double value) const {
     if (value < 0)
         throw std::invalid_argument("value must be not negative");
 
-    double conversion_coefficient = from.Get_Coefficient() / to.Get_Coefficient();
+    double conversion_coefficient = from.Get_Coefficient()
+        / to.Get_Coefficient();
 
     return value * conversion_coefficient;
 }

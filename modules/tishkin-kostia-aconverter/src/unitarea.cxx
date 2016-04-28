@@ -37,24 +37,10 @@ area_unit &area_unit::operator=(const area_unit a) {
 }
 
 bool area_unit::operator==(const area_unit &other) const {
-    bool result;
-    if (this->Get_Area_type_() == other.Get_Area_type_()
-&& this->Get_Coefficient() == other.Get_Coefficient()){
-        result = true;
-    }
-    else {
-        result = false;
-    }
-    return result;
+    return (this->Get_Area_type_() == other.Get_Area_type_()
+&& this->Get_Coefficient() == other.Get_Coefficient());
 }
 
 bool area_unit::operator!=(const area_unit &other) const {
-    bool result;
-    if (*this == other) {
-        result = false;
-    }
-    else {
-        result = true;
-    }
-    return result;
+    return !(*this == other);
 }

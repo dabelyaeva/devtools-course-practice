@@ -56,7 +56,8 @@ TEST(AreaConverterTest, Can_Create_Number_Is_Negative) {
     double Number = -1;
 
     // Act & Assert
-    EXPECT_THROW(converter.Convert(AreaUnitMeter, AreaUnitWeaving, Number), std::invalid_argument);
+    EXPECT_THROW(converter.Convert(AreaUnitMeter,
+AreaUnitWeaving, Number), std::invalid_argument);
 }
 
 TEST(AreaConverterTest, Can_Convert_0_Area) {
@@ -184,7 +185,8 @@ Can_Create_Precision_Is_Negative) {
     double value = 5.0;
 
     // Act & Assert
-    EXPECT_THROW(convert.ConvertToString(AreaUnitWeaving, value, -1), std::invalid_argument);
+    EXPECT_THROW(convert.ConvertToString(AreaUnitWeaving,
+value, -1), std::invalid_argument);
 }
 
 TEST(AreaConverterTest, Can_Convert_Weaving_To_Hectare) {

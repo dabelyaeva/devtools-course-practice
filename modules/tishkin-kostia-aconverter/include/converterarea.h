@@ -5,18 +5,18 @@
 
 enum class Type { HECTARE, WEAVING, METER, CENTIMETER };
 
-class ConverterArea {
+class AreaConverter {
  private:
-    bool retcode_;
+    bool status;
     double area_;
     Type type_;
 
  public:
-    explicit ConverterArea(const double, const Type);
-    void converter(const Type);
+    explicit AreaConverter(const double, const Type);
+    double convert(const Type);
     bool getRetCode(void);
-    void setValue(const double);
-    double getValue(void)const;
+    void setarea_(const double);
+    double getarea_(void)const;
     Type getType(void)const;
     void setType(const Type);
 };

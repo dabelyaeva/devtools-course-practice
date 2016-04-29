@@ -59,15 +59,6 @@ TEST(AreaUnitTest, Can_Create_Via_Assign) {
     EXPECT_EQ(unit1, unit2);
 }
 
-TEST(AreaUnitTest, Can_Create_identical_Unit) {
-    // Arrange
-    area_unit _unit(1, "ar");
-    area_unit unit(1, "ar");
-
-    // Act & Assert
-    EXPECT_EQ(_unit, unit);
-}
-
 TEST(AreaUnitTest, Can_Create_identical_Area_Type) {
     // Arrange
     area_unit _unit(1, "ar");

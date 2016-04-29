@@ -24,8 +24,8 @@ class AreaConverter {
 
     void ClearUnit();
 
-    double Convert(const area_unit Area_from,
-        const area_unit Area_to, double Number) const;
+    double Convert(const area_unit area_from,
+        const area_unit area_to, double Number) const;
 
     std::string ConvertToString(const area_unit &unit,
         double value, int precision = 2) const;

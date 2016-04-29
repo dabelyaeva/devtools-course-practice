@@ -8,23 +8,23 @@
 
 class area_unit {
     double coefficient_;
-    std::string Area_Type_;
+    std::string area_type;
 
  public:
      area_unit(double coefficient, const std::string);
 
      area_unit(const area_unit &a)
-        : coefficient_(a.Get_Coefficient()),
-         Area_Type_(a.Get_Area_type_()) { }
+        : coefficient_(a.get_coefficient()),
+		 area_type(a.get_area_type()) { }
 
      area_unit &operator=(const area_unit);
 
-    double Get_Coefficient() const {
+    double get_coefficient() const {
         return coefficient_;
     }
 
-    std::string Get_Area_type_() const {
-        return Area_Type_;
+    std::string get_area_type() const {
+        return area_type;
     }
 
     bool operator==(const area_unit &other) const;

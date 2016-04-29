@@ -17,7 +17,7 @@ AreaConverter::AreaConverter(const std::vector<area_unit> &units ) {
     auto last = std::unique(this->unit_.begin(),
                             this->unit_.end(),
                             [](const area_unit &a, const area_unit &b) {
-                                return a.Get_Area_type_() == b.Get_Area_type_();
+                                return a.get_area_type() == b.get_area_type();
                             });
 
     if (last != this->unit_.end())
@@ -26,7 +26,7 @@ AreaConverter::AreaConverter(const std::vector<area_unit> &units ) {
 
 void AreaConverter::AddUnit(const area_unit new_unit) {
     for (auto &unit : unit_) {
-        if (unit.Get_Area_type_() == new_unit.Get_Area_type_())
+        if (unit.get_area_type() == new_unit.get_area_type())
             throw std::invalid_argument("unit is already added to converter");
     }
 
@@ -46,8 +46,8 @@ const area_unit to, double value) const {
     if (value < 0)
         throw std::invalid_argument("value must be not negative");
 
-    double conversion_coefficient = from.Get_Coefficient()
-        / to.Get_Coefficient();
+    double conversion_coefficient = from.get_coefficient()
+        / to.get_coefficient();
 
     return value * conversion_coefficient;
 }
@@ -60,7 +60,7 @@ double value, int precision) const {
     std::ostringstream stringStream;
     stringStream << std::fixed << std::setprecision(precision) << value;
     stringStream << " ";
-    stringStream << unit.Get_Area_type_();
+    stringStream << unit.get_area_type();
     return stringStream.str();
 }
 

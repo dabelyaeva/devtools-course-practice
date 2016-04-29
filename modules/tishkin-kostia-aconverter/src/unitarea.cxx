@@ -18,7 +18,7 @@ const std::vector<area_unit> DefaultAreaUnits = {
 
 
 area_unit::area_unit(double coefficient, const std::string type)
-    : coefficient_(coefficient), Area_Type_(type) {
+    : coefficient_(coefficient), area_type(type) {
     if (coefficient <= 0)
         throw std::invalid_argument("coefficient must be positive");
 
@@ -30,15 +30,15 @@ area_unit::area_unit(double coefficient, const std::string type)
 }
 
 area_unit &area_unit::operator=(const area_unit a) {
-    coefficient_ = a.Get_Coefficient();
-    Area_Type_ = a.Get_Area_type_();
+    coefficient_ = a.get_coefficient();
+    area_type = a.get_area_type();
 
     return *this;
 }
 
 bool area_unit::operator==(const area_unit &other) const {
-    return (this->Get_Area_type_() == other.Get_Area_type_()
-&& this->Get_Coefficient() == other.Get_Coefficient());
+    return (this->get_area_type() == other.get_area_type()
+&& this->get_coefficient() == other.get_coefficient());
 }
 
 bool area_unit::operator!=(const area_unit &other) const {

@@ -42,7 +42,7 @@ TEST(AreaConverterTest, Can_Create_Custom_Unit) {
     EXPECT_EQ(unit, _unit);
 }
 
-TEST(AreaConverterTest, Can_Create_Duplicate_Units) {
+TEST(AreaConverterTest, Can_Not_Create_Duplicate_Units) {
     // Arrange
     std::vector<area_unit> unit = { area_unit(1, "ar"), area_unit(1, "ar") };
 
@@ -126,7 +126,7 @@ TEST(AreaConverterTest, Can_Add_New_Unit) {
     EXPECT_EQ(unit, _unit);
 }
 
-TEST(AreaConverterTest, Can_Create_Add_Existing_Unit) {
+TEST(AreaConverterTest, Can_Not_Create_Add_Existing_Unit) {
     // Arrange
     std::vector<area_unit> a;
     AreaConverter converter(a);

@@ -15,7 +15,7 @@ class area_unit {
 
      area_unit(const area_unit &a)
         : coefficient_(a.get_coefficient()),
-		 area_type(a.get_area_type()) { }
+area_type(a.get_area_type()) { }
 
      area_unit &operator=(const area_unit);
 

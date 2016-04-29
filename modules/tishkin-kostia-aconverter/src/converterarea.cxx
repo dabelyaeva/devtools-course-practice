@@ -14,13 +14,13 @@
 AreaConverter::AreaConverter(const std::vector<area_unit> &units ) {
     this->unit_ = std::vector<area_unit>(units);
 
-    auto last = std::unique(this->unit_.begin(),
+    auto unit_array = std::unique(this->unit_.begin(),
                             this->unit_.end(),
                             [](const area_unit &a, const area_unit &b) {
                                 return a.get_area_type() == b.get_area_type();
                             });
 
-    if (last != this->unit_.end())
+    if (unit_array != this->unit_.end())
         throw std::invalid_argument("unit qualifiers must be unique");
 }
 

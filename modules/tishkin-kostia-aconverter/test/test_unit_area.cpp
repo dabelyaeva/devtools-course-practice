@@ -59,7 +59,7 @@ TEST(AreaUnitTest, Can_Create_Via_Assign) {
     EXPECT_EQ(unit1, unit2);
 }
 
-TEST(AreaUnitTest, Can_Create_identical_Area_Type) {
+TEST(AreaUnitTest, Can_Create_Object_Is_Identical_Type) {
     // Arrange
     area_unit _unit(1, "ar");
     area_unit unit(2, "ar");
@@ -68,7 +68,7 @@ TEST(AreaUnitTest, Can_Create_identical_Area_Type) {
     EXPECT_NE(_unit, unit);
 }
 
-TEST(AreaUnitTest, Can_Create_identical_Coefficient) {
+TEST(AreaUnitTest, Can_Create_Object_Is_Identical_Coefficient) {
     // Arrange
     area_unit _unit(1, "ar");
     area_unit unit(1, "h");

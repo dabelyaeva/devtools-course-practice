@@ -15,7 +15,7 @@ class AreaConverter {
     vector<area_unit> unit_;
 
  public:
-    explicit AreaConverter(const std::vector<area_unit>
+    explicit AreaConverter(const vector<area_unit>
                  &units = DefaultAreaUnits);
 
     void AddUnit(const area_unit);

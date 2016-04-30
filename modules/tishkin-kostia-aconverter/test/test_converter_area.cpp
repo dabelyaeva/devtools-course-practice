@@ -7,7 +7,7 @@
 
 #include "include/converterarea.h"
 
-TEST(AreaConverterTest, Can_Create) {
+TEST(AreaConverterTest, CanCreate) {
     // Arrange
     AreaConverter *convert;
 
@@ -18,39 +18,39 @@ TEST(AreaConverterTest, Can_Create) {
     EXPECT_NE(nullptr, convert);
 }
 
-TEST(AreaConverterTest, Can_Create_Default_Unit) {
+TEST(AreaConverterTest, CanCreateDefaultUnit) {
     // Arrange
     AreaConverter convert;
 
     // Act
-    std::vector<area_unit> unit = convert.GetUnit();
+    std::vector<AreaUnit> unit = convert.GetUnit();
 
     // Assert
-    std::vector<area_unit> _unit = DefaultAreaUnits;
+    std::vector<AreaUnit> _unit = DefaultAreaUnits;
     EXPECT_EQ(unit, _unit);
 }
 
-TEST(AreaConverterTest, Can_Create_Custom_Unit) {
+TEST(AreaConverterTest, CanCreateCustomUnit) {
     // Arrange
-    std::vector<area_unit> _unit = { area_unit(1, "ar"), area_unit(2, "g") };
+    std::vector<AreaUnit> _unit = { AreaUnit(1, "ar"), AreaUnit(2, "g") };
 
     // Act
     AreaConverter convert(_unit);
-    std::vector<area_unit> unit = convert.GetUnit();
+    std::vector<AreaUnit> unit = convert.GetUnit();
 
     // Assert
     EXPECT_EQ(unit, _unit);
 }
 
-TEST(AreaConverterTest, Can_Not_Create_Duplicate_Units) {
+TEST(AreaConverterTest, CanNotCreateDuplicateUnits) {
     // Arrange
-    std::vector<area_unit> unit = { area_unit(1, "ar"), area_unit(1, "ar") };
+    std::vector<AreaUnit> unit = { AreaUnit(1, "ar"), AreaUnit(1, "ar") };
 
     // Act & Assert
     EXPECT_THROW(new AreaConverter(unit), std::invalid_argument);
 }
 
-TEST(AreaConverterTest, Can_Create_Number_Is_Negative) {
+TEST(AreaConverterTest, CanCreateNumberIsNegative) {
     // Arrange
     AreaConverter converter;
     double Number = -1;
@@ -60,7 +60,7 @@ TEST(AreaConverterTest, Can_Create_Number_Is_Negative) {
 AreaUnitWeaving, Number), std::invalid_argument);
 }
 
-TEST(AreaConverterTest, Can_Convert_0_Area) {
+TEST(AreaConverterTest, CanConvertZeroArea) {
     // Arrange
     AreaConverter converter;
     double value = 0;
@@ -73,7 +73,7 @@ TEST(AreaConverterTest, Can_Convert_0_Area) {
     EXPECT_DOUBLE_EQ(result, _result);
 }
 
-TEST(AreaConverterTest, Can_Convert_Meter_To_Meter) {
+TEST(AreaConverterTest, CanConvertMeterToMeter) {
     // Arrange
     AreaConverter converter;
     double value = 1.0;
@@ -86,7 +86,7 @@ TEST(AreaConverterTest, Can_Convert_Meter_To_Meter) {
     EXPECT_DOUBLE_EQ(result, _result);
 }
 
-TEST(AreaConverterTest, Can_Convert_Meter_To_Weaving) {
+TEST(AreaConverterTest, CanConvertMeterToWeaving) {
     // Arrange
     AreaConverter converter;
     double value = 100.0;
@@ -99,7 +99,7 @@ TEST(AreaConverterTest, Can_Convert_Meter_To_Weaving) {
     EXPECT_DOUBLE_EQ(result, _result);
 }
 
-TEST(AreaConverterTest, Can_Convert_Weaving_To_Meter) {
+TEST(AreaConverterTest, CanConvertWeavingToMeter) {
     // Arrange
     AreaConverter converter;
     double value = 1.0;
@@ -112,25 +112,25 @@ TEST(AreaConverterTest, Can_Convert_Weaving_To_Meter) {
     EXPECT_DOUBLE_EQ(result, _result);
 }
 
-TEST(AreaConverterTest, Can_Add_New_Unit) {
+TEST(AreaConverterTest, CanAddNewUnit) {
     // Arrange
-    std::vector<area_unit> a;
+    std::vector<AreaUnit> a;
     AreaConverter convert(a);
-    area_unit unit = area_unit(10000, "det");
+    AreaUnit unit = AreaUnit(10000, "det");
 
     // Act
     convert.AddUnit(unit);
 
     // Assert
-    area_unit _unit = convert.GetUnit()[0];
+    AreaUnit _unit = convert.GetUnit()[0];
     EXPECT_EQ(unit, _unit);
 }
 
-TEST(AreaConverterTest, Can_Not_Create_Add_Existing_Unit) {
+TEST(AreaConverterTest, CanNotCreateAddExistingUnit) {
     // Arrange
-    std::vector<area_unit> a;
+    std::vector<AreaUnit> a;
     AreaConverter converter(a);
-    area_unit unit = area_unit(10000, "det");
+    AreaUnit unit = AreaUnit(10000, "det");
 
     // Act
     converter.AddUnit(unit);
@@ -139,7 +139,7 @@ TEST(AreaConverterTest, Can_Not_Create_Add_Existing_Unit) {
     EXPECT_THROW(converter.AddUnit(unit), std::invalid_argument);
 }
 
-TEST(AreaConverterTest, Can_Clear_Unit) {
+TEST(AreaConverterTest, CanClearUnit) {
     // Arrange
     AreaConverter convert;
 
@@ -151,7 +151,7 @@ TEST(AreaConverterTest, Can_Clear_Unit) {
 }
 
 TEST(AreaConverterTest,
-Can_Convert_Weaving_To_String_With_Default_Precision) {
+CanConvertWeavingToStringWithDefaultPrecision) {
     // Arrange
     AreaConverter convert;
     double value = 10.01;
@@ -165,7 +165,7 @@ Can_Convert_Weaving_To_String_With_Default_Precision) {
 }
 
 TEST(AreaConverterTest,
-Can_Convert_Weaving_To_String_With_Custom_Precision) {
+CanConvertWeavingToStringWithCustomPrecision) {
     // Arrange
     AreaConverter convert;
     double value = 20.1234;
@@ -179,7 +179,7 @@ Can_Convert_Weaving_To_String_With_Custom_Precision) {
 }
 
 TEST(AreaConverterTest,
-Can_Create_Precision_Is_Negative) {
+CanCreatePrecisionIsNegative) {
     // Arrange
     AreaConverter convert;
     double value = 5.0;
@@ -189,7 +189,7 @@ Can_Create_Precision_Is_Negative) {
 value, -1), std::invalid_argument);
 }
 
-TEST(AreaConverterTest, Can_Convert_Weaving_To_Hectare) {
+TEST(AreaConverterTest, CanConvertWeavingToHectare) {
     // Arrange
     AreaConverter convert;
     double value = 10.0;
@@ -202,7 +202,7 @@ TEST(AreaConverterTest, Can_Convert_Weaving_To_Hectare) {
     EXPECT_DOUBLE_EQ(result, _result);
 }
 
-TEST(AreaConverterTest, Can_Convert_Hectare_To_Weaving) {
+TEST(AreaConverterTest, CanConvertHectareToWeaving) {
     // Arrange
     AreaConverter convert;
     double value = 1.0;

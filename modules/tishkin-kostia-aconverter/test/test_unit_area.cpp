@@ -7,50 +7,50 @@
 
 #include "include/unitarea.h"
 
-TEST(AreaUnitTest, Can_Create) {
+TEST(AreaUnitTest, CanCreate) {
     // Arrange
-    area_unit *unit;
+    AreaUnit *unit;
 
     // Act
-    unit = new area_unit(1, "ar");
+    unit = new AreaUnit(1, "ar");
 
     // Assert
     EXPECT_NE(nullptr, unit);
 }
 
-TEST(AreaUnitTest, Can_Create_Coefficient_Is_Negative) {
+TEST(AreaUnitTest, CanCreateCoefficientIsNegative) {
     // Act&Assert
-    EXPECT_THROW(new area_unit(-1, "ar"),
+    EXPECT_THROW(new AreaUnit(-1, "ar"),
 std::invalid_argument);
 }
 
-TEST(AreaUnitTest, Can_Create_Area_Type_Is_Empty) {
+TEST(AreaUnitTest, CanCreateAreaTypeIsEmpty) {
     // Act&Assert
-    EXPECT_THROW(new area_unit(-1, ""),
+    EXPECT_THROW(new AreaUnit(1, ""),
 std::invalid_argument);
 }
 
-TEST(AreaUnitTest, Throws_When_Qualifier_Contains_Spaces) {
+TEST(AreaUnitTest, ThrowsWhenQualifierContainsSpaces) {
     // Act&Assert
-    EXPECT_THROW(new area_unit(-1, "ar k"),
+    EXPECT_THROW(new AreaUnit(1, "ar k"),
 std::invalid_argument);
 }
 
-TEST(AreaUnitTest, Can_Create_Copying_Unit) {
+TEST(AreaUnitTest, CanCreateCopyingUnit) {
     // Arrange
-    area_unit unit(1, "ar");
+    AreaUnit unit(1, "ar");
 
     // Act
-    area_unit _unit = unit;
+    AreaUnit _unit = unit;
 
     // Assert
     EXPECT_EQ(unit, _unit);
 }
 
-TEST(AreaUnitTest, Can_Create_Via_Assign) {
+TEST(AreaUnitTest, CanCreateViaAssign) {
     // Arrange
-    area_unit unit1(1, "kg");
-    area_unit unit2(1000, "t");
+    AreaUnit unit1(1, "kg");
+    AreaUnit unit2(1000, "t");
 
     // Act
     unit2 = unit1;
@@ -59,19 +59,19 @@ TEST(AreaUnitTest, Can_Create_Via_Assign) {
     EXPECT_EQ(unit1, unit2);
 }
 
-TEST(AreaUnitTest, Can_Create_Object_Is_Identical_Type) {
+TEST(AreaUnitTest, CanCreateObjectIsIdenticalType) {
     // Arrange
-    area_unit _unit(1, "ar");
-    area_unit unit(2, "ar");
+    AreaUnit _unit(1, "ar");
+    AreaUnit unit(2, "ar");
 
     // Act & Assert
     EXPECT_NE(_unit, unit);
 }
 
-TEST(AreaUnitTest, Can_Create_Object_Is_Identical_Coefficient) {
+TEST(AreaUnitTest, CanCreateObjectIsIdenticalCoefficient) {
     // Arrange
-    area_unit _unit(1, "ar");
-    area_unit unit(1, "h");
+    AreaUnit _unit(1, "ar");
+    AreaUnit unit(1, "h");
 
     // Act & Assert
     EXPECT_NE(_unit, unit);

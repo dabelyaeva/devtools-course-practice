@@ -11,48 +11,48 @@
 #include "include/converterarea.h"
 
 
-AreaConverter::AreaConverter(const std::vector<area_unit> &units ) {
-    this->unit_ = std::vector<area_unit>(units);
+AreaConverter::AreaConverter(const std::vector<AreaUnit> &units ) {
+    this->units = std::vector<AreaUnit>(units);
 
-    auto unit_array = std::unique(this->unit_.begin(),
-                            this->unit_.end(),
-                            [](const area_unit &a, const area_unit &b) {
-                                return a.get_area_type() == b.get_area_type();
+    auto last = std::unique(this->units.begin(),
+                            this->units.end(),
+                            [](const AreaUnit &a, const AreaUnit &b) {
+                                return a.GetAreaType() == b.GetAreaType();
                             });
 
-    if (unit_array != this->unit_.end())
+    if (last != this->units.end())
         throw std::invalid_argument("unit qualifiers must be unique");
 }
 
-void AreaConverter::AddUnit(const area_unit new_unit) {
-    for (auto &unit : unit_) {
-        if (unit.get_area_type() == new_unit.get_area_type())
+void AreaConverter::AddUnit(const AreaUnit new_unit) {
+    for (auto &unit : units) {
+        if (unit.GetAreaType() == new_unit.GetAreaType())
             throw std::invalid_argument("unit is already added to converter");
     }
 
-    unit_.push_back(new_unit);
+    units.push_back(new_unit);
 }
 
-std::vector<area_unit> AreaConverter::GetUnit() const {
-    return unit_;
+std::vector<AreaUnit> AreaConverter::GetUnit() const {
+    return units;
 }
 
 void AreaConverter::ClearUnit() {
-    unit_.clear();
+    units.clear();
 }
 
-double AreaConverter::Convert(const area_unit from,
-const area_unit to, double value) const {
+double AreaConverter::Convert(const AreaUnit from,
+const AreaUnit to, double value) const {
     if (value < 0)
         throw std::invalid_argument("value must be not negative");
 
-    double conversion_coefficient = from.get_coefficient()
-        / to.get_coefficient();
+    double conversion_coefficient = from.GetCoefficient()
+        / to.GetCoefficient();
 
     return value * conversion_coefficient;
 }
 
-std::string AreaConverter::ConvertToString(const area_unit &unit,
+std::string AreaConverter::ConvertToString(const AreaUnit &unit,
 double value, int precision) const {
     if (precision < 0)
         throw std::invalid_argument("precision must be positive");
@@ -60,7 +60,7 @@ double value, int precision) const {
     std::ostringstream stringStream;
     stringStream << std::fixed << std::setprecision(precision) << value;
     stringStream << " ";
-    stringStream << unit.get_area_type();
+    stringStream << unit.GetAreaType();
     return stringStream.str();
 }
 

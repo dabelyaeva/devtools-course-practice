@@ -6,19 +6,19 @@
 
 #include "include/unitarea.h"
 
-const area_unit AreaUnitMeter = area_unit(0.01, "m");
-const area_unit AreaUnitWeaving = area_unit(1, "ar");
-const area_unit AreaUnitHectare = area_unit(100, "g");
+const AreaUnit AreaUnitMeter = AreaUnit(0.01, "m");
+const AreaUnit AreaUnitWeaving = AreaUnit(1, "ar");
+const AreaUnit AreaUnitHectare = AreaUnit(100, "g");
 
-const std::vector<area_unit> DefaultAreaUnits = {
+const std::vector<AreaUnit> DefaultAreaUnits = {
     AreaUnitMeter,
     AreaUnitWeaving,
     AreaUnitHectare
 };
 
 
-area_unit::area_unit(double coefficient, const std::string type)
-    : coefficient_(coefficient), area_type(type) {
+AreaUnit::AreaUnit(double coefficient, const std::string type)
+    : coefficient_(coefficient), AreaType(type) {
     if (coefficient <= 0)
         throw std::invalid_argument("coefficient must be positive");
 
@@ -29,18 +29,18 @@ area_unit::area_unit(double coefficient, const std::string type)
         throw std::invalid_argument("Area_Type must not contains spaces");
 }
 
-area_unit &area_unit::operator=(const area_unit a) {
-    coefficient_ = a.get_coefficient();
-    area_type = a.get_area_type();
+AreaUnit &AreaUnit::operator=(const AreaUnit a) {
+    coefficient_ = a.GetCoefficient();
+    AreaType = a.GetAreaType();
 
     return *this;
 }
 
-bool area_unit::operator==(const area_unit &other) const {
-    return (this->get_area_type() == other.get_area_type()
-&& this->get_coefficient() == other.get_coefficient());
+bool AreaUnit::operator==(const AreaUnit &other) const {
+    return (this->GetAreaType() == other.GetAreaType()
+&& this->GetCoefficient() == other.GetCoefficient());
 }
 
-bool area_unit::operator!=(const area_unit &other) const {
+bool AreaUnit::operator!=(const AreaUnit &other) const {
     return !(*this == other);
 }

@@ -6,33 +6,33 @@
 #include <string>
 #include <vector>
 
-class area_unit {
+class AreaUnit {
     double coefficient_;
-    std::string area_type;
+    std::string AreaType;
 
  public:
-     area_unit(double coefficient, const std::string);
+     AreaUnit(double coefficient, const std::string);
 
-     area_unit(const area_unit &a)
-        : coefficient_(a.get_coefficient()),
-area_type(a.get_area_type()) { }
+     AreaUnit(const AreaUnit &a)
+        : coefficient_(a.GetCoefficient()),
+AreaType(a.GetAreaType()) { }
 
-     area_unit &operator=(const area_unit);
+     AreaUnit &operator=(const AreaUnit);
 
-    double get_coefficient() const {
+    double GetCoefficient() const {
         return coefficient_;
     }
 
-    std::string get_area_type() const {
-        return area_type;
+    std::string GetAreaType() const {
+        return AreaType;
     }
 
-    bool operator==(const area_unit &other) const;
+    bool operator==(const AreaUnit &other) const;
 
-    bool operator!=(const area_unit &other) const;
+    bool operator!=(const AreaUnit &other) const;
 };
-extern const area_unit AreaUnitMeter;
-extern const area_unit AreaUnitWeaving;
-extern const area_unit AreaUnitHectare;
-extern const std::vector<area_unit> DefaultAreaUnits;
+extern const AreaUnit AreaUnitMeter;
+extern const AreaUnit AreaUnitWeaving;
+extern const AreaUnit AreaUnitHectare;
+extern const std::vector<AreaUnit> DefaultAreaUnits;
 #endif  // MODULES_TISHKIN_KOSTIA_ACONVERTER_INCLUDE_UNITAREA_H_

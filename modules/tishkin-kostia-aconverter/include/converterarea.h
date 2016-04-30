@@ -12,22 +12,22 @@
 using std::vector;
 
 class AreaConverter {
-    vector<area_unit> unit_;
+    vector<AreaUnit> units;
 
  public:
-    explicit AreaConverter(const vector<area_unit>
+    explicit AreaConverter(const vector<AreaUnit>
                  &units = DefaultAreaUnits);
 
-    void AddUnit(const area_unit);
+    void AddUnit(const AreaUnit);
 
-    std::vector<area_unit> GetUnit() const;
+    std::vector<AreaUnit> GetUnit() const;
 
     void ClearUnit();
 
-    double Convert(const area_unit area_from,
-        const area_unit area_to, double Number) const;
+    double Convert(const AreaUnit AreaFrom,
+        const AreaUnit AreaTo, double Number) const;
 
-    std::string ConvertToString(const area_unit &unit,
+    std::string ConvertToString(const AreaUnit &unit,
         double value, int precision = 2) const;
 };
 #endif  // MODULES_TISHKIN_KOSTIA_ACONVERTER_INCLUDE_CONVERTERAREA_H_

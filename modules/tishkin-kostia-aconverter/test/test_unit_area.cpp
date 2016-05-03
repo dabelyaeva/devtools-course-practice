@@ -7,7 +7,7 @@
 
 #include "include/unitarea.h"
 
-TEST(AreaUnitTest, CanCreate) {
+TEST(AreaUnitTest, Can_Create) {
     // Arrange
     AreaUnit *unit;
 
@@ -18,25 +18,25 @@ TEST(AreaUnitTest, CanCreate) {
     EXPECT_NE(nullptr, unit);
 }
 
-TEST(AreaUnitTest, CanCreateCoefficientIsNegative) {
+TEST(AreaUnitTest, Can_Create_Coefficient_Is_Negative) {
     // Act&Assert
     EXPECT_THROW(new AreaUnit(-1, "ar"),
 std::invalid_argument);
 }
 
-TEST(AreaUnitTest, CanCreateAreaTypeIsEmpty) {
+TEST(AreaUnitTest, Can_Create_Area_Type_Is_Empty) {
     // Act&Assert
     EXPECT_THROW(new AreaUnit(1, ""),
 std::invalid_argument);
 }
 
-TEST(AreaUnitTest, ThrowsWhenQualifierContainsSpaces) {
+TEST(AreaUnitTest, Throws_When_Qualifier_ContainsSpaces) {
     // Act&Assert
     EXPECT_THROW(new AreaUnit(1, "ar k"),
 std::invalid_argument);
 }
 
-TEST(AreaUnitTest, CanCreateCopyingUnit) {
+TEST(AreaUnitTest, Can_Create_Copying_Unit) {
     // Arrange
     AreaUnit unit(1, "ar");
 
@@ -47,7 +47,7 @@ TEST(AreaUnitTest, CanCreateCopyingUnit) {
     EXPECT_EQ(unit, _unit);
 }
 
-TEST(AreaUnitTest, CanCreateViaAssign) {
+TEST(AreaUnitTest, Can_Create_Via_Assign) {
     // Arrange
     AreaUnit unit1(1, "kg");
     AreaUnit unit2(1000, "t");
@@ -59,7 +59,7 @@ TEST(AreaUnitTest, CanCreateViaAssign) {
     EXPECT_EQ(unit1, unit2);
 }
 
-TEST(AreaUnitTest, CanCreateObjectIsIdenticalType) {
+TEST(AreaUnitTest, Can_Create_Object_Is_Identical_Type) {
     // Arrange
     AreaUnit _unit(1, "ar");
     AreaUnit unit(2, "ar");
@@ -68,7 +68,7 @@ TEST(AreaUnitTest, CanCreateObjectIsIdenticalType) {
     EXPECT_NE(_unit, unit);
 }
 
-TEST(AreaUnitTest, CanCreateObjectIsIdenticalCoefficient) {
+TEST(AreaUnitTest, Can_Create_Object_Is_Identical_Coefficient) {
     // Arrange
     AreaUnit _unit(1, "ar");
     AreaUnit unit(1, "h");

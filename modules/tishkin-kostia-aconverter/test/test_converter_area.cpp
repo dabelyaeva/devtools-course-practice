@@ -7,7 +7,7 @@
 
 #include "include/converterarea.h"
 
-TEST(AreaConverterTest, Can_Create) {
+TEST(AreaConverterTest, Can_Create_Object_Area_Converter) {
     // Arrange
     AreaConverter *convert;
 
@@ -42,7 +42,7 @@ TEST(AreaConverterTest, Can_Create_Custom_Unit) {
     EXPECT_EQ(unit, _unit);
 }
 
-TEST(AreaConverterTest, Can_Not_Create_Duplicate_Units) {
+TEST(AreaConverterTest, Throws_When_Duplicate_Units) {
     // Arrange
     std::vector<AreaUnit> unit = { AreaUnit(1, "ar"), AreaUnit(1, "ar") };
 
@@ -50,7 +50,7 @@ TEST(AreaConverterTest, Can_Not_Create_Duplicate_Units) {
     EXPECT_THROW(new AreaConverter(unit), std::invalid_argument);
 }
 
-TEST(AreaConverterTest, Can_Create_Number_Is_Negative) {
+TEST(AreaConverterTest, Throws_Negative_Number) {
     // Arrange
     AreaConverter converter;
     double Number = -1;
@@ -126,7 +126,7 @@ TEST(AreaConverterTest, Can_Add_New_Unit) {
     EXPECT_EQ(unit, _unit);
 }
 
-TEST(AreaConverterTest, Can_Not_Create_Add_Existing_Unit) {
+TEST(AreaConverterTest, Throws_Add_Existing_Unit) {
     // Arrange
     std::vector<AreaUnit> a;
     AreaConverter converter(a);
@@ -179,7 +179,7 @@ Can_Convert_Weaving_To_String_With_Custom_Precision) {
 }
 
 TEST(AreaConverterTest,
-Can_Create_Precision_Is_Negative) {
+Can_Create_Negative_Precision) {
     // Arrange
     AreaConverter convert;
     double value = 5.0;

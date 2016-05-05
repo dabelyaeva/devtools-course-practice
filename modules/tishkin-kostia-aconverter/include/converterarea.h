@@ -9,13 +9,11 @@
 
 #include "include/unitarea.h"
 
-using std::vector;
-
 class AreaConverter {
-    vector<AreaUnit> units;
+    std::vector<AreaUnit> units;
 
  public:
-    explicit AreaConverter(const vector<AreaUnit>
+    explicit AreaConverter(const std::vector<AreaUnit>
                  &units = DefaultAreaUnits);
 
     void AddUnit(const AreaUnit);

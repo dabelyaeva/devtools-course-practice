@@ -6,7 +6,6 @@
 #include <string>
 #include <vector>
 #include <functional>
-#include <cctype>
 #include <ostream>
 
 using std::string;
@@ -40,6 +39,6 @@ class Regex{
     bool match(const string& str) const;
     bool match(const string& str, Smatch* match) const;
  private:
-    vector < function<bool(char)> > functVect;
+    vector < function<bool(char)> > vectorFunct;
 };
 #endif  // MODULES_SHUMIHIN_SERGEY_REGULAREXP_INCLUDE_REGULAR_EXPRESSION_H_

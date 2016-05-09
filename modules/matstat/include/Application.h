@@ -5,9 +5,9 @@
 
 class Application {
  public:
-	 Application();
+     Application();
  private:
-	 Sample s;
+     Sample s;
 };
 
 #endif  // MODULES_MATSTAT_INCLUDE_APPLICATION_H_

@@ -27,7 +27,6 @@ class AppFinanceNotepadTest : public ::testing::Test {
     }
 
     void Assert(std::string expected) {
-        std::cout << " Expected!! " << expected << std::endl << output_ << std::endl;
         EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
 

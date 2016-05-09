@@ -11,6 +11,11 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, throw_when_set_number_great_max_31) {
   EXPECT_THROW(date(32, months::JANUARY, 2010), std::invalid_argument);
 }
 
+TEST(Magazinnik_Ivan_FinanceNotepadTest, throw_when_set_number_great_max_31) {
+  // Arrange & Act & Assert
+  EXPECT_THROW(date(0, months::JANUARY, 2010), std::invalid_argument);
+}
+
 TEST(Sirotkin_Nikita_FinanceNotepadTest, throw_when_set_number_great_max_30) {
   // Arrange & Act & Assert
   EXPECT_THROW(date(32, months::APRIL, 2010), std::invalid_argument);

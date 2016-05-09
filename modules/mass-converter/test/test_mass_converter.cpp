@@ -180,53 +180,13 @@ TEST(Kursakov_Evgeny_MassConverterTest,
 }
 
 TEST(Kursakov_Evgeny_MassConverterTest,
-     Can_Convert_Kilogram_From_String_To_Gram) {
-    // Arrange
-    MassConverter converter;
-
-    // Act
-    double result = converter.ConvertFromString("0.1 kg", kMassUnitGram);
-
-    // Assert
-    double expected_result = 100;
-    EXPECT_DOUBLE_EQ(result, expected_result);
-}
-
-TEST(Kursakov_Evgeny_MassConverterTest,
-     Can_Convert_Kilogram_From_String_To_Kilogram) {
-    // Arrange
-    MassConverter converter;
-
-    // Act
-    double result = converter.ConvertFromString("0.1 kg", kMassUnitKilogram);
-
-    // Assert
-    double expected_result = 0.1;
-    EXPECT_DOUBLE_EQ(result, expected_result);
-}
-
-TEST(Kursakov_Evgeny_MassConverterTest,
-     Can_Convert_From_String_With_Custom_Unit) {
-    // Arrange
-    MassConverter converter;
-    MassUnit unit = MassUnit(1000, "Mg");
-
-    // Act
-    converter.AddUnit(unit);
-    double result = converter.ConvertFromString("0.001 Mg", kMassUnitKilogram);
-
-    // Assert
-    EXPECT_DOUBLE_EQ(result, 1);
-}
-
-TEST(Kursakov_Evgeny_MassConverterTest,
      Can_Convert_Kilogram_To_String_With_Default_Precision) {
     // Arrange
     MassConverter converter;
     double value = 42.266;
 
     // Act
-    std::string result = converter.ConvertToString(kMassUnitKilogram, value);
+    std::string result = converter.Format(kMassUnitKilogram, value);
 
     // Assert
     std::string expected_result = "42.27 kg";
@@ -240,7 +200,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     double value = 42.266182;
 
     // Act
-    std::string result = converter.ConvertToString(kMassUnitKilogram, value, 4);
+    std::string result = converter.Format(kMassUnitKilogram, value, 4);
 
     // Assert
     std::string expected_result = "42.2662 kg";
@@ -254,71 +214,26 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     double value = 42.266;
 
     // Act & Assert
-    EXPECT_THROW(converter.ConvertToString(kMassUnitKilogram, value, -1),
+    EXPECT_THROW(converter.Format(kMassUnitKilogram, value, -1),
               std::invalid_argument);
 }
 
 TEST(Kursakov_Evgeny_MassConverterTest,
-     Throws_When_Parse_Unknown_Unit) {
+     Can_Find_MassUnit_By_Qualifier) {
     // Arrange
     MassConverter converter;
+    std::string qualifier = "kg";
 
     // Act & Assert
-    EXPECT_THROW(converter.ConvertFromString("2 om", kMassUnitKilogram),
-                 std::logic_error);
+    EXPECT_EQ(kMassUnitKilogram, converter.GetUnit(qualifier));
 }
 
 TEST(Kursakov_Evgeny_MassConverterTest,
-     Throws_When_String_Has_No_Qualifier) {
+     Throws_When_Dont_Exisit_Unit_With_These_Qualifier) {
     // Arrange
     MassConverter converter;
+    std::string qualifier = "wrong";
 
     // Act & Assert
-    EXPECT_THROW(
-        converter.ConvertFromString("2.5", kMassUnitKilogram),
-        std::invalid_argument);
-}
-
-TEST(Kursakov_Evgeny_MassConverterTest,
-     Throws_When_String_Has_Two_Spaces) {
-    // Arrange
-    MassConverter converter;
-
-    // Act & Assert
-    EXPECT_THROW(
-        converter.ConvertFromString("2.5 f f", kMassUnitKilogram),
-        std::invalid_argument);
-}
-
-TEST(Kursakov_Evgeny_MassConverterTest,
-     Throws_When_String_Has_Two_Dots) {
-    // Arrange
-    MassConverter converter;
-
-    // Act & Assert
-    EXPECT_THROW(
-        converter.ConvertFromString("2.5.5 kg", kMassUnitKilogram),
-        std::invalid_argument);
-}
-
-TEST(Kursakov_Evgeny_MassConverterTest,
-     Throws_When_String_Has_Letter_In_Number) {
-    // Arrange
-    MassConverter converter;
-
-    // Act & Assert
-    EXPECT_THROW(
-        converter.ConvertFromString("5f.1 kg", kMassUnitKilogram),
-        std::invalid_argument);
-}
-
-TEST(Kursakov_Evgeny_MassConverterTest,
-     Throws_When_String_Has_Invalid_Char_In_Qualifier) {
-    // Arrange
-    MassConverter converter;
-
-    // Act & Assert
-    EXPECT_THROW(
-        converter.ConvertFromString("5.1 k*g", kMassUnitKilogram),
-        std::invalid_argument);
+    EXPECT_THROW(converter.GetUnit(qualifier), std::domain_error);
 }

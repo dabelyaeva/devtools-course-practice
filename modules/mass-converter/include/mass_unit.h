@@ -1,7 +1,7 @@
 // Copyright 2016 Kursakov Evgeny
 
-#ifndef MODULES_KURSAKOV_EVGENY_MASS_CONVERTER_INCLUDE_MASS_UNIT_H_
-#define MODULES_KURSAKOV_EVGENY_MASS_CONVERTER_INCLUDE_MASS_UNIT_H_
+#ifndef MODULES_MASS_CONVERTER_INCLUDE_MASS_UNIT_H_
+#define MODULES_MASS_CONVERTER_INCLUDE_MASS_UNIT_H_
 
 #include <string>
 #include <vector>
@@ -38,4 +38,4 @@ extern const MassUnit kMassUnitGram;
 
 extern const std::vector<MassUnit> kDefaultMassUnits;
 
-#endif  // MODULES_KURSAKOV_EVGENY_MASS_CONVERTER_INCLUDE_MASS_UNIT_H_
+#endif  // MODULES_MASS_CONVERTER_INCLUDE_MASS_UNIT_H_

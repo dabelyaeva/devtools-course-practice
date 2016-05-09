@@ -36,6 +36,24 @@ std::vector<MassUnit> MassConverter::GetUnits() const {
     return units_;
 }
 
+MassUnit& MassConverter::GetUnit(const std::string& qualifier) const {
+    std::vector<MassUnit>::const_iterator res = units_.end();
+
+    for (auto it = units_.begin(); it != units_.end(); ++it) {
+        if (it->Qualifier() == qualifier) {
+            res = it;
+            break;
+        }
+    }
+
+    if (res != units_.end()) {
+        return const_cast<MassUnit&>(*res);
+    } else {
+        throw std::domain_error("Undefined MassUnit with qualifier "
+                + qualifier + "!");
+    }
+}
+
 void MassConverter::ClearUnits() {
     units_.clear();
 }
@@ -51,7 +69,7 @@ double MassConverter::Convert(const MassUnit &from,
     return value * conversion_coefficient;
 }
 
-std::string MassConverter::ConvertToString(const MassUnit &unit,
+std::string MassConverter::Format(const MassUnit &unit,
                                            double value,
                                            int precision) const {
     if (precision < 0)
@@ -62,58 +80,5 @@ std::string MassConverter::ConvertToString(const MassUnit &unit,
     stringStream << " ";
     stringStream << unit.Qualifier();
     return stringStream.str();
-}
-
-double MassConverter::ConvertFromString(const std::string &input,
-                                        const MassUnit &to_unit) const {
-    std::pair<MassUnit, double> result = ParseString(input);
-    return Convert(result.first, to_unit, result.second);
-}
-
-std::pair<MassUnit, double>
-MassConverter::ParseString(const std::string &input) const {
-    if (!CheckInputString(input))
-        throw std::invalid_argument("Invalid input");
-
-    double value;
-    std::string qualifier;
-
-    std::istringstream inputStringStream(input);
-    inputStringStream >> value;
-    inputStringStream >> qualifier;
-
-    for (auto &unit : units_) {
-        if (unit.Qualifier() == qualifier) {
-            return std::pair<MassUnit, double>(unit, value);
-        }
-    }
-
-    throw std::logic_error("Unit not found");
-}
-
-bool MassConverter::CheckInputString(const std::string &input) const {
-    size_t space_pos = input.find_first_of(' ');
-    size_t dot_pos = input.find_first_of('.');
-
-    if (space_pos == std::string::npos)
-        return false;
-    if (input.substr(dot_pos + 1).find_first_of('.') != std::string::npos)
-        return false;
-    if (input.substr(space_pos + 1).find_first_of(' ') != std::string::npos)
-        return false;
-
-    for (auto &character : input.substr(0, space_pos)) {
-        if (!std::isdigit(character) && character != '.') {
-            return false;
-        }
-    }
-
-    for (auto &character : input.substr(space_pos + 1)) {
-        if (!std::isalnum(character)) {
-            return false;
-        }
-    }
-
-    return true;
 }
 

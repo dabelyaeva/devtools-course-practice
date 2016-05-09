@@ -7,7 +7,7 @@
 
 #include "include/mass_converter.h"
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Can_Create) {
     // Arrange
     MassConverter *converter;
@@ -19,7 +19,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     EXPECT_NE(nullptr, converter);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Can_Create_With_Default_Units) {
     // Arrange
     MassConverter converter;
@@ -32,7 +32,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     EXPECT_EQ(units, expected_units);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Can_Create_With_Custom_Units) {
     // Arrange
     std::vector<MassUnit> expected_units = {
@@ -48,7 +48,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     EXPECT_EQ(units, expected_units);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Throws_When_Create_With_Duplicate_Units) {
     // Arrange
     std::vector<MassUnit> units = {
@@ -60,7 +60,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     EXPECT_THROW(new MassConverter(units), std::invalid_argument);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Throws_When_Value_Is_Negative) {
     // Arrange
     MassConverter converter;
@@ -74,7 +74,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
         std::invalid_argument);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Can_Convert_Zero_Mass) {
     // Arrange
     MassConverter converter;
@@ -90,7 +90,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     EXPECT_DOUBLE_EQ(result, expected_result);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Can_Convert_Gram_To_Gram) {
     // Arrange
     MassConverter converter;
@@ -106,7 +106,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     EXPECT_DOUBLE_EQ(result, expected_result);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Can_Convert_Gram_To_Kilogram) {
     // Arrange
     MassConverter converter;
@@ -122,7 +122,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     EXPECT_DOUBLE_EQ(result, expected_result);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Can_Convert_Kilogram_To_Gram) {
     // Arrange
     MassConverter converter;
@@ -138,7 +138,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     EXPECT_DOUBLE_EQ(result, expected_result);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Can_Add_New_Unit) {
     // Arrange
     std::vector<MassUnit> empty_array;
@@ -153,7 +153,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     EXPECT_EQ(unit, expected_unit);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Throws_When_Add_Existing_Unit) {
     // Arrange
     std::vector<MassUnit> empty_array;
@@ -167,7 +167,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     EXPECT_THROW(converter.AddUnit(unit), std::invalid_argument);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Can_Clear_Units) {
     // Arrange
     MassConverter converter;
@@ -179,7 +179,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     EXPECT_TRUE(converter.GetUnits().empty());
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Can_Convert_Kilogram_To_String_With_Default_Precision) {
     // Arrange
     MassConverter converter;
@@ -189,25 +189,25 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     std::string result = converter.Format(kMassUnitKilogram, value);
 
     // Assert
-    std::string expected_result = "42.27 kg";
+    std::string expected_result = "42.2660 kg";
     EXPECT_EQ(result, expected_result);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Can_Convert_Kilogram_To_String_With_Custom_Precision) {
     // Arrange
     MassConverter converter;
     double value = 42.266182;
 
     // Act
-    std::string result = converter.Format(kMassUnitKilogram, value, 4);
+    std::string result = converter.Format(kMassUnitKilogram, value, 5);
 
     // Assert
-    std::string expected_result = "42.2662 kg";
+    std::string expected_result = "42.26618 kg";
     EXPECT_EQ(result, expected_result);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Throws_When_Precision_Is_Negative) {
     // Arrange
     MassConverter converter;
@@ -218,7 +218,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
               std::invalid_argument);
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Can_Find_MassUnit_By_Qualifier) {
     // Arrange
     MassConverter converter;
@@ -228,7 +228,7 @@ TEST(Kursakov_Evgeny_MassConverterTest,
     EXPECT_EQ(kMassUnitKilogram, converter.GetUnit(qualifier));
 }
 
-TEST(Kursakov_Evgeny_MassConverterTest,
+TEST(MassConverterTest,
      Throws_When_Dont_Exisit_Unit_With_These_Qualifier) {
     // Arrange
     MassConverter converter;

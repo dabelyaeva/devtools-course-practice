@@ -30,7 +30,7 @@ class MassConverter {
 
     std::string Format(const MassUnit &unit,
                                 double value,
-                                int precision = 2) const;
+                                int precision = 4) const;
 
  private:
     vector<MassUnit> units_;

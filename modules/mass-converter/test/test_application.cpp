@@ -71,5 +71,5 @@ TEST_F(ApplicationTest, Can_Convert) {
 
     Act(args);
 
-    Assert("1.50 kg.*");
+    Assert("1.5000 kg.*");
 }

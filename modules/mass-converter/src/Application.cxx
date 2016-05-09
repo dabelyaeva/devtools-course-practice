@@ -17,7 +17,7 @@ void Application::help(const char* appname, const char* message) {
         "This is a mass units converter application.\n\n" +
         "Please provide arguments in the folowing format:\n\n" +
 
-        "  $ " + std::string(appname) + "<value> " +
+        "  $ " + std::string(appname) + " <value> " +
         "<unit_from> <unit_to>\n\n" +
 
         "Where value is double-precision number, " +
@@ -26,7 +26,7 @@ void Application::help(const char* appname, const char* message) {
     vector<MassUnit> v = converter_.GetUnits();
 
     for (size_t i = 0; i < v.size(); ++i) {
-        if (i != 0 && i != v.size() - 1) {
+        if (i != 0) {
             message_ += ", ";
         }
         message_ += v[i].Qualifier();

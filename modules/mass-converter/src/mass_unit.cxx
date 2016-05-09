@@ -6,13 +6,19 @@
 
 #include "include/mass_unit.h"
 
+const MassUnit kMassUnitMicroGram = MassUnit(0.000000001, "ug");
+const MassUnit kMassUnitMilliGram = MassUnit(0.000001, "mg");
 const MassUnit kMassUnitGram = MassUnit(0.001, "g");
 const MassUnit kMassUnitKilogram = MassUnit(1, "kg");
+const MassUnit kMassUnitPound = MassUnit(0.45359237, "lb");
 const MassUnit kMassUnitTon = MassUnit(1000, "t");
 
 const std::vector<MassUnit> kDefaultMassUnits = {
+    kMassUnitMicroGram,
+    kMassUnitMilliGram,
     kMassUnitGram,
     kMassUnitKilogram,
+    kMassUnitPound,
     kMassUnitTon
 };
 

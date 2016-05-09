@@ -4,6 +4,18 @@
 #include <string>
 #include "include/Triangle.h"
 
+point Triangle::get_A() const {
+    return A;
+}
+
+point Triangle::get_B() const {
+    return B;
+}
+
+point Triangle::get_C() const {
+    return C;
+}
+
 void Triangle::set_A(const point _A) {
     int key = is_triangle_correct(_A, B, C);
     switch (key) {

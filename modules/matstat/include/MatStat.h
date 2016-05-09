@@ -1,7 +1,7 @@
 // Copyright 2016 Polyakov Igor
 
-#ifndef MODULES_POLYAKOV_IGOR_MATSTAT_INCLUDE_MATSTAT_H_
-#define MODULES_POLYAKOV_IGOR_MATSTAT_INCLUDE_MATSTAT_H_
+#ifndef MODULES_MATSTAT_INCLUDE_MATSTAT_H_
+#define MODULES_MATSTAT_INCLUDE_MATSTAT_H_
 
 #include <vector>
 #include <stdexcept>
@@ -61,4 +61,4 @@ class Sample {
     double CalcCentralMoment(const int exponent) const;
 };
 
-#endif  // MODULES_POLYAKOV_IGOR_MATSTAT_INCLUDE_MATSTAT_H_
+#endif  // MODULES_MATSTAT_INCLUDE_MATSTAT_H_

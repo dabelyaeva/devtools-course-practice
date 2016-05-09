@@ -1,20 +1,20 @@
 // Copyright 2016 Marchenko Andrey
 
-#ifndef MODULES_MARCHENKO_ANDREY_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_TRIANGLE_H_
-#define MODULES_MARCHENKO_ANDREY_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_TRIANGLE_H_
+#ifndef MODULES_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_TRIANGLE_H_
+#define MODULES_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_TRIANGLE_H_
 
 #include <stdexcept>
 
 class ThreeSamePoints :public std::runtime_error {
  public:
      ThreeSamePoints() : std::
-         runtime_error("Triangle is not correct, three points are idential") {}
+         runtime_error("Triangle is not correct, three points are identical") {}
 };
 
 class TwoSamePoints :public std::runtime_error {
  public:
      TwoSamePoints() : std::
-         runtime_error("Triangle is not correct, two points are idential") {}
+         runtime_error("Triangle is not correct, two points are identical") {}
 };
 
 class IncorrectPoints :public std::runtime_error {
@@ -68,4 +68,4 @@ class Triangle{
     point C;
 };
 
-#endif  // MODULES_MARCHENKO_ANDREY_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_TRIANGLE_H_
+#endif  // MODULES_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_TRIANGLE_H_

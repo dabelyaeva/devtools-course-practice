@@ -7,7 +7,7 @@
 
 #include "include/unitarea.h"
 
-TEST(AreaUnitTest, Can_Create_Object_Area_Unit) {
+TEST(AreaUnitTest, Throws_Object_Area_Unit) {
     // Arrange
     AreaUnit *unit;
 
@@ -18,13 +18,13 @@ TEST(AreaUnitTest, Can_Create_Object_Area_Unit) {
     EXPECT_NE(nullptr, unit);
 }
 
-TEST(AreaUnitTest, Can_Create_Negative_Coefficient) {
+TEST(AreaUnitTest, Throws_Negative_Coefficient) {
     // Act&Assert
     EXPECT_THROW(new AreaUnit(-1, "ar"),
 std::invalid_argument);
 }
 
-TEST(AreaUnitTest, Can_Create_Area_Empty_Type) {
+TEST(AreaUnitTest, Throws_Area_Empty_Type) {
     // Act&Assert
     EXPECT_THROW(new AreaUnit(1, ""),
 std::invalid_argument);

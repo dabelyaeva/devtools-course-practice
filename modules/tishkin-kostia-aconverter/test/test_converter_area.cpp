@@ -179,7 +179,7 @@ Can_Convert_Weaving_To_String_With_Custom_Precision) {
 }
 
 TEST(AreaConverterTest,
-Can_Create_Negative_Precision) {
+Throws_Negative_Precision) {
     // Arrange
     AreaConverter convert;
     double value = 5.0;

@@ -9,7 +9,8 @@ enum class TNumbers { HEX, OCT, BIN };
 
 class SpecificNumber {
  public:
-    explicit SpecificNumber(const TNumbers _mode = TNumbers::BIN, const int _value = 0);
+    explicit SpecificNumber(const TNumbers _mode = TNumbers::BIN,
+                            const int _value = 0);
     SpecificNumber(const SpecificNumber& _SpecificNumber);
 
     SpecificNumber operator + (const SpecificNumber& _SpecificNumber) const;

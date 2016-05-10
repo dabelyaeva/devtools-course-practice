@@ -1,5 +1,6 @@
-#include "include/specific_number.h"
+// Copyright 2016 Sharadze Georgy
 
+#include "include/specific_number.h"
 #include <string>
 
 SpecificNumber::SpecificNumber(const TNumbers _mode, const int _value) {

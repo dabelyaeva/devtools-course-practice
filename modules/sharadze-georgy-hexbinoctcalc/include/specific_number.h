@@ -1,13 +1,15 @@
-#ifndef SPECIAL_NUM_
-#define SPECIAL_NUM_
+// Copyright 2016 Sharadze Georgy
+
+#ifndef MODULES_SHARADZE_GEORGY_HEXBINOCTCALC_INCLUDE_SPECIFIC_NUMBER_H_
+#define MODULES_SHARADZE_GEORGY_HEXBINOCTCALC_INCLUDE_SPECIFIC_NUMBER_H_
 
 #include <string>
 
 enum class TNumbers { HEX, OCT, BIN };
 
 class SpecificNumber {
-public:
-    SpecificNumber(const TNumbers _mode = TNumbers::BIN, const int _value = 0);
+ public:
+    explicit SpecificNumber(const TNumbers _mode = TNumbers::BIN, const int _value = 0);
     SpecificNumber(const SpecificNumber& _SpecificNumber);
 
     SpecificNumber operator + (const SpecificNumber& _SpecificNumber) const;
@@ -27,10 +29,11 @@ public:
     friend SpecificNumber calc(const SpecificNumber & _SpecificNumber1,
                                const SpecificNumber & _SpecificNumber2,
                                const char operation);
-private:
+
+ private:
     int value;
     TNumbers mode;
     bool equalsZero() const;
 };
 
-#endif // SPECIAL_NUM_
+#endif  // MODULES_SHARADZE_GEORGY_HEXBINOCTCALC_INCLUDE_SPECIFIC_NUMBER_H_

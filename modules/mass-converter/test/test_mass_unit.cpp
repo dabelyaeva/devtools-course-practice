@@ -69,7 +69,7 @@ TEST(MassUnitTest,
     MassUnit unit2(1, "kg");
 
     // Act & Assert
-    EXPECT_EQ(unit1, unit2);
+    EXPECT_TRUE(unit1 == unit2);
 }
 
 TEST(MassUnitTest,
@@ -79,7 +79,7 @@ TEST(MassUnitTest,
     MassUnit unit2(2, "kg");
 
     // Act & Assert
-    EXPECT_NE(unit1, unit2);
+    EXPECT_FALSE(unit1 == unit2);
 }
 
 TEST(MassUnitTest,
@@ -89,5 +89,25 @@ TEST(MassUnitTest,
     MassUnit unit2(1, "g");
 
     // Act & Assert
-    EXPECT_NE(unit1, unit2);
+    EXPECT_FALSE(unit1 == unit2);
+}
+
+TEST(MassUnitTest,
+     Units_With_Different_Coefficients_Not_Equal_v2) {
+    // Arrange
+    MassUnit unit1(1, "kg");
+    MassUnit unit2(2, "kg");
+
+    // Act & Assert
+    EXPECT_TRUE(unit1 != unit2);
+}
+
+TEST(MassUnitTest,
+     Units_With_Different_Qualifiers_Not_Equal_v2) {
+    // Arrange
+    MassUnit unit1(1, "kg");
+    MassUnit unit2(1, "g");
+
+    // Act & Assert
+    EXPECT_TRUE(unit1 != unit2);
 }

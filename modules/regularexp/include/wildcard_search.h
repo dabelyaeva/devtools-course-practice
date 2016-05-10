@@ -14,8 +14,7 @@ enum class TOperation {
   INEXACT_MATCH,
   GET_FIRST_MATCH,
   GET_ALL_MATCHES,
-  NUMBER_MATCHES,
-  NONE
+  NUMBER_MATCHES
 };
 
 class WildcardSearch {

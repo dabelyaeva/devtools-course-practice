@@ -46,7 +46,7 @@ void WildcardSearch::help(const char* appname) {
 }
 
 TOperation WildcardSearch::parseOperation(const string& arg) {
-  TOperation operation = TOperation::NONE;
+  TOperation operation;
   if (arg == "exact_match")
     operation = TOperation::EXACT_MATCH;
   else if (arg == "inexact_match")

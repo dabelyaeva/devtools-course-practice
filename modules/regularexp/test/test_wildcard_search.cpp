@@ -12,7 +12,7 @@ using std::vector;
 using std::string;
 
 class WildcardSearchTest : public ::testing::Test {
-protected:
+ protected:
   void Act(const vector<string>& args_) {
     vector<const char*> options;
 
@@ -29,7 +29,7 @@ protected:
   void Assert(const string& expected) {
     EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
   }
-private:
+ private:
   WildcardSearch app_;
   string output_;
 };

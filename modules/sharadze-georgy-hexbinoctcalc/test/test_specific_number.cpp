@@ -1,8 +1,8 @@
 // Copyright 2016 Sharadze Georgy
 
+#include <string>
 #include "include/specific_number.h"
 #include "gtest/gtest.h"
-#include <string>
 
 TEST(Sharadze_Georgy_SpecificNumberTest, Can_Create_Number) {
     // Arrange

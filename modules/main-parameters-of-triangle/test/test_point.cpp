@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include "include/Point.h"
 
-TEST(Polyakov_Igor_PointTest, Can_Create_Default_Point) {
+TEST(PointTest, Can_Create_Default_Point) {
     // Arrange
 
     Point p;
@@ -14,7 +14,7 @@ TEST(Polyakov_Igor_PointTest, Can_Create_Default_Point) {
     EXPECT_EQ(0.0, p.y);
 }
 
-TEST(Polyakov_Igor_PointTest, Can_Create_Some_Point) {
+TEST(PointTest, Can_Create_Some_Point) {
     // Arrange
 
     double x = 5.0;
@@ -30,7 +30,7 @@ TEST(Polyakov_Igor_PointTest, Can_Create_Some_Point) {
     EXPECT_EQ(y, p.y);
 }
 
-TEST(Polyakov_Igor_PointTest, Can_Copy_Point) {
+TEST(PointTest, Can_Copy_Point) {
     // Arrange
 
     double x = 5.0;
@@ -47,7 +47,7 @@ TEST(Polyakov_Igor_PointTest, Can_Copy_Point) {
     EXPECT_EQ(p_1.y, p_2.y);
 }
 
-TEST(Polyakov_Igor_PointTest, Similar_Points_Are_Equal) {
+TEST(PointTest, Similar_Points_Are_Equal) {
     // Arrange
 
     double x_1 = 5.0;
@@ -61,7 +61,7 @@ TEST(Polyakov_Igor_PointTest, Similar_Points_Are_Equal) {
     ASSERT_TRUE(p_1 == p_2);
 }
 
-TEST(Polyakov_Igor_PointTest, Different_Points_Are_Not_Equal) {
+TEST(PointTest, Different_Points_Are_Not_Equal) {
     // Arrange
 
     double x_1 = 5.0;

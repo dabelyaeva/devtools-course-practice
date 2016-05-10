@@ -2,7 +2,6 @@
 
 #include <gtest/gtest.h>
 
-#include <sstream>
 #include <string>
 
 #include "include/regular_expression.h"
@@ -120,15 +119,6 @@ TEST(Regex, Cant_Find_Sequence_If_Not_Enough_Elements) {
     // Arrange
     const Regex regular("a{3}");
     const string str("aa");
-
-    // Act & Assert
-    EXPECT_FALSE(regular.search(str));
-}
-
-TEST(Regex, Cant_Find_Not_System_Symbol_With_Excess_Forward_Slash) {
-    // Arrange
-    const Regex regular("\\a");
-    const string str("bgae");
 
     // Act & Assert
     EXPECT_FALSE(regular.search(str));
@@ -308,12 +298,11 @@ TEST(Regex, Can_Print_Smatch_result) {
     // Act
     const string str = "root!vf drink.hb o?boby!b";
     regex.search(str, &smatch);
-    std::ostringstream stream;
-    stream << smatch;
+    const string result = smatch.getAllMatch();
 
     // Assert
     const string str_expection = "root drin boby ";
-    EXPECT_EQ(str_expection, stream.str());
+    EXPECT_EQ(str_expection, result);
 }
 
 TEST(Regex, Can_Get_Num_And_Word) {
@@ -343,5 +332,41 @@ TEST(Regex, Cant_Catch_The_Exception) {
   Regex *regex;
 
   // Act Assert
-  EXPECT_THROW(regex = new Regex("\\d year"), string);
+  EXPECT_NO_THROW(regex = new Regex("\\d year"));
+}
+
+TEST(Regex, Can_Find_Any_Character) {
+  // Arrange
+  Regex regular(".{4}");
+  const string str("test");
+
+  // Act & Assert
+  EXPECT_TRUE(regular.match(str));
+}
+
+TEST(Regex, Can_Find_Newline) {
+  // Arrange
+  Regex regular("\n");
+  const string str("test\ntest2");
+
+  // Act & Assert
+  EXPECT_TRUE(regular.search(str));
+}
+
+TEST(Regex, Can_Find_Horizontal_Tab_Character) {
+  // Arrange
+  Regex regular("\t");
+  const string str("test\ttest2");
+
+  // Act & Assert
+  EXPECT_TRUE(regular.search(str));
+}
+
+TEST(Regex, Can_Find_Point) {
+  // Arrange
+  Regex regular("\\.");
+  const string str("testt.test2");
+
+  // Act & Assert
+  EXPECT_TRUE(regular.search(str));
 }

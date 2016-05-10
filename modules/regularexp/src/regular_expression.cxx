@@ -12,6 +12,14 @@ Regex::Regex(const string& str) {
     if ((*iter == '\\') && (next(iter) != str.end())) {
       ++iter;
       switch (*iter) {
+      case('n') :
+        vectorFunct.push_back([](char symb)->bool {
+        return symb == '\n'; });
+        break;
+      case('t') :
+        vectorFunct.push_back([](char symb)->bool {
+        return symb == '\t'; });
+        break;
       case('d') :
         vectorFunct.push_back([](char symb)->bool {
         return isdigit(symb) != 0; });
@@ -40,10 +48,17 @@ Regex::Regex(const string& str) {
         vectorFunct.push_back([](char symb)->bool {
         return symb == '\\'; });
         break;
+      case('.') :
+        vectorFunct.push_back([](char symb)->bool {
+        return symb == '.'; });
+        break;
       default:
-        throw string("Incorrect control character");
+        throw string("Incorrect control character.");
       }
-      
+
+    } else if (*iter == '.') {
+      vectorFunct.push_back([](char symb)->bool {
+        return true; });
     } else if (*iter == '{' && *next(iter, 2) == '}' && iter != str.begin()
       && isdigit(*next(iter)) ) {
       ++iter;
@@ -153,8 +168,10 @@ bool Regex::match(const string & str, Smatch* match) const {
   return result;
 }
 
-ostream& operator<< (ostream& os, const Smatch& match) {
-  for (const string str : match)
-    os << str << " ";
-  return os;
+string Smatch::getAllMatch()
+{
+  string result;
+  for (auto i = begin(); i != end(); ++i)
+    result += *i + " ";
+  return result;
 }

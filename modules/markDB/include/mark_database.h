@@ -1,7 +1,7 @@
 // Copyright 2016 Dolotov Evgeniy
 
-#ifndef MODULES_DOLOTOV_EVGENIY_MARKDB_INCLUDE_MARK_DATABASE_H_
-#define MODULES_DOLOTOV_EVGENIY_MARKDB_INCLUDE_MARK_DATABASE_H_
+#ifndef MODULES_MARKDB_INCLUDE_MARK_DATABASE_H_
+#define MODULES_MARKDB_INCLUDE_MARK_DATABASE_H_
 
 #include <string>
 #include <vector>
@@ -54,4 +54,4 @@ class MarkDatabase {
     std::vector<Record> records;
 };
 
-#endif  // MODULES_DOLOTOV_EVGENIY_MARKDB_INCLUDE_MARK_DATABASE_H_
+#endif  // MODULES_MARKDB_INCLUDE_MARK_DATABASE_H_

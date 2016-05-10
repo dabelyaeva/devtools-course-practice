@@ -1,7 +1,7 @@
 // Copyright 2016 Dolotov Evgeniy
 
-#ifndef MODULES_DOLOTOV_EVGENIY_MARKDB_INCLUDE_RECORD_H_
-#define MODULES_DOLOTOV_EVGENIY_MARKDB_INCLUDE_RECORD_H_
+#ifndef MODULES_MARKDB_INCLUDE_RECORD_H_
+#define MODULES_MARKDB_INCLUDE_RECORD_H_
 
 #include <string>
 
@@ -27,4 +27,4 @@ struct Record {
     bool operator==(const Record& record) const;
 };
 
-#endif  // MODULES_DOLOTOV_EVGENIY_MARKDB_INCLUDE_RECORD_H_
+#endif  // MODULES_MARKDB_INCLUDE_RECORD_H_

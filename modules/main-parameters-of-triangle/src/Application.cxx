@@ -2,6 +2,8 @@
 
 #include <stdexcept>
 #include <string>
+#include <sstream>
+#include <cstdlib>
 
 #include <include/Application.h>
 #include <include/Triangle.h>
@@ -62,30 +64,98 @@ bool Application::parseFunction(const char* arg) {
     case 0:
         func = CALC_ANGLE_A;
         break;
-    case 0:
+    case 1:
         func = CALC_ANGLE_B;
         break;
-    case 0:
+    case 2:
         func = CALC_ANGLE_C;
         break;
-    case 0:
+    case 3:
         func = CALC_PERIMETER;
         break;
-    case 0:
+    case 4:
         func = CALC_AREA;
         break;
-    case 0:
+    case 5:
         func = CALC_INRADIUS;
         break;
-    case 0:
+    case 6:
         func = CALC_CIRCUMRADIUS;
         break;
     default:
         throw std::string("Wrong function format!");
 
-    return funct;
+    return func;
 }
 
 string Application::operator()(int argc, const char ** argv) {
+    Arguments args;
 
+    if (!validateNumberOfArguments(argc, argv)) {
+        return message_;
+    }
+
+    try {
+        Arguments.A_x = parseDouble(argv[1]);
+        Arguments.A_y = parseDouble(argv[2]);
+        Arguments.B_x = parseDouble(argv[3]);
+        Arguments.B_y = parseDouble(argv[4]);
+        Arguments.C_x = parseDouble(argv[5]);
+        Arguments.C_y = parseDouble(argv[6]);
+        Arguments.function = parseFunction(argv[7]);
+    }
+    catch (std::string str) {
+        return str;
+    }
+
+    Point A(args.A_x, args.A_y);
+    Point B(args.B_x, args.B_y);
+    Point C(args.C_x, args.C_y);
+
+    try {
+        triangle(A, B, C);
+    }
+    catch(std::domain_error &exp) {
+        return exp.what();
+    }
+
+    double result;
+    std::ostringstream stream;
+
+    switch (Arguments.function) {
+    case CALC_ANGLE_A:
+        result = triangle.angle_A_of_triangle_in_radians();
+        stream << "Angle CAB in radians of triangle ABC is equal = " << result;
+        break;
+    case CALC_ANGLE_B:
+        result = triangle.angle_B_of_triangle_in_radians();
+        stream << "Angle CBA in radians of triangle ABC is equal = " << result;
+        break;
+    case CALC_ANGLE_C:
+        result = triangle.angle_C_of_triangle_in_radians();
+        stream << "Angle ACB in radians of triangle ABC is equal = " << result;
+        break;
+    case CALC_PERIMETER:
+        result = triangle.perimeter_of_triangle();
+        stream << "Perimeter of triangle ABC is equal = " << result;
+        break;
+    case CALC_AREA:
+        result = triangle.area_of_triangle();
+        stream << "Perimeter of triangle ABC is equal = " << result;
+        break;
+    case CALC_INRADIUS:
+        result = triangle.inradius();
+        stream << "Inradius of triangle ABC is equal = " << result;
+        break;
+        break;
+    case CALC_CIRCUMRADIUS:
+        result = triangle.circumradius();
+        stream << "Circumradius of triangle ABC is equal = " << result;
+        break;
+        break;
+    }
+
+    message_ = stream.str();
+
+    return message_;
 }

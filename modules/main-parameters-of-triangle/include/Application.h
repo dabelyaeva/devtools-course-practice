@@ -41,7 +41,6 @@ class Application {
 
          Functions function;
      } Arguments;
-
 };
 
 #endif  // MODULES_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_APPLICATION_H_

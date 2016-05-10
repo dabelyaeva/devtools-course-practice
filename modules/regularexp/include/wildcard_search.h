@@ -19,11 +19,11 @@ enum class TOperation {
 };
 
 class WildcardSearch {
-public:
+ public:
   WildcardSearch();
   string operator()(int argc, const char** argv);
 
-private:
+ private:
   void help(const char* appname);
   TOperation parseOperation(const string& argv);
 

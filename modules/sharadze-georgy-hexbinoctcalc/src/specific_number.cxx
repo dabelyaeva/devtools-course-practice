@@ -8,65 +8,60 @@ SpecificNumber::SpecificNumber(const TNumbers _mode, const int _value) {
     setValue(_value);
 }
 
-SpecificNumber::SpecificNumber(const SpecificNumber & _SpecificNumber) {
-    setMode(_SpecificNumber.getMode());
-    setValue(_SpecificNumber.getValue());
+SpecificNumber::SpecificNumber(const SpecificNumber & _sNum) {
+    setMode(_sNum.getMode());
+    setValue(_sNum.getValue());
 }
 
-SpecificNumber SpecificNumber::operator+(const SpecificNumber & _SpecificNumber) const {
+SpecificNumber SpecificNumber::operator+(const SpecificNumber & _sNum) const {
     SpecificNumber result;
-    if (getMode() != _SpecificNumber.getMode()) {
+    if (getMode() != _sNum.getMode()) {
         throw std::string("Can\'t operate with different types of numbers \n ");
-    }
-    else {
-        result.setValue(getValue() + _SpecificNumber.getValue());
+    } else {
+        result.setValue(getValue() + _sNum.getValue());
         result.setMode(getMode());
     }
     return result;
 }
 
-SpecificNumber SpecificNumber::operator-(const SpecificNumber & _SpecificNumber) const {
+SpecificNumber SpecificNumber::operator-(const SpecificNumber & _sNum) const {
     SpecificNumber result;
-    if (getMode() != _SpecificNumber.getMode()) {
+    if (getMode() != _sNum.getMode()) {
         throw std::string("Can\'t operate with different types of numbers \n ");
-    }
-    else {
-        result.setValue(getValue() - _SpecificNumber.getValue());
+    } else {
+        result.setValue(getValue() - _sNum.getValue());
         result.setMode(getMode());
     }
     return result;
 }
 
-SpecificNumber SpecificNumber::operator*(const SpecificNumber & _SpecificNumber) const {
+SpecificNumber SpecificNumber::operator*(const SpecificNumber & _sNum) const {
     SpecificNumber result;
-    if (getMode() != _SpecificNumber.getMode()) {
+    if (getMode() != _sNum.getMode()) {
         throw std::string("Can\'t operate with different types of numbers \n ");
-    }
-    else {
-        result.setValue(getValue() * _SpecificNumber.getValue());
+    } else {
+        result.setValue(getValue() * _sNum.getValue());
         result.setMode(getMode());
     }
     return result;
 }
 
-SpecificNumber SpecificNumber::operator/(const SpecificNumber & _SpecificNumber) const {
+SpecificNumber SpecificNumber::operator/(const SpecificNumber & _sNum) const {
     SpecificNumber result;
-    if (getMode() != _SpecificNumber.getMode()) {
+    if (getMode() != _sNum.getMode()) {
         throw std::string("Can\'t operate with different types of numbers \n ");
-    }
-    else if (_SpecificNumber.equalsZero()) {
+    } else if (_sNum.equalsZero()) {
         throw std::string("Can\'t divide with zero \n ");
-    }
-    else {
-        result.setValue(int(getValue() / _SpecificNumber.getValue()));
+    } else {
+        result.setValue(int(getValue() / _sNum.getValue()));
         result.setMode(getMode());
     }
     return result;
 }
 
-SpecificNumber SpecificNumber::operator=(const SpecificNumber & _SpecificNumber) {
-    setValue(_SpecificNumber.getValue());
-    setMode(_SpecificNumber.getMode());
+SpecificNumber SpecificNumber::operator=(const SpecificNumber & _sNum) {
+    setValue(_sNum.getValue());
+    setMode(_sNum.getMode());
     return *this;
 }
 
@@ -103,8 +98,7 @@ std::string SpecificNumber::showNum() const {
         str = "0";
     }
 
-    switch (mode)
-    {
+    switch (mode) {
     case TNumbers::HEX:
         basis = 16;
         break;

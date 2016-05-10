@@ -24,12 +24,12 @@ void WildcardSearch::help(const char* appname) {
     "\\s - a whitespace character.\n" +
     "\\S - any character that is not a whitespace character.\n" +
     "\\w - an alphanumeric or underscore character.\n" +
-    "\\W - any character that is not an alphanumeric or" + 
+    "\\W - any character that is not an alphanumeric or" +
     "underscore character.\n" +
     "2. Quantifiers: \n" +
     "{int} -The preceding atom is matched exactly int times.\n\n"
 
-    "Notice that, in C++, character and string literals also\n" + 
+    "Notice that, in C++, character and string literals also\n" +
     "escape characters using the backslash character \\,\n" +
     "and this affects the syntax for\n" +
     "constructing regular expressions from such types. For example:\n\n" +
@@ -37,7 +37,7 @@ void WildcardSearch::help(const char* appname) {
     " '\\\\d'  \\d -> matches a digit character\n" +
     " '\\\\\\\'  \\\\ -> matches a single backslash \\ character\n\n" +
 
-    "<operation> is one of:\n" + 
+    "<operation> is one of:\n" +
     "'exact_match'\n" +
     "'inexact_match'\n" +
     "'get_first_match'\n" +
@@ -93,13 +93,13 @@ string WildcardSearch::operator()(int argc, const char ** argv) {
     message_ = arg.regex_->search(arg.str_) ? "True" : "False";
     break;
   case TOperation::GET_FIRST_MATCH:
-    message_ = arg.regex_->search(arg.str_, &match) ? match.front()
-                                                    : "Not found.";
+    message_ = arg.regex_->search(arg.str_, &match) ?
+                           match.front(): "Not found.";
     match.clear();
     break;
   case TOperation::GET_ALL_MATCHES:
-    message_ = arg.regex_->search(arg.str_, &match) ? match.getAllMatch() 
-                                                    : "Not found.";
+    message_ = arg.regex_->search(arg.str_, &match) ?
+                           match.getAllMatch(): "Not found.";
     match.clear();
     break;
   case TOperation::NUMBER_MATCHES:

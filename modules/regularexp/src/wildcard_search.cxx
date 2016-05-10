@@ -64,6 +64,7 @@ TOperation WildcardSearch::parseOperation(const string& arg) {
 
 string WildcardSearch::operator()(int argc, const char ** argv) {
   Arguments arg;
+  arg.regex_ = nullptr;
   if (argc == 1) {
     help(argv[0]);
     return message_;

@@ -11,9 +11,9 @@ TEST(TriangleTest, Can_Create_Default_Triangle) {
     Triangle T1;
 
     // Act
-    point A(0.0, 0.0);
-    point B(1.0, 1.0);
-    point C(1.0, 0.0);
+    Point A(0.0, 0.0);
+    Point B(1.0, 1.0);
+    Point C(1.0, 0.0);
     Triangle T2(A, B, C);
 
     // Assert
@@ -23,9 +23,9 @@ TEST(TriangleTest, Can_Create_Default_Triangle) {
 TEST(TriangleTest,
     Can_Create_Triangle_With_Non_Zero_Points) {
     // Arrange
-    point A_(0.0, 1.0);
-    point B_(2.0, 4.0);
-    point C_(4.0, 5.0);
+    Point A_(0.0, 1.0);
+    Point B_(2.0, 4.0);
+    Point C_(4.0, 5.0);
 
     // Act
     Triangle T(A_, B_, C_);
@@ -39,9 +39,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Can_Copy_Triangle) {
     // Arrange
-    point A_(0.0, 1.0);
-    point B_(3.0, 3.0);
-    point C_(4.0, 5.0);
+    Point A_(0.0, 1.0);
+    Point B_(3.0, 3.0);
+    Point C_(4.0, 5.0);
     Triangle T1(A_, B_, C_);
 
     // Act
@@ -54,9 +54,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Can_Create_Triangle_With_Non_Zero_Side) {
     // Arrange
-    point A(0.0, 1.0);
-    point B(3.0, 3.0);
-    point C(4.0, 5.0);
+    Point A(0.0, 1.0);
+    Point B(3.0, 3.0);
+    Point C(4.0, 5.0);
     Triangle T(A, B, C);
 
     // Act
@@ -69,9 +69,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Can_Not_Create_Triangle_When_Two_Points_Are_Idential) {
     // Arrange
-    point A(0.0, 1.0);
-    point B(0.0, 1.0);
-    point C(4.0, 5.0);
+    Point A(0.0, 1.0);
+    Point B(0.0, 1.0);
+    Point C(4.0, 5.0);
 
     // Act and Assert
     EXPECT_THROW(Triangle T(A, B, C), TwoSamePoints);
@@ -80,9 +80,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Can_Not_Create_Triangle_When_Three_Points_Are_Idential) {
     // Arrange
-    point A(0.0, 1.0);
-    point B(0.0, 1.0);
-    point C(0.0, 1.0);
+    Point A(0.0, 1.0);
+    Point B(0.0, 1.0);
+    Point C(0.0, 1.0);
 
     // Act and Assert
     EXPECT_THROW(Triangle T(A, B, C), ThreeSamePoints);
@@ -91,9 +91,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Cant_Create_Straight_Line_Triangle_With_Non_Equal_X_Y_Coords) {
     // Arrange
-    point A(4.0, 5.0);
-    point B(2.0, 3.0);
-    point C(0.0, 1.0);
+    Point A(4.0, 5.0);
+    Point B(2.0, 3.0);
+    Point C(0.0, 1.0);
 
     // Act and Assert
     EXPECT_THROW(Triangle T(A, B, C), IncorrectPoints);
@@ -102,9 +102,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Cant_Create_Straight_Line_Triangle_When_X_Coords_Are_Idential) {
     // Arrange
-    point B(4.0, 5.0);
-    point C(4.0, 3.0);
-    point A(4.0, 1.0);
+    Point B(4.0, 5.0);
+    Point C(4.0, 3.0);
+    Point A(4.0, 1.0);
 
     // Act and Assert
     EXPECT_THROW(Triangle T(A, B, C), IncorrectPoints);
@@ -113,9 +113,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Cant_Create_Straight_Line_Triangle_When_Y_Coords_Are_Idential) {
     // Arrange
-    point B(4.0, 5.0);
-    point C(2.0, 5.0);
-    point A(0.0, 5.0);
+    Point B(4.0, 5.0);
+    Point C(2.0, 5.0);
+    Point A(0.0, 5.0);
 
     // Act and Assert
     EXPECT_THROW(Triangle T(A, B, C), IncorrectPoints);
@@ -124,9 +124,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Can_Create_Treangle_With_Non_Zero_Perimeter) {
     // Arrange
-    point A(0.0, 0.0);
-    point B(1.0, 3.0);
-    point C(4.0, 5.0);
+    Point A(0.0, 0.0);
+    Point B(1.0, 3.0);
+    Point C(4.0, 5.0);
 
     // Act
     Triangle T(A, B, C);
@@ -139,9 +139,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Can_Create_Equilateral_Triangle) {
     // Arrange
-    point A(0.0, 0.0);
-    point B(1.5, 1.5 * pow(3.0, 0.5));
-    point C(3.0, 0.0);
+    Point A(0.0, 0.0);
+    Point B(1.5, 1.5 * pow(3.0, 0.5));
+    Point C(3.0, 0.0);
     Triangle T(A, B, C);
 
     // Act
@@ -157,9 +157,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Can_Create_Isosceles_Triangle) {
     // Arrange
-    point A(0.0, 0.0);
-    point B(4.0, 4.0);
-    point C(4.0, 0.0);
+    Point A(0.0, 0.0);
+    Point B(4.0, 4.0);
+    Point C(4.0, 0.0);
     Triangle T(A, B, C);
 
     // Act
@@ -173,9 +173,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Can_Create_Rectangular_Triangle) {
     // Arrange
-    point A(0.0, 0.0);
-    point B(3.0, 3.0);
-    point C(3.0, 0.0);
+    Point A(0.0, 0.0);
+    Point B(3.0, 3.0);
+    Point C(3.0, 0.0);
 
     // Act
     Triangle T(A, B, C);
@@ -188,9 +188,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Is_Tangens_And_Catangens_0f_45_Degrees_Equal) {
     // Arrange
-    point A(0.0, 0.0);
-    point B(4.0, 4.0);
-    point C(4.0, 0.0);
+    Point A(0.0, 0.0);
+    Point B(4.0, 4.0);
+    Point C(4.0, 0.0);
     Triangle T(A, B, C);
 
     // Act
@@ -204,10 +204,10 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Can_Create_Triangles_With_Equal_Inradius) {
     // Arrange
-    point A(0.0, 0.0);
-    point B1(2.0, 2.0);
-    point B2(2.0, -2.0);
-    point C(4.0, 0.0);
+    Point A(0.0, 0.0);
+    Point B1(2.0, 2.0);
+    Point B2(2.0, -2.0);
+    Point C(4.0, 0.0);
 
     // Act
     Triangle T1(A, B1, C);
@@ -222,10 +222,10 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Can_Create_Triangles_With_Equal_Circumradius) {
     // Arrange
-    point A(0.0, 0.0);
-    point B1(2.0, 2.0);
-    point B2(2.0, -2.0);
-    point C(4.0, 0.0);
+    Point A(0.0, 0.0);
+    Point B1(2.0, 2.0);
+    Point B2(2.0, -2.0);
+    Point C(4.0, 0.0);
 
     // Act
     Triangle T1(A, B1, C);
@@ -240,9 +240,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     The_Triangle_Inequality_Is_Carried_Out) {
     // Arrange
-    point A(1.0, 1.0);
-    point B(2.0, 3.0);
-    point C(4.0, 5.0);
+    Point A(1.0, 1.0);
+    Point B(2.0, 3.0);
+    Point C(4.0, 5.0);
     Triangle T(A, B, C);
 
     // Act
@@ -259,10 +259,10 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Is_The_First_Sign_Of_Triangles_Equalality) {
     // Arrange
-    point A(0.0, 0.0);
-    point B1(2.0, 3.0);
-    point B2(2.0, -3.0);
-    point C(4.0, 0.0);
+    Point A(0.0, 0.0);
+    Point B1(2.0, 3.0);
+    Point B2(2.0, -3.0);
+    Point C(4.0, 0.0);
     Triangle T1(A, B1, C);
     Triangle T2(A, B2, C);
 
@@ -283,10 +283,10 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Is_The_Second_Sign_Of_Triangles_Equalality) {
     // Arrange
-    point A(0.0, 0.0);
-    point B1(2.0, 3.0);
-    point B2(2.0, -3.0);
-    point C(4.0, 0.0);
+    Point A(0.0, 0.0);
+    Point B1(2.0, 3.0);
+    Point B2(2.0, -3.0);
+    Point C(4.0, 0.0);
     Triangle T1(A, B1, C);
     Triangle T2(A, B2, C);
 
@@ -307,12 +307,12 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Is_The_Third_Sign_Of_Triangles_Equalality) {
     // Arrange
-    point A1(0.0, 0.0);
-    point B1(2.0, 3.0);
-    point C1(4.0, 0.0);
-    point A2(1.0, 1.0);
-    point B2(3.0, 4.0);
-    point C2(5.0, 1.0);
+    Point A1(0.0, 0.0);
+    Point B1(2.0, 3.0);
+    Point C1(4.0, 0.0);
+    Point A2(1.0, 1.0);
+    Point B2(3.0, 4.0);
+    Point C2(5.0, 1.0);
     Triangle T1(A1, B1, C1);
     Triangle T2(A2, B2, C2);
 
@@ -333,9 +333,9 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Can_Get_Coords_From_Point) {
     // Arrange
-    point A(0.0, 0.0);
-    point B(2.0, 3.0);
-    point C(4.0, 0.0);
+    Point A(0.0, 0.0);
+    Point B(2.0, 3.0);
+    Point C(4.0, 0.0);
     Triangle T(A, B, C);
 
     // Act
@@ -354,12 +354,12 @@ TEST(TriangleTest,
 TEST(TriangleTest,
     Can_Create_Two_Triangles_With_Small_Difference) {
     // Arrange
-    point A1(0.0, 0.0);
-    point B1(2.0, 3.0);
-    point C1(4.0, 0.0);
-    point A2(0.0, 0.0);
-    point B2(2.001, 3.0);
-    point C2(4.0, 0.0);
+    Point A1(0.0, 0.0);
+    Point B1(2.0, 3.0);
+    Point C1(4.0, 0.0);
+    Point A2(0.0, 0.0);
+    Point B2(2.001, 3.0);
+    Point C2(4.0, 0.0);
 
     // Act
     Triangle T1(A1, B1, C1);
@@ -372,7 +372,7 @@ TEST(TriangleTest,
 TEST(TriangleTest, Can_Set_A) {
     // Arrange
     Triangle T1;
-    point A(4.0, 5.0);
+    Point A(4.0, 5.0);
 
     // Act
     T1.set_A(A);
@@ -384,7 +384,7 @@ TEST(TriangleTest, Can_Set_A) {
 TEST(TriangleTest, Can_Set_B) {
     // Arrange
     Triangle T1;
-    point B(4.0, 5.0);
+    Point B(4.0, 5.0);
 
     // Act
     T1.set_B(B);
@@ -396,7 +396,7 @@ TEST(TriangleTest, Can_Set_B) {
 TEST(TriangleTest, Can_Set_C) {
     // Arrange
     Triangle T1;
-    point C(4.0, 5.0);
+    Point C(4.0, 5.0);
 
     // Act
     T1.set_C(C);
@@ -408,7 +408,7 @@ TEST(TriangleTest, Can_Set_C) {
 TEST(TriangleTest, Can_Not_Set_Idential_Point_A) {
     // Arrange
     Triangle T1;
-    point A(1.0, 1.0);
+    Point A(1.0, 1.0);
 
     // Act and Assert
     EXPECT_THROW(T1.set_A(A), TwoSamePoints);
@@ -417,7 +417,7 @@ TEST(TriangleTest, Can_Not_Set_Idential_Point_A) {
 TEST(TriangleTest, Can_Not_Set_Idential_Point_B) {
     // Arrange
     Triangle T1;
-    point B(0.0, 0.0);
+    Point B(0.0, 0.0);
 
     // Act and Assert
     EXPECT_THROW(T1.set_B(B), TwoSamePoints);
@@ -426,7 +426,7 @@ TEST(TriangleTest, Can_Not_Set_Idential_Point_B) {
 TEST(TriangleTest, Can_Not_Set_Idential_Point_C) {
     // Arrange
     Triangle T1;
-    point C(1.0, 1.0);
+    Point C(1.0, 1.0);
 
     // Act and Assert
     EXPECT_THROW(T1.set_C(C), TwoSamePoints);
@@ -434,10 +434,10 @@ TEST(TriangleTest, Can_Not_Set_Idential_Point_C) {
 
 TEST(TriangleTest, Can_Not_Set_Incorrect_Point_A) {
     // Arrange
-    point A(0.0, 1.0);
-    point B(2.0, 2.0);
-    point C(4.0, 4.0);
-    point A1(0.0, 0.0);
+    Point A(0.0, 1.0);
+    Point B(2.0, 2.0);
+    Point C(4.0, 4.0);
+    Point A1(0.0, 0.0);
 
     // Act
     Triangle T1(A, B, C);
@@ -447,10 +447,10 @@ TEST(TriangleTest, Can_Not_Set_Incorrect_Point_A) {
 }
 
 TEST(TriangleTest, Can_Not_Set_Incorrect_Point_B) {
-    point A(0.0, 0.0);
-    point B(2.0, 3.0);
-    point C(4.0, 4.0);
-    point B1(2.0, 2.0);
+    Point A(0.0, 0.0);
+    Point B(2.0, 3.0);
+    Point C(4.0, 4.0);
+    Point B1(2.0, 2.0);
 
     // Act
     Triangle T1(A, B, C);
@@ -460,10 +460,10 @@ TEST(TriangleTest, Can_Not_Set_Incorrect_Point_B) {
 }
 
 TEST(TriangleTest, Can_Not_Set_Incorrect_Point_C) {
-    point A(0.0, 0.0);
-    point B(2.0, 2.0);
-    point C(4.0, 3.0);
-    point C1(4.0, 4.0);
+    Point A(0.0, 0.0);
+    Point B(2.0, 2.0);
+    Point C(4.0, 3.0);
+    Point C1(4.0, 4.0);
 
     // Act
     Triangle T1(A, B, C);

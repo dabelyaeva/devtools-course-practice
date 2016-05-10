@@ -5,19 +5,19 @@
 #include "include/Point.h"
 #include "include/Triangle.h"
 
-point Triangle::get_A() const {
+Point Triangle::get_A() const {
     return A;
 }
 
-point Triangle::get_B() const {
+Point Triangle::get_B() const {
     return B;
 }
 
-point Triangle::get_C() const {
+Point Triangle::get_C() const {
     return C;
 }
 
-void Triangle::set_A(const point _A) {
+void Triangle::set_A(const Point _A) {
     int key = is_triangle_correct(_A, B, C);
     switch (key) {
     case 0: {
@@ -35,7 +35,7 @@ void Triangle::set_A(const point _A) {
     }
 }
 
-void Triangle::set_B(const point _B) {
+void Triangle::set_B(const Point _B) {
     int key = is_triangle_correct(A, _B, C);
     switch (key) {
     case 0: {
@@ -53,7 +53,7 @@ void Triangle::set_B(const point _B) {
     }
 }
 
-void Triangle::set_C(const point _C) {
+void Triangle::set_C(const Point _C) {
     int key = is_triangle_correct(A, B, _C);
     switch (key) {
     case 0: {
@@ -80,7 +80,7 @@ Triangle::Triangle() {
     C.y = 0.0;
 }
 
-bool are_point_on_straight_line(point _A, point _B, point _C) {
+bool are_point_on_straight_line(Point _A, Point _B, Point _C) {
     int det = _A.x * _B.y + _C.x * _A.y + _B.x *
         _C.y - _C.x * _B.y - _B.x * _A.y - _A.x * _C.y;
     if (det == 0)
@@ -89,7 +89,7 @@ bool are_point_on_straight_line(point _A, point _B, point _C) {
         return 0;
 }
 
-int Triangle::is_triangle_correct(point _A, point _B, point _C) {
+int Triangle::is_triangle_correct(Point _A, Point _B, Point _C) {
     if (_A == _B && _B == _C) {
         return 1;
     } else if (_A == _B || _A == _C || _B == _C) {
@@ -101,7 +101,7 @@ int Triangle::is_triangle_correct(point _A, point _B, point _C) {
     }
 }
 
-Triangle::Triangle(point _A, point _B, point _C) {
+Triangle::Triangle(Point _A, Point _B, Point _C) {
     int key = is_triangle_correct(_A, _B, _C);
     switch (key) {
     case 0: {
@@ -131,8 +131,8 @@ Triangle::Triangle(const Triangle& T) {
     C = T.C;
 }
 
-double Triangle::triangle_side_length(const point first_point,
-    const point second_point) const {
+double Triangle::triangle_side_length(const Point first_point,
+    const Point second_point) const {
     double side = pow(pow((second_point.x - first_point.x), 2)
         + pow(second_point.y - first_point.y, 2), 0.5);
     return side;

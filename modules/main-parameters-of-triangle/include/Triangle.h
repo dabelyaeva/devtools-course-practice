@@ -4,6 +4,7 @@
 #define MODULES_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_TRIANGLE_H_
 
 #include <stdexcept>
+#include <include/Point.h>
 
 class ThreeSamePoints :public std::runtime_error {
  public:
@@ -26,23 +27,23 @@ class IncorrectPoints :public std::runtime_error {
 class Triangle{
  public:
     Triangle();
-    Triangle(const point A, const point B, const point C);
+    Triangle(const Point A, const Point B, const Point C);
     Triangle(const Triangle &T);
 
-    point get_A() const;
-    point get_B() const;
-    point get_C() const;
+    Point get_A() const;
+    Point get_B() const;
+    Point get_C() const;
 
-    void set_A(const point A);
-    void set_B(const point B);
-    void set_C(const point C);
+    void set_A(const Point A);
+    void set_B(const Point B);
+    void set_C(const Point C);
 
-    int is_triangle_correct(point A, point B, point C);
+    int is_triangle_correct(Point A, Point B, Point C);
 
     bool operator==(const Triangle& T1) const;
 
-    double triangle_side_length(const point first_point,
-        const point second_point) const;
+    double triangle_side_length(const Point first_point,
+        const Point second_point) const;
     double angle_A_of_triangle_in_radians() const;
     double angle_B_of_triangle_in_radians() const;
     double angle_C_of_triangle_in_radians() const;
@@ -52,9 +53,9 @@ class Triangle{
     double circumradius() const;
 
  private:
-    point A;
-    point B;
-    point C;
+    Point A;
+    Point B;
+    Point C;
 };
 
 #endif  // MODULES_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_TRIANGLE_H_

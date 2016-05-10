@@ -1,12 +1,13 @@
 // Copyright 2016 Polyakov Igor
 
+#include <include/Application.h>
+#include <include/Triangle.h>
+
 #include <stdexcept>
 #include <string>
 #include <sstream>
 #include <cstdlib>
-
-#include <include/Application.h>
-#include <include/Triangle.h>
+#include <iostream>
 
 Application::Application() : message_("") {}
 
@@ -16,10 +17,11 @@ using std::string;
 void Application::help(const char* appname, const char* message) {
     message_ =
         string(message) +
+        "This is application for work with Triangle.\n\n" +
         "Please provide arguments in the following format:\n\n" +
 
-        "  $ " + string(appname) + " <A_x A_y> " + "<B_x B_y> " +
-        "<C_x C_y> " + "<function>, " + 
+        "  $ " + string(appname) + " <A_x> <A_y> " + "<B_x> <B_y> " +
+        "<C_x> <C_y> " + "<function>, " +
 
         "where <function> may take the following values of type int: \n\n" +
 
@@ -31,15 +33,15 @@ void Application::help(const char* appname, const char* message) {
         "5 - Calculate inradius of triangle ABC \n" +
         "6 - Calculate circumradius of triangle ABC \n\n" +
 
-        "And the rest of arguments listed above are double-precision numbers \n ";
+        "And the rest of arguments listed above are double-precision " +
+        "numbers \n ";
 }
 
 bool Application::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 8) {
+    } else if (argc != 8) {
         help(argv[0], "ERROR: Should be 8 arguments.\n\n");
         return false;
     }
@@ -58,7 +60,7 @@ double Application::parseDouble(const char* arg) {
 }
 
 Functions Application::parseFunction(const char* arg) {
-    Functions func;
+    Functions func = (Functions)atoi(arg);
 
     switch (func) {
     case 0:
@@ -123,6 +125,8 @@ string Application::operator()(int argc, const char ** argv) {
 
     double result;
     std::ostringstream stream;
+
+    std::cout << args.function;
 
     switch (args.function) {
     case CALC_ANGLE_A:

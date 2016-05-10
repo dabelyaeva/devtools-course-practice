@@ -2,6 +2,7 @@
 
 #include <math.h>
 #include <string>
+#include "include/Point.h"
 #include "include/Triangle.h"
 
 point Triangle::get_A() const {

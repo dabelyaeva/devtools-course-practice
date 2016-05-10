@@ -23,17 +23,6 @@ class IncorrectPoints :public std::runtime_error {
          runtime_error("Triangle is not correct, all points on one line") {}
 };
 
-struct point{
-    double x;
-    double y;
-
-    point();
-    point(const double A, const double B);
-    point(const point &A);
-
-    bool operator==(const point& p) const;
-};
-
 class Triangle{
  public:
     Triangle();

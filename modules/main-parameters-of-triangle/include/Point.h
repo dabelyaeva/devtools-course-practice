@@ -1,10 +1,10 @@
 // Copyright 2016 Polyakov Igor
 
-#ifndef MODULES_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_TRIANGLE_H_
-#define MODULES_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_TRIANGLE_H_
+#ifndef MODULES_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_POINT_H_
+#define MODULES_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_POINT_H_
 
 class point {
-public:
+ public:
     double x;
     double y;
 
@@ -14,3 +14,5 @@ public:
 
     bool operator==(const point& p) const;
 };
+
+#endif  // MODULES_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_POINT_H_

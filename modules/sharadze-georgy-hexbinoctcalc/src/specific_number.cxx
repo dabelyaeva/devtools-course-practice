@@ -53,7 +53,7 @@ SpecificNumber SpecificNumber::operator/(const SpecificNumber & _sNum) const {
     } else if (_sNum.equalsZero()) {
         throw std::string("Can\'t divide with zero \n ");
     } else {
-        result.setValue(int(getValue() / _sNum.getValue()));
+        result.setValue(static_cast<int>(getValue() / _sNum.getValue()));
         result.setMode(getMode());
     }
     return result;
@@ -134,7 +134,7 @@ std::string SpecificNumber::showNum() const {
         } else {
             str = std::to_string(tmp % basis) + str;
         }
-        tmp = int(tmp / basis);
+        tmp = static_cast<int>(tmp / basis);
     }
 
     if (lessZero) {

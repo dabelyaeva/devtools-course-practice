@@ -8,15 +8,15 @@
 #include <string>
 
 enum Functions {
-    CALC_ANGLE_A = 0;
-    CALC_ANGLE_B;
-    CALC_ANGLE_C;
+    CALC_ANGLE_A = 0,
+    CALC_ANGLE_B,
+    CALC_ANGLE_C,
 
-    CALC_PERIMETER;
-    CALC_AREA;
+    CALC_PERIMETER,
+    CALC_AREA,
 
-    CALC_INRADIUS;
-    CALC_CIRCUMRADIUS;
+    CALC_INRADIUS,
+    CALC_CIRCUMRADIUS
 };
 
 class Application {
@@ -26,8 +26,8 @@ class Application {
  private:
      void help(const char* appname, const char* message = "");
      bool validateNumberOfArguments(int argc, const char** argv);
-     bool parseDouble(const char* arg);
-     bool parseFunction(const char* arg);
+     double parseDouble(const char* arg);
+     Functions parseFunction(const char* arg);
      std::string message_;
      Triangle triangle;
 

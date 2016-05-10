@@ -46,19 +46,19 @@ bool Application::validateNumberOfArguments(int argc, const char** argv) {
     return true;
 }
 
-bool Application::parseDouble(const char* arg) {
+double Application::parseDouble(const char* arg) {
     char* end;
     double value = strtod(arg, &end);
 
     if (end[0]) {
-        throw std::string("Wrong number format!");
+        throw string("Wrong number format!");
     }
 
     return value;
 }
 
-bool Application::parseFunction(const char* arg) {
-    int func;
+Functions Application::parseFunction(const char* arg) {
+    Functions func;
 
     switch (func) {
     case 0:
@@ -83,9 +83,10 @@ bool Application::parseFunction(const char* arg) {
         func = CALC_CIRCUMRADIUS;
         break;
     default:
-        throw std::string("Wrong function format!");
+        throw string("Wrong function format!");
 
-    return func;
+        return func;
+    }
 }
 
 string Application::operator()(int argc, const char ** argv) {
@@ -96,13 +97,13 @@ string Application::operator()(int argc, const char ** argv) {
     }
 
     try {
-        Arguments.A_x = parseDouble(argv[1]);
-        Arguments.A_y = parseDouble(argv[2]);
-        Arguments.B_x = parseDouble(argv[3]);
-        Arguments.B_y = parseDouble(argv[4]);
-        Arguments.C_x = parseDouble(argv[5]);
-        Arguments.C_y = parseDouble(argv[6]);
-        Arguments.function = parseFunction(argv[7]);
+        args.A_x = parseDouble(argv[1]);
+        args.A_y = parseDouble(argv[2]);
+        args.B_x = parseDouble(argv[3]);
+        args.B_y = parseDouble(argv[4]);
+        args.C_x = parseDouble(argv[5]);
+        args.C_y = parseDouble(argv[6]);
+        args.function = parseFunction(argv[7]);
     }
     catch (std::string str) {
         return str;
@@ -113,16 +114,17 @@ string Application::operator()(int argc, const char ** argv) {
     Point C(args.C_x, args.C_y);
 
     try {
-        triangle(A, B, C);
+        Triangle tr(A, B, C);
+        triangle = tr;
     }
-    catch(std::domain_error &exp) {
+    catch (std::domain_error &exp) {
         return exp.what();
     }
 
     double result;
     std::ostringstream stream;
 
-    switch (Arguments.function) {
+    switch (args.function) {
     case CALC_ANGLE_A:
         result = triangle.angle_A_of_triangle_in_radians();
         stream << "Angle CAB in radians of triangle ABC is equal = " << result;
@@ -147,11 +149,9 @@ string Application::operator()(int argc, const char ** argv) {
         result = triangle.inradius();
         stream << "Inradius of triangle ABC is equal = " << result;
         break;
-        break;
     case CALC_CIRCUMRADIUS:
         result = triangle.circumradius();
         stream << "Circumradius of triangle ABC is equal = " << result;
-        break;
         break;
     }
 

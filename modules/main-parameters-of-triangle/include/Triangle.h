@@ -3,8 +3,8 @@
 #ifndef MODULES_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_TRIANGLE_H_
 #define MODULES_MAIN_PARAMETERS_OF_TRIANGLE_INCLUDE_TRIANGLE_H_
 
-#include <stdexcept>
 #include <include/Point.h>
+#include <stdexcept>
 
 class ThreeSamePoints :public std::runtime_error {
  public:

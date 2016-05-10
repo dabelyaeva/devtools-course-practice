@@ -43,8 +43,8 @@ MassUnit &MassUnit::operator=(const MassUnit &z) {
 }
 
 bool MassUnit::operator==(const MassUnit &other) const {
-    return this->Qualifier() == other.Qualifier() &&
-        this->Coefficient() == other.Coefficient();
+    return (this->Qualifier() == other.Qualifier() &&
+        this->Coefficient() == other.Coefficient());
 }
 
 bool MassUnit::operator!=(const MassUnit &other) const {

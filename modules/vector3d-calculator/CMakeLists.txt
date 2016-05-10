@@ -11,7 +11,7 @@ include_directories("./")
 # Add all submodules
 add_subdirectory(src)
 add_subdirectory(test)
-# add_subdirectory(application)
+add_subdirectory(application)
 
 #############################################
 ##### Testing

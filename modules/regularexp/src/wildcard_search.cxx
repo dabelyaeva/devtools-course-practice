@@ -24,7 +24,8 @@ void WildcardSearch::help(const char* appname) {
     "\\s - a whitespace character.\n" +
     "\\S - any character that is not a whitespace character.\n" +
     "\\w - an alphanumeric or underscore character.\n" +
-    "\\W - any character that is not an alphanumeric or underscore character.\n" +
+    "\\W - any character that is not an alphanumeric or" + 
+    "underscore character.\n" +
     "2. Quantifiers: \n" +
     "{int} -The preceding atom is matched exactly int times.\n\n"
 
@@ -92,11 +93,13 @@ string WildcardSearch::operator()(int argc, const char ** argv) {
     message_ = arg.regex_->search(arg.str_) ? "True" : "False";
     break;
   case TOperation::GET_FIRST_MATCH:
-    message_ = arg.regex_->search(arg.str_, &match) ? match.front() : "Not found.";
+    message_ = arg.regex_->search(arg.str_, &match) ? match.front()
+                                                    : "Not found.";
     match.clear();
     break;
   case TOperation::GET_ALL_MATCHES:
-    message_ = arg.regex_->search(arg.str_, &match) ? match.getAllMatch() : "Not found.";
+    message_ = arg.regex_->search(arg.str_, &match) ? match.getAllMatch() 
+                                                    : "Not found.";
     match.clear();
     break;
   case TOperation::NUMBER_MATCHES:

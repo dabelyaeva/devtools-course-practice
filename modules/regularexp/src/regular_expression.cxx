@@ -168,8 +168,7 @@ bool Regex::match(const string & str, Smatch* match) const {
   return result;
 }
 
-string Smatch::getAllMatch()
-{
+string Smatch::getAllMatch() {
   string result;
   for (auto i = begin(); i != end(); ++i)
     result += *i + " ";

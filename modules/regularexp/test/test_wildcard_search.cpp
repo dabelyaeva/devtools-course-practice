@@ -43,98 +43,145 @@ TEST_F(WildcardSearchTest, Can_Print_Help_Without_Arguments) {
 }
 
 TEST_F(WildcardSearchTest, Is_Checking_Number_Of_Arguments) {
-  const vector<string> args = { "Word", "an extra option",
-                                "\\s\\w{4}\\s", "inexact_match" };
+  const vector<string> args = {
+  "Word", "an extra option",
+  "\\s\\w{4}\\s",
+  "inexact_match"
+  };
+
   Act(args);
 
   Assert("Should be 3 arguments.");
 }
 
 TEST_F(WildcardSearchTest, Can_Detect_Wrong_Regex_Expression_Format) {
-  const vector<string> args = { "In the Quick Search or Advanced Search text field",
-                                "\\e\\\\s", "inexactmatch" };
+  const vector<string> args = {
+  "In the Quick Search or Advanced Search text field",
+  "\\e\\\\s",
+  "inexactmatch"
+  };
+
   Act(args);
 
   Assert("Incorrect control character.");
 }
 
 TEST_F(WildcardSearchTest, Can_Detect_Wrong_Operation_Format) {
-  const vector<string> args = { "In the Quick Search or Advanced Search text field",
-                                 "\\s\\w{4}\\s", "inexactmatch" };
+  const vector<string> args = {
+  "In the Quick Search or Advanced Search text field",
+  "\\s\\w{4}\\s",
+  "inexactmatch"
+  };
+
   Act(args);
 
   Assert("No such operation!");
 }
 
 TEST_F(WildcardSearchTest, Can_Find_A_Pattern) {
-  const vector<string> args = { "In the Quick Search or Advanced Search text field",
-                                "\\s\\w{4}\\s", "inexact_match" };
+  const vector<string> args = {
+  "In the Quick Search or Advanced Search text field",
+  "\\s\\w{4}\\s",
+  "inexact_match"
+  };
+
   Act(args);
 
   Assert("True");
 }
 
 TEST_F(WildcardSearchTest, Cant_Find_A_Pattern) {
-  const vector<string> args = { "The two most commonly used wildcards are.",
-                                "\\s\\w{7}\\s", "inexact_match" };
+  const vector<string> args = {
+  "The two most commonly used wildcards are.",
+  "\\s\\w{7}\\s",
+  "inexact_match"
+  };
+
   Act(args);
 
   Assert("False");
 }
 
 TEST_F(WildcardSearchTest, Can_Accurately_Find__A_Pattern) {
-  const vector<string> args = { "8-954-643-13-54",
-                                "\\d-\\d{3}-\\d{3}-\\d{2}-\\d{2}", "exact_match" };
+  const vector<string> args = {
+  "8-954-643-13-54",
+  "\\d-\\d{3}-\\d{3}-\\d{2}-\\d{2}",
+  "exact_match"
+  };
+
   Act(args);
 
   Assert("True");
 }
 
 TEST_F(WildcardSearchTest, Cant_Accurately_Find__A_Pattern) {
-  const vector<string> args = { "Baran 842 go!",
-                                "\\d{3}", "exact_match" };
+  const vector<string> args = {
+  "Baran 842 go!",
+  "\\d{3}",
+  "exact_match"
+  };
+
   Act(args);
 
   Assert("False");
 }
 
 TEST_F(WildcardSearchTest, Can_Get_First_Match) {
-  const vector<string> args = { "Windows 3.2, released 1994",
-                                "\\d{4}", "get_first_match" };
+  const vector<string> args = {
+  "Windows 3.2, released 1994",
+  "\\d{4}",
+  "get_first_match"
+  };
+
   Act(args);
 
   Assert("1994");
 }
 
 TEST_F(WildcardSearchTest, Cant_Get_First_Match) {
-  const vector<string> args = { "Windows 3.2, released 1994",
-                                "\\d{5}", "get_first_match" };
+  const vector<string> args = {
+  "Windows 3.2, released 1994",
+  "\\d{5}",
+  "get_first_match"
+  };
+
   Act(args);
 
   Assert("Not found.");
 }
 
 TEST_F(WildcardSearchTest, Can_Get_All_Matches) {
-  const vector<string> args = { "C++ provides support for anonymous functions",
-                                "\\w{9}", "get_all_matches" };
+  const vector<string> args = {
+  "C++ provides support for anonymous functions",
+  "\\w{9}",
+  "get_all_matches"
+  };
+
   Act(args);
 
   Assert("anonymous functions ");
 }
 
 TEST_F(WildcardSearchTest, Cant_Get_All_Matches) {
-  const vector<string> args = { "C++ provides support for anonymous functions",
-                                "\\w{9}\\d", "get_all_matches" };
+  const vector<string> args = {
+  "C++ provides support for anonymous functions",
+  "\\w{9}\\d",
+  "get_all_matches"
+  };
+
   Act(args);
 
   Assert("Not found.");
 }
 
 TEST_F(WildcardSearchTest, Can_Get_Number_Matches) {
-  const vector<string> args = { "Many other programming languages have been influenced by C++",
-                                "\\s\\wa", "number_matches" };
+  const vector<string> args = {
+  "Many other programming languages have been influenced by C++",
+  "\\s\\wa",
+  "number_matches"
+  };
+
   Act(args);
 
   Assert("2");
 }
-

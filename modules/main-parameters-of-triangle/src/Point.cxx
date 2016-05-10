@@ -1,3 +1,5 @@
+// Copyright 2016 Polyakov Igor
+
 #include "include/Point.h"
 
 point::point() {

@@ -6,7 +6,7 @@
 
 double eps = 0.00000000001;
 
-TEST(Marchenko_Andrey_TriangleTest, Can_Create_Default_Triangle) {
+TEST(TriangleTest, Can_Create_Default_Triangle) {
     // Arrange
     Triangle T1;
 
@@ -20,7 +20,7 @@ TEST(Marchenko_Andrey_TriangleTest, Can_Create_Default_Triangle) {
     ASSERT_TRUE(T1 == T2);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Can_Create_Triangle_With_Non_Zero_Points) {
     // Arrange
     point A_(0.0, 1.0);
@@ -36,7 +36,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     EXPECT_EQ(T.get_C(), C_);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Can_Copy_Triangle) {
     // Arrange
     point A_(0.0, 1.0);
@@ -51,7 +51,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     ASSERT_TRUE(T1 == T2);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Can_Create_Triangle_With_Non_Zero_Side) {
     // Arrange
     point A(0.0, 1.0);
@@ -66,7 +66,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     EXPECT_FALSE(side == 0.0);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Can_Not_Create_Triangle_When_Two_Points_Are_Idential) {
     // Arrange
     point A(0.0, 1.0);
@@ -77,7 +77,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     EXPECT_THROW(Triangle T(A, B, C), TwoSamePoints);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Can_Not_Create_Triangle_When_Three_Points_Are_Idential) {
     // Arrange
     point A(0.0, 1.0);
@@ -88,7 +88,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     EXPECT_THROW(Triangle T(A, B, C), ThreeSamePoints);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Cant_Create_Straight_Line_Triangle_With_Non_Equal_X_Y_Coords) {
     // Arrange
     point A(4.0, 5.0);
@@ -99,7 +99,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     EXPECT_THROW(Triangle T(A, B, C), IncorrectPoints);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Cant_Create_Straight_Line_Triangle_When_X_Coords_Are_Idential) {
     // Arrange
     point B(4.0, 5.0);
@@ -110,7 +110,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     EXPECT_THROW(Triangle T(A, B, C), IncorrectPoints);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Cant_Create_Straight_Line_Triangle_When_Y_Coords_Are_Idential) {
     // Arrange
     point B(4.0, 5.0);
@@ -121,7 +121,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     EXPECT_THROW(Triangle T(A, B, C), IncorrectPoints);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Can_Create_Treangle_With_Non_Zero_Perimeter) {
     // Arrange
     point A(0.0, 0.0);
@@ -136,7 +136,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     EXPECT_FALSE(perimeter == 0.0);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Can_Create_Equilateral_Triangle) {
     // Arrange
     point A(0.0, 0.0);
@@ -154,7 +154,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     EXPECT_EQ(angle_B, angle_C);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Can_Create_Isosceles_Triangle) {
     // Arrange
     point A(0.0, 0.0);
@@ -170,7 +170,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     ASSERT_TRUE(sin_A == sin_B);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Can_Create_Rectangular_Triangle) {
     // Arrange
     point A(0.0, 0.0);
@@ -185,7 +185,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     ASSERT_NEAR(0.0, cos_C, eps);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Is_Tangens_And_Catangens_0f_45_Degrees_Equal) {
     // Arrange
     point A(0.0, 0.0);
@@ -201,7 +201,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     ASSERT_NEAR(ctan_A, tan_A, eps);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Can_Create_Triangles_With_Equal_Inradius) {
     // Arrange
     point A(0.0, 0.0);
@@ -219,7 +219,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     ASSERT_NEAR(inradius1, inradius2, eps);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Can_Create_Triangles_With_Equal_Circumradius) {
     // Arrange
     point A(0.0, 0.0);
@@ -237,7 +237,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     ASSERT_NEAR(circumradius1, circumradius2, eps);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     The_Triangle_Inequality_Is_Carried_Out) {
     // Arrange
     point A(1.0, 1.0);
@@ -256,7 +256,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     EXPECT_TRUE(AC + BC >= AB);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Is_The_First_Sign_Of_Triangles_Equalality) {
     // Arrange
     point A(0.0, 0.0);
@@ -280,7 +280,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     EXPECT_EQ(angle_of_T1, angle_of_T2);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Is_The_Second_Sign_Of_Triangles_Equalality) {
     // Arrange
     point A(0.0, 0.0);
@@ -304,7 +304,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     EXPECT_EQ(B_angle_of_T1, B_angle_of_T2);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Is_The_Third_Sign_Of_Triangles_Equalality) {
     // Arrange
     point A1(0.0, 0.0);
@@ -330,7 +330,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     EXPECT_EQ(A1C1, A2C2);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Can_Get_Coords_From_Point) {
     // Arrange
     point A(0.0, 0.0);
@@ -351,7 +351,7 @@ TEST(Marchenko_Andrey_TriangleTest,
         && B_y == 3.0 && C_x == 4.0 && C_y == 0.0);
 }
 
-TEST(Marchenko_Andrey_TriangleTest,
+TEST(TriangleTest,
     Can_Create_Two_Triangles_With_Small_Difference) {
     // Arrange
     point A1(0.0, 0.0);
@@ -369,7 +369,7 @@ TEST(Marchenko_Andrey_TriangleTest,
     ASSERT_FALSE(T1 == T2);
 }
 
-TEST(Marchenko_Andrey_TriangleTest, Can_Set_A) {
+TEST(TriangleTest, Can_Set_A) {
     // Arrange
     Triangle T1;
     point A(4.0, 5.0);
@@ -381,7 +381,7 @@ TEST(Marchenko_Andrey_TriangleTest, Can_Set_A) {
     ASSERT_TRUE(T1.get_A() == A);
 }
 
-TEST(Marchenko_Andrey_TriangleTest, Can_Set_B) {
+TEST(TriangleTest, Can_Set_B) {
     // Arrange
     Triangle T1;
     point B(4.0, 5.0);
@@ -393,7 +393,7 @@ TEST(Marchenko_Andrey_TriangleTest, Can_Set_B) {
     ASSERT_TRUE(T1.get_B() == B);
 }
 
-TEST(Marchenko_Andrey_TriangleTest, Can_Set_C) {
+TEST(TriangleTest, Can_Set_C) {
     // Arrange
     Triangle T1;
     point C(4.0, 5.0);
@@ -405,7 +405,7 @@ TEST(Marchenko_Andrey_TriangleTest, Can_Set_C) {
     ASSERT_TRUE(T1.get_C() == C);
 }
 
-TEST(Marchenko_Andrey_TriangleTest, Can_Not_Set_Idential_Point_A) {
+TEST(TriangleTest, Can_Not_Set_Idential_Point_A) {
     // Arrange
     Triangle T1;
     point A(1.0, 1.0);
@@ -414,7 +414,7 @@ TEST(Marchenko_Andrey_TriangleTest, Can_Not_Set_Idential_Point_A) {
     EXPECT_THROW(T1.set_A(A), TwoSamePoints);
 }
 
-TEST(Marchenko_Andrey_TriangleTest, Can_Not_Set_Idential_Point_B) {
+TEST(TriangleTest, Can_Not_Set_Idential_Point_B) {
     // Arrange
     Triangle T1;
     point B(0.0, 0.0);
@@ -423,7 +423,7 @@ TEST(Marchenko_Andrey_TriangleTest, Can_Not_Set_Idential_Point_B) {
     EXPECT_THROW(T1.set_B(B), TwoSamePoints);
 }
 
-TEST(Marchenko_Andrey_TriangleTest, Can_Not_Set_Idential_Point_C) {
+TEST(TriangleTest, Can_Not_Set_Idential_Point_C) {
     // Arrange
     Triangle T1;
     point C(1.0, 1.0);
@@ -432,7 +432,7 @@ TEST(Marchenko_Andrey_TriangleTest, Can_Not_Set_Idential_Point_C) {
     EXPECT_THROW(T1.set_C(C), TwoSamePoints);
 }
 
-TEST(Marchenko_Andrey_TriangleTest, Can_Not_Set_Incorrect_Point_A) {
+TEST(TriangleTest, Can_Not_Set_Incorrect_Point_A) {
     // Arrange
     point A(0.0, 1.0);
     point B(2.0, 2.0);
@@ -446,7 +446,7 @@ TEST(Marchenko_Andrey_TriangleTest, Can_Not_Set_Incorrect_Point_A) {
     EXPECT_THROW(T1.set_A(A1), IncorrectPoints);
 }
 
-TEST(Marchenko_Andrey_TriangleTest, Can_Not_Set_Incorrect_Point_B) {
+TEST(TriangleTest, Can_Not_Set_Incorrect_Point_B) {
     point A(0.0, 0.0);
     point B(2.0, 3.0);
     point C(4.0, 4.0);
@@ -459,7 +459,7 @@ TEST(Marchenko_Andrey_TriangleTest, Can_Not_Set_Incorrect_Point_B) {
     EXPECT_THROW(T1.set_B(B1), IncorrectPoints);
 }
 
-TEST(Marchenko_Andrey_TriangleTest, Can_Not_Set_Incorrect_Point_C) {
+TEST(TriangleTest, Can_Not_Set_Incorrect_Point_C) {
     point A(0.0, 0.0);
     point B(2.0, 2.0);
     point C(4.0, 3.0);

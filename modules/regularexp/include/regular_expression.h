@@ -34,8 +34,9 @@ class Smatch : private vector<string>{
 
 class Regex{
  public:
+    Regex(void) = default;
+    Regex(const Regex&) = default;
     explicit Regex(const string& str);
-    Regex(const Regex&) = delete;
     bool search(const string& str) const;
     bool search(const string& str, Smatch* match) const;
     bool match(const string& str) const;

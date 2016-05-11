@@ -30,7 +30,7 @@ class WildcardSearch {
 
   typedef struct {
     string str_;
-    Regex* regex_;
+    Regex regex_;
     TOperation operation_;
   } Arguments;
 };

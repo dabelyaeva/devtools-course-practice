@@ -4,8 +4,8 @@
 
 #include "include/MatStat.h"
 
-using namespace std;
+using std::cout;
 
-void main(){
+void main() {
     cout << "Hello World" << endl;
 }

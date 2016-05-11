@@ -18,7 +18,6 @@ enum Functions {
     CALC_INRADIUS,
     CALC_CIRCUMRADIUS
 };
-
 class Application {
  public:
     Application();

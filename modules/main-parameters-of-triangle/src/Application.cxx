@@ -23,15 +23,15 @@ void Application::help(const char* appname, const char* message) {
         "  $ " + string(appname) + " <A_x> <A_y> " + "<B_x> <B_y> " +
         "<C_x> <C_y> " + "<function>, " +
 
-        "where <function> may take the following values of type int: \n\n" +
+        "where <function> may take the following values: \n\n" +
 
-        "0 - Calculate angle CAB of triangle ABC \n" +
-        "1 - Calculate angle CBA of triangle ABC \n" +
-        "2 - Calculate angle ACB of triangle ABC \n" +
-        "3 - Calculate perimeter of triangle ABC \n" +
-        "4 - Calculate area of triangle ABC \n" +
-        "5 - Calculate inradius of triangle ABC \n" +
-        "6 - Calculate circumradius of triangle ABC \n\n" +
+        "calc_angle_a - Calculate angle CAB of triangle ABC \n" +
+        "calc_angle_b - Calculate angle CBA of triangle ABC \n" +
+        "calc_angle_c - Calculate angle ACB of triangle ABC \n" +
+        "calc_perimeter - Calculate perimeter of triangle ABC \n" +
+        "calc_area - Calculate area of triangle ABC \n" +
+        "calc_inradius - Calculate inradius of triangle ABC \n" +
+        "calc_circumradius - Calculate circumradius of triangle ABC \n\n" +
 
         "And the rest of arguments listed above are double-precision " +
         "numbers \n ";
@@ -60,35 +60,28 @@ double Application::parseDouble(const char* arg) {
 }
 
 Functions Application::parseFunction(const char* arg) {
-    Functions func = (Functions)atoi(arg);
+    Functions func;
 
-    switch (func) {
-    case 0:
+    if (strcmp(arg, "calc_angle_a") == 0) {
         func = CALC_ANGLE_A;
-        break;
-    case 1:
+    } else if (strcmp(arg, "calc_angle_b") == 0) {
         func = CALC_ANGLE_B;
-        break;
-    case 2:
+    } else if (strcmp(arg, "calc_angle_c") == 0) {
         func = CALC_ANGLE_C;
-        break;
-    case 3:
+    } else if (strcmp(arg, "calc_perimeter") == 0) {
         func = CALC_PERIMETER;
-        break;
-    case 4:
+    } else if (strcmp(arg, "calc_area") == 0) {
         func = CALC_AREA;
-        break;
-    case 5:
+    } else if (strcmp(arg, "calc_inradius") == 0) {
         func = CALC_INRADIUS;
-        break;
-    case 6:
+    } else if (strcmp(arg, "calc_circumradius") == 0) {
         func = CALC_CIRCUMRADIUS;
-        break;
-    default:
+    } else {
         throw string("Wrong function format!");
-
-        return func;
     }
+
+    return func;
+
 }
 
 string Application::operator()(int argc, const char ** argv) {
@@ -119,14 +112,12 @@ string Application::operator()(int argc, const char ** argv) {
         Triangle tr(A, B, C);
         triangle = tr;
     }
-    catch (std::domain_error &exp) {
+    catch (std::runtime_error exp) {
         return exp.what();
     }
 
     double result;
     std::ostringstream stream;
-
-    std::cout << args.function;
 
     switch (args.function) {
     case CALC_ANGLE_A:
@@ -147,7 +138,7 @@ string Application::operator()(int argc, const char ** argv) {
         break;
     case CALC_AREA:
         result = triangle.area_of_triangle();
-        stream << "Perimeter of triangle ABC is equal = " << result;
+        stream << "Area of triangle ABC is equal = " << result;
         break;
     case CALC_INRADIUS:
         result = triangle.inradius();

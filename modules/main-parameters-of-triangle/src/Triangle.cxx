@@ -4,6 +4,7 @@
 #include <string>
 #include "include/Point.h"
 #include "include/Triangle.h"
+#include <iostream>
 
 Point Triangle::get_A() const {
     return A;
@@ -80,7 +81,8 @@ Triangle::Triangle() {
     C.y = 0.0;
 }
 
-bool are_point_on_straight_line(Point _A, Point _B, Point _C) {
+bool are_point_on_straight_line(const Point _A,
+                                const Point _B, const Point _C) {
     int det = _A.x * _B.y + _C.x * _A.y + _B.x *
         _C.y - _C.x * _B.y - _B.x * _A.y - _A.x * _C.y;
     if (det == 0)
@@ -101,7 +103,7 @@ int Triangle::is_triangle_correct(Point _A, Point _B, Point _C) {
     }
 }
 
-Triangle::Triangle(Point _A, Point _B, Point _C) {
+Triangle::Triangle(const Point _A, const Point _B, const Point _C) {
     int key = is_triangle_correct(_A, _B, _C);
     switch (key) {
     case 0: {

@@ -4,6 +4,9 @@
 
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <functional>
+#include <iterator>
 
 #include "include/application.h"
 

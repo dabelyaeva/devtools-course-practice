@@ -133,7 +133,7 @@ add_test(
     NAME ${prefix}_cant_Get_All_Matches
     COMMAND ${APPLICATION}
     "C++ provides support for anonymous functions"
-    "\\w{9}"
+    "\\w{9}\\d"
     "get_all_matches"
 )
 

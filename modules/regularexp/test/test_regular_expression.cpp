@@ -320,13 +320,11 @@ TEST(Regex, Can_Get_Num_And_Word) {
 }
 
 TEST(Regex, Can_Catch_The_Exception) {
-
   // Act Assert
   EXPECT_THROW(Regex("\\r year"), string);
 }
 
 TEST(Regex, Cant_Catch_The_Exception) {
-
   // Act Assert
   EXPECT_NO_THROW(Regex("\\d year"));
 }

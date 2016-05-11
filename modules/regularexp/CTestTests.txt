@@ -41,16 +41,16 @@ add_test(
 set_tests_properties (${prefix}_can_Detect_Wrong_Regex_Expression_Format
   PROPERTIES PASS_REGULAR_EXPRESSION "Incorrect control character.")
 
-# add_test(
-#     NAME ${prefix}_can__Detect_Wrong_Operation_Format
-#     COMMAND ${APPLICATION} 
-#     "In the Quick Search or Advanced Search text field"
-#     "\\s\\w{4}\\s"
-#     "inexactmatch"
-# )
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Operation_Format
+    COMMAND ${APPLICATION} 
+    "In the Quick Search or Advanced Search text field"
+    "\\s\\w{4}\\s"
+    "inexactmatch"
+)
 
-# set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format
-#   PROPERTIES PASS_REGULAR_EXPRESSION "No such operation!")
+set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "No such operation!")
 
 add_test(
     NAME ${prefix}_can_Find_A_Pattern

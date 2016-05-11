@@ -64,7 +64,6 @@ TOperation WildcardSearch::parseOperation(const string& arg) {
 
 string WildcardSearch::operator()(int argc, const char ** argv) {
   Arguments arg;
-  arg.regex_ = nullptr;
   if (argc == 1) {
     help(argv[0]);
     return message_;
@@ -76,7 +75,7 @@ string WildcardSearch::operator()(int argc, const char ** argv) {
   try {
     int id = 1;
     arg.str_ = argv[id++];
-    arg.regex_ = new Regex(argv[id++]);
+    arg.regex_ = Regex(argv[id++]);
     arg.operation_ = parseOperation(argv[id]);
   }
   catch (string str) {
@@ -88,23 +87,23 @@ string WildcardSearch::operator()(int argc, const char ** argv) {
 
   switch (arg.operation_) {
   case TOperation::EXACT_MATCH:
-    message_ = arg.regex_->match(arg.str_) ? "True" : "False";
+    message_ = arg.regex_.match(arg.str_) ? "True" : "False";
     break;
   case TOperation::INEXACT_MATCH:
-    message_ = arg.regex_->search(arg.str_) ? "True" : "False";
+    message_ = arg.regex_.search(arg.str_) ? "True" : "False";
     break;
   case TOperation::GET_FIRST_MATCH:
-    message_ = arg.regex_->search(arg.str_, &match) ?
+    message_ = arg.regex_.search(arg.str_, &match) ?
                            match.front(): "Not found.";
     match.clear();
     break;
   case TOperation::GET_ALL_MATCHES:
-    message_ = arg.regex_->search(arg.str_, &match) ?
+    message_ = arg.regex_.search(arg.str_, &match) ?
                            match.getAllMatch(): "Not found.";
     match.clear();
     break;
   case TOperation::NUMBER_MATCHES:
-    arg.regex_->search(arg.str_, &match);
+    arg.regex_.search(arg.str_, &match);
     message_ = std::to_string(match.size());
   }
   return message_;

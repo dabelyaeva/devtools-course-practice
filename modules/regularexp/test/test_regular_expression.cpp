@@ -340,7 +340,7 @@ TEST(Regex, Can_Find_Any_Character) {
 
 TEST(Regex, Can_Find_Newline) {
   // Arrange
-  Regex regular("\n");
+  Regex regular("\\n");
   const string str("test\ntest2");
 
   // Act & Assert
@@ -349,7 +349,7 @@ TEST(Regex, Can_Find_Newline) {
 
 TEST(Regex, Can_Find_Horizontal_Tab_Character) {
   // Arrange
-  Regex regular("\t");
+  Regex regular("\\t");
   const string str("test\ttest2");
 
   // Act & Assert

@@ -1,6 +1,6 @@
 // Copyright 2016 Pronina Maria
-#ifndef MODULES_PRONINA_MARIA_ROMANCONVERT_INCLUDE_ROMANCONVERTER_H_
-#define MODULES_PRONINA_MARIA_ROMANCONVERT_INCLUDE_ROMANCONVERTER_H_
+#ifndef MODULES_ROMAN_NUMBER_INCLUDE_ROMANCONVERTER_H_
+#define MODULES_ROMAN_NUMBER_INCLUDE_ROMANCONVERTER_H_
 #include <vector>
 #include <string>
 using std::string;
@@ -22,4 +22,4 @@ class RomanConverter {
     static bool CheckForInvalidNumerals
                 (const vector<string>& parsed_roman);
 };
-#endif  // MODULES_PRONINA_MARIA_ROMANCONVERT_INCLUDE_ROMANCONVERTER_H_
+#endif  // MODULES_ROMAN_NUMBER_INCLUDE_ROMANCONVERTER_H_

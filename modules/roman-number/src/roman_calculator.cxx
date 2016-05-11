@@ -6,6 +6,7 @@
 
 #include <string>
 #include <stdexcept>
+#include <cstdlib>
 
 #include "include/RomanConverter.h"
 

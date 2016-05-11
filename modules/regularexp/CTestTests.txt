@@ -16,60 +16,137 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "This is a complex number calculator")
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is a wildcard search application.")
 
 add_test(
-    NAME ${prefix}_can_Check_Number_Of_Arguments
-    COMMAND ${APPLICATION} 1 2
+    NAME ${prefix}_can_Checking_Number_Of_Arguments
+    COMMAND ${APPLICATION} 
+    "Word"
+    "an extra option"
+    "\\s\\w{4}\\s"
+    "inexact_match"
 )
-set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 5 arguments.")
+
+set_tests_properties (${prefix}_can_Checking_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "Should be 3 arguments.")
 
 add_test(
-    NAME ${prefix}_can_Detect_Wrong_Number_Format
-    COMMAND ${APPLICATION} 1 ip 2 3 +
+    NAME ${prefix}_can_Detect_Wrong_Regex_Expression_Format
+    COMMAND ${APPLICATION}
+    "In the Quick Search or Advanced Search text field"
+    "\\e\\\\s"
+    "inexactmatch"
 )
-set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format
-  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+set_tests_properties (${prefix}_can_Detect_Wrong_Regex_Expression_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Incorrect control character.")
 
 add_test(
-    NAME ${prefix}_can_Detect_Wrong_Operation_Format
-    COMMAND ${APPLICATION} 1 1 2 3 +trash
+    NAME ${prefix}_can__Detect_Wrong_Operation_Format
+    COMMAND ${APPLICATION} 
+    "In the Quick Search or Advanced Search text field"
+    "\\s\\w{4}\\s"
+    "inexactmatch"
 )
+
 set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format
-  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation format!")
+  PROPERTIES PASS_REGULAR_EXPRESSION "No such operation!")
 
 add_test(
-    NAME ${prefix}_can_Add_Complexs
-    COMMAND ${APPLICATION} 2.5 4.5 1.0 4.5 +
+    NAME ${prefix}_can_Find_A_Pattern
+    COMMAND ${APPLICATION} 
+    "In the Quick Search or Advanced Search text field"
+    "\\s\\w{4}\\s"
+    "inexact_match"
 )
-set_tests_properties (${prefix}_can_Add_Complexs
-  PROPERTIES PASS_REGULAR_EXPRESSION "Real = 3.5 Imaginary = 9")
+
+set_tests_properties (${prefix}_can_Find_A_Pattern
+  PROPERTIES PASS_REGULAR_EXPRESSION "True")
 
 add_test(
-    NAME ${prefix}_can_Diff_Complexs
-    COMMAND ${APPLICATION} -17 0 15 -3.5 -
+    NAME ${prefix}_cant_Find_A_Pattern
+    COMMAND ${APPLICATION} 
+    "The two most commonly used wildcards are."
+    "\\s\\w{7}\\s"
+    "inexact_match"
 )
-set_tests_properties (${prefix}_can_Diff_Complexs
-  PROPERTIES PASS_REGULAR_EXPRESSION "Real = -32 Imaginary = 3.5")
+
+set_tests_properties (${prefix}_cant_Find_A_Pattern
+  PROPERTIES PASS_REGULAR_EXPRESSION "False")
 
 add_test(
-    NAME ${prefix}_can_Mult_Complexs
-    COMMAND ${APPLICATION} 13 -2 4.6 7.3 *
+    NAME ${prefix}_can_Accurately_Find__A_Pattern
+    COMMAND ${APPLICATION}
+    "8-954-643-13-54"
+    "\\d-\\d{3}-\\d{3}-\\d{2}-\\d{2}"
+    "exact_match"
 )
-set_tests_properties (${prefix}_can_Mult_Complexs
-  PROPERTIES PASS_REGULAR_EXPRESSION "Real = 74.4 Imaginary = 85.7")
+
+set_tests_properties (${prefix}_can_Accurately_Find__A_Pattern
+  PROPERTIES PASS_REGULAR_EXPRESSION "True")
 
 add_test(
-    NAME ${prefix}_can_Divide_Complexs
-    COMMAND ${APPLICATION} 27 30 15 20 /
+    NAME ${prefix}_cant_Accurately_Find__A_Pattern
+    COMMAND ${APPLICATION} 
+    "Baran 842 go!"
+    "\\d{3}"
+    "exact_match"
 )
-set_tests_properties (${prefix}_can_Divide_Complexs
-  PROPERTIES PASS_REGULAR_EXPRESSION "Real = 1.608 Imaginary = -0.144")
+
+set_tests_properties (${prefix}_cant_Accurately_Find__A_Pattern
+  PROPERTIES PASS_REGULAR_EXPRESSION "False")
 
 add_test(
-    NAME ${prefix}_can_Detect_Divide_By_Zero
-    COMMAND ${APPLICATION} 27 30 0 0 /
+    NAME ${prefix}_can_Get_First_Match
+    COMMAND ${APPLICATION}
+    "Windows 3.2, released 1994"
+    "\\d{4}"
+    "get_first_match"
 )
-set_tests_properties (${prefix}_can_Detect_Divide_By_Zero
-  PROPERTIES PASS_REGULAR_EXPRESSION "Can't divide by zero")
+
+set_tests_properties (${prefix}_can_Get_First_Match
+  PROPERTIES PASS_REGULAR_EXPRESSION "1994")
+
+add_test(
+    NAME ${prefix}_cant_Get_First_Match
+    COMMAND ${APPLICATION}
+    "Windows 3.2, released 1994"
+    "\\d{5}"
+    "get_first_match"
+)
+
+set_tests_properties (${prefix}_cant_Get_First_Match
+  PROPERTIES PASS_REGULAR_EXPRESSION "Not found.")
+
+add_test(
+    NAME ${prefix}_can_Get_All_Matches
+    COMMAND ${APPLICATION} 
+    "C++ provides support for anonymous functions"
+    "\\w{9}"
+    "get_all_matches"
+)
+
+set_tests_properties (${prefix}_can_Get_All_Matches
+  PROPERTIES PASS_REGULAR_EXPRESSION "anonymous functions ")
+
+add_test(
+    NAME ${prefix}_cant_Get_All_Matches
+    COMMAND ${APPLICATION}
+    "C++ provides support for anonymous functions"
+    "\\w{9}"
+    "get_all_matches"
+)
+
+set_tests_properties (${prefix}_cant_Get_All_Matches
+  PROPERTIES PASS_REGULAR_EXPRESSION "Not found.")
+
+add_test(
+    NAME ${prefix}_can_Get_Number_Matches
+    COMMAND ${APPLICATION} 
+    "Many other programming languages have been influenced by C++"
+    "\\s\\wa"
+    "number_matches"
+)
+
+set_tests_properties (${prefix}_can_Get_Number_Matches
+  PROPERTIES PASS_REGULAR_EXPRESSION "2")

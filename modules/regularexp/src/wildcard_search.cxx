@@ -3,6 +3,7 @@
 #include "include/wildcard_search.h"
 
 #include <string>
+#include <iostream>
 
 WildcardSearch::WildcardSearch() : message_("") {}
 
@@ -43,6 +44,7 @@ void WildcardSearch::help(const char* appname) {
     "'get_first_match'\n" +
     "'get_all_matches'\n" +
     "'number_matches'\n\n";
+  std::cout << message_;
 }
 
 TOperation WildcardSearch::parseOperation(const string& arg) {
@@ -94,12 +96,14 @@ string WildcardSearch::operator()(int argc, const char ** argv) {
     break;
   case TOperation::GET_FIRST_MATCH:
     message_ = arg.regex_.search(arg.str_, &match) ?
-                           match.front(): "Not found.";
+               match.front() :
+               "Not found.";
     match.clear();
     break;
   case TOperation::GET_ALL_MATCHES:
     message_ = arg.regex_.search(arg.str_, &match) ?
-                           match.getAllMatch(): "Not found.";
+               match.getAllMatch() :
+               "Not found.";
     match.clear();
     break;
   case TOperation::NUMBER_MATCHES:

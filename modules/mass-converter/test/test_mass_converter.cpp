@@ -17,6 +17,7 @@ TEST(MassConverterTest,
 
     // Assert
     EXPECT_NE(nullptr, converter);
+    delete converter;
 }
 
 TEST(MassConverterTest,
@@ -26,9 +27,9 @@ TEST(MassConverterTest,
 
     // Act
     std::vector<MassUnit> units = converter.GetUnits();
+    std::vector<MassUnit> expected_units = kDefaultMassUnits;
 
     // Assert
-    std::vector<MassUnit> expected_units = kDefaultMassUnits;
     EXPECT_EQ(units, expected_units);
 }
 
@@ -180,7 +181,7 @@ TEST(MassConverterTest,
 }
 
 TEST(MassConverterTest,
-     Can_Convert_Kilogram_To_String_With_Default_Precision) {
+     Can_Convert_Format_With_Default_Precision) {
     // Arrange
     MassConverter converter;
     double value = 42.266;
@@ -194,7 +195,7 @@ TEST(MassConverterTest,
 }
 
 TEST(MassConverterTest,
-     Can_Convert_Kilogram_To_String_With_Custom_Precision) {
+     Can_Format_With_Custom_Precision) {
     // Arrange
     MassConverter converter;
     double value = 42.266182;

@@ -93,20 +93,10 @@ TEST(MassUnitTest,
 }
 
 TEST(MassUnitTest,
-     Units_With_Different_Coefficients_Not_Equal_v2) {
+     Different_Units_Not_Equal) {
     // Arrange
     MassUnit unit1(1, "kg");
-    MassUnit unit2(2, "kg");
-
-    // Act & Assert
-    EXPECT_TRUE(unit1 != unit2);
-}
-
-TEST(MassUnitTest,
-     Units_With_Different_Qualifiers_Not_Equal_v2) {
-    // Arrange
-    MassUnit unit1(1, "kg");
-    MassUnit unit2(1, "g");
+    MassUnit unit2(2, "g");
 
     // Act & Assert
     EXPECT_TRUE(unit1 != unit2);

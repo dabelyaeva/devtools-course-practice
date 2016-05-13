@@ -3,11 +3,12 @@
 #include <include/Application.h>
 #include <include/Triangle.h>
 
-#include <stdexcept>
-#include <string>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <string.h>
 #include <sstream>
-#include <cstdlib>
-#include <iostream>
+#include <string>
 
 Application::Application() : message_("") {}
 

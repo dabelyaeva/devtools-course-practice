@@ -86,6 +86,42 @@ TEST_F(AppTriangleTest, Can_Detect_Wrong_Function_Format) {
     Assert("Wrong function format!");
 }
 
+TEST_F(AppTriangleTest, Can_Not_Create_Triangle_With_Two_Same_Points) {
+    // Arrange
+    vector<string> args = { "0.0", "0.0", "0.0", "0.0",
+        "11.5", "-40.7", "calc_angle_a" };
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Triangle is not correct, two points are identical");
+}
+
+TEST_F(AppTriangleTest, Can_Not_Create_Triangle_With_Three_Same_Points) {
+    // Arrange
+    vector<string> args = { "0.0", "0.0", "0.0", "0.0",
+        "0.0", "0.0", "calc_angle_a" };
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Triangle is not correct, three points are identical");
+}
+
+TEST_F(AppTriangleTest, Can_Not_Create_Triangle_With_Points_On_One_Line) {
+    // Arrange
+    vector<string> args = { "0.0", "0.0", "1.0", "1.0",
+        "2.0", "2.0", "calc_angle_a" };
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Triangle is not correct, all points on one line");
+}
+
 TEST_F(AppTriangleTest, Can_Calculate_Angle_A) {
     // Arrange
     vector<string> args = { "2.0", "5.5", "4.0", "3.0",

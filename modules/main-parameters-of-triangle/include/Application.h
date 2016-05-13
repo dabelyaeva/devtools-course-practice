@@ -5,6 +5,7 @@
 
 #include "Triangle.h"
 #include "Point.h"
+
 #include <string>
 
 enum Functions {

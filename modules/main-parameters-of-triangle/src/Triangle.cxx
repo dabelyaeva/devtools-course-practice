@@ -1,9 +1,10 @@
 // Copyright 2016 Marchenko Andrey
 
-#include <math.h>
-#include <string>
 #include "include/Point.h"
 #include "include/Triangle.h"
+
+#include <math.h>
+#include <string>
 #include <iostream>
 
 Point Triangle::get_A() const {

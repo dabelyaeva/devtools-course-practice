@@ -31,12 +31,7 @@ class Vector3DCalculatorTest : public ::testing::Test {
     }
 
     void Assert(std::string expected) {
-        if (expected.find("(") != string::npos
-            || expected.find(")") != string::npos) {
-            EXPECT_EQ(output_, expected);
-        } else {
-            EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
-        }
+        EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
 
  private:
@@ -87,7 +82,7 @@ TEST_F(Vector3DCalculatorTest, Can_Add_Vector3D) {
 
     Act(args);
 
-    Assert("Sum = (13.2, 7.8, 15.4)");
+    Assert("Sum = \\(13.2, 7.8, 15.4\\)");
 }
 
 TEST_F(Vector3DCalculatorTest, Can_Diff_Vector3D) {
@@ -97,7 +92,7 @@ TEST_F(Vector3DCalculatorTest, Can_Diff_Vector3D) {
 
     Act(args);
 
-    Assert("Diff = (11, 3.4, 8.8)");
+    Assert("Diff = \\(11, 3.4, 8.8\\)");
 }
 
 TEST_F(Vector3DCalculatorTest, Can_Mult_Vector3D_By_Number) {
@@ -107,7 +102,7 @@ TEST_F(Vector3DCalculatorTest, Can_Mult_Vector3D_By_Number) {
 
     Act(args);
 
-    Assert("Mult = (9.3, 4.8, 7.2)");
+    Assert("Mult = \\(9.3, 4.8, 7.2\\)");
 }
 
 TEST_F(Vector3DCalculatorTest, Can_Divide_Vector3D_By_Number) {
@@ -117,7 +112,7 @@ TEST_F(Vector3DCalculatorTest, Can_Divide_Vector3D_By_Number) {
 
     Act(args);
 
-    Assert("Div = (1.7, 0.8, 1.2)");
+    Assert("Div = \\(1.7, 0.8, 1.2\\)");
 }
 
 TEST_F(Vector3DCalculatorTest, Throw_When_Dividing_By_Zero) {
@@ -137,7 +132,7 @@ TEST_F(Vector3DCalculatorTest, Can_Calculate_Cross_Product) {
 
     Act(args);
 
-    Assert("Cross = (0, -8.58, 5.72)");
+    Assert("Cross = \\(0, -8.58, 5.72\\)");
 }
 
 TEST_F(Vector3DCalculatorTest, Can_Calculate_Magnitude) {
@@ -167,10 +162,10 @@ TEST_F(Vector3DCalculatorTest, Can_Normalize_Vector) {
 
     Act(args);
 
-    Assert("Normalize = (0.801784, 0.267261, 0.534522)");
+    Assert("Normalize = \\(0.801784, 0.267261, 0.534522\\)");
 }
 
-TEST_F(Vector3DCalculatorTest, Throw_When_Null_Vector_Normalizing) {
+TEST_F(Vector3DCalculatorTest, Throw_When_Normalizing_Null_Vector) {
     // Arrange
     vector<string> args = { "0", "0", "0"
         , "normalize" };

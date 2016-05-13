@@ -58,10 +58,11 @@ set(LIBRARY_DEPS "gtest")
 # Include all modules
 #
 
-file(GLOB SUBDIRS "${CMAKE_CURRENT_SOURCE_DIR}/modules/*")
-foreach(subdir ${SUBDIRS})
-    add_subdirectory(${subdir})
-endforeach()
+#file(GLOB SUBDIRS "${CMAKE_CURRENT_SOURCE_DIR}/modules/*")
+#foreach(subdir ${SUBDIRS})
+#    add_subdirectory(${subdir})
+#endforeach()
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/modules/cconverter")
 
 #
 # Report variables

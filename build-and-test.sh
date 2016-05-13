@@ -57,13 +57,14 @@ function CheckGoogleStyleInDir {
 function CheckGoogleStyle {
     Header "Check \"Google C++ Style\""
 
-    for module in modules/*;
-    do
+    module="${root_dir}/modules/cconverter"
+    #for module in modules/*;
+    #do
         cd $module
         try CheckGoogleStyleInDir
         cd $root_dir
         echo ""
-    done
+    #done
 }
 
 function BuildCMakeProject {

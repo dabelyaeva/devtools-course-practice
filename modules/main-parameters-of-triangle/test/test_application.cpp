@@ -8,7 +8,7 @@
 #include <functional>
 #include <iterator>
 
-#include "include\Application.h"
+#include "include/Application.h"
 
 using ::testing::internal::RE;
 using std::vector;

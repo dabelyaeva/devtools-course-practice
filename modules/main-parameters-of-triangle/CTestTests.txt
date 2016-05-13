@@ -16,7 +16,7 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "This is a Triangle Application")
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is application for work with Triangle")
 
 add_test(
     NAME ${prefix}_can_Check_Number_Of_Arguments
@@ -34,7 +34,7 @@ set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Function_Format
-    COMMAND ${APPLICATION} 2.0 5.5 4.0 h 11 -40.0 calc_angle_a
+    COMMAND ${APPLICATION} 2.0 5.5 4.0 2.0 11.0 -40.0 calc_angle_a
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Function_Format
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong function format!")
@@ -106,5 +106,5 @@ add_test(
     NAME ${prefix}_can_Calculate_Circumradius
     COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_circumradius
 )
-set_tests_properties (${prefix}_can_Calculate_Inradius
+set_tests_properties (${prefix}_can_Calculate_Circumradius
   PROPERTIES PASS_REGULAR_EXPRESSION "Circumradius of triangle ABC is equal = 48.7653")

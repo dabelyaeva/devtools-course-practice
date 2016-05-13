@@ -1,13 +1,13 @@
 // Copyright 2016 Belyaeva Daria
 
-#ifndef INTERPOLATION_SEARCH_H_
-#define INTERPOLATION_SEARCH_H_
+#ifndef MODULES_INTERPOLATION_SEARCH_INCLUDE_INTERPOLATION_SEARCH_H_
+#define MODULES_INTERPOLATION_SEARCH_INCLUDE_INTERPOLATION_SEARCH_H_
 
 #include <vector>
 
 
 class InterpolationSearcher {
- public:
+  public:
     using size_t = std::size_t;
     using Index = size_t;
     using Value = int;
@@ -66,9 +66,10 @@ class InterpolationSearcher {
     If result is false, then "index" left unchanged.
     */
     bool Find(const Value& key, Index* index) const;
- private:
+
+  private:
     using Data = std::vector<int>;
     Data data_;
 };
 
-#endif  // INTERPOLATION_SEARCH_H_
+#endif  // MODULES_INTERPOLATION_SEARCH_INCLUDE_INTERPOLATION_SEARCH_H_

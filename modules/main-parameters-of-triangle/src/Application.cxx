@@ -42,7 +42,7 @@ bool Application::validateNumberOfArguments(int argc, const char** argv) {
         help(argv[0]);
         return false;
     } else if (argc != 8) {
-        help(argv[0], "ERROR: Should be 8 arguments.\n\n");
+        help(argv[0], "ERROR: Should be 7 arguments.\n\n");
         return false;
     }
     return true;
@@ -81,7 +81,6 @@ Functions Application::parseFunction(const char* arg) {
     }
 
     return func;
-
 }
 
 string Application::operator()(int argc, const char ** argv) {

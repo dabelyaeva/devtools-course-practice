@@ -1,0 +1,40 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is a Triangle Application")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 2.0 5.0 4.0
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 7 arguments.")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} 2.0 5.5 4.0 h 11 -40.0 calc_angle_a
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Function_Format
+    COMMAND ${APPLICATION} 2.0 5.5 4.0 h 11 -40.0 calc_angle_a
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Function_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong function format!")

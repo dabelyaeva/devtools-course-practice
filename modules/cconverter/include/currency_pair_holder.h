@@ -1,7 +1,7 @@
-// Copyright 2016 Pozdyaev Valery
+// Copyright 2016 Pozdyaev Valery, Alexander Rumyantsev
 
-#ifndef MODULES_CCONVERTER_INCLUDE_CURRENCY_CONVERTER_H_
-#define MODULES_CCONVERTER_INCLUDE_CURRENCY_CONVERTER_H_
+#ifndef MODULES_CCONVERTER_INCLUDE_CURRENCY_PAIR_HOLDER_H_
+#define MODULES_CCONVERTER_INCLUDE_CURRENCY_PAIR_HOLDER_H_
 
 #include "include/currency_pair.h"
 
@@ -10,10 +10,10 @@
 
 using std::string;
 
-class CurrencyConverter {
+class CurrencyPairHolder {
  public:
-    CurrencyConverter();
-    explicit CurrencyConverter(CurrencyPair currency_pair);
+    CurrencyPairHolder();
+    explicit CurrencyPairHolder(std::vector<CurrencyPair> currency_pairs);
 
     void addCurrencyPair(CurrencyPair currency_pair);
     void updateCurrencyPair(CurrencyPair currency_pair);
@@ -31,7 +31,7 @@ class CurrencyConverter {
     bool isCurrencyPairPresented(string curr_pair_code) const;
     int getCurrencyPairNumberByCode(string currency_pair_code) const;
 
-    std::vector<CurrencyPair> currency_pairs;
+    std::vector<CurrencyPair> currency_pairs_;
 };
 
-#endif  // MODULES_CCONVERTER_INCLUDE_CURRENCY_CONVERTER_H_
+#endif  // MODULES_CCONVERTER_INCLUDE_CURRENCY_PAIR_HOLDER_H_

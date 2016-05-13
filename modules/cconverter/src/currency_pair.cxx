@@ -11,14 +11,8 @@ using std::invalid_argument;
 
 const double base_lot_size = 10000;
 
-CurrencyPair::CurrencyPair() {
-    currency_pair_code_ = "EUR/USD";
-    bid_price_ = 1.1;
-    ask_price_ = 1.2;
-}
-
 CurrencyPair::CurrencyPair(string currency_pair_code,
-                            double bid_price, double ask_price) {
+                           double bid_price, double ask_price) {
     CurrencyPair::checkCurrencyPairCode(currency_pair_code);
     if (bid_price <= 0 || ask_price <= 0) {
         throw invalid_argument("Incorrect price format");

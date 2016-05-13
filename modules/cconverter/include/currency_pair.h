@@ -12,7 +12,6 @@ using std::string;
 
 class CurrencyPair {
  public:
-    CurrencyPair();
     CurrencyPair(string currency_pair_code, double bid_price, double ask_price);
 
     void setBidPrice(double new_bid_price);

@@ -7,7 +7,7 @@
 #include "include/currency_converter.h"
 
 int main(int argc, const char** argv) {
-  //CurrencyConverter app;
+  //CurrencyPairHolder app;
   //std::string output = app(argc, argv);
   //printf("%s\n", output.c_str());
   

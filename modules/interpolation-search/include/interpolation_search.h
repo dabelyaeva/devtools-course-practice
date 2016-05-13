@@ -7,7 +7,7 @@
 
 
 class InterpolationSearcher {
-   public:
+ public:
     using size_t = std::size_t;
     using Index = size_t;
     using Value = int;
@@ -67,7 +67,7 @@ class InterpolationSearcher {
     */
     bool Find(const Value& key, Index* index) const;
 
-   private:
+ private:
     using Data = std::vector<int>;
     Data data_;
 };

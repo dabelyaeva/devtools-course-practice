@@ -37,7 +37,7 @@ Application::~Application() {
 }
 
 void Application::help(const string &appname, const string &message) {
-  message_ = message + "\n\n" +
+  message_ = message +
     "This is a currency converter application.\n\n" +
     "Please provide arguments in the following format:\n\n" +
 
@@ -55,7 +55,7 @@ bool Application::validateNumberOfArguments(const int argc,
     help(argv[0]);
     return false;
   } else if (argc != 4) {
-    help(argv[0], "ERROR: Should be 3 arguments.");
+    help(argv[0], "ERROR: Should be 3 arguments.\n\n");
     return false;
   }
   return true;

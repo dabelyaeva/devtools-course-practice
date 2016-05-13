@@ -12,9 +12,9 @@ InterpolationSearcher::InterpolationSearcher(
         return;
     }
 
-    arr.reserve(size);
-    arr.insert(arr.begin(), values, values + size);
-    std::sort(arr.begin(), arr.end());
+    data_.reserve(size);
+    data_.insert(data_.begin(), values, values + size);
+    std::sort(data_.begin(), data_.end());
 }
 
 bool InterpolationSearcher::GetValue(Index index, const Value ** result) const {
@@ -22,8 +22,8 @@ bool InterpolationSearcher::GetValue(Index index, const Value ** result) const {
         return false;
     }
 
-    if (index < arr.size()) {
-        *result = &arr.at(index);
+    if (index < data_.size()) {
+        *result = &data_.at(index);
         return true;
     } else {
         return false;
@@ -35,8 +35,8 @@ bool InterpolationSearcher::GetValue(Index index, Value** result) {
         return false;
     }
 
-    if (index < arr.size()) {
-        *result = &arr.at(index);
+    if (index < data_.size()) {
+        *result = &data_.at(index);
         return true;
     } else {
         return false;
@@ -45,11 +45,11 @@ bool InterpolationSearcher::GetValue(Index index, Value** result) {
 
 bool
 InterpolationSearcher::operator==(const InterpolationSearcher& other) const {
-    if (other.arr.size() != arr.size()) {
+    if (other.data_.size() != data_.size()) {
         return false;
     }
-    for (Index i = 0; i < arr.size(); ++i) {
-        if (other.arr[i] != arr[i]) {
+    for (Index i = 0; i < data_.size(); ++i) {
+        if (other.data_[i] != data_[i]) {
             return false;
         }
     }
@@ -57,7 +57,7 @@ InterpolationSearcher::operator==(const InterpolationSearcher& other) const {
 }
 
 size_t InterpolationSearcher::GetSize() const {
-    return arr.size();
+    return data_.size();
 }
 
 bool InterpolationSearcher::HasValue(const Value& value) const {
@@ -66,19 +66,19 @@ bool InterpolationSearcher::HasValue(const Value& value) const {
 }
 
 void InterpolationSearcher::Clear() {
-    arr.clear();
+    data_.clear();
 }
 
 InterpolationSearcher::Index
 InterpolationSearcher::Insert(const Value& value) {
-    const auto position = std::upper_bound(arr.cbegin(), arr.cend(), value);
-    const auto newElemIndex = arr.insert(position, value);
-    return newElemIndex - arr.cbegin();
+    const auto position = std::upper_bound(data_.cbegin(), data_.cend(), value);
+    const auto newElemIndex = data_.insert(position, value);
+    return newElemIndex - data_.cbegin();
 }
 
 bool InterpolationSearcher::Remove(const Index& index) {
-    if (index < arr.size()) {
-        arr.erase(arr.cbegin() + index);
+    if (index < data_.size()) {
+        data_.erase(data_.cbegin() + index);
         return true;
     } else {
         return false;
@@ -90,8 +90,8 @@ bool InterpolationSearcher::Find(const Value& key, Index* index) const {
         return false;
     }
 
-    if (arr.size() == 1) {
-        if (arr[0] == key) {
+    if (data_.size() == 1) {
+        if (data_[0] == key) {
             *index = 0;
             return true;
         } else {
@@ -99,12 +99,12 @@ bool InterpolationSearcher::Find(const Value& key, Index* index) const {
         }
     }
 
-    auto left = arr.cbegin();
-    auto right = arr.cend();
+    auto left = data_.cbegin();
+    auto right = data_.cend();
     while ((*left <= key) && (key <= *right)) {
         if (*left == *right) {
             if (*left == key) {
-                *index = left - arr.cbegin();
+                *index = left - data_.cbegin();
                 return true;
             } else {
                 return false;
@@ -118,7 +118,7 @@ bool InterpolationSearcher::Find(const Value& key, Index* index) const {
         } else if (key < *mid) {
             right = mid - 1;
         } else {
-            *index = mid - arr.cbegin();
+            *index = mid - data_.cbegin();
             return true;
         }
     }

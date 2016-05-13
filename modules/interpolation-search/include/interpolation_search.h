@@ -68,7 +68,7 @@ class InterpolationSearcher {
     bool Find(const Value& key, Index* index) const;
  private:
     using Data = std::vector<int>;
-    Data arr;
+    Data data_;
 };
 
 #endif  // INTERPOLATION_SEARCH_H_

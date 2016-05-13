@@ -274,7 +274,7 @@ TEST(InterpolationSearcher, has_not_unexisting_value) {
     ASSERT_FALSE(is.HasValue(5));
 }
 
-TEST(InterpolationSearcher, clear_is_clears) {
+TEST(InterpolationSearcher, clear_does_clear) {
     // Arrange
     constexpr size_t size = 4;
     constexpr int data[size] = {1, 2, 3, 4};

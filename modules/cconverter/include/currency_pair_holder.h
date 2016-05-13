@@ -1,4 +1,4 @@
-// Copyright 2016 Pozdyaev Valery, Alexander Rumyantsev
+// Copyright 2016 Pozdyaev Valery, Rumyantsev Alexander
 
 #ifndef MODULES_CCONVERTER_INCLUDE_CURRENCY_PAIR_HOLDER_H_
 #define MODULES_CCONVERTER_INCLUDE_CURRENCY_PAIR_HOLDER_H_

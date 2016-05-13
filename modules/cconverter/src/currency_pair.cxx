@@ -68,18 +68,22 @@ void CurrencyPair::checkCurrencyPairCode(string currency_pair_code) {
     if (code_size == 7) {
         if (currency_pair_code.substr(0, 3)
             == currency_pair_code.substr(4, 3)) {
-            throw logic_error("Exchange with same currency is not supported");
+          throw logic_error("Currency can not be exchanged with itself");
         }
 
         for (int i = 0; i < 7; i++) {
             symb_code = static_cast<int> (currency_pair_code[i]);
-            if ((i == 3 && symb_code != 47)
-                || (i != 3 && (symb_code < 65 || symb_code > 90))) {
-                throw invalid_argument("Incorrect currency pair code");
+            if (i == 3 && symb_code != 47) {
+                throw invalid_argument("Each currency code should be 3 chars " \
+                    "long and currency codes separator should be /");
+            }
+            if (i != 3 && (symb_code < 65 || symb_code > 90)) {
+                throw invalid_argument("Currency code can only contain " \
+                    "capital letter");
             }
         }
     } else {
-        throw invalid_argument("Incorrect size of currency pair code");
+        throw invalid_argument("Incorrect size of currency code");
     }
 }
 

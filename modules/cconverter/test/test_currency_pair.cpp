@@ -1,4 +1,4 @@
-// Copyright 2016 Pozdyaev Valery, Alexander Rumyantsev
+// Copyright 2016 Pozdyaev Valery, Rumyantsev Alexander
 
 #include <gtest/gtest.h>
 

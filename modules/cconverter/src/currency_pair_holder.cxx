@@ -1,4 +1,4 @@
-// Copyright 2016 Pozdyaev Valery, Alexander Rumyantsev
+// Copyright 2016 Pozdyaev Valery, Rumyantsev Alexander
 
 #include "include/currency_pair_holder.h"
 
@@ -79,14 +79,14 @@ bool CurrencyPairHolder::isCurrencyPairPresented(string curr_pair_code) const {
 }
 
 double CurrencyPairHolder::exchangeCurrency(string selling_currency,
-    string buying_currency, double sum) const {
-    if (sum <= 0) {
-        throw invalid_argument("Sum must be greater than 0");
+    string buying_currency, double count) const {
+    if (count <= 0) {
+        throw invalid_argument("Count must be greater than 0");
     }
 
     if (selling_currency == "" || buying_currency == "") {
         throw
-            invalid_argument("Value of buying or selling currency is empty");
+            invalid_argument("Code of buying or selling currency is empty");
     }
 
     string currency_pair_code = selling_currency + "/" + buying_currency;
@@ -97,7 +97,7 @@ double CurrencyPairHolder::exchangeCurrency(string selling_currency,
 
     if (pair_position != -1) {
         CurrencyPair currency_pair = currency_pairs_[pair_position];
-        return saleCurrency(currency_pair, sum);
+        return saleCurrency(currency_pair, count);
     }
 
     currency_pair_code = buying_currency + "/" + selling_currency;
@@ -106,7 +106,7 @@ double CurrencyPairHolder::exchangeCurrency(string selling_currency,
 
     if (pair_position != -1) {
         CurrencyPair currency_pair = currency_pairs_[pair_position];
-        return buyCurrency(currency_pair, sum);
+        return buyCurrency(currency_pair, count);
     }
 
     throw logic_error("Can not exchange currency. Currency pair is not found");

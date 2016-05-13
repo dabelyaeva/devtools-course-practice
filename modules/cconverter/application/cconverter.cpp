@@ -4,8 +4,12 @@
 #include <stdio.h>
 #include <string>
 
-int main(int argc, const char** argv) {
-  printf("Hello World!\n");
+#include "include/application.h"
+
+int main(int argc, const char* argv[]) {
+  Application app;
+  std::string output = app(argc, argv);
+  printf("%s\n", output.c_str());
 
   return 0;
 }

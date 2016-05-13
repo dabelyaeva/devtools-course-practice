@@ -7,23 +7,21 @@
 
 #include "include/currency_pair_holder.h"
 
-using std::string;
-
 class Application {
  public:
   Application();
   ~Application();
-  string operator()(const int argc, const char* argv[]);
+  std::string operator()(const int argc, const char* argv[]);
 
  private:
-  void help(const string &appname, const string &message = "");
+  void help(const std::string &appname, const std::string &message = "");
   bool validateNumberOfArguments(const int argc, const char* argv[]);
-  string message_;
+  std::string message_;
   CurrencyPairHolder* holder_;
 
   typedef struct {
-    string base_currency;
-    string counter_currency;
+    std::string base_currency;
+    std::string counter_currency;
     double count;
   } Arguments;
 };

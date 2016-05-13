@@ -8,25 +8,24 @@
 #include <exception>
 #include <ctime>
 
-using std::string;
-
 class CurrencyPair {
  public:
-    CurrencyPair(string currency_pair_code, double bid_price, double ask_price);
+    CurrencyPair(std::string currency_pair_code, double bid_price,
+                 double ask_price);
 
     void setBidPrice(double new_bid_price);
     double getBidPrice() const;
     void setAskPrice(double new_ask_price);
     double getAskPrice() const;
-    void setCurrencyPairCode(string new_currency_pair_code);
-    string getCurrencyPairCode() const;
+    void setCurrencyPairCode(std::string new_currency_pair_code);
+    std::string getCurrencyPairCode() const;
 
-    static void checkCurrencyPairCode(string currency_pair_code);
+    static void checkCurrencyPairCode(std::string currency_pair_code);
 
     std::map<time_t, int> getSpreadHistory() const;
 
  private:
-    string currency_pair_code_;
+    std::string currency_pair_code_;
     double bid_price_;
     double ask_price_;
 

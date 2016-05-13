@@ -11,8 +11,6 @@
 #include "include/currency_pair.h"
 #include "include/currency_pair_holder.h"
 
-using std::string;
-
 Application::Application() : message_("") {
   // 13.05.2016
   // http://www.forexpf.ru/quote_show.php
@@ -36,7 +34,7 @@ Application::~Application() {
   delete holder_;
 }
 
-void Application::help(const string &appname, const string &message) {
+void Application::help(const std::string &appname, const std::string &message) {
   message_ = message +
     "This is a currency converter application.\n\n" +
     "Please provide arguments in the following format:\n\n" +
@@ -84,7 +82,7 @@ std::string Application::operator()(const int argc, const char* argv[]) {
     args.counter_currency = argv[2];
     args.count = parseDouble(argv[3]);
   }
-  catch (std::invalid_argument ex) {
+  catch (const std::invalid_argument& ex) {
     return ex.what();
   }
 
@@ -95,7 +93,7 @@ std::string Application::operator()(const int argc, const char* argv[]) {
                                      args.counter_currency,
                                      args.count);
   }
-  catch (std::exception ex) {
+  catch (const std::exception& ex) {
     return ex.what();
   }
 

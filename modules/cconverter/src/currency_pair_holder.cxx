@@ -5,9 +5,6 @@
 #include <vector>
 #include <string>
 
-using std::logic_error;
-using std::invalid_argument;
-
 CurrencyPairHolder::CurrencyPairHolder() {}
 
 CurrencyPairHolder::CurrencyPairHolder(
@@ -16,48 +13,48 @@ CurrencyPairHolder::CurrencyPairHolder(
         try {
             addCurrencyPair(pair);
         }
-        catch (logic_error ex) {
+        catch (const std::logic_error& ex) {
             // Skip duplicate pairs
         }
     }
 }
 
 void CurrencyPairHolder::addCurrencyPair(CurrencyPair currency_pair) {
-    string revers_code = currency_pair.getCurrencyPairCode().substr(4, 3) + "/"
-        + currency_pair.getCurrencyPairCode().substr(0, 3);
+    std::string revers_code = currency_pair.getCurrencyPairCode().substr(4, 3) +
+        "/" + currency_pair.getCurrencyPairCode().substr(0, 3);
 
     if (isCurrencyPairPresented(currency_pair.getCurrencyPairCode())
         || isCurrencyPairPresented(revers_code)) {
-        throw logic_error("Pair is already presented. Please use Update");
+        throw std::logic_error("Pair is already presented. Please use Update");
     }
 
     currency_pairs_.push_back(currency_pair);
 }
 
 void CurrencyPairHolder::updateCurrencyPair(CurrencyPair currency_pair) {
-    string currency_code = currency_pair.getCurrencyPairCode();
+    std::string currency_code = currency_pair.getCurrencyPairCode();
     int pair_position = getCurrencyPairNumberByCode(currency_code);
 
     if (pair_position != -1) {
         currency_pairs_[pair_position].setAskPrice(currency_pair.getAskPrice());
         currency_pairs_[pair_position].setBidPrice(currency_pair.getBidPrice());
     } else {
-        throw logic_error("Nothing to update");
+        throw std::logic_error("Nothing to update");
     }
 }
 
-double CurrencyPairHolder::buyCurrency(CurrencyPair currency_pair
-                                                    , double sum) const {
+double CurrencyPairHolder::buyCurrency(CurrencyPair currency_pair, double sum)
+    const {
     return sum / currency_pair.getAskPrice();
 }
 
-double CurrencyPairHolder::saleCurrency(CurrencyPair currency_pair
-                                                    , double sum) const {
+double CurrencyPairHolder::saleCurrency(CurrencyPair currency_pair, double sum)
+    const {
     return sum * currency_pair.getBidPrice();
 }
 
-int CurrencyPairHolder::getCurrencyPairNumberByCode(string curr_pair_code)
-                                                                    const {
+int CurrencyPairHolder::getCurrencyPairNumberByCode(std::string curr_pair_code)
+    const {
     for (size_t i = 0; i < currency_pairs_.size(); i++) {
         CurrencyPair pair = currency_pairs_[i];
         if (pair.getCurrencyPairCode() == curr_pair_code) {
@@ -68,7 +65,8 @@ int CurrencyPairHolder::getCurrencyPairNumberByCode(string curr_pair_code)
     return -1;
 }
 
-bool CurrencyPairHolder::isCurrencyPairPresented(string curr_pair_code) const {
+bool CurrencyPairHolder::isCurrencyPairPresented(std::string curr_pair_code)
+    const {
     for (CurrencyPair pair : currency_pairs_) {
         if (pair.getCurrencyPairCode() == curr_pair_code) {
             return true;
@@ -78,18 +76,18 @@ bool CurrencyPairHolder::isCurrencyPairPresented(string curr_pair_code) const {
     return false;
 }
 
-double CurrencyPairHolder::exchangeCurrency(string selling_currency,
-    string buying_currency, double count) const {
+double CurrencyPairHolder::exchangeCurrency(std::string selling_currency,
+    std::string buying_currency, double count) const {
     if (count <= 0) {
-        throw invalid_argument("Count must be greater than 0");
+        throw std::invalid_argument("Count must be greater than 0");
     }
 
     if (selling_currency == "" || buying_currency == "") {
         throw
-            invalid_argument("Code of buying or selling currency is empty");
+           std::invalid_argument("Code of buying or selling currency is empty");
     }
 
-    string currency_pair_code = selling_currency + "/" + buying_currency;
+    std::string currency_pair_code = selling_currency + "/" + buying_currency;
 
     CurrencyPair::checkCurrencyPairCode(currency_pair_code);
 
@@ -109,7 +107,8 @@ double CurrencyPairHolder::exchangeCurrency(string selling_currency,
         return buyCurrency(currency_pair, count);
     }
 
-    throw logic_error("Can not exchange currency. Currency pair is not found");
+    throw std::logic_error("Can not exchange currency. Currency pair is not " \
+        "found");
 }
 
 std::vector<CurrencyPair> CurrencyPairHolder::getCurrencyPairs() const {

@@ -71,7 +71,7 @@ TEST_F(AppTriangleTest, Can_Detect_Wrong_Number_Format) {
     Act(args);
 
     // Assert
-    Assert("Wrong number format!.*");
+    Assert("Wrong number format!");
 }
 
 TEST_F(AppTriangleTest, Can_Detect_Wrong_Function_Format) {
@@ -131,7 +131,7 @@ TEST_F(AppTriangleTest, Can_Calculate_Angle_A) {
     Act(args);
 
     // Assert
-    Assert("Angle CAB in radians of triangle ABC is equal = 0.47194");
+    Assert("Angle A is equal 0.47194");
 }
 
 TEST_F(AppTriangleTest, Can_Calculate_Angle_B) {
@@ -143,7 +143,7 @@ TEST_F(AppTriangleTest, Can_Calculate_Angle_B) {
     Act(args);
 
     // Assert
-    Assert("Angle CBA in radians of triangle ABC is equal = 2.63682");
+    Assert("Angle B is equal 2.63682");
 }
 
 TEST_F(AppTriangleTest, Can_Calculate_Angle_C) {
@@ -155,7 +155,7 @@ TEST_F(AppTriangleTest, Can_Calculate_Angle_C) {
     Act(args);
 
     // Assert
-    Assert("Angle ACB in radians of triangle ABC is equal = 0.0328321");
+    Assert("Angle C is equal 0.0328321");
 }
 
 TEST_F(AppTriangleTest, Can_Calculate_Perimeter) {
@@ -167,7 +167,7 @@ TEST_F(AppTriangleTest, Can_Calculate_Perimeter) {
     Act(args);
 
     // Assert
-    Assert("Perimeter of triangle ABC is equal = 94.7071");
+    Assert("Perimeter is equal 94.7071");
 }
 
 TEST_F(AppTriangleTest, Can_Calculate_Area) {
@@ -179,7 +179,7 @@ TEST_F(AppTriangleTest, Can_Calculate_Area) {
     Act(args);
 
     // Assert
-    Assert("Area of triangle ABC is equal = 34.325");
+    Assert("Area is equal 34.325");
 }
 
 TEST_F(AppTriangleTest, Can_Calculate_Inradius) {
@@ -191,7 +191,7 @@ TEST_F(AppTriangleTest, Can_Calculate_Inradius) {
     Act(args);
 
     // Assert
-    Assert("Inradius of triangle ABC is equal = 0.724866");
+    Assert("Inradius is equal 0.724866");
 }
 
 TEST_F(AppTriangleTest, Can_Calculate_Circumradius) {
@@ -203,5 +203,5 @@ TEST_F(AppTriangleTest, Can_Calculate_Circumradius) {
     Act(args);
 
     // Assert
-    Assert("Circumradius of triangle ABC is equal = 48.7653");
+    Assert("Circumradius is equal 48.7653");
 }

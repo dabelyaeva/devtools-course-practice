@@ -122,31 +122,31 @@ string Application::operator()(int argc, const char ** argv) {
     switch (args.function) {
     case CALC_ANGLE_A:
         result = triangle.angle_A_of_triangle_in_radians();
-        stream << "Angle CAB in radians of triangle ABC is equal = " << result;
+        stream << "Angle A is equal " << result;
         break;
     case CALC_ANGLE_B:
         result = triangle.angle_B_of_triangle_in_radians();
-        stream << "Angle CBA in radians of triangle ABC is equal = " << result;
+        stream << "Angle B is equal " << result;
         break;
     case CALC_ANGLE_C:
         result = triangle.angle_C_of_triangle_in_radians();
-        stream << "Angle ACB in radians of triangle ABC is equal = " << result;
+        stream << "Angle C is equal " << result;
         break;
     case CALC_PERIMETER:
         result = triangle.perimeter_of_triangle();
-        stream << "Perimeter of triangle ABC is equal = " << result;
+        stream << "Perimeter is equal " << result;
         break;
     case CALC_AREA:
         result = triangle.area_of_triangle();
-        stream << "Area of triangle ABC is equal = " << result;
+        stream << "Area is equal " << result;
         break;
     case CALC_INRADIUS:
         result = triangle.inradius();
-        stream << "Inradius of triangle ABC is equal = " << result;
+        stream << "Inradius is equal " << result;
         break;
     case CALC_CIRCUMRADIUS:
         result = triangle.circumradius();
-        stream << "Circumradius of triangle ABC is equal = " << result;
+        stream << "Circumradius is equal " << result;
         break;
     }
 

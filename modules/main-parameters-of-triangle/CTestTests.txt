@@ -65,46 +65,46 @@ add_test(
     COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_angle_a
 )
 set_tests_properties (${prefix}_can_Calculate_Angle_A
-  PROPERTIES PASS_REGULAR_EXPRESSION "Angle CAB in radians of triangle ABC is equal = 0.47194")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Angle A is equal 0.47194")
 
 add_test(
     NAME ${prefix}_can_Calculate_Angle_B
     COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_angle_b
 )
 set_tests_properties (${prefix}_can_Calculate_Angle_B
-  PROPERTIES PASS_REGULAR_EXPRESSION "Angle CBA in radians of triangle ABC is equal = 2.63682")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Angle B is equal 2.63682")
 
 add_test(
     NAME ${prefix}_can_Calculate_Angle_C
     COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_angle_c
 )
 set_tests_properties (${prefix}_can_Calculate_Angle_C
-  PROPERTIES PASS_REGULAR_EXPRESSION "Angle ACB in radians of triangle ABC is equal = 0.0328321")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Angle C is equal 0.0328321")
 
 add_test(
     NAME ${prefix}_can_Calculate_Perimeter
     COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_perimeter
 )
 set_tests_properties (${prefix}_can_Calculate_Perimeter
-  PROPERTIES PASS_REGULAR_EXPRESSION "Perimeter of triangle ABC is equal = 94.7071")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Perimeter is equal 94.7071")
 
 add_test(
     NAME ${prefix}_can_Calculate_Area
     COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_area
 )
 set_tests_properties (${prefix}_can_Calculate_Area
-  PROPERTIES PASS_REGULAR_EXPRESSION "Area of triangle ABC is equal = 34.325")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Area is equal 34.325")
 
 add_test(
     NAME ${prefix}_can_Calculate_Inradius
     COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_inradius
 )
 set_tests_properties (${prefix}_can_Calculate_Inradius
-  PROPERTIES PASS_REGULAR_EXPRESSION "Inradius of triangle ABC is equal = 0.724866")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Inradius is equal 0.724866")
 
 add_test(
     NAME ${prefix}_can_Calculate_Circumradius
     COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_circumradius
 )
 set_tests_properties (${prefix}_can_Calculate_Circumradius
-  PROPERTIES PASS_REGULAR_EXPRESSION "Circumradius of triangle ABC is equal = 48.7653")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Circumradius is equal 48.7653")

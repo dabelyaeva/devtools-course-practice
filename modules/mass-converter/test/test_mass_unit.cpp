@@ -38,18 +38,6 @@ TEST(MassUnitTest,
 }
 
 TEST(MassUnitTest,
-     Can_Create_Via_Copying) {
-    // Arrange
-    MassUnit unit(1, "kg");
-
-    // Act
-    MassUnit excepted_unit = unit;
-
-    // Assert
-    EXPECT_EQ(unit, excepted_unit);
-}
-
-TEST(MassUnitTest,
      Can_Create_Via_Assign) {
     // Arrange
     MassUnit unit1(1, "kg");

@@ -20,21 +20,23 @@ void Application::help(const char* appname, const char* message) {
         "Please provide arguments in the following format:\n\n" +
 
         "  $ " + appname + " <vectorA_x> <vectorA_y> <vectorA_z>" +
-        "<vectorA_x> <vectorA_y> <vectorA_z> <operation> " +
+        "<vectorA_x> <vectorA_y> <vectorA_z> <operation>\n" +
         + "for binary operation ('+', '-', 'cross', 'dot') \n" +
 
-        "or  $ " + appname + " <vectorA_x> <vectorA_y> <vectorA_z>" +
-        " <operation> " +
+        "or\n$ " + appname + " <vectorA_x> <vectorA_y> <vectorA_z>" +
+        " <operation>\n" +
         +"for unary operation ('magnitude', 'normalize') \n" +
 
-        "or  $ " + appname + " <vectorA_x> <vectorA_y> <vectorA_z>" +
-        " <constant> <operation> " +
-        +"for operation with constant ('*', '/') \n\n" +
+        "or\n$ " + appname + " <vectorA_x> <vectorA_y> <vectorA_z>" +
+        " <scalar> <operation>\n" +
+        +"for operation with scalar ('*', '/') \n\n" +
 
-        "Where all arguments are double-precision numbers.\n";
+        "Where all arguments are double-precision numbers.\n" +
+        "and <operation> is one of '+', '-', '*', '/', " +
+        "'magnitude', 'cross', 'dot', 'normalize'.\n";
 }
 
-bool Application::validateNumberOfArguments(int argc, const char** argv) {
+bool Application::validateNumberOfArguments(const int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
@@ -80,7 +82,7 @@ char parseOperation(const char* arg) {
     return op;
 }
 
-std::string Application::operator()(int argc, const char** argv) {
+std::string Application::operator()(const int argc, const char** argv) {
     Arguments args;
 
     if (!validateNumberOfArguments(argc, argv)) {
@@ -144,7 +146,7 @@ std::string Application::operator()(int argc, const char** argv) {
                 << vectorC.getZ() << ")";
             break;
         }
-        catch (std::runtime_error err) {
+        catch (DivisionByZero err) {
             return err.what();
         }
     case 'c':
@@ -169,7 +171,7 @@ std::string Application::operator()(int argc, const char** argv) {
                 << vectorA.getZ() << ")";
             break;
         }
-        catch (std::runtime_error err) {
+        catch (NullVectorNormalizing err) {
             return err.what();
         }
     }

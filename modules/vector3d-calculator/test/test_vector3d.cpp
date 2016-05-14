@@ -7,7 +7,7 @@
 
 #include "include/vector3d.h"
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Create_Null_Vector) {
+TEST(Vector3DTest, Can_Create_Null_Vector) {
   // Arrange & Act
   Vector3D v;
 
@@ -17,7 +17,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Create_Null_Vector) {
   EXPECT_DOUBLE_EQ(0.0, v.getZ());
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Create_With_XYZ_Double) {
+TEST(Vector3DTest, Can_Create_With_XYZ_Double) {
   // Arrange
   double x = -10.0;
   double y = 26.0;
@@ -32,7 +32,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Create_With_XYZ_Double) {
   EXPECT_DOUBLE_EQ(z, v.getZ());
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Create_With_XYZ_Not_Double) {
+TEST(Vector3DTest, Can_Create_With_XYZ_Not_Double) {
   // Arrange
   int x = -10;
   char y = 26;
@@ -47,7 +47,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Create_With_XYZ_Not_Double) {
   EXPECT_DOUBLE_EQ(z, v.getZ());
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Set_X) {
+TEST(Vector3DTest, Can_Set_X) {
   // Arrange
   Vector3D v;
   double x = 21.0;
@@ -59,7 +59,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Set_X) {
   ASSERT_DOUBLE_EQ(x, v.getX());
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Set_Y) {
+TEST(Vector3DTest, Can_Set_Y) {
   // Arrange
   Vector3D v;
   double y = -13.2;
@@ -71,7 +71,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Set_Y) {
   ASSERT_DOUBLE_EQ(y, v.getY());
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Set_Z) {
+TEST(Vector3DTest, Can_Set_Z) {
   // Arrange
   Vector3D v;
   double z = 0.256;
@@ -83,7 +83,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Set_Z) {
   ASSERT_DOUBLE_EQ(z, v.getZ());
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Determine_If_Vectors_Are_Equal) {
+TEST(Vector3DTest, Can_Determine_If_Vectors_Are_Equal) {
   // Arrange
   Vector3D v1(26.0, -14.0, 0.24);
   Vector3D v2(26.0, -14.0, 0.24);
@@ -92,7 +92,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Determine_If_Vectors_Are_Equal) {
   ASSERT_TRUE(v1 == v2);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest,
+TEST(Vector3DTest,
      Equality_Check_Fails_With_Different_Vectors) {
   // Arrange
   Vector3D v1(123.4, -4.4, 0.0001);
@@ -102,7 +102,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest,
   ASSERT_FALSE(v1 == v2);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest,
+TEST(Vector3DTest,
      Can_Determine_If_Vectors_Are_Not_Equal) {
   // Arrange
   Vector3D v1(26.0, -14.0, 0.24);
@@ -112,7 +112,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest,
   ASSERT_TRUE(v1 != v2);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest,
+TEST(Vector3DTest,
      Inequality_Check_Fails_With_Equal_Vectors) {
   // Arrange
   Vector3D v1(-5.0, 0.0, 100.4);
@@ -122,7 +122,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest,
   ASSERT_FALSE(v1 != v2);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Create_With_Copying) {
+TEST(Vector3DTest, Can_Create_With_Copying) {
   // Arrange
   Vector3D v(11.1, -0.3, 3.4);
 
@@ -133,7 +133,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Create_With_Copying) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Vector_Is_Equal_To_Itself) {
+TEST(Vector3DTest, Vector_Is_Equal_To_Itself) {
   // Arrange
   Vector3D v(9, 5, 1945);
 
@@ -141,7 +141,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Vector_Is_Equal_To_Itself) {
   ASSERT_EQ(v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Assign_To_Vector) {
+TEST(Vector3DTest, Can_Assign_To_Vector) {
   // Arrange
   Vector3D v(-3.1415, 2.71828, 1.61803);
 
@@ -152,7 +152,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Assign_To_Vector) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Assign_Vector_To_Itself) {
+TEST(Vector3DTest, Can_Assign_Vector_To_Itself) {
   // Arrange
   double x = -2.4;
   double y = 8.16;
@@ -168,7 +168,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Assign_Vector_To_Itself) {
   EXPECT_DOUBLE_EQ(z, v.getZ());
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Do_Multiple_Assignment) {
+TEST(Vector3DTest, Can_Do_Multiple_Assignment) {
   // Arrange
   Vector3D v1, v2, v3(0.7, -0.07, 0.007);
 
@@ -180,7 +180,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Do_Multiple_Assignment) {
   EXPECT_EQ(v2, v3);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Add_Up_Vectors) {
+TEST(Vector3DTest, Can_Add_Up_Vectors) {
   // Arrange
   Vector3D v1(4.0, 8.0, 15.0);
   Vector3D v2(16.0, 23.0, 42.0);
@@ -193,7 +193,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Add_Up_Vectors) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Subtract_Vectors) {
+TEST(Vector3DTest, Can_Subtract_Vectors) {
   // Arrange
   Vector3D v1(4.0, 8.0, 15.0);
   Vector3D v2(16.0, 23.0, 42.0);
@@ -206,7 +206,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Subtract_Vectors) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Do_Multiple_Addition) {
+TEST(Vector3DTest, Can_Do_Multiple_Addition) {
   // Arrange
   Vector3D v1(19.0, 12.0, -42.0);
   Vector3D v2(-16.0, 16.0, -28.0);
@@ -220,7 +220,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Do_Multiple_Addition) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Do_Multiple_Subtraction) {
+TEST(Vector3DTest, Can_Do_Multiple_Subtraction) {
   // Arrange
   Vector3D v1(0.17, 0.1, -0.26);
   Vector3D v2(0.16, 0.42, -0.28);
@@ -234,7 +234,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Do_Multiple_Subtraction) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Sum_Of_Opposite_Vectors_Is_NullVector) {
+TEST(Vector3DTest, Sum_Of_Opposite_Vectors_Is_NullVector) {
   // Arrange
   Vector3D v1(-2.0, 3.7, -4.0);
   Vector3D v2(2.0, -3.7, 4.0);
@@ -247,7 +247,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Sum_Of_Opposite_Vectors_Is_NullVector) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest,
+TEST(Vector3DTest,
      Difference_Of_Equal_Vectors_Is_NullVector) {
   // Arrange
   Vector3D v1(38.0, -36.0, 9.0);
@@ -261,7 +261,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest,
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Get_Opposite_Vector) {
+TEST(Vector3DTest, Can_Get_Opposite_Vector) {
   // Arrange
   Vector3D v1(-10.0, 23.0, 1.0);
 
@@ -273,7 +273,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Get_Opposite_Vector) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Multiply_On_The_Right_By_Scalar) {
+TEST(Vector3DTest, Can_Multiply_On_The_Right_By_Scalar) {
   // Arrange
   Vector3D v1(-12.0, -10.0, 10.0);
   double k = -0.5;
@@ -286,7 +286,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Multiply_On_The_Right_By_Scalar) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Multiply_On_The_Right_By_Zero) {
+TEST(Vector3DTest, Can_Multiply_On_The_Right_By_Zero) {
   // Arrange
   Vector3D v1(50.0, 34.0, 7.0);
   double k = 0.0;
@@ -299,7 +299,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Multiply_On_The_Right_By_Zero) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Multiply_On_The_Left_By_Scalar) {
+TEST(Vector3DTest, Can_Multiply_On_The_Left_By_Scalar) {
   // Arrange
   Vector3D v1(2.0, -0.3, 11.0);
   double k = 3.0;
@@ -312,7 +312,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Multiply_On_The_Left_By_Scalar) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Multiply_On_The_Left_By_Zero) {
+TEST(Vector3DTest, Can_Multiply_On_The_Left_By_Zero) {
   // Arrange
   Vector3D v1(26.0, -36.0, 25.0);
   double k = 0.0;
@@ -325,7 +325,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Multiply_On_The_Left_By_Zero) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Divide_By_Scalar) {
+TEST(Vector3DTest, Can_Divide_By_Scalar) {
   // Arrange
   Vector3D v1(-3.0, 4.5, -2.1);
   double k = 3.0;
@@ -338,7 +338,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Divide_By_Scalar) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Throws_When_Dividing_By_Zero) {
+TEST(Vector3DTest, Throws_When_Dividing_By_Zero) {
   // Arrange
   Vector3D v(1.0, -28.0, -2.0);
   double k = 0.0;
@@ -347,7 +347,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Throws_When_Dividing_By_Zero) {
   ASSERT_THROW(v / k, DivisionByZero);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Do_Complex_Arithmetics) {
+TEST(Vector3DTest, Can_Do_Complex_Arithmetics) {
   // Arrange
   Vector3D v1(-1.0, -40.0, 10.0);
   Vector3D v2(-12.0, 8.0, 32.0);
@@ -362,7 +362,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Do_Complex_Arithmetics) {
   ASSERT_EQ(expected_v, v);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Calculate_Magnitude) {
+TEST(Vector3DTest, Can_Calculate_Magnitude) {
   // Arrange
   Vector3D v(2.0, 6.0, 9.0);
 
@@ -374,7 +374,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Calculate_Magnitude) {
   ASSERT_DOUBLE_EQ(expected_mgn, mgn);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest,
+TEST(Vector3DTest,
      Can_Calculate_Magnitude_With_Negative_Coords) {
   // Arrange
   Vector3D v(-1.1, 1.2, -2.4);
@@ -387,7 +387,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest,
   ASSERT_DOUBLE_EQ(expected_mgn, mgn);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Magnitude_Of_NullVector_Is_Zero) {
+TEST(Vector3DTest, Magnitude_Of_NullVector_Is_Zero) {
   // Arrange
   Vector3D v;
 
@@ -399,7 +399,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Magnitude_Of_NullVector_Is_Zero) {
   ASSERT_DOUBLE_EQ(expected_mgn, mgn);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Normalize_Vector) {
+TEST(Vector3DTest, Can_Normalize_Vector) {
   // Arrange
   Vector3D v(10.0, -2.0, 13.0);
   Vector3D v_copy(v);
@@ -414,7 +414,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Normalize_Vector) {
   EXPECT_DOUBLE_EQ(0.0, cross_mgn);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Throws_When_Normalizing_NullVector) {
+TEST(Vector3DTest, Throws_When_Normalizing_NullVector) {
   // Arrange
   Vector3D v;
 
@@ -422,7 +422,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Throws_When_Normalizing_NullVector) {
   ASSERT_THROW(v.normalize(), NullVectorNormalizing);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Calculate_Dot_Product) {
+TEST(Vector3DTest, Can_Calculate_Dot_Product) {
   // Arrange
   Vector3D v1(-1.0, 4.0, -2.0);
   Vector3D v2(7.0, 3.0, -0.5);
@@ -434,7 +434,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Calculate_Dot_Product) {
   ASSERT_DOUBLE_EQ(6.0, dot_product);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest,
+TEST(Vector3DTest,
      Dot_Product_Of_Orthogonal_Vectors_Is_Zero) {
   // Arrange
   Vector3D v1(10.0, 0.0, 0.0);
@@ -447,7 +447,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest,
   ASSERT_DOUBLE_EQ(0.0, dot_product);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest, Can_Calculate_Cross_Product) {
+TEST(Vector3DTest, Can_Calculate_Cross_Product) {
   // Arrange
   Vector3D v1(1.0, 0.0, 0.0);
   Vector3D v2(0.0, 1.0, 0.0);
@@ -460,7 +460,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest, Can_Calculate_Cross_Product) {
   ASSERT_EQ(expected_v, cross_product);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest,
+TEST(Vector3DTest,
      Cross_Product_Of_Parallel_Vectors_Is_NullVector) {
   // Arrange
   Vector3D v1(2.0, 5.0, 7.0);
@@ -474,7 +474,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest,
   ASSERT_EQ(expected_v, cross_product);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest,
+TEST(Vector3DTest,
      Two_Cross_Products_Are_Opposite_Vectors) {
   // Arrange
   Vector3D v1(-7.0, -17.0, 1.0);
@@ -489,7 +489,7 @@ TEST(Rumyantsev_Alexander_Vector3DTest,
   ASSERT_EQ(expected_v, cross_product1 + cross_product2);
 }
 
-TEST(Rumyantsev_Alexander_Vector3DTest,
+TEST(Vector3DTest,
      Cross_Product_Is_Orthogonal_To_Vectors) {
   // Arrange
   Vector3D v1(22.0, -9.0, -16.0);

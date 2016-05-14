@@ -5,9 +5,6 @@
 #include <string>
 #include <vector>
 
-using std::vector;
-using std::string;
-
 #include "include/application.h"
 
 int main(int argc, const char** argv) {

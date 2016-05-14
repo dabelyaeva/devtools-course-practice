@@ -1,12 +1,15 @@
 // Copyright 2016 Belyaeva Daria
 
-#include "interpolation_search.h"
+#include "include/interpolation_search.h"
 
 #include <algorithm>
 
 
+namespace interp_search {
+
 InterpolationSearcher::InterpolationSearcher(
-    const Value values[], size_t size
+    const Value values[],
+    size_t size
 ) {
     if (values == nullptr) {
         return;
@@ -14,10 +17,13 @@ InterpolationSearcher::InterpolationSearcher(
 
     data_.reserve(size);
     data_.insert(data_.begin(), values, values + size);
-    std::sort(data_.begin(), data_.end());
+
+    if (std::is_sorted(data_.begin(), data_.end()) == false) {
+        std::sort(data_.begin(), data_.end());
+    }
 }
 
-bool InterpolationSearcher::GetValue(Index index, const Value ** result) const {
+bool InterpolationSearcher::GetValue(Index index, const Value** result) const {
     if (result == nullptr) {
         return false;
     }
@@ -90,37 +96,9 @@ bool InterpolationSearcher::Find(const Value& key, Index* index) const {
         return false;
     }
 
-    if (data_.size() == 1) {
-        if (data_[0] == key) {
-            *index = 0;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    auto left = data_.cbegin();
-    auto right = data_.cend();
-    while ((*left <= key) && (key <= *right)) {
-        if (*left == *right) {
-            if (*left == key) {
-                *index = left - data_.cbegin();
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        const auto& mid = left +
-            std::floor( ((key - *left) * (right - left)) / (*right - *left) );
-        if (*mid < key) {
-            left = mid + 1;
-        } else if (key < *mid) {
-            right = mid - 1;
-        } else {
-            *index = mid - data_.cbegin();
-            return true;
-        }
-    }
-    return false;
+    auto result = interp_search::Find(data_.begin(), data_.end(), key);
+    *index = result - data_.begin();
+    return result != data_.end();
 }
+
+}  //namespace interp_search

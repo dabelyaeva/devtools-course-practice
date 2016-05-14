@@ -1,15 +1,16 @@
 // Copyright 2016 Belyaeva Daria
 
 #include "gtest/gtest.h"
-#include "interpolation_search.h"
+#include "include/interpolation_search.h"
 
+using namespace interp_search;
 
-TEST(InterpolationSearcher, can_create_empty_object) {
+TEST(InterpolationSearcher, can_create_empty) {
     // Act & Assert
     ASSERT_NO_THROW(InterpolationSearcher is());
 }
 
-TEST(InterpolationSearcher, can_create_object_with_correct_size_and_data) {
+TEST(InterpolationSearcher, can_create_with_correct_size_and_data) {
     // Arrange
     constexpr size_t size = 5;
     constexpr int data[size] = {1, 2, 3, 4, 5};
@@ -18,7 +19,16 @@ TEST(InterpolationSearcher, can_create_object_with_correct_size_and_data) {
     ASSERT_NO_THROW(InterpolationSearcher is(data, size));
 }
 
-TEST(InterpolationSearcher, can_create_object_with_correct_size_and_no_data) {
+TEST(InterpolationSearcher, can_create_with_correct_size_and_data_unsorted) {
+    // Arrange
+    constexpr size_t size = 5;
+    constexpr int data[size] = {1, 10, 3, 40, 5};
+
+    // Act & Assert
+    ASSERT_NO_THROW(InterpolationSearcher is(data, size));
+}
+
+TEST(InterpolationSearcher, can_create_with_correct_size_and_no_data) {
     // Arrange
     constexpr size_t size = 5;
 
@@ -26,7 +36,7 @@ TEST(InterpolationSearcher, can_create_object_with_correct_size_and_no_data) {
     ASSERT_NO_THROW(InterpolationSearcher is(nullptr, size));
 }
 
-TEST(InterpolationSearcher, can_initialize_object_with_value) {
+TEST(InterpolationSearcher, can_initialize_with_value) {
     // Arrange
     constexpr size_t size = 1;
     constexpr int data[size] = {10};
@@ -210,6 +220,15 @@ TEST(InterpolationSearcher, can_do_search_equal_elements) {
 
     // Assert
     EXPECT_TRUE(result < myIS.GetSize());
+}
+
+TEST(InterpolationSearcher, can_do_search_in_empty_array) {
+    // Arrange
+    InterpolationSearcher myIS;
+
+    // Act & Assert
+    size_t result;
+    ASSERT_FALSE(myIS.Find(42, &result));
 }
 
 TEST(InterpolationSearcher, can_insert_element) {

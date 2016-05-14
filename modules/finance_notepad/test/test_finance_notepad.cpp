@@ -6,7 +6,7 @@
 
 using std::string;
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, can_get_pouch) {
+TEST(FinanceNotepadTest, can_get_pouch) {
   // Arrange
   notepad notes(13.f);
   float result;
@@ -19,7 +19,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, can_get_pouch) {
   EXPECT_FLOAT_EQ(result, expect);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, pouch_is_sizeable) {
+TEST(FinanceNotepadTest, pouch_is_sizeable) {
   // Arrange
   notepad notes(50.f);
   float result;
@@ -33,7 +33,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, pouch_is_sizeable) {
   EXPECT_FLOAT_EQ(result, expect);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, cat_get_sum_from_category) {
+TEST(FinanceNotepadTest, cat_get_sum_from_category) {
   // Arrange
   notepad notes(50.f);
   float result;
@@ -49,7 +49,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, cat_get_sum_from_category) {
   EXPECT_FLOAT_EQ(result, expect);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, can_get_current_note) {
+TEST(FinanceNotepadTest, can_get_current_note) {
   // Arrange
   notepad notes(50.f);
   std::string result;
@@ -63,7 +63,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, can_get_current_note) {
   EXPECT_EQ(result.compare(expect), 0);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, can_translate_notepad_to_string) {
+TEST(FinanceNotepadTest, can_translate_notepad_to_string) {
   // Arrange
   notepad notes(50.f);
   std::string result;
@@ -81,7 +81,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, can_translate_notepad_to_string) {
   EXPECT_EQ(result.compare(expect), 0);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, can_navigte_by_notepad) {
+TEST(FinanceNotepadTest, can_navigte_by_notepad) {
   // Arrange
   notepad notes(50.f);
   std::string result;
@@ -99,7 +99,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, can_navigte_by_notepad) {
   EXPECT_EQ(result.compare(expect), 0);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, can_sort_by_date) {
+TEST(FinanceNotepadTest, can_sort_by_date) {
   // Arrange
   notepad notes(50.f);
   std::string result;
@@ -118,7 +118,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, can_sort_by_date) {
   EXPECT_EQ(result.compare(expect), 0);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, can_get_potential_pouch) {
+TEST(FinanceNotepadTest, can_get_potential_pouch) {
   // Arrange
   notepad notes(50.f);
   float result;
@@ -133,7 +133,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, can_get_potential_pouch) {
   EXPECT_FLOAT_EQ(result, expect);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, cat_get_notes_from_category) {
+TEST(FinanceNotepadTest, cat_get_notes_from_category) {
   // Arrange
   notepad notes(50.f);
   std::string result;
@@ -150,7 +150,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, cat_get_notes_from_category) {
   EXPECT_EQ(result.compare(expect), 0);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, cat_group_by_category) {
+TEST(FinanceNotepadTest, cat_group_by_category) {
   // Arrange
   notepad notes(50.f);
   std::string result;

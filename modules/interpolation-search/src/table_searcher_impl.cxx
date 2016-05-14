@@ -22,7 +22,7 @@ class Application::CommandLineParameter {
 };
 
 void Application::Run(int argc, const char* const* argv, std::string* result) {
-    if (result == nullptr) {
+    if ((result == nullptr) || (argv == nullptr)) {
         return;
     }
 
@@ -43,6 +43,9 @@ void Application::Run(int argc, const char* const* argv, std::string* result) {
 
         const auto searchResults = std::move(performSearch(parameters.query));
         for (const auto& entry : searchResults) {
+            if (entry == table_.end()) {
+                continue;
+            }
             for (auto it = (*entry).cbegin(), iend = (*entry).cend();
                 it != iend;)
             {
@@ -94,19 +97,20 @@ Application::parseCommandLine(int argc, const char* const* argv) {
         return parameters;
     }
 
-    if ((argc == 1) || (3 < argc)) {
+    if ((argc == 1) || (5 < argc)) {
         throw std::runtime_error("Wrong command line parameters count.");
     }
 
     int i = 1;
     while (i < argc) {
         if (argv[i] == nullptr) {
+            ++i;
             continue;
         }
 
         const std::string arg = argv[i];
         if (arg == std::string({'-', CommandLineParameter::Table})) {
-            if (i + 1 < argc) {
+            if ((i + 1 < argc) && (argv[i + 1] != nullptr)) {
                 parameters.tablePath = argv[i + 1];
                 i += 2;
             } else {
@@ -115,9 +119,20 @@ Application::parseCommandLine(int argc, const char* const* argv) {
                     CommandLineParameter::Table + std::string("' parameter."));
             }
         } else if (arg == std::string({'-', CommandLineParameter::Query})) {
-            if (i + 1 < argc) {
+            if ((i + 1 < argc) && (argv[i + 1] != nullptr)) {
                 parameters.query = argv[i + 1];
                 i += 2;
+
+                if ((parameters.query[0] != '\'') ||
+                    (parameters.query.back() != '\''))
+                {
+                    throw std::runtime_error("Failed to parse command line: " +
+                        std::string("Quotes is expected in argument of '-") +
+                        CommandLineParameter::Query +
+                        std::string("' parameter."));
+                }
+                parameters.query = parameters.query.substr
+                    (1, parameters.query.size() - 2); // clear quotes
             } else {
                 throw std::runtime_error("Failed to parse command line: " +
                     std::string("Wrong argument of '-") +
@@ -127,6 +142,10 @@ Application::parseCommandLine(int argc, const char* const* argv) {
             throw std::runtime_error("Failed to parse command line: "
                 "Unexpected command line parameter: " + arg);
         }
+    }
+
+    if (parameters.query.empty() == true) {
+        throw std::runtime_error("Query command line parameter is expected.");
     }
 
     return parameters;
@@ -154,7 +173,7 @@ Application::performSearch(const std::string& query) {
     results.reserve(queries.size());
 
     auto less = [] (const TableRow& a, const TableRow& b) {
-        return 0 < std::strcmp(a.front().c_str(), b.front().c_str());
+        return std::strcmp(a.front().c_str(), b.front().c_str()) < 0;
     };
     auto diff = [] (const TableRow& a, const TableRow& b) {
         return findStringDifference(a.front().c_str(), b.front().c_str());

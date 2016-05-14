@@ -10,9 +10,14 @@ std::vector<std::string> splitString(const std::string& str,
     std::string::size_type startIndex = 0;
     while (startIndex < str.size()) {
         auto lastIndex = str.find(delim, startIndex);
-        result.emplace_back(str.substr(startIndex, lastIndex));
-        startIndex = lastIndex + delim.size();
+        if (lastIndex != str.npos) {
+            result.emplace_back(&str[startIndex], lastIndex - startIndex);
+            startIndex = lastIndex + delim.size();
+        } else {
+            break;
+        }
     }
+    result.emplace_back(&str[startIndex]);
     return std::move(result);
 }
 

@@ -111,8 +111,8 @@ class InterpolationSearcher {
 
 template<class RanIt, class Value, class Less, class Diff>
 RanIt Find(const RanIt& _begin, const RanIt& _end,
-    const Value& key, const Less& less, const Diff& diff)
-{
+    const Value& key, const Less& less, const Diff& diff
+) {
     using std::distance;
 
     if (distance(_begin, _end) == 0) {

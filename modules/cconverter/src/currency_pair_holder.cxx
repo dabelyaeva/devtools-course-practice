@@ -77,9 +77,9 @@ bool CurrencyPairHolder::isCurrencyPairPresented(std::string curr_pair_code)
 }
 
 double CurrencyPairHolder::exchangeCurrency(std::string selling_currency,
-    std::string buying_currency, double count) const {
-    if (count <= 0) {
-        throw std::invalid_argument("Count must be greater than 0");
+    std::string buying_currency, double amount) const {
+    if (amount <= 0) {
+        throw std::invalid_argument("Amount must be greater than 0");
     }
 
     if (selling_currency == "" || buying_currency == "") {
@@ -95,7 +95,7 @@ double CurrencyPairHolder::exchangeCurrency(std::string selling_currency,
 
     if (pair_position != -1) {
         CurrencyPair currency_pair = currency_pairs_[pair_position];
-        return saleCurrency(currency_pair, count);
+        return saleCurrency(currency_pair, amount);
     }
 
     currency_pair_code = buying_currency + "/" + selling_currency;
@@ -104,7 +104,7 @@ double CurrencyPairHolder::exchangeCurrency(std::string selling_currency,
 
     if (pair_position != -1) {
         CurrencyPair currency_pair = currency_pairs_[pair_position];
-        return buyCurrency(currency_pair, count);
+        return buyCurrency(currency_pair, amount);
     }
 
     throw std::logic_error("Can not exchange currency. Currency pair is not " \

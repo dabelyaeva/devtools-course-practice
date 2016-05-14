@@ -76,7 +76,7 @@ void CurrencyPair::checkCurrencyPairCode(std::string currency_pair_code) {
             }
             if (i != 3 && (symb_code < 65 || symb_code > 90)) {
                 throw std::invalid_argument("Currency code can only contain " \
-                    "capital letter");
+                    "capital letters");
             }
         }
     } else {

@@ -6,7 +6,7 @@
 #include "include/MatStat.h"
 
 
-TEST(Polyakov_Igor_MatStatTest, Initialization_Sample_Is_Correct) {
+TEST(MatStatTest, Initialization_Sample_Is_Correct) {
     // Arrange
 
     int size_sample = 5;
@@ -28,7 +28,7 @@ TEST(Polyakov_Igor_MatStatTest, Initialization_Sample_Is_Correct) {
                 (probabilities == get_probabilities));
 }
 
-TEST(Polyakov_Igor_MatStatTest, Can_Create_Default_Sample) {
+TEST(MatStatTest, Can_Create_Default_Sample) {
     // Arrange
 
     Sample S;
@@ -43,7 +43,7 @@ TEST(Polyakov_Igor_MatStatTest, Can_Create_Default_Sample) {
                 (probabilities == S.GetProbabilities()));
 }
 
-TEST(Polyakov_Igor_MatStatTest, Can_Handle_Incorrect_Sample) {
+TEST(MatStatTest, Can_Handle_Incorrect_Sample) {
     // Arrange
 
     vector<double> sample{ 1.0, 3.0, 4.0, 1.0, 0.0 };
@@ -54,7 +54,7 @@ TEST(Polyakov_Igor_MatStatTest, Can_Handle_Incorrect_Sample) {
     EXPECT_THROW(Sample(sample, probabilities), IncorrectSample);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Can_Handle_Negative_Probability) {
+TEST(MatStatTest, Can_Handle_Negative_Probability) {
     // Arrange
 
     vector<double> sample{ 1.0, 3.0, 4.0, -1.0, 0.0 };
@@ -65,7 +65,7 @@ TEST(Polyakov_Igor_MatStatTest, Can_Handle_Negative_Probability) {
     EXPECT_THROW(Sample(sample, probabilities), IncorrectProbabilities);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Can_Handle_Summ_Probability_Not_Equal_One) {
+TEST(MatStatTest, Can_Handle_Summ_Probability_Not_Equal_One) {
     // Arrange
 
     vector<double> sample{ 1.0, 3.0, 4.0, -1.0, 0.0 };
@@ -76,7 +76,7 @@ TEST(Polyakov_Igor_MatStatTest, Can_Handle_Summ_Probability_Not_Equal_One) {
     EXPECT_THROW(Sample(sample, probabilities), IncorrectProbabilities);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Can_Handle_Sizes_Sample_And_Prob_Differ) {
+TEST(MatStatTest, Can_Handle_Sizes_Sample_And_Prob_Differ) {
     // Arrange
 
     vector<double> sample { 1.0, 3.0, 4.0, -1.0 };
@@ -88,7 +88,7 @@ TEST(Polyakov_Igor_MatStatTest, Can_Handle_Sizes_Sample_And_Prob_Differ) {
                  IncorrectSizesOfSampleAndProbs);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Can_Assign_Sample_With_Other_Size) {
+TEST(MatStatTest, Can_Assign_Sample_With_Other_Size) {
     // Arrange
 
     vector<double> sample_1 { 1.0, 3.0, 4.0, -1.0, 0.0 };
@@ -109,7 +109,7 @@ TEST(Polyakov_Igor_MatStatTest, Can_Assign_Sample_With_Other_Size) {
     ASSERT_EQ(S_1, S_2);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Samples_With_Differ_Size_Are_Inequal) {
+TEST(MatStatTest, Samples_With_Differ_Size_Are_Inequal) {
     // Arrange
 
     vector<double> sample_1 { 1.0, 3.0, 4.0, -1.0 };
@@ -126,7 +126,7 @@ TEST(Polyakov_Igor_MatStatTest, Samples_With_Differ_Size_Are_Inequal) {
     ASSERT_FALSE(S_1 == S_2);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Samples_With_Differ_Prob_Are_Inequal) {
+TEST(MatStatTest, Samples_With_Differ_Prob_Are_Inequal) {
     // Arrange
 
     vector<double> sample_1{ 1.0, 3.0, 4.0, -1.0, 0.0 };
@@ -143,7 +143,7 @@ TEST(Polyakov_Igor_MatStatTest, Samples_With_Differ_Prob_Are_Inequal) {
     ASSERT_FALSE(S_1 == S_2);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Calc_Mathematical_Expectation_Is_Correct) {
+TEST(MatStatTest, Calc_Mathematical_Expectation_Is_Correct) {
     // Arrange
 
     vector<double> sample{ 1.0, 3.0, 4.0, -1.0, 0.0 };
@@ -160,7 +160,7 @@ TEST(Polyakov_Igor_MatStatTest, Calc_Mathematical_Expectation_Is_Correct) {
     EXPECT_NEAR(1.7332, mathematical_expectation, SAMPLE_EPSILON);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Calculate_Dispersion_Is_Correct) {
+TEST(MatStatTest, Calculate_Dispersion_Is_Correct) {
     // Arrange
 
     vector<double> sample{ 1.0, 3.0, 4.0, -1.0, 0.0 };
@@ -177,7 +177,7 @@ TEST(Polyakov_Igor_MatStatTest, Calculate_Dispersion_Is_Correct) {
     EXPECT_NEAR(3.5289, dispersion, SAMPLE_EPSILON);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Calc_Average_Quadratic_Deviation_Is_Correct) {
+TEST(MatStatTest, Calc_Average_Quadratic_Deviation_Is_Correct) {
     // Arrange
 
     vector<double> sample{ 1.0, 3.0, 4.0, -1.0, 0.0 };
@@ -194,7 +194,7 @@ TEST(Polyakov_Igor_MatStatTest, Calc_Average_Quadratic_Deviation_Is_Correct) {
     EXPECT_NEAR(1.8785, average_quadratic_deviation, SAMPLE_EPSILON);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Calculate_Moment_Is_Correct) {
+TEST(MatStatTest, Calculate_Moment_Is_Correct) {
     // Arrange
 
     vector<double> sample{ 1.0, 3.0, 4.0, -1.0, 0.0 };
@@ -214,7 +214,7 @@ TEST(Polyakov_Igor_MatStatTest, Calculate_Moment_Is_Correct) {
     EXPECT_NEAR(8.7324, moment, SAMPLE_EPSILON);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Calculate_Elementary_Moment_Is_Correct) {
+TEST(MatStatTest, Calculate_Elementary_Moment_Is_Correct) {
     // Arrange
 
     vector<double> sample{ 1.0, 3.0, 4.0, -1.0, 0.0 };
@@ -233,7 +233,7 @@ TEST(Polyakov_Igor_MatStatTest, Calculate_Elementary_Moment_Is_Correct) {
     EXPECT_NEAR(24.1312, elementary_moment, SAMPLE_EPSILON);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Calculate_Central_Moment_Is_Correct) {
+TEST(MatStatTest, Calculate_Central_Moment_Is_Correct) {
     // Arrange
 
     vector<double> sample{ 1.0, 3.0, 4.0, -1.0, 0.0 };
@@ -252,7 +252,7 @@ TEST(Polyakov_Igor_MatStatTest, Calculate_Central_Moment_Is_Correct) {
     EXPECT_NEAR(0.5762, central_moment, SAMPLE_EPSILON);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Dispers_Is_Central_Moment_Of_Two_Exp) {
+TEST(MatStatTest, Dispers_Is_Central_Moment_Of_Two_Exp) {
     // Arrange
 
     vector<double> sample{ 1.0, 3.0, 4.0, -1.0, 0.0 };
@@ -272,7 +272,7 @@ TEST(Polyakov_Igor_MatStatTest, Dispers_Is_Central_Moment_Of_Two_Exp) {
     EXPECT_NEAR(central_moment, dispersion, SAMPLE_EPSILON);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Can_Calc_Dispers_Through_Math_Expectation) {
+TEST(MatStatTest, Can_Calc_Dispers_Through_Math_Expectation) {
     // Arrange
 
     vector<double> sample{ 1.0, 3.0, 4.0, -1.0, 0.0 };
@@ -290,7 +290,7 @@ TEST(Polyakov_Igor_MatStatTest, Can_Calc_Dispers_Through_Math_Expectation) {
     EXPECT_NEAR(3.5289, dispersion, SAMPLE_EPSILON);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Dispersion_Of_Constant_Equal_Is_Zero) {
+TEST(MatStatTest, Dispersion_Of_Constant_Equal_Is_Zero) {
     // Arrange
 
     vector<double> sample { 5.0 };
@@ -307,7 +307,7 @@ TEST(Polyakov_Igor_MatStatTest, Dispersion_Of_Constant_Equal_Is_Zero) {
     EXPECT_NEAR(0.0, dispersion, SAMPLE_EPSILON);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Dispersion_Is_Positive) {
+TEST(MatStatTest, Dispersion_Is_Positive) {
     // Arrange
 
     vector<double> sample { -50.0, -100.0, -60.0, -70.0, 0.0 };
@@ -324,7 +324,7 @@ TEST(Polyakov_Igor_MatStatTest, Dispersion_Is_Positive) {
     ASSERT_LE(0.0, dispersion);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Can_Out_Constant_From_Dispersion) {
+TEST(MatStatTest, Can_Out_Constant_From_Dispersion) {
     // Arrange
 
     double a = 2.0;
@@ -353,7 +353,7 @@ TEST(Polyakov_Igor_MatStatTest, Can_Out_Constant_From_Dispersion) {
     EXPECT_NEAR(dispersion_1, pow(a, 2) * dispersion_2, SAMPLE_EPSILON);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Can_Out_Constant_From_Math_Expectation) {
+TEST(MatStatTest, Can_Out_Constant_From_Math_Expectation) {
     // Arrange
 
     double a = 2.0;
@@ -381,7 +381,7 @@ TEST(Polyakov_Igor_MatStatTest, Can_Out_Constant_From_Math_Expectation) {
     EXPECT_NEAR(math_expect_1, a * math_expect_2, SAMPLE_EPSILON);
 }
 
-TEST(Polyakov_Igor_MatStatTest, Can_Fold_Up_Dispersions) {
+TEST(MatStatTest, Can_Fold_Up_Dispersions) {
     // Arrange
 
     vector<double> sample_1{ 1.0, 3.0, 4.0, -1.0, 0.0 };
@@ -393,9 +393,6 @@ TEST(Polyakov_Igor_MatStatTest, Can_Fold_Up_Dispersions) {
     Sample S_2(sample_2, probabilities_2);
 
     // Act
-    // D(E_1 + E_2) = M(E_1 + E_2)^2 - (M(E_1 + E_2))^2 =
-    // = M(E_1)^2 + 2*M(E_1)*M(E_2) + M(E_2)^2 - (M(E_1))^2 - 2*M(E_1)*M(E_2) -
-    // - (M(E_2))^2 = D(E_1) + D(E_2)
 
     double math_expect_1 = S_1.CalcMathematicalExpectation();
     double math_expect_2 = S_2.CalcMathematicalExpectation();

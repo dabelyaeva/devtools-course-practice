@@ -31,19 +31,10 @@ class IncorrectSizesOfSampleAndProbs :public std::runtime_error {
 
 
 class Sample {
- private:
-    int sample_size;
-    vector<double> sample;
-    vector<double> probabilities;
-
-    bool IsSummOfProbsEqualUnity(const vector<double> _pr) const;
-    bool AreProbsCorrect(const vector<double> _pr) const;
-    bool IsSampleCorrect(const vector<double> _sample) const;
-
  public:
     Sample();
-    Sample(const vector<double> _sample,
-           const vector<double> _probabilities);
+    Sample(const vector<double> sample,
+           const vector<double> probabilities);
     ~Sample();
 
     Sample& operator=(const Sample& S);
@@ -59,6 +50,15 @@ class Sample {
     double CalcDispersion() const;
     double CalcAverageQuadraticDeviation() const;
     double CalcCentralMoment(const int exponent) const;
+
+private:
+    int sample_size;
+    vector<double> sample;
+    vector<double> probabilities;
+
+    bool IsSummOfProbsEqualUnity(const vector<double> _pr) const;
+    bool AreProbsCorrect(const vector<double> _pr) const;
+    bool IsSampleCorrect(const vector<double> _sample) const;
 };
 
 #endif  // MODULES_MATSTAT_INCLUDE_MATSTAT_H_

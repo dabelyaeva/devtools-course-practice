@@ -101,7 +101,6 @@ TEST_F(CurrencyConverterTest, Can_Detect_Empty_Currency_Code) {
   Assert("Code of buying or selling currency is empty");
 }
 
-
 TEST_F(CurrencyConverterTest, Can_Detect_Incorrect_Length_Of_Currency_Code) {
   // Arrange
   vector<string> args{ "RUBS", "EUR", "3" };

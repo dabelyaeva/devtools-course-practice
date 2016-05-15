@@ -1,7 +1,7 @@
 // Copyright 2016 Voevodin Andrew
 
-#ifndef MODULES_VOEVODIN_ANDREW_COLOR_CONVERTER_INCLUDE_COLOR_CONVERTER_H_
-#define MODULES_VOEVODIN_ANDREW_COLOR_CONVERTER_INCLUDE_COLOR_CONVERTER_H_
+#ifndef MODULES_COLOR_CONVERTER_INCLUDE_COLOR_CONVERTER_H_
+#define MODULES_COLOR_CONVERTER_INCLUDE_COLOR_CONVERTER_H_
 
 #include <math.h>
 #include <stdexcept>
@@ -35,7 +35,7 @@ class IncorrectSizeOfVector :public std::runtime_error {
         std::runtime_error("Size vector is not correct, size must be - 3") {}
 };
 
-class color_converter {
+class ColorConverter {
  public:
     static vector<int> HSVToRGB(const vector<double>& hsv);
     static vector<int> LABToRGB(const vector<int>& lab);
@@ -59,9 +59,9 @@ class color_converter {
 
     static bool IsVectorSizeCorrect(const vector<double>& vector);
     static bool IsVectorSizeCorrect(const vector<int>& vector);
-    static bool IsRGBVectorinRange(const vector<int>& rgb);
-    static bool IsHSVVectorinRange(const vector<double>& hsv);
-    static bool IsLABVectorinRange(const vector<int>& lab);
+	static bool IsRGBVectorInRange(const vector<int>& rgb);
+	static bool IsHSVVectorInRange(const vector<double>& hsv);
+	static bool IsLABVectorInRange(const vector<int>& lab);
 
     static vector<int> XYZToRGB(const vector<double>& xyz);
     static vector<int> XYZToLAB(const vector<double>& xyz);
@@ -69,4 +69,4 @@ class color_converter {
     static vector<double> RGBToXYZ(const vector<int>& rgb);
     static vector<double> LABToXYZ(const vector<int>& lab);
 };
-#endif  // MODULES_VOEVODIN_ANDREW_COLOR_CONVERTER_INCLUDE_COLOR_CONVERTER_H_
+#endif  // MODULES_COLOR_CONVERTER_INCLUDE_COLOR_CONVERTER_H_

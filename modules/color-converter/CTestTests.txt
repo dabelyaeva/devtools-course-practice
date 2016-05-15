@@ -1,0 +1,12 @@
+############################################
+##### Testing
+############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)

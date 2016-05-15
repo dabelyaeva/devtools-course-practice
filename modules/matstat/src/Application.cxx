@@ -76,9 +76,8 @@ bool Application::validateNumberOfArguments(int argc, const char** argv) {
     return true;
 }
 
-Application::Arguments Application::
-checkInputFromUser(int argc, const char** argv) {
-    Arguments args;
+void Application::
+checkInputFromUser(int argc, const char** argv, Arguments &args) {
     int n = parseInt(argv[1]);
     if (n > 0) {
         args.function = parseFunction(argv[2 + 2 * n]);
@@ -90,7 +89,6 @@ checkInputFromUser(int argc, const char** argv) {
                     args.s1.push_back(parseDouble(argv[2 + i]));
                     args.p1.push_back(parseDouble(argv[2 + n + i]));
                 }
-                return args;
             } else {
                 throw string("\nWrong number of arguments!");
             }
@@ -102,7 +100,6 @@ checkInputFromUser(int argc, const char** argv) {
                     args.p1.push_back(parseDouble(argv[2 + n + i]));
                 }
                 args.exp = parseInt(argv[3 + 2 * n]);
-                return args;
             } else {
                 throw string("\nWrong number of arguments!");
             }
@@ -114,7 +111,6 @@ checkInputFromUser(int argc, const char** argv) {
                 }
                 args.point = parseDouble(argv[3 + 2 * n]);
                 args.exp = parseInt(argv[4 + 2 * n]);
-                return args;
             } else {
                 throw string("\nWrong number of arguments!");
             }
@@ -122,7 +118,6 @@ checkInputFromUser(int argc, const char** argv) {
     } else {
         throw string("\nSize must be positive!");
     }
-    return args;
 }
 
 Functions Application::parseFunction(const char* arg) {
@@ -157,7 +152,7 @@ string Application::operator()(int argc, const char ** argv) {
         return str;
     }
     try {
-        args = checkInputFromUser(argc, argv);
+        checkInputFromUser(argc, argv, args);
     }
     catch (std::string str) {
         return str;

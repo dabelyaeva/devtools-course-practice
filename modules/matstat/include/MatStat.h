@@ -20,7 +20,7 @@ class IncorrectSample :public std::runtime_error {
 class IncorrectProbabilities :public std::runtime_error {
  public:
     IncorrectProbabilities() :
-    std::runtime_error("\nSum of probabilities must be equal 1") {}
+    std::runtime_error("Sum of probabilities must be equal 1!") {}
 };
 
 class IncorrectSizesOfSampleAndProbs :public std::runtime_error {

@@ -63,9 +63,20 @@ TEST_F(MatStatAppTest, Can_Detect_Wrong_Function_Format) {
     Assert("Wrong function format!");
 }
 
-TEST_F(MatStatAppTest, Can_Detect_Wrong_Number_Format) {
+TEST_F(MatStatAppTest, Can_Detect_Wrong_Double_Number_Format) {
     // Arrange
     vector<string> args = { "2", "1", "h", "0.5", "0.5", "CalcDispersion"};
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Wrong number format!");
+}
+
+TEST_F(MatStatAppTest, Can_Detect_Wrong_Int_Number_Format) {
+    // Arrange
+    vector<string> args = { "h", "1", "h", "0.5", "0.5", "CalcDispersion" };
 
     // Act
     Act(args);
@@ -105,6 +116,17 @@ TEST_F(MatStatAppTest, Is_Checking_Wrong_Size) {
 
     // Assert
     Assert("Size must be positive!");
+}
+
+TEST_F(MatStatAppTest, Can_Not_Create_Sampe_With_Not_Zero_Probabilities) {
+    // Arrange
+    vector<string> args = { "2", "1", "2", "0.5", "0.4", "CalcDispersion"};
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Sum of probabilities must be equal 1!");
 }
 
 TEST_F(MatStatAppTest, Can_Calculate_Dispersion) {

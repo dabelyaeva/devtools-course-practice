@@ -83,7 +83,7 @@ std::string RomanCalculator::operator()(int argc, const char** argv) {
         } else {
             message_ = "Wrong number format!";
         }
-    } else if (argc ==4) {
+    } else if (argc == 4) {
         try {
             args.number1 = argv[1];
             args.number2 = argv[2];

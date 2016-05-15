@@ -20,7 +20,7 @@ class IncorrectSample :public std::runtime_error {
 class IncorrectProbabilities :public std::runtime_error {
  public:
     IncorrectProbabilities() :
-    std::runtime_error ("\nSum of probabilities must be equal 1") {}
+    std::runtime_error("\nSum of probabilities must be equal 1") {}
 };
 
 class IncorrectSizesOfSampleAndProbs :public std::runtime_error {
@@ -51,7 +51,7 @@ class Sample {
     double CalcAverageQuadraticDeviation() const;
     double CalcCentralMoment(const int exponent) const;
 
-private:
+ private:
     int sample_size;
     vector<double> sample;
     vector<double> probabilities;

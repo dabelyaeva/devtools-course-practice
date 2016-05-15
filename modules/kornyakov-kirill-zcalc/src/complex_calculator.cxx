@@ -38,7 +38,6 @@ bool ComplexCalculator::validateNumberOfArguments(int argc, const char** argv) {
 
 double parseDouble(const char* arg) {
     char* end;
-
     double value = strtod(arg, &end);
 
     if (end[0]) {

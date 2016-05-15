@@ -5,15 +5,20 @@
 
 #include <string>
 #include "include/finance_notepad.h"
+#include "include/date.h"
 
 class Application {
  public:
     Application();
     std::string operator()(int argc, const char** argv);
  private:
+    notepad note;
     std::string message_;
+    bool parseString(string params);
     void help(const char* appname);
-    bool parseAppOperand(int argc, const char** argv);
+    void readFromFile(string filename);
+    void writeToFile(string filename);
+    void parseAppOperand(int argc, const char** argv);
     bool validateNumberOfArguments(int argc, const char** argv);
 };
 

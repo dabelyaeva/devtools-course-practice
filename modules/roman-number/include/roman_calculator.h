@@ -15,11 +15,11 @@ class RomanCalculator {
                              const char* message = "");
     bool validateNumberOfArguments(int argc, const char** argv);
     std::string message_;
-    typedef struct {
+    struct Arguments{
         std::string number1;
         std::string number2;
         char operation;
-    } Arguments;
+    };
 };
 
 #endif  // MODULES_ROMAN_NUMBER_INCLUDE_ROMAN_CALCULATOR_H_

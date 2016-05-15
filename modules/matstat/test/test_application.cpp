@@ -126,7 +126,18 @@ TEST_F(MatStatAppTest, Can_Not_Create_Sampe_With_Not_Zero_Probabilities) {
     Act(args);
 
     // Assert
-    Assert("Sum of probabilities must be equal 1!");
+    Assert("Probabilities is not correct!");
+}
+
+TEST_F(MatStatAppTest, Can_Not_Create_Sampe_With_Same_Values) {
+    // Arrange
+    vector<string> args = { "2", "1", "1", "0.5", "0.5", "CalcDispersion" };
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Sample is not correct, values must be different");
 }
 
 TEST_F(MatStatAppTest, Can_Calculate_Dispersion) {

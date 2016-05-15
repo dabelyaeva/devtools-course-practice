@@ -14,21 +14,20 @@ const double SAMPLE_EPSILON = 0.001;
 class IncorrectSample :public std::runtime_error {
  public:
      IncorrectSample() :
-     std::runtime_error("Sample is not correct, values must be different") {}
+     std::runtime_error("Sample is not correct, values must be different!") {}
 };
 
 class IncorrectProbabilities :public std::runtime_error {
  public:
     IncorrectProbabilities() :
-    std::runtime_error("Sum of probabilities must be equal 1!") {}
+    std::runtime_error("Probabilities is not correct!") {}
 };
 
 class IncorrectSizesOfSampleAndProbs :public std::runtime_error {
  public:
      IncorrectSizesOfSampleAndProbs() :
-     std::runtime_error("Sizes of sample and probs must be identical") {}
+     std::runtime_error("Sizes of sample and probs must be identical!") {}
 };
-
 
 class Sample {
  public:

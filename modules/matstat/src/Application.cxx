@@ -78,39 +78,39 @@ bool Application::validateNumberOfArguments(int argc, const char** argv) {
 
 void Application::
 checkInputFromUser(int argc, const char** argv, Arguments *args) {
-    int n = parseInt(argv[1]);
-    if (n > 0) {
-        args->function = parseFunction(argv[2 + 2 * n]);
+    int size = parseInt(argv[1]);
+    if (size > 0) {
+        args->function = parseFunction(argv[2 + 2 * size]);
         if (args->function == CALC_MATH_EXPECTATION ||
             args->function == CALC_DISPERSION ||
             args->function == CALC_AVERAGE_QUADRATIC_DEVIATION) {
-            if (argc == 3 + 2 * n) {
-                for (int i = 0; i < n; i++) {
-                    args->s1.push_back(parseDouble(argv[2 + i]));
-                    args->p1.push_back(parseDouble(argv[2 + n + i]));
+            if (argc == 3 + 2 * size) {
+                for (int i = 0; i < size; i++) {
+                    args->s.push_back(parseDouble(argv[2 + i]));
+                    args->p.push_back(parseDouble(argv[2 + size + i]));
                 }
             } else {
                 throw string("\nWrong number of arguments!");
             }
         } else if (args->function == CALC_CENTRAL_MOMENT ||
             args->function == CALC_ELEMENTARY_MOMENT) {
-            if (argc == 4 + 2 * n) {
-                for (int i = 0; i < n; i++) {
-                    args->s1.push_back(parseDouble(argv[2 + i]));
-                    args->p1.push_back(parseDouble(argv[2 + n + i]));
+            if (argc == 4 + 2 * size) {
+                for (int i = 0; i < size; i++) {
+                    args->s.push_back(parseDouble(argv[2 + i]));
+                    args->p.push_back(parseDouble(argv[2 + size + i]));
                 }
-                args->exp = parseInt(argv[3 + 2 * n]);
+                args->exp = parseInt(argv[3 + 2 * size]);
             } else {
                 throw string("\nWrong number of arguments!");
             }
         } else if (args->function == CALC_MOMENT) {
-            if (argc == 5 + 2 * n) {
-                for (int i = 0; i < n; i++) {
-                    args->s1.push_back(parseDouble(argv[2 + i]));
-                    args->p1.push_back(parseDouble(argv[2 + n + i]));
+            if (argc == 5 + 2 * size) {
+                for (int i = 0; i < size; i++) {
+                    args->s.push_back(parseDouble(argv[2 + i]));
+                    args->p.push_back(parseDouble(argv[2 + size + i]));
                 }
-                args->point = parseDouble(argv[3 + 2 * n]);
-                args->exp = parseInt(argv[4 + 2 * n]);
+                args->relative_point = parseDouble(argv[3 + 2 * size]);
+                args->exp = parseInt(argv[4 + 2 * size]);
             } else {
                 throw string("\nWrong number of arguments!");
             }
@@ -158,7 +158,7 @@ string Application::operator()(int argc, const char ** argv) {
         return str;
     }
     try {
-        Sample sample(args->s1, args->p1);
+        Sample sample(args->s, args->p);
         A = sample;
     }
     catch (std::runtime_error exp) {
@@ -172,7 +172,7 @@ string Application::operator()(int argc, const char ** argv) {
         stream << "Mathematical Expectation is equal " << result;
         break;
     case CALC_MOMENT:
-        result = A.CalcMoment(args->point, args->exp);
+        result = A.CalcMoment(args->relative_point, args->exp);
         stream << "Moment is equal " << result;
         break;
     case CALC_ELEMENTARY_MOMENT:

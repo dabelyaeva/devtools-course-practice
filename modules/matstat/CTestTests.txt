@@ -65,7 +65,14 @@ add_test(
     COMMAND ${APPLICATION} 2 1 2 0.5 0.4 CalcDispersion
 )
 set_tests_properties (${prefix}_Can_Not_Create_Sampe_With_Not_Zero_Probabilities
-  PROPERTIES PASS_REGULAR_EXPRESSION "Sum of probabilities must be equal 1!")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Probabilities is not correct!")
+
+add_test(
+    NAME ${prefix}_Can_Not_Create_Sampe_With_Same_Values
+    COMMAND ${APPLICATION} 2 1 1 0.5 0.4 CalcDispersion
+)
+set_tests_properties (${prefix}_Can_Not_Create_Sampe_With_Same_Values
+  PROPERTIES PASS_REGULAR_EXPRESSION "Sample is not correct, values must be different!")
 
 add_test(
     NAME ${prefix}_Can_Calculate_Dispersion

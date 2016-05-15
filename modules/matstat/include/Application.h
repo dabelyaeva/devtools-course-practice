@@ -30,10 +30,10 @@ class Application {
      Functions parseFunction(const char* arg);
      string message_;
      typedef struct {
-         vector<double> s1;
-         vector<double> p1;
+         vector<double> s;
+         vector<double> p;
          Functions function;
-         double point;
+         double relative_point;
          int exp;
      } Arguments;
      void checkInputFromUser(int argc, const char** argv, Arguments *args);

@@ -1,10 +1,10 @@
 // Copyright 2016 Polkanov Nikita
 
 #include "include/color_calculator.h"
-#include "include/Color_Converter.h"
 #include <sstream>
 #include <string>
 #include <vector>
+#include "include/color_converter.h"
 
 using std::string;
 using std::vector;

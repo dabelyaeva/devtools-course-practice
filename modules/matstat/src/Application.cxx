@@ -77,40 +77,40 @@ bool Application::validateNumberOfArguments(int argc, const char** argv) {
 }
 
 void Application::
-checkInputFromUser(int argc, const char** argv, Arguments &args) {
+checkInputFromUser(int argc, const char** argv, Arguments *args) {
     int n = parseInt(argv[1]);
     if (n > 0) {
-        args.function = parseFunction(argv[2 + 2 * n]);
-        if (args.function == CALC_MATH_EXPECTATION ||
-            args.function == CALC_DISPERSION ||
-            args.function == CALC_AVERAGE_QUADRATIC_DEVIATION) {
+        args->function = parseFunction(argv[2 + 2 * n]);
+        if (args->function == CALC_MATH_EXPECTATION ||
+            args->function == CALC_DISPERSION ||
+            args->function == CALC_AVERAGE_QUADRATIC_DEVIATION) {
             if (argc == 3 + 2 * n) {
                 for (int i = 0; i < n; i++) {
-                    args.s1.push_back(parseDouble(argv[2 + i]));
-                    args.p1.push_back(parseDouble(argv[2 + n + i]));
+                    args->s1.push_back(parseDouble(argv[2 + i]));
+                    args->p1.push_back(parseDouble(argv[2 + n + i]));
                 }
             } else {
                 throw string("\nWrong number of arguments!");
             }
-        } else if (args.function == CALC_CENTRAL_MOMENT ||
-            args.function == CALC_ELEMENTARY_MOMENT) {
+        } else if (args->function == CALC_CENTRAL_MOMENT ||
+            args->function == CALC_ELEMENTARY_MOMENT) {
             if (argc == 4 + 2 * n) {
                 for (int i = 0; i < n; i++) {
-                    args.s1.push_back(parseDouble(argv[2 + i]));
-                    args.p1.push_back(parseDouble(argv[2 + n + i]));
+                    args->s1.push_back(parseDouble(argv[2 + i]));
+                    args->p1.push_back(parseDouble(argv[2 + n + i]));
                 }
-                args.exp = parseInt(argv[3 + 2 * n]);
+                args->exp = parseInt(argv[3 + 2 * n]);
             } else {
                 throw string("\nWrong number of arguments!");
             }
-        } else if (args.function == CALC_MOMENT) {
+        } else if (args->function == CALC_MOMENT) {
             if (argc == 5 + 2 * n) {
                 for (int i = 0; i < n; i++) {
-                    args.s1.push_back(parseDouble(argv[2 + i]));
-                    args.p1.push_back(parseDouble(argv[2 + n + i]));
+                    args->s1.push_back(parseDouble(argv[2 + i]));
+                    args->p1.push_back(parseDouble(argv[2 + n + i]));
                 }
-                args.point = parseDouble(argv[3 + 2 * n]);
-                args.exp = parseInt(argv[4 + 2 * n]);
+                args->point = parseDouble(argv[3 + 2 * n]);
+                args->exp = parseInt(argv[4 + 2 * n]);
             } else {
                 throw string("\nWrong number of arguments!");
             }
@@ -141,7 +141,7 @@ Functions Application::parseFunction(const char* arg) {
 }
 
 string Application::operator()(int argc, const char ** argv) {
-    Arguments args;
+    Arguments *args = new Arguments;
     std::ostringstream stream;
     try {
         if (!validateNumberOfArguments(argc, argv)) {
@@ -158,7 +158,7 @@ string Application::operator()(int argc, const char ** argv) {
         return str;
     }
     try {
-        Sample sample(args.s1, args.p1);
+        Sample sample(args->s1, args->p1);
         A = sample;
     }
     catch (std::runtime_error exp) {
@@ -166,17 +166,17 @@ string Application::operator()(int argc, const char ** argv) {
     }
 
     double result;
-    switch (args.function) {
+    switch (args->function) {
     case CALC_MATH_EXPECTATION:
         result = A.CalcMathematicalExpectation();
         stream << "Mathematical Expectation is equal " << result;
         break;
     case CALC_MOMENT:
-        result = A.CalcMoment(args.point, args.exp);
+        result = A.CalcMoment(args->point, args->exp);
         stream << "Moment is equal " << result;
         break;
     case CALC_ELEMENTARY_MOMENT:
-        result = A.CalcElementaryMoment(args.exp);
+        result = A.CalcElementaryMoment(args->exp);
         stream << "Elementary moment is equal " << result;
         break;
     case CALC_DISPERSION:
@@ -188,7 +188,7 @@ string Application::operator()(int argc, const char ** argv) {
         stream << "Average Quadratic Deviation is equal " << result;
         break;
     case CALC_CENTRAL_MOMENT:
-        result = A.CalcCentralMoment(args.exp);
+        result = A.CalcCentralMoment(args->exp);
         stream << "Central moment is equal " << result;
         break;
     }

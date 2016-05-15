@@ -15,7 +15,7 @@ using std::vector;
 using std::string;
 
 class MatStatAppTest : public ::testing::Test {
-protected:
+ protected:
     // virtual void SetUp() {}
 
     void Act(vector<string> args_) {
@@ -36,12 +36,12 @@ protected:
         EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
 
-private:
+ private:
     Application app_;
     string output_;
 };
 
-TEST_F(MatStatAppTest, Do_Print_Help_Without_Parameters) {
+TEST_F(MatStatAppTest, Can_Print_Help_Without_Parameters) {
     // Arrange
     vector<string> args = {};
 
@@ -120,7 +120,8 @@ TEST_F(MatStatAppTest, Can_Calculate_Dispersion) {
 
 TEST_F(MatStatAppTest, Can_Calculate_Central_Moment) {
     // Arrange
-    vector<string> args = { "2", "1", "2", "0.5", "0.5", "CalcCentralMoment", "2" };
+    vector<string> args =
+    { "2", "1", "2", "0.5", "0.5", "CalcCentralMoment", "2" };
 
     // Act
     Act(args);
@@ -142,7 +143,8 @@ TEST_F(MatStatAppTest, Can_Not_Calculate_Central_Moment_With_Incorrect_Args) {
 
 TEST_F(MatStatAppTest, Can_Calculate_Moment) {
     // Arrange
-    vector<string> args = { "2", "1", "2", "0.5", "0.5", "CalcMoment", "1", "2" };
+    vector<string> args =
+    { "2", "1", "2", "0.5", "0.5", "CalcMoment", "1", "2" };
 
     // Act
     Act(args);
@@ -165,7 +167,7 @@ TEST_F(MatStatAppTest,
 
 TEST_F(MatStatAppTest, Can_Calculate_Mathematical_Expectation) {
     // Arrange
-    vector<string> args = 
+    vector<string> args =
     { "2", "1", "2", "0.5", "0.5", "CalcMathematicalExpectation" };
 
     // Act

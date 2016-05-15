@@ -4,6 +4,8 @@
 #define MODULES_MATSTAT_INCLUDE_APPLICATION_H_
 
 #include "MatStat.h"
+#include <string>
+#include <vector>
 
 using std::vector;
 using std::string;

@@ -1,15 +1,14 @@
 // Copyright 2016 Marchenko Andrey
 
 #include "include/Application.h"
-#include "include/MatStat.h"
 
-#include <vector>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
-#include <string.h>
+#include <vector>
 #include <string>
 #include <sstream>
+
+#include "include/MatStat.h"
 
 using std::vector;
 using std::string;
@@ -27,9 +26,9 @@ void Application::help(const char* appname, const char* message) {
 
         "where <function> may take the following values: \n\n" +
         "Functions without arguments: \n" +
-        "CalcMathematicalExpectation - Calculate mathematical expectation \n" 
+        "CalcMathematicalExpectation - Calculate mathematical expectation \n"
         + "CalcDispersion - Calculate dispersion \n" +
-        "CalcAverageQuadraticDeviation - Calculate average quadratic deviation" 
+        "CalcAverageQuadraticDeviation - Calculate average quadratic deviation"
         + "\n\nFunctions with 1 integer argument: \n" +
         "CalcCentralMoment - Calculate cenral moment \n" +
         "CalcElementaryMoment - Calculate elementary moment \n\n" +
@@ -41,7 +40,7 @@ void Application::help(const char* appname, const char* message) {
 int parseInt(const char* arg) {
     char* end;
 
-    int value = (int)strtod(arg, &end);
+    int value = static_cast<int>(strtod(arg, &end));
 
     if (end[0]) {
         throw string("Wrong number format!");
@@ -72,10 +71,11 @@ bool Application::validateNumberOfArguments(int argc, const char** argv) {
         throw string("\nWrong number of parameters!");
      return false;
     }
- return true;
+    return true;
 }
 
-Application::Arguments Application::checkInputFromUser(int argc, const char** argv) {
+Application::Arguments Application::
+checkInputFromUser(int argc, const char** argv) {
     Arguments args;
     int n = parseInt(argv[1]);
     if (n > 0) {
@@ -92,8 +92,7 @@ Application::Arguments Application::checkInputFromUser(int argc, const char** ar
             } else {
                 throw string("\nWrong number of arguments!");
             }
-        }
-        else if (args.function == CALC_CENTRAL_MOMENT ||
+        } else if (args.function == CALC_CENTRAL_MOMENT ||
             args.function == CALC_ELEMENTARY_MOMENT) {
             if (argc == 4 + 2 * n) {
                 for (int i = 0; i < n; i++) {
@@ -105,8 +104,7 @@ Application::Arguments Application::checkInputFromUser(int argc, const char** ar
             } else {
                 throw string("\nWrong number of arguments!");
             }
-        }
-        else if (args.function == CALC_MOMENT) {
+        } else if (args.function == CALC_MOMENT) {
             if (argc == 5 + 2 * n) {
                 for (int i = 0; i < n; i++) {
                     args.s1.push_back(parseDouble(argv[2 + i]));
@@ -119,8 +117,7 @@ Application::Arguments Application::checkInputFromUser(int argc, const char** ar
                 throw string("\nWrong number of arguments!");
             }
         }
-    }
-    else {
+    } else {
         throw string("\nSize must be positive!");
     }
 }
@@ -164,7 +161,7 @@ string Application::operator()(int argc, const char ** argv) {
     }
     try {
         Sample sample(args.s1, args.p1);
-        A=sample;
+        A = sample;
     }
     catch (std::runtime_error exp) {
         return exp.what();
@@ -197,7 +194,7 @@ string Application::operator()(int argc, const char ** argv) {
         stream << "Central moment is equal " << result;
         break;
     }
-        
+
     message_ = stream.str();
 
         return message_;

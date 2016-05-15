@@ -132,7 +132,7 @@ set_tests_properties (${prefix}_can_Not_Mod_Divisible_Number
 
 add_test(
     NAME ${prefix}_can_Not_Add_Large_Numbers
-    COMMAND ${APPLICATION} IV II %
+    COMMAND ${APPLICATION} MM MM %
 )
 set_tests_properties (${prefix}_can_Not_Add_Large_Numbers
   PROPERTIES PASS_REGULAR_EXPRESSION "Resulting roman number have wrong format!")

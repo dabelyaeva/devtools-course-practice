@@ -141,7 +141,7 @@ TEST_F(TestApplication, can_parse_command_line_expected_query_and_table) {
     constexpr const char* argv[argc] = {
         "somepath_to_binary",
         "-q",
-        "'Name1,Name2'",
+        "Name1,Name2",
         "-t",
         "\"sometable.csv\""
     };
@@ -163,7 +163,7 @@ TEST_F(TestApplication, can_parse_command_line_expected_query) {
     constexpr const char* argv[argc] = {
         "somepath_to_binary",
         "-q",
-        "'Name1,Name2'"
+        "Name1,Name2"
     };
     Parameters expected;
     expected.query = "Name1,Name2";
@@ -175,55 +175,13 @@ TEST_F(TestApplication, can_parse_command_line_expected_query) {
     EXPECT_EQ(expected.query, result.query);
 }
 
-TEST_F(TestApplication, can_parse_command_line_unexpected_query_without_1_quote)
-{
-    // Arrange
-    constexpr int argc = 3;
-    constexpr const char* argv[argc] = {
-        "somepath_to_binary",
-        "-q",
-        "Name1,Name2'"
-    };
-
-    // Act & Assert
-    EXPECT_ANY_THROW(parseCommandLine(argc, argv));
-}
-
-TEST_F(TestApplication, can_parse_command_line_unexpected_query_without_2_quote)
-{
-    // Arrange
-    constexpr int argc = 3;
-    constexpr const char* argv[argc] = {
-        "somepath_to_binary",
-        "-q",
-        "'Name1,Name2"
-    };
-
-    // Act & Assert
-    EXPECT_ANY_THROW(parseCommandLine(argc, argv));
-}
-
-TEST_F(TestApplication, can_parse_command_line_unexpected_query_without_quotes)
-{
-    // Arrange
-    constexpr int argc = 3;
-    constexpr const char* argv[argc] = {
-        "somepath_to_binary",
-        "-q",
-        "Name1,Name2"
-    };
-
-    // Act & Assert
-    EXPECT_ANY_THROW(parseCommandLine(argc, argv));
-}
-
 TEST_F(TestApplication, can_parse_command_line_unexpected_no_query) {
     // Arrange
     constexpr int argc = 5;
     constexpr const char* argv[argc] = {
         "somepath_to_binary",
         "-t",
-        "\"sometable.csv\""
+        "sometable.csv"
     };
 
     // Act & Assert
@@ -262,7 +220,7 @@ TEST_F(TestApplication, can_parse_command_line_unexpected_table_without_table) {
     constexpr const char* argv[argc] = {
         "somepath_to_binary",
         "-q",
-        "'Name1,Name2'",
+        "Name1,Name2",
         "-t"
     };
 
@@ -303,7 +261,7 @@ TEST_F(TestApplication, can_parse_command_line_unexpected_nullptr_argv_internal)
     constexpr const char* argv[argc] = {
         "somepath_to_binary",
         "-q",
-        "'Name1'",
+        "Name1",
         nullptr
     };
     Parameters expected;
@@ -337,7 +295,7 @@ TEST_F(TestApplication, can_run) {
     constexpr int argc = 5;
     constexpr const char* argv[argc] = {
         "somepath_to_binary",
-        "-q", "'Name1,Name2'",
+        "-q", "Name1,Name2",
         "-t", "testTable.csv"
     };
     table_.clear();
@@ -365,7 +323,7 @@ TEST_F(TestApplication, can_run_with_nullptr_result) {
     constexpr const char* argv[argc] = {
         "somepath_to_binary",
         "-q",
-        "'Name1,Name2'"
+        "Name1,Name2"
     };
 
     // Act & Assert

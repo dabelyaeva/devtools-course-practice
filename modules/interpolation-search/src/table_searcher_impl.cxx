@@ -75,13 +75,13 @@ Application::printHelp(const std::string& appName, std::ostream* os) const {
     using std::endl;
     (*os)
         << "Usage: " << appName << " -" << CommandLineParameter::Query
-            << " 'Tom Peterson' [-" << CommandLineParameter::Table
+            << " \"Tom Peterson,BobWillson\" [-" << CommandLineParameter::Table
             << " table.csv]" << endl
         << "Parameters:" << endl
         << "\t-" << CommandLineParameter::Table
             << " - Path to a file with table in format: Name, Data, ..." << endl
         << "\t-" << CommandLineParameter::Query
-            << " - Query to search to in table. Format: 'name [, name]'" << endl
+            << " - Query to search to in table. Format: name[,name]" << endl
         << endl
         << "Program searches for a query in a first column of a table. "
             << "If no table was given then stdin is used as an input table. "
@@ -98,7 +98,8 @@ Application::parseCommandLine(int argc, const char* const* argv) {
     }
 
     if ((argc == 1) || (5 < argc)) {
-        throw std::runtime_error("Wrong command line parameters count.");
+        throw std::runtime_error("Failed to parse command line: "
+            "Wrong command line parameters count.");
     }
 
     int i = 1;
@@ -122,17 +123,6 @@ Application::parseCommandLine(int argc, const char* const* argv) {
             if ((i + 1 < argc) && (argv[i + 1] != nullptr)) {
                 parameters.query = argv[i + 1];
                 i += 2;
-
-                if ((parameters.query[0] != '\'') ||
-                    (parameters.query.back() != '\''))
-                {
-                    throw std::runtime_error("Failed to parse command line: " +
-                        std::string("Quotes is expected in argument of '-") +
-                        CommandLineParameter::Query +
-                        std::string("' parameter."));
-                }
-                parameters.query = parameters.query.substr
-                    (1, parameters.query.size() - 2); // clear quotes
             } else {
                 throw std::runtime_error("Failed to parse command line: " +
                     std::string("Wrong argument of '-") +

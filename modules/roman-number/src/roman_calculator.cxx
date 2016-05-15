@@ -71,13 +71,13 @@ std::string RomanCalculator::operator()(int argc, const char** argv) {
         if (RomanConverter::CheckRomanNumber(argv[1])) {
             std::string roman = argv[1];
             int arabic = RomanConverter::ConvertRomanToArabic(roman);
-            message_ = std::string(argv[1]) +
+            message_ = roman +
                     " is equivalent to " +
                     std::to_string(arabic);
         } else if (RomanConverter::CheckArabicNumber(atoi(argv[1]))) {
             int arabic = atoi(argv[1]);
             std::string roman = RomanConverter::ConvertArabicToRoman(arabic);
-            message_ = std::string(argv[1]) +
+            message_ = std::string(arabic) +
                     " is equivalent to " +
                     roman;
         } else {

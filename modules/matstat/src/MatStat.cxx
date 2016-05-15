@@ -88,7 +88,7 @@ Sample& Sample::operator=(const Sample& S) {
 }
 
 bool Sample::operator==(const Sample& S) const {
-    if (sample_size < S.sample_size) {
+    if (sample_size != S.sample_size) {
         return false;
     }
 

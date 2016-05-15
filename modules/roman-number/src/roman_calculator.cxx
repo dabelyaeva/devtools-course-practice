@@ -11,8 +11,6 @@
 
 #include "include/RomanConverter.h"
 
-RomanCalculator::RomanCalculator() : message_("") {}
-
 void RomanCalculator::generateHelpMessage(const char *appname,
                                           const char *message) {
     assert(appname != nullptr);

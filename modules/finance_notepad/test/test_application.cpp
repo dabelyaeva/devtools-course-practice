@@ -355,3 +355,16 @@ TEST_F(AppFinanceNotepadTest, can_set_pouch) {
     Assert("Setted! Your pouch is 30");
 //    remove(filename.c_str());
 }
+
+TEST_F(AppFinanceNotepadTest, can_reach_error_when_set_pouch) {
+    // Arrange
+    std::string filename = "test_read_from_file.txt";
+    vector<string> args = {"-sp", filename, "pouch"};
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("wrong pouch param!");
+//    remove(filename.c_str());
+}

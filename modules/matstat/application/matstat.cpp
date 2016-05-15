@@ -1,12 +1,14 @@
 // Copyright 2016 Marchenko Andrey
 
-#include <iostream>
+#include <stdio.h>
+#include <string>
 
-#include "include/MatStat.h"
+#include "include/Application.h"
 
-using std::cout;
-using std::endl;
+int main(int argc, const char** argv) {
+    Application app;
+    std::string output = app(argc, argv);
+    printf("%s\n", output.c_str());
 
-void main() {
-    cout << "Hello World" << endl;
+    return 0;
 }

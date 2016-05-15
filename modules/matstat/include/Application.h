@@ -4,10 +4,12 @@
 #define MODULES_MATSTAT_INCLUDE_APPLICATION_H_
 
 #include "MatStat.h"
+
 using std::vector;
+using std::string;
 
 enum Functions {
-    CALC_MATH_EXPECTATION,
+    CALC_MATH_EXPECTATION = 0,
     CALC_MOMENT,
     CALC_ELEMENTARY_MOMENT,
     CALC_DISPERSION,
@@ -18,13 +20,13 @@ enum Functions {
 class Application {
  public:
      Application();
-     std::string operator()(int argc, const char** argv);
+     string operator()(int argc, const char** argv);
  private:
+     Sample A;
      void help(const char* appname, const char* message = "");
      bool validateNumberOfArguments(int argc, const char** argv);
-     double parseDouble(const char* arg);
      Functions parseFunction(const char* arg);
-     std::string message_;
+     string message_;
      typedef struct {
          vector<double> s1;
          vector<double> p1;
@@ -32,6 +34,7 @@ class Application {
          double point;
          int exp;
      } Arguments;
+     Arguments checkInputFromUser(int argc, const char** argv);
 };
 
 #endif  // MODULES_MATSTAT_INCLUDE_APPLICATION_H_

@@ -1,6 +1,8 @@
 // Copyright 2016 Marchenko Andrey
 
 #include "include/Application.h"
+#include "include/MatStat.h"
+
 #include <vector>
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,31 +18,24 @@ Application::Application() : message_("") {}
 
 void Application::help(const char* appname, const char* message) {
     message_ =
-        std::string(message) +
+        string(message) +
         "This is a main statistic values calculator application.\n\n" +
         "Please provide arguments in the following format:\n\n" +
 
         "  $ " + appname + " <vector_of_values1> <vector_of_probability1> " +
-        + " <function>" + "<arguments_of_function\n\n>" +
+        + "<function> " + "<arguments_of_function>\n\n" +
 
         "where <function> may take the following values: \n\n" +
         "Functions without arguments: \n" +
-        "CalcMathematicalExpectation - Calculate mathematical expectation \n" +
-        "CalcDispersion - Calculate dispersion \n" +
-        "CalcAverageQuadraticDeviation - Calculate average quadratic deviation \n\n" +
-        "Functions with 1 integer argument: \n"
+        "CalcMathematicalExpectation - Calculate mathematical expectation \n" 
+        + "CalcDispersion - Calculate dispersion \n" +
+        "CalcAverageQuadraticDeviation - Calculate average quadratic deviation" 
+        + "\n\nFunctions with 1 integer argument: \n" +
         "CalcCentralMoment - Calculate cenral moment \n" +
         "CalcElementaryMoment - Calculate elementary moment \n\n" +
-        "Function with 2 arguments: first argument is double-precision number, " + 
-        "second argument is integer number: \n"
+        "Function with 2 arguments: first argument is double-precision number,"
+        + " second argument is integer number: \n" +
         "CalcMoment - Calculate moment \n\n";
-}
-
-bool Application::validateNumberOfArguments(int argc, const char** argv) {
-    if (argc == 1) {
-        help(argv[0]);
-        return false;
-    } else return true;
 }
 
 int parseInt(const char* arg) {
@@ -66,6 +61,70 @@ double parseDouble(const char* arg) {
     return value;
 }
 
+bool Application::validateNumberOfArguments(int argc, const char** argv) {
+    std::ostringstream stream;
+    if (argc == 1) {
+        help(argv[0]);
+        return false;
+    } else if ((argc != 2 * parseInt(argv[1]) + 3)
+        && (argc != 2 * parseInt(argv[1]) + 4)
+        && (argc != 2 * parseInt(argv[1]) + 5)) {
+        throw string("\nWrong number of parameters!");
+     return false;
+    }
+ return true;
+}
+
+Application::Arguments Application::checkInputFromUser(int argc, const char** argv) {
+    Arguments args;
+    int n = parseInt(argv[1]);
+    if (n > 0) {
+        args.function = parseFunction(argv[2 + 2 * n]);
+        if (args.function == CALC_MATH_EXPECTATION ||
+            args.function == CALC_DISPERSION ||
+            args.function == CALC_AVERAGE_QUADRATIC_DEVIATION) {
+            if (argc == 3 + 2 * n) {
+                for (int i = 0; i < n; i++) {
+                    args.s1.push_back(parseDouble(argv[2 + i]));
+                    args.p1.push_back(parseDouble(argv[2 + n + i]));
+                }
+                return args;
+            } else {
+                throw string("\nWrong number of arguments!");
+            }
+        }
+        else if (args.function == CALC_CENTRAL_MOMENT ||
+            args.function == CALC_ELEMENTARY_MOMENT) {
+            if (argc == 4 + 2 * n) {
+                for (int i = 0; i < n; i++) {
+                    args.s1.push_back(parseDouble(argv[2 + i]));
+                    args.p1.push_back(parseDouble(argv[2 + n + i]));
+                }
+                args.exp = parseInt(argv[3 + 2 * n]);
+                return args;
+            } else {
+                throw string("\nWrong number of arguments!");
+            }
+        }
+        else if (args.function == CALC_MOMENT) {
+            if (argc == 5 + 2 * n) {
+                for (int i = 0; i < n; i++) {
+                    args.s1.push_back(parseDouble(argv[2 + i]));
+                    args.p1.push_back(parseDouble(argv[2 + n + i]));
+                }
+                args.point = parseDouble(argv[3 + 2 * n]);
+                args.exp = parseInt(argv[4 + 2 * n]);
+                return args;
+            } else {
+                throw string("\nWrong number of arguments!");
+            }
+        }
+    }
+    else {
+        throw string("\nSize must be positive!");
+    }
+}
+
 Functions Application::parseFunction(const char* arg) {
     Functions func;
     if (strcmp(arg, "CalcMathematicalExpectation") == 0) {
@@ -89,42 +148,26 @@ Functions Application::parseFunction(const char* arg) {
 string Application::operator()(int argc, const char ** argv) {
     Arguments args;
     std::ostringstream stream;
-    if (!validateNumberOfArguments(argc, argv)) {
-        return message_;
-    }
     try {
-        int n = parseInt(argv[1]);
-        if ((argc == 2 * n + 3) || (argc == 2 * n + 5)) {
-            for (int i = 0; i < parseInt(argv[1]); i++) {
-                args.s1.push_back(parseDouble(argv[2 + i]));
-                args.p1.push_back(parseDouble(argv[7 + i]));
-            }
-            if (argc == 4 + 2 * parseInt(argv[1])) {
-                args.function = parseFunction(argv[2 + 2 * parseInt(argv[1])]);
-                args.point = parseDouble(argv[3 + 2 * parseInt(argv[1])]);
-                args.exp = parseInt(argv[4 + 2 * parseInt(argv[1])]);
-            } else if (argc == 3 + 2 * parseInt(argv[1])) {
-                args.function = parseFunction(argv[2 + 2 * parseInt(argv[1])]);
-                args.exp = parseInt(argv[3 + 2 * parseInt(argv[1])]);
-            } else if (argc == 2 + 2 * parseInt(argv[1])) {
-                args.function = parseFunction(argv[2 + 2 * parseInt(argv[1])]);
-            }
-        } else {
-            stream << "ERROR: Should be from " << 2 * n + 3 << " to " << 2 * n + 5 << " arguments.\n\n";
-            help(argv[0], stream.str().c_str());
+        if (!validateNumberOfArguments(argc, argv)) {
             return message_;
         }
     }
     catch (std::string str) {
         return str;
     }
-
-    Sample A(args.s1, args.p1);
-    double _point;
-    double _exp;
-    if (argc == 4 + 2 * parseInt(argv[1])) {
-        _point = args.point;
-        _exp = args.exp;
+    try {
+        args = checkInputFromUser(argc, argv);
+    }
+    catch (std::string str) {
+        return str;
+    }
+    try {
+        Sample sample(args.s1, args.p1);
+        A=sample;
+    }
+    catch (std::runtime_error exp) {
+        return exp.what();
     }
 
     double result;
@@ -134,11 +177,11 @@ string Application::operator()(int argc, const char ** argv) {
         stream << "Mathematical Expectation is equal " << result;
         break;
     case CALC_MOMENT:
-        result = A.CalcMoment(_point, _exp);
+        result = A.CalcMoment(args.point, args.exp);
         stream << "Moment is equal " << result;
         break;
     case CALC_ELEMENTARY_MOMENT:
-        result = A.CalcElementaryMoment(_exp);
+        result = A.CalcElementaryMoment(args.exp);
         stream << "Elementary moment is equal " << result;
         break;
     case CALC_DISPERSION:
@@ -150,12 +193,12 @@ string Application::operator()(int argc, const char ** argv) {
         stream << "Average Quadratic Deviation is equal " << result;
         break;
     case CALC_CENTRAL_MOMENT:
-        result = A.CalcCentralMoment(_exp);
+        result = A.CalcCentralMoment(args.exp);
         stream << "Central moment is equal " << result;
         break;
-
-        message_ = stream.str();
+    }
+        
+    message_ = stream.str();
 
         return message_;
-    }
 }

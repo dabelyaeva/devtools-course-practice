@@ -101,4 +101,4 @@ bool InterpolationSearcher::Find(const Value& key, Index* index) const {
     return result != data_.end();
 }
 
-}  //namespace interp_search
+}  // namespace interp_search

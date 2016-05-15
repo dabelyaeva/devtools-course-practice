@@ -1,11 +1,14 @@
 // Copyright 2016 Zhiltsov Max
 
-#include "string_util.h"
+#include "include/string_util.h"
+
+#include <string>
+#include <vector>
 
 
 std::vector<std::string> splitString(const std::string& str,
-    const std::string& delimiter)
-{
+    const std::string& delimiter
+) {
     if (delimiter.empty() == true) {
         return {str};
     }

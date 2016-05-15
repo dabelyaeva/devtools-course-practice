@@ -1,7 +1,7 @@
 // Copyright 2016 Zhiltsov Max
 
-#ifndef MODULES_INTERPOLATION_SEARCH_APPLICATION_INCLUDE_STRING_UTIL_H_
-#define MODULES_INTERPOLATION_SEARCH_APPLICATION_INCLUDE_STRING_UTIL_H_
+#ifndef MODULES_INTERPOLATION_SEARCH_INCLUDE_STRING_UTIL_H_
+#define MODULES_INTERPOLATION_SEARCH_INCLUDE_STRING_UTIL_H_
 
 #include <string>
 #include <vector>
@@ -16,4 +16,4 @@ Compute string difference as difference between two first different characters.
 int findStringDifference(const std::string& a, const std::string& b);
 
 
-#endif  // MODULES_INTERPOLATION_SEARCH_APPLICATION_INCLUDE_STRING_UTIL_H_
+#endif  // MODULES_INTERPOLATION_SEARCH_INCLUDE_STRING_UTIL_H_

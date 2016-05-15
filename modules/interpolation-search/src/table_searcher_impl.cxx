@@ -1,13 +1,15 @@
 // Copyright 2016 Zhiltsov Max
 
-#include "table_searcher_impl.h"
+#include "src/table_searcher_impl.h"
 
 #include <algorithm>
 #include <cstring>
 #include <fstream>
 #include <memory>
+#include <string>
 #include <sstream>
 #include <stdexcept>
+#include <vector>
 
 #include "include/interpolation_search.h"
 #include "include/string_util.h"
@@ -47,8 +49,8 @@ void Application::Run(int argc, const char* const* argv, std::string* result) {
                 continue;
             }
             for (auto it = (*entry).cbegin(), iend = (*entry).cend();
-                it != iend;)
-            {
+                it != iend;
+            ) {
                 result->append(*it);
                 if (++it != iend) {
                     result->append(", ");

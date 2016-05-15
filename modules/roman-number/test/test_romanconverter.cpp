@@ -2,6 +2,9 @@
 #include <gtest/gtest.h>
 #include <string>
 #include "include/RomanConverter.h"
+
+using std::string;
+
 TEST(RomanConverter_Tests, Can_Validate_Arabic) {
      // Arrange
      int arabic = 5;

@@ -52,6 +52,7 @@ void Application::help(const char *appname) {
             "\t -s <filename> <category name>"
             "to print summ of category \n"
             "\t -d to sort by date \n"
+            "\t -sp <filename> to set start pouch \n"
             "\t -gp <filename> to get current pouch \n"
             "\t -gpp <filename> to get potential pouch \n";
 }
@@ -60,7 +61,7 @@ void Application::writeToFile(string filename) {
     string file = note.toString();
     ofstream fout;
     fout.open(filename);
-    fout << Convert(note.getPouch()) << std::endl;
+    fout << Convert(started_pouch) << std::endl;
     fout << file;
     fout.close();
 }
@@ -80,6 +81,7 @@ void Application::readFromFile(string filename) {
         message_ = "Error wrong pouch param!";
         return;
     }
+    started_pouch = pouch;
     note.setPouch(pouch);
     while (getline(fin, buff)) {
         if (!parseString(buff))
@@ -175,6 +177,25 @@ void Application::parseAppOperand(int argc, const char **argv) {
     if (argument == "-gp") {
         readFromFile(string(argv[2]));
         message_ = "Your pouch is " + Convert(note.getPouch());
+        return;
+    }
+    if (argument == "-sp") {
+        float pouch = 0;
+        try {
+            pouch = stof(string(argv[3]));
+        } catch (std::exception except) {
+            message_ = "wrong pouch param!";
+            return;
+        }
+        readFromFile(string(argv[2]));
+        note.setPouch(pouch);
+        string file = note.toString();
+        ofstream fout;
+        fout.open(string(argv[2]));
+        fout << Convert(note.getPouch()) << std::endl;
+        fout << file;
+        fout.close();
+        message_ = "Setted! Your pouch is " + Convert(note.getPouch());
         return;
     }
     if (argument == "-gpp") {

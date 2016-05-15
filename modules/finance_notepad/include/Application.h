@@ -13,6 +13,7 @@ class Application {
     std::string operator()(int argc, const char** argv);
  private:
     notepad note;
+    float started_pouch;
     std::string message_;
     bool parseString(string params);
     void help(const char* appname);

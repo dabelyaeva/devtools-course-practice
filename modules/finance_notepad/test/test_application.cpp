@@ -2,10 +2,8 @@
 
 #include <gtest/gtest.h>
 #include <fstream>
-#include <cstdio>
-#include <string>
 #include <vector>
-#include <iostream>
+#include <string>
 #include "include/Application.h"
 
 using std::vector;
@@ -336,7 +334,6 @@ TEST_F(AppFinanceNotepadTest, can_grouped_read) {
     fout << "1 12 2017 -30 Food McD\n";
     fout.close();
     vector<string> args = {"-rc", filename};
-    std::string current = "";
 
     // Act
     Act(args);
@@ -344,4 +341,17 @@ TEST_F(AppFinanceNotepadTest, can_grouped_read) {
     // Assert
     Assert("2 1 2016");
     remove(filename.c_str());
+}
+
+TEST_F(AppFinanceNotepadTest, can_set_pouch) {
+    // Arrange
+    std::string filename = "test_read_from_file.txt";
+    vector<string> args = {"-sp", filename, "30"};
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Setted! Your pouch is 30");
+//    remove(filename.c_str());
 }

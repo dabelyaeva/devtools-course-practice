@@ -50,6 +50,19 @@ TEST_F(AppFinanceNotepadTest, can_create_app) {
 }
 
 TEST_F(AppFinanceNotepadTest,
+       can_reach_inexistent_param_error) {
+    // Arrange
+    std::string argument = "-a";
+    vector<string> args = {argument};
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("param " + argument + " not found\n");
+}
+
+TEST_F(AppFinanceNotepadTest,
      can_reach_error_msg_when_invalid_argument_number) {
     // Arrange
     vector<string> args = {"a", "b", "c", "d", "f", "g"};

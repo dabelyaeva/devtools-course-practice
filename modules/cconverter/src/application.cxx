@@ -34,7 +34,7 @@ Application::~Application() {
   delete holder_;
 }
 
-void Application::help(const std::string &appname, const std::string &message) {
+void Application::help(const std::string& appname, const std::string& message) {
   message_ = message +
     "This is a currency converter application.\n\n" +
     "Please provide arguments in the following format:\n\n" +
@@ -77,9 +77,10 @@ std::string Application::operator()(const int argc, const char* argv[]) {
     return message_;
   }
 
+  args.base_currency = argv[1];
+  args.counter_currency = argv[2];
+
   try {
-    args.base_currency = argv[1];
-    args.counter_currency = argv[2];
     args.count = parseDouble(argv[3]);
   }
   catch (const std::invalid_argument& ex) {

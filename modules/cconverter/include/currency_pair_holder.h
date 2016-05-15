@@ -11,23 +11,26 @@
 class CurrencyPairHolder {
  public:
     CurrencyPairHolder();
-    explicit CurrencyPairHolder(std::vector<CurrencyPair> currency_pairs);
+    explicit CurrencyPairHolder(const std::vector<CurrencyPair> currency_pairs);
 
-    void addCurrencyPair(CurrencyPair currency_pair);
-    void updateCurrencyPair(CurrencyPair currency_pair);
+    void addCurrencyPair(const CurrencyPair& currency_pair);
+    void updateCurrencyPair(const CurrencyPair& currency_pair);
 
-    double exchangeCurrency(std::string selling_currency,
-        std::string buying_currency, double sum) const;
+    double exchangeCurrency(const std::string& selling_currency,
+                            const std::string& buying_currency,
+                            const double sum) const;
 
     void removeAllCurrencyPairs();
     std::vector<CurrencyPair> getCurrencyPairs() const;
 
  private:
-    double buyCurrency(CurrencyPair currency_pair_code, double sum) const;
-    double saleCurrency(CurrencyPair currency_pair_code, double sum) const;
+    double buyCurrency(const CurrencyPair& currency_pair_code,
+                       const double sum) const;
+    double saleCurrency(const CurrencyPair& currency_pair_code,
+                        const double sum) const;
 
-    bool isCurrencyPairPresented(std::string curr_pair_code) const;
-    int getCurrencyPairNumberByCode(std::string currency_pair_code) const;
+    bool isCurrencyPairPresented(const CurrencyPair& currency_pair) const;
+    int getCurrencyPairNumberByCode(const std::string& curr_pair_code) const;
 
     std::vector<CurrencyPair> currency_pairs_;
 };

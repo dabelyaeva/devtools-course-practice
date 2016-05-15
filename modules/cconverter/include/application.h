@@ -14,7 +14,7 @@ class Application {
   std::string operator()(const int argc, const char* argv[]);
 
  private:
-  void help(const std::string &appname, const std::string &message = "");
+  void help(const std::string& appname, const std::string& message = "");
   bool validateNumberOfArguments(const int argc, const char* argv[]);
   std::string message_;
   CurrencyPairHolder* holder_;

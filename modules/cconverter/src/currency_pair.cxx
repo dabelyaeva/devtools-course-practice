@@ -1,4 +1,4 @@
-// Copyright 2016 Pozdyaev Valery
+// Copyright 2016 Pozdyaev Valery, Rumyantsev Alexander
 
 #include "include/currency_pair.h"
 
@@ -8,8 +8,9 @@
 
 const double base_lot_size = 10000;
 
-CurrencyPair::CurrencyPair(std::string currency_pair_code,
-                           double bid_price, double ask_price) {
+CurrencyPair::CurrencyPair(const std::string& currency_pair_code,
+                           const double bid_price,
+                           const double ask_price) {
     CurrencyPair::checkCurrencyPairCode(currency_pair_code);
     if (bid_price <= 0 || ask_price <= 0) {
         throw std::invalid_argument("Incorrect price format");
@@ -22,7 +23,7 @@ CurrencyPair::CurrencyPair(std::string currency_pair_code,
     updateSpreadHistory();
 }
 
-void CurrencyPair::setBidPrice(double new_bid_price) {
+void CurrencyPair::setBidPrice(const double new_bid_price) {
     if (new_bid_price > 0) {
         bid_price_ = new_bid_price;
         updateSpreadHistory();
@@ -35,7 +36,7 @@ double CurrencyPair::getBidPrice() const {
     return bid_price_;
 }
 
-void CurrencyPair::setAskPrice(double new_ask_price) {
+void CurrencyPair::setAskPrice(const double new_ask_price) {
     if (new_ask_price > 0) {
         ask_price_ = new_ask_price;
         updateSpreadHistory();
@@ -48,7 +49,8 @@ double CurrencyPair::getAskPrice() const {
     return ask_price_;
 }
 
-void CurrencyPair::setCurrencyPairCode(std::string new_currency_pair_code) {
+void CurrencyPair::setCurrencyPairCode(
+    const std::string& new_currency_pair_code) {
     checkCurrencyPairCode(new_currency_pair_code);
 
     currency_pair_code_ = new_currency_pair_code;
@@ -58,7 +60,8 @@ std::string CurrencyPair::getCurrencyPairCode() const {
     return currency_pair_code_;
 }
 
-void CurrencyPair::checkCurrencyPairCode(std::string currency_pair_code) {
+void CurrencyPair::checkCurrencyPairCode(
+    const std::string& currency_pair_code) {
     size_t code_size = currency_pair_code.size();
     int symb_code = 0;
 

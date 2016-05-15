@@ -12,7 +12,7 @@
 
 RomanCalculator::RomanCalculator() : message_("") {}
 
-void RomanCalculator::help(const char *appname, const char *message) {
+void RomanCalculator::generateHelpMessage(const char *appname, const char *message) {
     message_ =
             std::string(message) +
             "This is a roman number calculator application.\n\n" +
@@ -33,10 +33,10 @@ void RomanCalculator::help(const char *appname, const char *message) {
 
 bool RomanCalculator::validateNumberOfArguments(int argc, const char **argv) {
     if (argc == 1) {
-        help(argv[0]);
+        generateHelpMessage(argv[0]);
         return false;
     } else if (argc != 4 && argc !=2) {
-        help(argv[0], "ERROR: Should be 1 or 3 arguments.\n\n");
+        generateHelpMessage(argv[0], "ERROR: Should be 1 or 3 arguments.\n\n");
         return false;
     }
     return true;

@@ -94,7 +94,7 @@ Application::parseCommandLine(int argc, const char* const* argv) {
     Parameters parameters;
 
     if (argv == nullptr) {
-        return parameters;
+        return std::move(parameters);
     }
 
     if ((argc == 1) || (5 < argc)) {
@@ -148,7 +148,7 @@ Application::parseCommandLine(int argc, const char* const* argv) {
         throw std::runtime_error("Query command line parameter is expected.");
     }
 
-    return parameters;
+    return std::move(parameters);
 }
 
 void Application::readTable(std::istream& source) {
@@ -185,5 +185,5 @@ Application::performSearch(const std::string& query) {
             Find(table_.begin(), table_.end(), key, less, diff));
     }
 
-    return results;
+    return std::move(results);
 }

@@ -4,20 +4,27 @@
 
 
 std::vector<std::string> splitString(const std::string& str,
-    const std::string& delim)
+    const std::string& delimiter)
 {
+    if (delimiter.empty() == true) {
+        return {str};
+    }
+
     std::vector<std::string> result;
     std::string::size_type startIndex = 0;
     while (startIndex < str.size()) {
-        auto lastIndex = str.find(delim, startIndex);
+        auto lastIndex = str.find(delimiter, startIndex);
         if (lastIndex != str.npos) {
             result.emplace_back(&str[startIndex], lastIndex - startIndex);
-            startIndex = lastIndex + delim.size();
+            startIndex = lastIndex + delimiter.size();
         } else {
-            break;
+            result.emplace_back(&str[startIndex]);
+            startIndex = str.npos;
         }
     }
-    result.emplace_back(&str[startIndex]);
+    if (startIndex != str.npos) {
+        result.emplace_back(&str[startIndex]);
+    }
     return std::move(result);
 }
 

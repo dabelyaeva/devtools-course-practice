@@ -97,7 +97,7 @@ std::string RomanCalculator::operator()(int argc, const char** argv) {
             args.number2 = argv[2];
             args.operation = parseOperation(argv[3]);
         }
-        catch(std::string str) {
+        catch(const std::string& str) {
             return str;
         }
 
@@ -105,7 +105,7 @@ std::string RomanCalculator::operator()(int argc, const char** argv) {
         try {
             arabicNumber1 = RomanConverter::ConvertRomanToArabic(args.number1);
         }
-        catch(std::invalid_argument& e) {
+        catch(...) {
             return std::string("First roman number " +
                                args.number1 + " have wrong format!");
         }
@@ -114,7 +114,7 @@ std::string RomanCalculator::operator()(int argc, const char** argv) {
         try {
             arabicNumber2 = RomanConverter::ConvertRomanToArabic(args.number2);
         }
-        catch(std::invalid_argument& e) {
+        catch(...) {
             return std::string("Second roman number " +
                                args.number2 + " have wrong format!");
         }
@@ -141,7 +141,7 @@ std::string RomanCalculator::operator()(int argc, const char** argv) {
         try {
             romanNumber = RomanConverter::ConvertArabicToRoman(arabicNumber);
         }
-        catch(std::invalid_argument& e) {
+        catch(...) {
             return std::string("Resulting roman number have wrong format!");
         }
         message_ = args.number1 + " " + args.operation + " " + args.number2 +

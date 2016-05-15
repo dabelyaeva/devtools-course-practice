@@ -34,7 +34,7 @@ void Application::help(const char* appname, const char* message) {
         "calc_inradius - Calculate inradius of triangle ABC \n" +
         "calc_circumradius - Calculate circumradius of triangle ABC \n\n" +
 
-        "And the rest of arguments listed above are double-precision " +
+        "And <A_x> <A_y> <B_x> <B_y> <C_x> <C_y> are double-precision " +
         "numbers \n ";
 }
 

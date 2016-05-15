@@ -12,7 +12,7 @@ class ColorCalculator {
     std::string operator()(int argc, const char** argv);
 
  private:
-     std::string getHelp();
+    std::string getHelp();
     bool validateArgsCount(int argc);
 };
 #endif  // MODULES_COLOR_CONVERTER_INCLUDE_COLOR_CALCULATOR_H_

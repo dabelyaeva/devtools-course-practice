@@ -59,9 +59,9 @@ class ColorConverter {
 
     static bool IsVectorSizeCorrect(const vector<double>& vector);
     static bool IsVectorSizeCorrect(const vector<int>& vector);
-	static bool IsRGBVectorInRange(const vector<int>& rgb);
-	static bool IsHSVVectorInRange(const vector<double>& hsv);
-	static bool IsLABVectorInRange(const vector<int>& lab);
+    static bool IsRGBVectorInRange(const vector<int>& rgb);
+    static bool IsHSVVectorInRange(const vector<double>& hsv);
+    static bool IsLABVectorInRange(const vector<int>& lab);
 
     static vector<int> XYZToRGB(const vector<double>& xyz);
     static vector<int> XYZToLAB(const vector<double>& xyz);

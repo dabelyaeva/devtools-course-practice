@@ -2,13 +2,10 @@
 ##### Testing
 #############################################
 
+
 enable_testing()
 
 set(prefix "${MODULE}")
-
-file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/testTable.csv"
-    "Name1,Value1,Value2\nName2,Value1\nName3,Value1,\nName4\nName5,Value1,Value2,Value3" 
-    ENCODING UTF-8)
 
 add_test(
     NAME ${prefix}_can_run
@@ -28,6 +25,10 @@ add_test(
 )
 set_tests_properties (${prefix}_can_check_number_of_arguments
     PROPERTIES PASS_REGULAR_EXPRESSION "Wrong command line parameters count.")
+
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/testTable.csv"
+    "Name1,Value1,Value2\nName2,Value1\nName3,Value1,\nName4\nName5,Value1,Value2,Value3" 
+    ENCODING UTF-8)
 
 add_test(
     NAME ${prefix}_can_run_with_query_and_table_from_file
@@ -64,4 +65,4 @@ add_test(
 set_tests_properties (${prefix}_can_not_run_without_table_file
     PROPERTIES PASS_REGULAR_EXPRESSION "Failed to open table file '____unknown_file_____.123.456'.")
 
-file(REMOVE "${CMAKE_CURRENT_BINARY_DIR}/testTable.csv")
+# file(REMOVE "${CMAKE_BINARY_DIR}/testTable.csv")

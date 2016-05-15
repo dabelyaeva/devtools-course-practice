@@ -8,7 +8,7 @@ using interp_search::InterpolationSearcher;
 
 TEST(InterpolationSearcher, can_create_empty) {
     // Act & Assert
-    ASSERT_NO_THROW(InterpolationSearcher is());
+    ASSERT_NO_THROW(InterpolationSearcher());
 }
 
 TEST(InterpolationSearcher, can_create_with_correct_size_and_data) {

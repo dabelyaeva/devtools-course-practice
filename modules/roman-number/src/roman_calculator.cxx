@@ -3,11 +3,11 @@
 #include "include/roman_calculator.h"
 
 #include <string.h>
+#include <assert.h>
 
 #include <string>
 #include <stdexcept>
 #include <cstdlib>
-#include <assert.h>
 
 #include "include/RomanConverter.h"
 

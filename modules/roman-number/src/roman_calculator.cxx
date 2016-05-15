@@ -12,7 +12,8 @@
 
 RomanCalculator::RomanCalculator() : message_("") {}
 
-void RomanCalculator::generateHelpMessage(const char *appname, const char *message) {
+void RomanCalculator::generateHelpMessage(const char *appname,
+                                          const char *message) {
     message_ =
             std::string(message) +
             "This is a roman number calculator application.\n\n" +

@@ -12,12 +12,18 @@
 Application::Application(): message_("") {}
 
 void Application::help(const char* appname, const char* message) {
+    std::string msg;
+    std::string apn;
+    if (message != NULL)
+        msg = std::string(message);
+    if (appname != NULL)
+        apn = std::string(appname);
     message_ =
-        std::string(message) +
+        msg +
         "This is a mass units converter application.\n\n" +
         "Please provide arguments in the folowing format:\n\n" +
 
-        "  $ " + std::string(appname) + " <value> " +
+        "  $ " + apn + " <value> " +
         "<unit_from> <unit_to>\n\n" +
 
         "Where value is double-precision number, " +

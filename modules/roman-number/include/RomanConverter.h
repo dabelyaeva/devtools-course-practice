@@ -6,7 +6,7 @@
 
 class RomanConverter {
  public:
-    RomnanConverter() = delete;
+    RomanConverter() = delete;
     static bool CheckArabicNumber(int arabic);
     static bool CheckRomanNumber(const std::string& roman);
     static int ConvertRomanToArabic(const std::string& roman);

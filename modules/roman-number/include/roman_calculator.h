@@ -7,7 +7,6 @@
 
 class RomanCalculator {
  public:
-
     RomanCalculator() = delete;
     std::string operator()(int argc, const char** argv);
 

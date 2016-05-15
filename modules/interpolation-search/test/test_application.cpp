@@ -31,7 +31,12 @@ void TestApplication::SetUp() {
 
     std::stringstream ss;
     ss << kTableSource;
-    readTable(ss);
+    readTable(&ss);
+}
+
+TEST_F(TestApplication, can_read_table_from_nullptr_source) {
+    // Arrange, Act, Assert
+    ASSERT_NO_THROW(readTable(nullptr));
 }
 
 TEST_F(TestApplication, can_read_table) {

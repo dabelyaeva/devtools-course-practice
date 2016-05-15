@@ -1,7 +1,7 @@
 // Copyright 2016 Zhiltsov Max
 
-#ifndef MODULES_INTERPOLATION_SEARCH_APPLICATION_CUSTOM_APPLICATION_H_
-#define MODULES_INTERPOLATION_SEARCH_APPLICATION_CUSTOM_APPLICATION_H_
+#ifndef MODULES_INTERPOLATION_SEARCH_SRC_TABLE_SEARCHER_IMPL_H_
+#define MODULES_INTERPOLATION_SEARCH_SRC_TABLE_SEARCHER_IMPL_H_
 
 #include <iostream>
 #include <vector>
@@ -27,7 +27,7 @@ class Application {
 
     using TableRow = std::vector<std::string>;
     using Table = std::vector<TableRow>;
-    void readTable(std::istream& source);
+    void readTable(std::istream* source);
     std::vector<Table::iterator> performSearch(const std::string& query);
 
     Table table_;
@@ -37,4 +37,4 @@ class Application {
     Application& operator=(const Application& other) = delete;
 };
 
-#endif  // MODULES_INTERPOLATION_SEARCH_APPLICATION_CUSTOM_APPLICATION_H_
+#endif  // MODULES_INTERPOLATION_SEARCH_SRC_TABLE_SEARCHER_IMPL_H_

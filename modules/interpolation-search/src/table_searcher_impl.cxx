@@ -41,7 +41,7 @@ void Application::Run(int argc, const char* const* argv, std::string* result) {
                     parameters.tablePath + "'.");
             }
         }
-        readTable(*inputStream);
+        readTable(inputStream);
 
         const auto searchResults = std::move(performSearch(parameters.query));
         for (const auto& entry : searchResults) {
@@ -143,10 +143,14 @@ Application::parseCommandLine(int argc, const char* const* argv) {
     return std::move(parameters);
 }
 
-void Application::readTable(std::istream& source) {
-    while (source.good() == true) {
+void Application::readTable(std::istream* source) {
+    if (source == nullptr) {
+        return;
+    }
+
+    while (source->good() == true) {
         std::string line;
-        std::getline(source, line);
+        std::getline(*source, line);
         table_.emplace_back(std::move(splitString(line, ",")));
     }
 

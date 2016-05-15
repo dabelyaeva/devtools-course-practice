@@ -122,6 +122,7 @@ checkInputFromUser(int argc, const char** argv) {
     } else {
         throw string("\nSize must be positive!");
     }
+    return args;
 }
 
 Functions Application::parseFunction(const char* arg) {

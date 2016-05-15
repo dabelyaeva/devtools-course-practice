@@ -3,6 +3,8 @@
 #include <cstdio>
 #include <fstream>
 #include <sstream>
+#include <string>
+#include <vector>
 
 #include "gtest/gtest.h"
 #include "src/table_searcher_impl.h"
@@ -13,7 +15,7 @@ class TestApplication :
     protected Application
 {
  protected:
-    virtual void SetUp() override;
+    void SetUp() override;
 
     static const char kTableSource[];
 };
@@ -259,8 +261,9 @@ TEST_F(TestApplication, can_parse_command_line_unexpected_too_many_args) {
     EXPECT_ANY_THROW(parseCommandLine(argc, argv));
 }
 
-TEST_F(TestApplication, can_parse_command_line_unexpected_nullptr_argv_internal)
-{
+TEST_F(TestApplication,
+    can_parse_command_line_unexpected_nullptr_argv_internal
+) {
     // Arrange
     constexpr int argc = 4;
     constexpr const char* argv[argc] = {

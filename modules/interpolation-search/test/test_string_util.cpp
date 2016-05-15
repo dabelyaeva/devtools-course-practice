@@ -1,13 +1,17 @@
 // Copyright 2016 Zhiltsov Max
 
+#include <string>
+#include <vector>
 
 #include "include/string_util.h"
 #include "gtest/gtest.h"
 
+
 using std::string;
 
-TEST(SplitStringTest, can_split_string_by_string_if_string_ends_with_delimiter)
-{
+TEST(SplitStringTest,
+    can_split_string_by_string_if_string_ends_with_delimiter
+) {
     // Arrange
     const string s("del 10del 20del 30del 40del 502387del del del 7del 0del ");
     const string sep("del ");

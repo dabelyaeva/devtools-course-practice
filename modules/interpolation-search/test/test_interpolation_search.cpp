@@ -3,7 +3,8 @@
 #include "gtest/gtest.h"
 #include "include/interpolation_search.h"
 
-using namespace interp_search;
+
+using interp_search::InterpolationSearcher;
 
 TEST(InterpolationSearcher, can_create_empty) {
     // Act & Assert

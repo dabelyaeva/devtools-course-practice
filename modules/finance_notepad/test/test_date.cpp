@@ -1,3 +1,4 @@
+// Copyright 2016 Magazinnik Ivan
 // Copyright 2016 Sirotkin_Nikita
 
 #include <gtest/gtest.h>
@@ -138,4 +139,25 @@ TEST(FinanceNotepadTest, dates__can_compare_by_eq_false) {
 
   // Assert
   EXPECT_FALSE(first == second);
+}
+
+TEST(FinanceNotepadTest, can_convert_month) {
+  // Arrange & Act & Assert
+  EXPECT_EQ(months::JANUARY, date::stringToMonth("january"));
+  EXPECT_EQ(months::FEBRUARY, date::stringToMonth("february"));
+  EXPECT_EQ(months::MARCH, date::stringToMonth("march"));
+  EXPECT_EQ(months::APRIL, date::stringToMonth("april"));
+  EXPECT_EQ(months::MAY, date::stringToMonth("may"));
+  EXPECT_EQ(months::JUNE, date::stringToMonth("june"));
+  EXPECT_EQ(months::JULY, date::stringToMonth("july"));
+  EXPECT_EQ(months::AUGUST, date::stringToMonth("august"));
+  EXPECT_EQ(months::SEPTEMBER, date::stringToMonth("september"));
+  EXPECT_EQ(months::OCTOBER, date::stringToMonth("october"));
+  EXPECT_EQ(months::NOVEMBER, date::stringToMonth("november"));
+  EXPECT_EQ(months::DECEMBER, date::stringToMonth("december"));
+}
+
+TEST(FinanceNotepadTest, can_reach_throw_when_convert_incorrect_month) {
+    // Arrange & Act & Assert
+    EXPECT_THROW(date::stringToMonth("none"), std::invalid_argument);
 }

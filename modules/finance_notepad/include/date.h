@@ -1,3 +1,4 @@
+// Copyright 2016 Magazinnik Ivan
 // Copyright 2016 Sirotkin_Nikita
 
 #ifndef MODULES_FINANCE_NOTEPAD_INCLUDE_DATE_H_
@@ -23,6 +24,7 @@ class date {
   static const int MIN_YEAR;
   static const int MAX_YEAR;
   static bool wrongDate(char _number, months _month, int _year);
+  static months stringToMonth(string month);
  private:
   char number;
   months month;

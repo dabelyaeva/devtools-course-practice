@@ -1,3 +1,4 @@
+// Copyright 2016 Magazinnik Ivan
 // Copyright 2016 Sirotkin_Nikita
 
 #include <sstream>
@@ -46,7 +47,7 @@ string note::getCategory() const {
 string note::toString() const {
   string result;
   result = notes_date.toString() + " " + to_string<float>(sum)
-    + " " + table->getNameOf(categories_id) + " " + comment;
+    + " " + table->getNameOf(categories_id) + " " + comment + "\n";
   return result;
 }
 string note::toFormatedString() const {

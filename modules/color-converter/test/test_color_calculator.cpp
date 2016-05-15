@@ -58,6 +58,30 @@ TEST_F(ColorCalculatorTest, Can_Detect_Incorrect_Number) {
     Assert("Incorrect number format!");
 }
 
+TEST_F(ColorCalculatorTest, Can_Detect_Incorrect_RGB_Value) {
+    vector<string> args = { "RGB", "42", "434", "93", "LAB" };
+
+    Act(args);
+
+    Assert("Value RGB is not correct*");
+}
+
+TEST_F(ColorCalculatorTest, Can_Detect_Incorrect_LAB_Value) {
+    vector<string> args = { "LAB", "42", "-300", "93", "RGB" };
+
+    Act(args);
+
+    Assert("Value LAB is not correct*");
+}
+
+TEST_F(ColorCalculatorTest, Can_Detect_Incorrect_HSV_Value) {
+    vector<string> args = { "HSV", "0.3", "54", "0.94", "LAB" };
+
+    Act(args);
+
+    Assert("Value HSV is not correct*");
+}
+
 TEST_F(ColorCalculatorTest, Can_Detect_Incorrect_Source_Model) {
     vector<string> args = { "hfg", "42", "239", "93", "LAB" };
 
@@ -66,8 +90,24 @@ TEST_F(ColorCalculatorTest, Can_Detect_Incorrect_Source_Model) {
     Assert("Unknown source model");
 }
 
-TEST_F(ColorCalculatorTest, Can_Detect_Incorrect_Final_Model) {
+TEST_F(ColorCalculatorTest, Can_Detect_Incorrect_Final_Model1) {
     vector<string> args = { "RGB", "42", "239", "93", "daads" };
+
+    Act(args);
+
+    Assert("Unknown final model");
+}
+
+TEST_F(ColorCalculatorTest, Can_Detect_Incorrect_Final_Model2) {
+    vector<string> args = { "LAB", "42", "68", "93", "daads" };
+
+    Act(args);
+
+    Assert("Unknown final model");
+}
+
+TEST_F(ColorCalculatorTest, Can_Detect_Incorrect_Final_Model3) {
+    vector<string> args = { "HSV", "0.43", "1", "1", "daads" };
 
     Act(args);
 

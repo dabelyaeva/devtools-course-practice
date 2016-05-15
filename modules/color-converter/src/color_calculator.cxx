@@ -3,6 +3,8 @@
 #include "include/color_calculator.h"
 #include "include/Color_Converter.h"
 #include <sstream>
+#include <string>
+#include <vector>
 
 using std::string;
 using std::vector;
@@ -69,10 +71,11 @@ string ColorCalculator::operator()(int argc, const char** argv) {
         try {
             if (source.compare("RGB") == 0) {
                 if (final.compare("LAB") == 0) {
-                    result = intVectorToDoubleVector(
-                            ColorConverter::RGBToLAB(doubleVectorToIntVector(values)));
+                    result = intVectorToDoubleVector(ColorConverter::RGBToLAB(
+                            doubleVectorToIntVector(values)));
                 } else if (final.compare("HSV") == 0) {
-                    result = ColorConverter::RGBToHSV(doubleVectorToIntVector(values));
+                    result = ColorConverter::RGBToHSV(
+                            doubleVectorToIntVector(values));
                 } else if (final.compare("RGB") == 0) {
                     result = values;
                 } else {
@@ -80,10 +83,11 @@ string ColorCalculator::operator()(int argc, const char** argv) {
                 }
             } else if (source.compare("LAB") == 0) {
                 if (final.compare("RGB") == 0) {
-                    result = intVectorToDoubleVector(
-                            ColorConverter::LABToRGB(doubleVectorToIntVector(values)));
+                    result = intVectorToDoubleVector(ColorConverter::LABToRGB(
+                            doubleVectorToIntVector(values)));
                 } else if (final.compare("HSV") == 0) {
-                    result = ColorConverter::LABToHSV(doubleVectorToIntVector(values));
+                    result = ColorConverter::LABToHSV(
+                            doubleVectorToIntVector(values));
                 } else if (final.compare("LAB") == 0) {
                     result = values;
                 } else {
@@ -122,8 +126,7 @@ string ColorCalculator::operator()(int argc, const char** argv) {
 bool ColorCalculator::validateArgsCount(int argc) {
     if (argc == 6) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }

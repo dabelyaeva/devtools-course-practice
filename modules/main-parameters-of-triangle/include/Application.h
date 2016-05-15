@@ -27,8 +27,6 @@ class Application {
  private:
      void help(const char* appname, const char* message = "");
      bool validateNumberOfArguments(int argc, const char** argv);
-     double parseDouble(const char* arg);
-     Functions parseFunction(const char* arg);
      std::string message_;
      Triangle triangle;
 

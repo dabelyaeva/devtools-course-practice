@@ -49,7 +49,7 @@ bool Application::validateNumberOfArguments(int argc, const char** argv) {
     return true;
 }
 
-double Application::parseDouble(const char* arg) {
+double parseDouble(const char* arg) {
     char* end;
     double value = strtod(arg, &end);
 
@@ -60,7 +60,7 @@ double Application::parseDouble(const char* arg) {
     return value;
 }
 
-Functions Application::parseFunction(const char* arg) {
+Functions parseFunction(const char* arg) {
     Functions func;
 
     if (strcmp(arg, "calc_angle_a") == 0) {

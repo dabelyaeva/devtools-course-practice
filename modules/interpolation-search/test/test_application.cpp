@@ -12,8 +12,7 @@
 
 class TestApplication :
     public ::testing::Test,
-    protected Application
-{
+    protected Application {
  protected:
     void SetUp() override;
 

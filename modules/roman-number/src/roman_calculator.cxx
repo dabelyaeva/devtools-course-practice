@@ -7,6 +7,7 @@
 #include <string>
 #include <stdexcept>
 #include <cstdlib>
+#include <assert.h>
 
 #include "include/RomanConverter.h"
 
@@ -14,6 +15,8 @@ RomanCalculator::RomanCalculator() : message_("") {}
 
 void RomanCalculator::generateHelpMessage(const char *appname,
                                           const char *message) {
+    assert(appname != nullptr);
+    assert(message != nullptr);
     message_ =
             std::string(message) +
             "This is a roman number calculator application.\n\n" +
@@ -33,6 +36,8 @@ void RomanCalculator::generateHelpMessage(const char *appname,
 }
 
 bool RomanCalculator::validateNumberOfArguments(int argc, const char **argv) {
+    assert(argv != nullptr);
+
     if (argc == 1) {
         generateHelpMessage(argv[0]);
         return false;
@@ -44,6 +49,7 @@ bool RomanCalculator::validateNumberOfArguments(int argc, const char **argv) {
 }
 
 char parseOperation(const char* arg) {
+    assert(arg != nullptr);
     char op;
     if (strcmp(arg, "+") == 0) {
         op = '+';
@@ -62,6 +68,7 @@ char parseOperation(const char* arg) {
 }
 
 std::string RomanCalculator::operator()(int argc, const char** argv) {
+    assert(argv != nullptr);
     Arguments args;
 
     if (!validateNumberOfArguments(argc, argv)) {

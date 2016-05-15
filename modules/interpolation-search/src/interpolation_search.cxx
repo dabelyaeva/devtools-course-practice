@@ -77,14 +77,14 @@ void InterpolationSearcher::Clear() {
 
 InterpolationSearcher::Index
 InterpolationSearcher::Insert(const Value& value) {
-    const auto position = std::upper_bound(data_.cbegin(), data_.cend(), value);
+    const auto position = std::upper_bound(data_.begin(), data_.end(), value);
     const auto newElemIndex = data_.insert(position, value);
     return newElemIndex - data_.cbegin();
 }
 
 bool InterpolationSearcher::Remove(const Index& index) {
     if (index < data_.size()) {
-        data_.erase(data_.cbegin() + index);
+        data_.erase(data_.begin() + index);
         return true;
     } else {
         return false;

@@ -1,10 +1,10 @@
 // Copyright 2016 Polkanov Nikita
 
-#ifndef MODULES_HYPOTHEC_CALC_INCLUDE_HYPOTHEC_CALCULATOR_H_
-#define MODULES_HYPOTHEC_CALC_INCLUDE_HYPOTHEC_CALCULATOR_H_
+#ifndef MODULES_HYPOTHEC_CALC_INCLUDE_APPLICATION_H_
+#define MODULES_HYPOTHEC_CALC_INCLUDE_APPLICATION_H_
 
 #include <string>
-#include <include/hypothec_calculator.h>
+#include "include/hypothec_calculator.h"
 
 class Application {
  public:
@@ -21,9 +21,8 @@ class Application {
         int term;
         int percent;
         char operation;
-
     } Arguments;
 };
 
 
-#endif  //  MODULES_HYPOTHEC_CALC_INCLUDE_HYPOTHEC_CALCULATOR_H_
+#endif  // MODULES_HYPOTHEC_CALC_INCLUDE_APPLICATION_H_

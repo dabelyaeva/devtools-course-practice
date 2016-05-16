@@ -16,14 +16,14 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "This is a complex number calculator")
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is an economic calculator application.")
 
 add_test(
     NAME ${prefix}_can_Check_Number_Of_Arguments
     COMMAND ${APPLICATION} 1 2
 )
 set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 5 arguments.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 4 arguments.")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Number_Format
@@ -40,36 +40,9 @@ set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation format!")
 
 add_test(
-    NAME ${prefix}_can_Add_Complexs
-    COMMAND ${APPLICATION} 2.5 4.5 1.0 4.5 +
+    NAME ${prefix}_can_Calc_Hypothec
+    COMMAND ${APPLICATION} 2000000 500000 19 120
 )
-set_tests_properties (${prefix}_can_Add_Complexs
-  PROPERTIES PASS_REGULAR_EXPRESSION "Real = 3.5 Imaginary = 9")
+set_tests_properties (${prefix}_can_Calc_Hypothec
+  PROPERTIES PASS_REGULAR_EXPRESSION "Monthly Payment = 28001; Overpayment = 1860102; Payment's Sum = 3360102")
 
-add_test(
-    NAME ${prefix}_can_Diff_Complexs
-    COMMAND ${APPLICATION} -17 0 15 -3.5 -
-)
-set_tests_properties (${prefix}_can_Diff_Complexs
-  PROPERTIES PASS_REGULAR_EXPRESSION "Real = -32 Imaginary = 3.5")
-
-add_test(
-    NAME ${prefix}_can_Mult_Complexs
-    COMMAND ${APPLICATION} 13 -2 4.6 7.3 *
-)
-set_tests_properties (${prefix}_can_Mult_Complexs
-  PROPERTIES PASS_REGULAR_EXPRESSION "Real = 74.4 Imaginary = 85.7")
-
-add_test(
-    NAME ${prefix}_can_Divide_Complexs
-    COMMAND ${APPLICATION} 27 30 15 20 /
-)
-set_tests_properties (${prefix}_can_Divide_Complexs
-  PROPERTIES PASS_REGULAR_EXPRESSION "Real = 1.608 Imaginary = -0.144")
-
-add_test(
-    NAME ${prefix}_can_Detect_Divide_By_Zero
-    COMMAND ${APPLICATION} 27 30 0 0 /
-)
-set_tests_properties (${prefix}_can_Detect_Divide_By_Zero
-  PROPERTIES PASS_REGULAR_EXPRESSION "Can't divide by zero")

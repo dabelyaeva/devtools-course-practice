@@ -1,8 +1,5 @@
 // Copyright 2016 Polkanov Nikita
 
-#include <include/application.h>
-#include <include/hypothec_calculator.h>
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -10,8 +7,13 @@
 #include <sstream>
 #include <string>
 
+#include "include/application.h"
+#include "include/hypothec_calculator.h"
+
+
 Application::Application() : message_("") { }
 using std::string;
+std::ostringstream stream;
 
 
 void Application::help(const char *appname, const char *message) {
@@ -35,9 +37,9 @@ bool Application::validateNumberOfArguments(int argc, const char **argv) {
     return true;
 }
 
-double parseDouble(const char *arg) {
+int parseInt(const char *arg) {
     char *end;
-    double value = strtod(arg, &end);
+    int value = strtol(arg, &end, 10);
 
     if (end[0]) {
         throw std::string("Wrong number format!");
@@ -53,16 +55,28 @@ std::string Application::operator()(const int argc, const char **argv) {
         return message_;
     }
     try {
-        args.propertyCost = parseDouble(argv[1]);
-        args.firstPayment = parseDouble(argv[2]);
-        args.term = parseDouble(argv[3]);
-        args.percent = parseDouble(argv[4]);
-
+        args.propertyCost = parseInt(argv[1]);
+        args.firstPayment = parseInt(argv[2]);
+        args.term = parseInt(argv[3]);
+        args.percent = parseInt(argv[4]);
     }
     catch (std::string str) {
         return str;
     }
 
 
+    HypothecCalculator calc = HypothecCalculator(
+        args.propertyCost,
+        args.firstPayment,
+        args.term,
+        args.percent);
 
+    calc.calculate();
+    stream << "Monthly Payment = " << calc.getMonthlyPayment()
+        << "; Overpayment = "
+        << calc.getOverpayment() << "; Payment's Sum = "
+        << calc.getPaymentsSum();
+    message_ = stream.str();
+
+    return message_;
 }

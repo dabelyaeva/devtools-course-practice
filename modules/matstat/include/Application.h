@@ -36,7 +36,8 @@ class Application {
          double relative_point;
          int exp;
      } Arguments;
-     void checkInputFromUser(int argc, const char** argv, Arguments *args, int size);
+     void checkInputFromUser(int argc, const char** argv,
+         Arguments *args, int size);
 };
 
 #endif  // MODULES_MATSTAT_INCLUDE_APPLICATION_H_

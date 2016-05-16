@@ -77,7 +77,7 @@ int Application::validateNumberOfArguments(int argc, const char** argv) {
         }
         if ((argc != 2 * count + 3)
             && (argc != 2 * count + 4)
-            && (argc != 2 * count + 5)) 
+            && (argc != 2 * count + 5))
             return 2;
     }
     return 3;

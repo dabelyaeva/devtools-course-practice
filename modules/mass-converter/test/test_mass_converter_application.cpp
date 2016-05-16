@@ -5,13 +5,13 @@
 #include <string>
 #include <vector>
 
-#include "include/Application.h"
+#include "include/mass_converter_application.h"
 
 using ::testing::internal::RE;
 using std::vector;
 using std::string;
 
-class ApplicationTest : public ::testing::Test {
+class MassConverterApplicationTest : public ::testing::Test {
  protected:
     void Act(vector<string> args_) {
         vector<const char*> options;
@@ -30,11 +30,11 @@ class ApplicationTest : public ::testing::Test {
         EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
  private:
-    Application app_;
+    MassConverterApplication app_;
     string output_;
 };
 
-TEST_F(ApplicationTest, Do_Print_Help_Without_Arguments) {
+TEST_F(MassConverterApplicationTest, Do_Print_Help_Without_Arguments) {
     vector<string> args = {};
 
     Act(args);
@@ -42,7 +42,7 @@ TEST_F(ApplicationTest, Do_Print_Help_Without_Arguments) {
     Assert("This is a mass units converter application\\..*");
 }
 
-TEST_F(ApplicationTest, Is_Checking_Number_Of_Arguments) {
+TEST_F(MassConverterApplicationTest, Is_Checking_Number_Of_Arguments) {
     vector<string> args = {"1.123"};
 
     Act(args);
@@ -50,7 +50,7 @@ TEST_F(ApplicationTest, Is_Checking_Number_Of_Arguments) {
     Assert("ERROR: Should be 3 arguments\\..*");
 }
 
-TEST_F(ApplicationTest, Can_Detect_Wrong_Number_Format) {
+TEST_F(MassConverterApplicationTest, Can_Detect_Wrong_Number_Format) {
     vector<string> args = {"a.12", "kg", "kg"};
 
     Act(args);
@@ -58,7 +58,7 @@ TEST_F(ApplicationTest, Can_Detect_Wrong_Number_Format) {
     Assert("Wrong number format!.*");
 }
 
-TEST_F(ApplicationTest, Can_Detect_Dont_Existence_MassUnits) {
+TEST_F(MassConverterApplicationTest, Can_Detect_Dont_Existence_MassUnits) {
     vector<string> args = {"1.12", "kg", "wrong"};
 
     Act(args);
@@ -66,7 +66,7 @@ TEST_F(ApplicationTest, Can_Detect_Dont_Existence_MassUnits) {
     Assert("Undefined MassUnit with qualifier wrong!.*");
 }
 
-TEST_F(ApplicationTest, Can_Convert) {
+TEST_F(MassConverterApplicationTest, Can_Convert) {
     vector<string> args = {"1500", "g", "kg"};
 
     Act(args);

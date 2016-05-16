@@ -6,12 +6,12 @@
 #include <stdexcept>
 #include <cstdlib>
 
-#include "include/Application.h"
+#include "include/mass_converter_application.h"
 #include "include/mass_converter.h"
 
-Application::Application(): message_("") {}
+MassConverterApplication::MassConverterApplication(): message_("") {}
 
-void Application::help(const char* appname, const char* message) {
+void MassConverterApplication::help(const char* appname, const char* message) {
     std::string msg;
     std::string apn;
     if (message != NULL)
@@ -40,7 +40,8 @@ void Application::help(const char* appname, const char* message) {
     message_ += "\n";
 }
 
-bool Application::validateNumberOfArguments(int argc, const char** argv) {
+bool MassConverterApplication::validateNumberOfArguments(int argc,
+        const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
@@ -63,7 +64,7 @@ double parseDouble(const char* arg) {
     return value;
 }
 
-std::string Application::operator()(int argc, const char** argv) {
+std::string MassConverterApplication::operator()(int argc, const char** argv) {
     Arguments args;
 
     if (!validateNumberOfArguments(argc, argv)) {

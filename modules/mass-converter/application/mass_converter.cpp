@@ -3,10 +3,10 @@
 #include <iostream>
 #include <string>
 
-#include "include/Application.h"
+#include "include/mass_converter_application.h"
 
 int main(int argc, const char** argv) {
-    Application app;
+    MassConverterApplication app;
     std::string output = app(argc, argv);
     std::cout << output << std::endl;
 

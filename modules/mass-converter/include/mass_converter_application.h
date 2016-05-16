@@ -1,15 +1,15 @@
 // Copyright 2016 Podchischaeva Mary
 
-#ifndef MODULES_MASS_CONVERTER_INCLUDE_APPLICATION_H_
-#define MODULES_MASS_CONVERTER_INCLUDE_APPLICATION_H_
+#ifndef MODULES_MASS_CONVERTER_INCLUDE_MASS_CONVERTER_APPLICATION_H_
+#define MODULES_MASS_CONVERTER_INCLUDE_MASS_CONVERTER_APPLICATION_H_
 
 #include <string>
 
 #include "include/mass_converter.h"
 
-class Application {
+class MassConverterApplication {
  public:
-    Application();
+    MassConverterApplication();
     std::string operator()(int argc, const char** argv);
 
  private:
@@ -24,4 +24,4 @@ class Application {
     } Arguments;
 };
 
-#endif  // MODULES_MASS_CONVERTER_INCLUDE_APPLICATION_H_
+#endif  // MODULES_MASS_CONVERTER_INCLUDE_MASS_CONVERTER_APPLICATION_H_

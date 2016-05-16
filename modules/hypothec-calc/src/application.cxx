@@ -5,7 +5,6 @@
 #include <stdint.h>
 #include <string.h>
 #include <sstream>
-#include <string>
 
 #include "include/application.h"
 #include "include/hypothec_calculator.h"

@@ -152,16 +152,13 @@ string Application::operator()(int argc, const char ** argv) {
     std::ostringstream stream;
     if (validateNumberOfArguments(argc, argv) == 0) {
         return message_;
-    }
-    else if (validateNumberOfArguments(argc, argv) == 1) {
+    } else if (validateNumberOfArguments(argc, argv) == 1) {
         message_ = "\nWrong number format!";
         return message_;
-    }
-    else if (validateNumberOfArguments(argc, argv) == 2) {
+    } else if (validateNumberOfArguments(argc, argv) == 2) {
         message_ = "\nWrong number of parameters!";
         return message_;
-    }
-    else {
+    } else {
         size = parseInt(argv[1]);
         try {
             checkInputFromUser(argc, argv, args, size);

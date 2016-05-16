@@ -67,8 +67,8 @@ std::string Application::operator()(const int argc, const char **argv) {
     HypothecCalculator calc = HypothecCalculator(
         args.propertyCost,
         args.firstPayment,
-        args.term,
-        args.percent);
+        args.percent,
+        args.term);
 
     calc.calculate();
     stream << "Monthly Payment = " << calc.getMonthlyPayment()

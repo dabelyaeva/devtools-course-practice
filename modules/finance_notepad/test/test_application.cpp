@@ -229,7 +229,6 @@ TEST_F(AppFinanceNotepadTest, can_get_pouch) {
     std::string filename = "test_read_from_file.txt";
     std::ofstream fout(filename);
     fout << "50\n";
-    fout << "1 january 2016 -30 Debt For Noname\n";
     fout.close();
     vector<string> args = {"-gp", filename};
 

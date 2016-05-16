@@ -33,6 +33,7 @@ std::vector<std::string> split(const std::string& s) {
     }
     return ret;
 }
+
 std::string Convert(float number) {
     std::ostringstream buff;
     buff << number;
@@ -69,7 +70,7 @@ void Application::writeToFile(string filename) {
 void Application::readFromFile(string filename) {
     ifstream fin(filename);
     if (!fin.is_open()) {
-        message_ = "file not exist!";
+        message_ = "Error! File not exist!";
         return;
     }
     string buff = "";
@@ -78,7 +79,7 @@ void Application::readFromFile(string filename) {
     try {
         pouch = std::stof(buff);
     } catch (std::exception except) {
-        message_ = "Error wrong pouch param!";
+        message_ = "Error! Wrong pouch param!";
         return;
     }
     started_pouch = pouch;
@@ -103,25 +104,25 @@ bool Application::parseString(string params) {
     try {
         date_day = std::stoi(param_list[0]);
     } catch (std::exception except) {
-            message_ = "Error wrong day param!";
+            message_ = "Error! Wrong day param!";
         return false;
     }
     try {
         date_month = date::stringToMonth(param_list[1]);
     } catch (std::exception except) {
-        message_ = "Error wrong month param!";
+        message_ = "Error! Wrong month param!";
         return false;
     }
     try {
         date_year = std::stoi(param_list[2]);
     } catch (std::exception except) {
-        message_ = "Error wrong year param!";
+        message_ = "Error! Wrong year param!";
         return false;
     }
     try {
         delta_money = std::stoi(param_list[3]);
     } catch (std::exception except) {
-        message_ = "Error wrong delta money param!";
+        message_ = "Error! Wrong delta money param!";
         return false;
     }
     category = param_list[4];
@@ -132,7 +133,7 @@ bool Application::parseString(string params) {
     try {
         curr_date = date(date_day, date_month, date_year);
     } catch (std::exception except) {
-        message_ = "Error wrong date param!" + string(except.what());
+        message_ = "Error! Wrong date param!" + string(except.what());
         return false;
     }
     note.addNote(curr_date, delta_money, category, comment);
@@ -144,7 +145,7 @@ void Application::parseAppOperand(int argc, const char **argv) {
     string argument;
     argument = string(argv[1]);
     if (argument[0] != '-') {
-        message_ = "error first argument must be param \n\n"
+        message_ = "Error! First argument must be param \n\n"
                    "Try $ " + std::string(argv[0]) +
                    " --help for more information";
         return;
@@ -184,7 +185,7 @@ void Application::parseAppOperand(int argc, const char **argv) {
         try {
             pouch = stof(string(argv[3]));
         } catch (std::exception except) {
-            message_ = "wrong pouch param!";
+            message_ = "Error! Wrong pouch param!";
             return;
         }
         readFromFile(string(argv[2]));
@@ -210,7 +211,7 @@ void Application::parseAppOperand(int argc, const char **argv) {
         writeToFile(string(argv[2]));
         return;
     }
-    message_ = "param " + argument + " not found\n"
+    message_ = "Error! Param " + argument + " not found\n"
                "\n\nTry $ " + std::string(argv[0]) +
                " --help for more information";;
     return;
@@ -218,7 +219,7 @@ void Application::parseAppOperand(int argc, const char **argv) {
 
 bool Application::validateNumberOfArguments(int argc, const char **argv) {
     if (argc < 2 || argc > 4) {
-        message_ = "Error invalid number of Arguments.\n\n"
+        message_ = "Error! Invalid number of Arguments.\n\n"
                    "Try $ " + std::string(argv[0]) +
                    " --help for more information";
         return false;

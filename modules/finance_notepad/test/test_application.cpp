@@ -57,7 +57,7 @@ TEST_F(AppFinanceNotepadTest,
     Act(args);
 
     // Assert
-    Assert("param " + argument + " not found\n");
+    Assert("Error! Param " + argument + " not found\n");
 }
 
 TEST_F(AppFinanceNotepadTest,
@@ -69,7 +69,7 @@ TEST_F(AppFinanceNotepadTest,
     Act(args);
 
     // Assert
-    Assert("Error invalid number of Arguments\\..*");
+    Assert("Error! Invalid number of Arguments\\..*");
 }
 TEST_F(AppFinanceNotepadTest,
        can_reach_error_msg_when_first_arg_is_not_param) {
@@ -80,7 +80,7 @@ TEST_F(AppFinanceNotepadTest,
     Act(args);
 
     // Assert
-    Assert("error first argument must be param ");
+    Assert("Error! First argument must be param ");
 }
 
 TEST_F(AppFinanceNotepadTest, can_call_help) {
@@ -102,7 +102,7 @@ TEST_F(AppFinanceNotepadTest, can_reach_error_msg_when_read_wrong_filename) {
     Act(args);
 
     // Assert
-    Assert("file not exist!");
+    Assert("Error! File not exist!");
 }
 
 TEST_F(AppFinanceNotepadTest, can_read_from_file) {
@@ -135,7 +135,7 @@ TEST_F(AppFinanceNotepadTest, can_reach_date_day_error) {
     Act(args);
 
     // Assert
-    Assert("Error wrong day param!");
+    Assert("Error! Wrong day param!");
     remove(filename.c_str());
 }
 
@@ -152,7 +152,7 @@ TEST_F(AppFinanceNotepadTest, can_reach_date_month_error) {
     Act(args);
 
     // Assert
-    Assert("Error wrong month param!");
+    Assert("Error! Wrong month param!");
     remove(filename.c_str());
 }
 
@@ -169,7 +169,7 @@ TEST_F(AppFinanceNotepadTest, can_reach_date_year_error) {
     Act(args);
 
     // Assert
-    Assert("Error wrong year param!");
+    Assert("Error! Wrong year param!");
     remove(filename.c_str());
 }
 
@@ -186,7 +186,7 @@ TEST_F(AppFinanceNotepadTest, can_reach_delta_cash_error) {
     Act(args);
 
     // Assert
-    Assert("Error wrong delta money param!");
+    Assert("Error! Wrong delta money param!");
     remove(filename.c_str());
 }
 
@@ -203,7 +203,7 @@ TEST_F(AppFinanceNotepadTest, can_reach_data_error) {
     Act(args);
 
     // Assert
-    Assert("Error wrong date param!");
+    Assert("Error! Wrong date param!");
     remove(filename.c_str());
 }
 
@@ -212,7 +212,7 @@ TEST_F(AppFinanceNotepadTest, can_reach_pouch_error) {
     std::string filename = "test_read_from_file.txt";
     std::ofstream fout(filename);
     fout << "pouch\n";
-    fout << "0 january 2016 -30 Debt For Noname\n";
+    fout << "1 january 2016 -30 Debt For Noname\n";
     fout.close();
     vector<string> args = {"-r", filename};
 
@@ -220,7 +220,7 @@ TEST_F(AppFinanceNotepadTest, can_reach_pouch_error) {
     Act(args);
 
     // Assert
-    Assert("Error wrong pouch param!");
+    Assert("Error! Wrong pouch param!");
     remove(filename.c_str());
 }
 
@@ -229,7 +229,7 @@ TEST_F(AppFinanceNotepadTest, can_get_pouch) {
     std::string filename = "test_read_from_file.txt";
     std::ofstream fout(filename);
     fout << "50\n";
-    fout << "0 january 2016 -30 Debt For Noname\n";
+    fout << "1 january 2016 -30 Debt For Noname\n";
     fout.close();
     vector<string> args = {"-gp", filename};
 
@@ -248,7 +248,7 @@ TEST_F(AppFinanceNotepadTest, can_get_potential_pouch) {
     fout << "50\n";
 //    notes.addNote(date(3, months::APRIL, 2017), -20.f, "Food", "KFC");
     fout << "3 april 2017 -20 Food KFC\n";
-    fout << "0 january 2016 -30 Debt For Noname\n";
+    fout << "1 january 2016 -30 Debt For Noname\n";
     fout.close();
     vector<string> args = {"-gpp", filename};
 
@@ -365,6 +365,6 @@ TEST_F(AppFinanceNotepadTest, can_reach_error_when_set_pouch) {
     Act(args);
 
     // Assert
-    Assert("wrong pouch param!");
+    Assert("Error! Wrong pouch param!");
 //    remove(filename.c_str());
 }

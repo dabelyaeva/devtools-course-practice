@@ -16,14 +16,14 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_can_Print_Error_Without_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "Error invalid number of Arguments.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Error! Invalid number of Arguments.")
 
 add_test(
     NAME ${prefix}_can_Check_Number_Of_Arguments
     COMMAND ${APPLICATION} a b c d f
 )
 set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "Error invalid number of Arguments.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Error! Invalid number of Arguments.")
 
 add_test(
     NAME ${prefix}_can_Set_Pouch

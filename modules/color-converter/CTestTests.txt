@@ -10,3 +10,45 @@ add_test(
     NAME ${prefix}_can_Run
     COMMAND ${APPLICATION}
 )
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
+    PROPERTIES PASS_REGULAR_EXPRESSION "Color calculator allows to convert")
+
+add_test(
+    NAME ${prefix}_can_Check_Arguments_Count
+    COMMAND ${APPLICATION} RGB HSV
+)
+set_tests_properties (${prefix}_can_Check_Arguments_Count
+    PROPERTIES PASS_REGULAR_EXPRESSION "Incorrect arguments count")
+
+add_test(
+    NAME ${prefix}_can_Detect_Incorrect_Number
+    COMMAND ${APPLICATION} RGB 42 dad 93 HSV
+)
+set_tests_properties (${prefix}_can_Detect_Incorrect_Number
+    PROPERTIES PASS_REGULAR_EXPRESSION "Incorrect number format!")
+
+add_test(
+    NAME ${prefix}_can_Convert_RGB_To_LAB
+    COMMAND ${APPLICATION} RGB 42 239 93 LAB
+)
+set_tests_properties (${prefix}_can_Convert_RGB_To_LAB
+    PROPERTIES PASS_REGULAR_EXPRESSION "83 -74 56")
+
+add_test(
+    NAME ${prefix}_can_Convert_LAB_To_HSV
+    COMMAND ${APPLICATION} LAB 20 10 18 HSV
+)
+set_tests_properties (${prefix}_can_Convert_LAB_To_HSV
+    PROPERTIES PASS_REGULAR_EXPRESSION "0.070922 0.681159 0.270588")
+
+add_test(
+    NAME ${prefix}_can_Convert_HSV_To_RGB
+    COMMAND ${APPLICATION} HSV 0.167 1 1 RGB
+)
+set_tests_properties (${prefix}_can_Convert_HSV_To_RGB
+    PROPERTIES PASS_REGULAR_EXPRESSION "254 255 0")

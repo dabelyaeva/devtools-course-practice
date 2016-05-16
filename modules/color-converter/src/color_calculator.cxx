@@ -115,7 +115,7 @@ string ColorCalculator::operator()(int argc, const char** argv) {
         message = "Incorrect arguments count";
     }
 
-    if (message.size() == 0) {
+    if (message.empty()) {
         std::ostringstream stream;
         stream << result[0] << " " << result[1] << " " << result[2];
         message = stream.str();

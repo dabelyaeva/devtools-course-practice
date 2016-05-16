@@ -16,7 +16,7 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "This is a wildcard search application.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is a wildcard search application\\.")
 
 add_test(
     NAME ${prefix}_can_Checking_Number_Of_Arguments
@@ -28,7 +28,7 @@ add_test(
 )
 
 set_tests_properties (${prefix}_can_Checking_Number_Of_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "Should be 3 arguments.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Should be 3 arguments\\.")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Regex_Expression_Format
@@ -39,7 +39,7 @@ add_test(
 )
 
 set_tests_properties (${prefix}_can_Detect_Wrong_Regex_Expression_Format
-  PROPERTIES PASS_REGULAR_EXPRESSION "Incorrect control character.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Incorrect control character\\.")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Operation_Format
@@ -116,7 +116,7 @@ add_test(
 )
 
 set_tests_properties (${prefix}_cant_Get_First_Match
-  PROPERTIES PASS_REGULAR_EXPRESSION "Not found.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Not found\\.")
 
 add_test(
     NAME ${prefix}_can_Get_All_Matches
@@ -138,7 +138,7 @@ add_test(
 )
 
 set_tests_properties (${prefix}_cant_Get_All_Matches
-  PROPERTIES PASS_REGULAR_EXPRESSION "Not found.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Not found\\.")
 
 add_test(
     NAME ${prefix}_can_Get_Number_Matches

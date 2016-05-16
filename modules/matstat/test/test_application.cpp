@@ -76,7 +76,7 @@ TEST_F(MatStatAppTest, Can_Detect_Wrong_Double_Number_Format) {
 
 TEST_F(MatStatAppTest, Can_Detect_Wrong_Int_Number_Format) {
     // Arrange
-    vector<string> args = { "h", "1", "h", "0.5", "0.5", "CalcDispersion" };
+    vector<string> args = { "h", "1", "2", "0.5", "0.5", "CalcDispersion" };
 
     // Act
     Act(args);

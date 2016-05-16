@@ -42,7 +42,7 @@ void Application::help(const char* appname, const char* message) {
 int parseInt(const char* arg) {
     char* end;
 
-    int value = static_cast<int>(strtod(arg, &end));
+    int value = strtol(arg, &end, 10);
 
     if (end[0]) {
         throw string("Wrong number format!");
@@ -62,23 +62,29 @@ double parseDouble(const char* arg) {
     return value;
 }
 
-bool Application::validateNumberOfArguments(int argc, const char** argv) {
+int Application::validateNumberOfArguments(int argc, const char** argv) {
     std::ostringstream stream;
-    if (argc == 1) {
+    int count = 0;
+    if (argc <= 1) {
         help(argv[0]);
-        return false;
-    } else if ((argc != 2 * parseInt(argv[1]) + 3)
-        && (argc != 2 * parseInt(argv[1]) + 4)
-        && (argc != 2 * parseInt(argv[1]) + 5)) {
-        throw string("\nWrong number of parameters!");
-     return false;
+        return 0;
+    } else {
+        try {
+            count = parseInt(argv[1]);
+        }
+        catch (std::string str) {
+            return 1;
+        }
+        if ((argc != 2 * count + 3)
+            && (argc != 2 * count + 4)
+            && (argc != 2 * count + 5)) 
+            return 2;
     }
-    return true;
+    return 3;
 }
 
 void Application::
-checkInputFromUser(int argc, const char** argv, Arguments *args) {
-    int size = parseInt(argv[1]);
+checkInputFromUser(int argc, const char** argv, Arguments *args, int size) {
     if (size > 0) {
         args->function = parseFunction(argv[2 + 2 * size]);
         if (args->function == CALC_MATH_EXPECTATION ||
@@ -142,58 +148,64 @@ Functions Application::parseFunction(const char* arg) {
 
 string Application::operator()(int argc, const char ** argv) {
     Arguments *args = new Arguments;
+    int size = 0;
     std::ostringstream stream;
-    try {
-        if (!validateNumberOfArguments(argc, argv)) {
-            return message_;
-        }
-    }
-    catch (std::string str) {
-        return str;
-    }
-    try {
-        checkInputFromUser(argc, argv, args);
-    }
-    catch (std::string str) {
-        return str;
-    }
-    try {
-        Sample sample(args->s, args->p);
-        A = sample;
-    }
-    catch (std::runtime_error exp) {
-        return exp.what();
-    }
-
-    double result;
-    switch (args->function) {
-    case CALC_MATH_EXPECTATION:
-        result = A.CalcMathematicalExpectation();
-        stream << "Mathematical Expectation is equal " << result;
-        break;
-    case CALC_MOMENT:
-        result = A.CalcMoment(args->relative_point, args->exp);
-        stream << "Moment is equal " << result;
-        break;
-    case CALC_ELEMENTARY_MOMENT:
-        result = A.CalcElementaryMoment(args->exp);
-        stream << "Elementary moment is equal " << result;
-        break;
-    case CALC_DISPERSION:
-        result = A.CalcDispersion();
-        stream << "Dispersion is equal " << result;
-        break;
-    case CALC_AVERAGE_QUADRATIC_DEVIATION:
-        result = A.CalcAverageQuadraticDeviation();
-        stream << "Average Quadratic Deviation is equal " << result;
-        break;
-    case CALC_CENTRAL_MOMENT:
-        result = A.CalcCentralMoment(args->exp);
-        stream << "Central moment is equal " << result;
-        break;
-    }
-
-    message_ = stream.str();
-
+    switch (validateNumberOfArguments(argc, argv)) {
+    case 0:
         return message_;
+        break;
+    case 1:
+        message_ = "\nWrong number format!";
+        return message_;
+        break;
+    case 2:
+        message_ = "\nWrong number of parameters!";
+        return message_;
+        break;
+    case 3:
+        size = parseInt(argv[1]);
+        try {
+            checkInputFromUser(argc, argv, args, size);
+        }
+        catch (std::string str) {
+            return str;
+        }
+        try {
+            Sample sample(args->s, args->p);
+            A = sample;
+        }
+        catch (std::runtime_error exp) {
+            return exp.what();
+        }
+        double result;
+        switch (args->function) {
+        case CALC_MATH_EXPECTATION:
+            result = A.CalcMathematicalExpectation();
+            stream << "Mathematical Expectation is equal " << result;
+            break;
+        case CALC_MOMENT:
+            result = A.CalcMoment(args->relative_point, args->exp);
+            stream << "Moment is equal " << result;
+            break;
+        case CALC_ELEMENTARY_MOMENT:
+            result = A.CalcElementaryMoment(args->exp);
+            stream << "Elementary moment is equal " << result;
+            break;
+        case CALC_DISPERSION:
+            result = A.CalcDispersion();
+            stream << "Dispersion is equal " << result;
+            break;
+        case CALC_AVERAGE_QUADRATIC_DEVIATION:
+            result = A.CalcAverageQuadraticDeviation();
+            stream << "Average Quadratic Deviation is equal " << result;
+            break;
+        case CALC_CENTRAL_MOMENT:
+            result = A.CalcCentralMoment(args->exp);
+            stream << "Central moment is equal " << result;
+            break;
+        }
+        message_ = stream.str();
+        return message_;
+        break;
+    }
 }

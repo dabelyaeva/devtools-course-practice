@@ -208,4 +208,5 @@ string Application::operator()(int argc, const char ** argv) {
         return message_;
         break;
     }
+    return message_;
 }

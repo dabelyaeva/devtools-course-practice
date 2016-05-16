@@ -150,19 +150,18 @@ string Application::operator()(int argc, const char ** argv) {
     Arguments *args = new Arguments;
     int size = 0;
     std::ostringstream stream;
-    switch (validateNumberOfArguments(argc, argv)) {
-    case 0:
+    if (validateNumberOfArguments(argc, argv) == 0) {
         return message_;
-        break;
-    case 1:
+    }
+    else if (validateNumberOfArguments(argc, argv) == 1) {
         message_ = "\nWrong number format!";
         return message_;
-        break;
-    case 2:
+    }
+    else if (validateNumberOfArguments(argc, argv) == 2) {
         message_ = "\nWrong number of parameters!";
         return message_;
-        break;
-    case 3:
+    }
+    else {
         size = parseInt(argv[1]);
         try {
             checkInputFromUser(argc, argv, args, size);
@@ -206,7 +205,5 @@ string Application::operator()(int argc, const char ** argv) {
         }
         message_ = stream.str();
         return message_;
-        break;
     }
-    return message_;
 }

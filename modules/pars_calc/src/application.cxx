@@ -11,7 +11,7 @@
 
 #include "include/pars_calc.h"
 
-Application::Application() : message_("") {};
+Application::Application() : message_("") {}
 
 void Application::help(const char* appname, const char* message) {
     message_ =
@@ -28,13 +28,13 @@ void Application::help(const char* appname, const char* message) {
 bool Application::validateNumberOfArguments(const int argc, const char** argv) {
   if (argc == 1) {
     help(argv[0]);
-    return false;    
-  }
-  else if (argc != 2 ) {
-    help(argv[0], "ERROR: Should be 1 argument - string with math expression.\n\n");
+    return false;
+  } else if (argc != 2) {
+    help(argv[0], "ERROR: Should be 1 argument - " +
+      "string with math expression.\n\n");
     return false;
   }
-  return true;  
+  return true;
 }
 
 std::string Application::operator()(const int argc, const char** argv) {

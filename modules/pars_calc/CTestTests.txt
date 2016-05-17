@@ -1,0 +1,47 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is a string parser and calculator.")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} "1" "2"
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 1 argument - string with math expression.")
+
+add_test(
+    NAME ${prefix}_can_Work_With_Unknow_Obj
+    COMMAND ${APPLICATION} "3,5+o"
+)
+set_tests_properties (${prefix}_can_Work_With_Unknow_Obj
+  PROPERTIES PASS_REGULAR_EXPRESSION "Invalid input!\n")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Operation_Format
+    COMMAND ${APPLICATION} "(1~2)"
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Expected ')'!\n")
+
+add_test(
+    NAME ${prefix}_can_Add_Multiple
+    COMMAND ${APPLICATION} "2+3+0"
+)
+set_tests_properties (${prefix}_Can_Add_Multiple
+  PROPERTIES PASS_REGULAR_EXPRESSION "\nResult is:5.000000")

@@ -1,7 +1,7 @@
 // Copyright 2016 Arhipycheva Anastasia
 
-#include "include\quaternion.h"
-#include "include\quaternion_calculator.h"
+#include "include/quaternion.h"
+#include "include/quaternion_calculator.h"
 
 #include <stdio.h>
 #include <stdlib.h>

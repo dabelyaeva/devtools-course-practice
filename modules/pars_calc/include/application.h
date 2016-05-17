@@ -9,8 +9,8 @@ class Application {
  public:
     Application();
     std::string operator()(const int argc, const char** argv);
-private:
-  
+
+ private:
      bool validateNumberOfArguments(const int argc, const char** argv);
      void help(const char* appname, const char* message = "");
      std::string message_;

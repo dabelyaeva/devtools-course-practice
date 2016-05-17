@@ -1,7 +1,7 @@
 // Copyright 2016 Hramov Ilya
 
-#ifndef MODULES_HRAMOV_ILYA_QUATERNION_INCLUDE_QUATERNION_H_
-#define MODULES_HRAMOV_ILYA_QUATERNION_INCLUDE_QUATERNION_H_
+#ifndef MODULES_QUATERNION_INCLUDE_QUATERNION_H_
+#define MODULES_QUATERNION_INCLUDE_QUATERNION_H_
 
 #include <math.h>
 #include <limits>
@@ -37,7 +37,6 @@ class Quaternion {
     Quaternion& operator*=(const Quaternion &operand);
     Quaternion operator!() const;  // conjugate
     Quaternion operator~() const;  // inverse
- 
     // Math actions
     double magnitude() const;
     double qmagnitude() const;
@@ -53,4 +52,4 @@ class Quaternion {
     double w;
 };
 
-#endif  // MODULES_HRAMOV_ILYA_QUATERNION_INCLUDE_QUATERNION_H_
+#endif  // MODULES_QUATERNION_INCLUDE_QUATERNION_H_

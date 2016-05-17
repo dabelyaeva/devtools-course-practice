@@ -64,7 +64,7 @@ TEST_F(ParserCalculatorTest, Is_Checking_Brackets) {
 
     Act(args);
 
-    Assert("Expected\\.*" );
+    Assert("Expected\\.*");
 }
 
 TEST_F(ParserCalculatorTest, Is_Working_With_Double) {
@@ -82,7 +82,7 @@ TEST_F(ParserCalculatorTest, Is_Working_With_Unkown_Obj) {
 
   Act(args);
 
-  Assert("Invalid input!\n\\.*" );
+  Assert("Invalid input!\n\\.*");
 }
 
 TEST_F(ParserCalculatorTest, Can_Do_Unknown_Operation) {
@@ -91,7 +91,7 @@ TEST_F(ParserCalculatorTest, Can_Do_Unknown_Operation) {
 
     Act(args);
 
-    Assert("Expected\\.*" );
+    Assert("Expected\\.*");
 }
 
 TEST_F(ParserCalculatorTest, Can_Add_Several) {
@@ -127,7 +127,7 @@ TEST_F(ParserCalculatorTest, Can_Work_With_Unknown_Input) {
 
   Act(args);
 
-  Assert("Invalid input!\n\\.*" );
+  Assert("Invalid input!\n\\.*");
 }
 
 TEST_F(ParserCalculatorTest, Can_Calculate_Mod_Of_Sum) {
@@ -154,7 +154,7 @@ TEST_F(ParserCalculatorTest, Can_Work_With_Brackets_As_Arguments) {
 
   Act(args);
 
-  Assert("Invalid input!\n" );
+  Assert("Invalid input!\n");
 }
 
 TEST_F(ParserCalculatorTest, Is_Priority_Working_Well) {
@@ -172,7 +172,7 @@ TEST_F(ParserCalculatorTest, Can_Work_Without_Operands) {
 
   Act(args);
 
-  Assert("Invalid input!\n\\.*" );
+  Assert("Invalid input!\n\\.*");
 }
 
 TEST_F(ParserCalculatorTest, Can_Div_Negatives_Get_Positive) {

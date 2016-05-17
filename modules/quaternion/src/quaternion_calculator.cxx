@@ -26,7 +26,7 @@ void QuaternionCalculator::help(const char* appname, const char* mes) {
     "'magnitude(M)', 'qmagnitude(Q)', 'normalized(N)',  ";
 }
 
-bool QuaternionCalculator::validateNumberOfArguments(int argc, const char** argv) {
+bool QuaternionCalculator::validateNumOfArg(int argc, const char** argv) {
   if (argc == 1) {
     help(argv[0]);
     return false;
@@ -55,26 +55,31 @@ char parseOperation(const char* arg) {
     if (strcmp(arg, "-") == 0) {
     op = '-';
     }
-  }
-  else if (strcmp(arg, "*") == 0) {
+  } else {
+    if (strcmp(arg, "*") == 0) {
     op = '*';
-  }
-  else if (strcmp(arg, "!") == 0) {
+    }
+  } else {
+    if (strcmp(arg, "!") == 0) {
     op = '!';
-  }
-  else if (strcmp(arg, "~") == 0) {
+    }
+  } else {
+    if (strcmp(arg, "~") == 0) {
     op = '~';
-  }
-  else if (strcmp(arg, "M") == 0) {
+    }
+  } else {
+    if (strcmp(arg, "M") == 0) {
     op = 'M';
-  }
-  else if (strcmp(arg, "Q") == 0) {
+    }
+  } else {
+    if (strcmp(arg, "Q") == 0) {
     op = 'Q';
-  }
-  else if (strcmp(arg, "N") == 0) {
+    }
+  } else {
+    if (strcmp(arg, "N") == 0) {
     op = 'N';
-  }
-  else {
+    }
+  } else {
     throw std::string("Wrong operation format!");
   }
   return op;

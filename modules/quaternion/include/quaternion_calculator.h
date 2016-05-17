@@ -12,7 +12,7 @@ class QuaternionCalculator {
 
  private:
   void help(const char* appname, const char* message = "");
-  bool validateNumberOfArguments(int argc, const char** argv);
+  bool validateNumOfArg(int argc, const char** argv);
   std::string message_str;
   typedef struct {
     double q1_x;

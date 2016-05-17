@@ -1,7 +1,7 @@
 // Copyright 2016 Litsov Alex
 
-#ifndef MODULES_PARSER_CALCULATOR__INCLUDE_PARS_CALC_H_
-#define MODULES_PARSER_CALCULATOR__INCLUDE_PARS_CALC_H_
+#ifndef MODULES_PARS_CALC__INCLUDE_PARS_CALC_H_
+#define MODULES_PARS_CALC__INCLUDE_PARS_CALC_H_
 
 #include <string>
 #include <vector>
@@ -37,4 +37,4 @@ class Parser {
     const char* input;
 };
 
-#endif  // MODULES_PARSER_CALCULATOR__INCLUDE_PARS_CALC_H_
+#endif  // MODULES_PARS_CALC__INCLUDE_PARS_CALC_H_

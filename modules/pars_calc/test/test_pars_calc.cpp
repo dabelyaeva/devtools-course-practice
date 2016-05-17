@@ -52,7 +52,7 @@ TEST(Parser, Can_Calc_Eval_With_Proisv) {
     EXPECT_DOUBLE_EQ(expected_result, result);
 }
 
-TEST(Parser, Can_Calc_Eval_Hard_1) {
+TEST(Parser, Can_Calc_Eval_With_Brackets) {
     // Arrange
     Parser parser("2+2*(3+2**3)");
 
@@ -139,7 +139,8 @@ TEST(Parser, Can_Calc_Eval_Plus_Substract) {
 TEST(Parser, Can_Error_If_Unknown_Un_Operator) {
     // Arrange
     Parser parser("t(1)");
-    // Act & Assert
+
+    //  Assert
     EXPECT_ANY_THROW(Parser::eval(parser.parse()));
 }
 
@@ -157,11 +158,26 @@ TEST(Parser, Can_Check_Brackets) {
     EXPECT_ANY_THROW(Parser::eval(parser.parse()));
 }
 
+TEST(Parser, Can_Divide_By_Zero) {
+  // Arrange
+  Parser parser("1/0");
+
+  // Act & Assert
+  EXPECT_EQ(Parser::eval(parser.parse()), INFINITY);
+}
+
 TEST(Parser, Can_Error_If_Unknown_Bin_Operator) {
     // Arrange
     Parser parser("(8$8)");
     // Act & Assert
     EXPECT_ANY_THROW(Parser::eval(parser.parse()));
+}
+
+TEST(Parser, Can_Work_With_Brackets_As_Arguments) {
+  // Arrange
+  Parser parser("(+)");
+  // Act & Assert
+  EXPECT_ANY_THROW(Parser::eval(parser.parse()));
 }
 
 TEST(Parser, Can_Error_If_Unknown_Expression_Type) {
@@ -171,4 +187,27 @@ TEST(Parser, Can_Error_If_Unknown_Expression_Type) {
     EXPECT_ANY_THROW(Parser::eval(parser.parse()));
 }
 
+TEST(Parser, Can_Calc_Eval_With_Sin_Cos_Mul) {
+  // Arrange
+  Parser parser("sin(0)*cos(3)");
+
+  // Act
+  const double result = Parser::eval(parser.parse());
+
+  // Assert
+  const double expected_result = 0;
+  EXPECT_DOUBLE_EQ(expected_result, result);
+}
+
+TEST(Parser, Can_Calc_Eval_With_Sin_Cos_Pow) {
+  // Arrange
+  Parser parser("sin(3)**cos(0)");
+
+  // Act
+  const double result = Parser::eval(parser.parse());
+
+  // Assert
+  const double expected_result = sin(3);
+  EXPECT_DOUBLE_EQ(expected_result, result);
+}
 

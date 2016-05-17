@@ -7,41 +7,105 @@ enable_testing()
 set(prefix "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Run
+    NAME ${prefix}_Can_Run
     COMMAND ${APPLICATION}
 )
 
 add_test(
-    NAME ${prefix}_can_Print_Help_Without_Arguments
+    NAME ${prefix}_Can_Print_Help_Without_Arguments
     COMMAND ${APPLICATION}
 )
-set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
+set_tests_properties (${prefix}_Can_Print_Help_Without_Arguments
   PROPERTIES PASS_REGULAR_EXPRESSION "This is a string parser and calculator.")
 
 add_test(
-    NAME ${prefix}_can_Check_Number_Of_Arguments
+    NAME ${prefix}_Can_Check_Number_Of_Arguments
     COMMAND ${APPLICATION} "1" "2"
 )
-set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
+set_tests_properties (${prefix}_Can_Check_Number_Of_Arguments
   PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 1 argument - string with math expression.")
 
 add_test(
-    NAME ${prefix}_can_Work_With_Unknow_Obj
+    NAME ${prefix}_Can_Work_With_Unknow_Obj
     COMMAND ${APPLICATION} "3,5+o"
 )
-set_tests_properties (${prefix}_can_Work_With_Unknow_Obj
+set_tests_properties (${prefix}_Can_Work_With_Unknow_Obj
   PROPERTIES PASS_REGULAR_EXPRESSION "Invalid input!\n")
 
 add_test(
-    NAME ${prefix}_can_Detect_Wrong_Operation_Format
+    NAME ${prefix}_Can_Detect_Wrong_Operation_Format
     COMMAND ${APPLICATION} "(1~2)"
 )
-set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format
+set_tests_properties (${prefix}_Can_Detect_Wrong_Operation_Format
   PROPERTIES PASS_REGULAR_EXPRESSION "Expected ')'!\n")
 
 add_test(
-    NAME ${prefix}_can_Add_Multiple
+    NAME ${prefix}_Can_Add_Multiple
     COMMAND ${APPLICATION} "2+3+0"
 )
 set_tests_properties (${prefix}_Can_Add_Multiple
   PROPERTIES PASS_REGULAR_EXPRESSION "\nResult is:5.000000")
+
+add_test(
+    NAME ${prefix}_Can_Calc_Eval_With_Pow
+    COMMAND ${APPLICATION} "3**4"
+)
+set_tests_properties (${prefix}_Can_Add_Multiple
+  PROPERTIES PASS_REGULAR_EXPRESSION "\nResult is:81.000000")
+
+add_test(
+    NAME ${prefix}_Can_Calc_Eval_With_Brackets
+    COMMAND ${APPLICATION} "5+3*(1+4*2)"
+)
+set_tests_properties (${prefix}_Can_Calc_Eval_With_Brackets
+  PROPERTIES PASS_REGULAR_EXPRESSION "\nResult is:32.000000")
+
+add_test(
+    NAME ${prefix}_Can_Calc_Eval_With_Sin
+    COMMAND ${APPLICATION} "5+cos(0)"
+)
+set_tests_properties (${prefix}_Can_Calc_Eval_With_Sin
+  PROPERTIES PASS_REGULAR_EXPRESSION "\nResult is:6.000000")
+
+
+add_test(
+    NAME ${prefix}_Can_Work_With_Brackets_As_Arguments
+    COMMAND ${APPLICATION} "(*)"
+)
+set_tests_properties (${prefix}_Can_Work_With_Brackets_As_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "Invalid input!\n")
+
+add_test(
+    NAME ${prefix}_Can_Work_Without_Operands
+    COMMAND ${APPLICATION} "**"
+)
+set_tests_properties (${prefix}_Can_Work_Without_Operands
+  PROPERTIES PASS_REGULAR_EXPRESSION "Invalid input!\n")
+
+add_test(
+    NAME ${prefix}_Is_Priority_Working_Well
+    COMMAND ${APPLICATION} "35*((14-3)**0)"
+)
+set_tests_properties (${prefix}_Is_Priority_Working_Well
+  PROPERTIES PASS_REGULAR_EXPRESSION "\nResult is:35.000000")
+
+add_test(
+    NAME ${prefix}_Can_Calculate_Mod_Of_Mul
+    COMMAND ${APPLICATION} "(8*4)mod30"
+)
+set_tests_properties (${prefix}_Can_Calculate_Mod_Of_Mul
+  PROPERTIES PASS_REGULAR_EXPRESSION "\nResult is:2.000000")
+
+add_test(
+    NAME ${prefix}_Can_Pow_Div
+    COMMAND ${APPLICATION} "(16/2)**3"
+)
+set_tests_properties (${prefix}_Can_Pow_Div
+  PROPERTIES PASS_REGULAR_EXPRESSION "\nResult is:512.000000")
+
+add_test(
+    NAME ${prefix}_Can_Mul_Negatives_Get_Positive
+    COMMAND ${APPLICATION} "-5*(-3)"
+)
+set_tests_properties (${prefix}_Can_Mul_Negatives_Get_Positive
+  PROPERTIES PASS_REGULAR_EXPRESSION "\nResult is:15.000000")

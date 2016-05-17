@@ -9,6 +9,8 @@ class HypothecCalculator {
     static const int DEFAULT_PERCENT;
     static const double DEFAULT_FIRST_PAYMENT_PERCENT;
     static const int DEFAULT_TERM;
+    static const int MAX_TERM;
+    static const int MAX_PERCENT;
 
 
     HypothecCalculator();
@@ -45,8 +47,6 @@ class HypothecCalculator {
     double monthly_payment_;
     double overpayment_;
 
-    static const int MAX_TERM;
-    static const int MAX_PERCENT;
     static const int MONTHS_IN_YEAR;
 };
 

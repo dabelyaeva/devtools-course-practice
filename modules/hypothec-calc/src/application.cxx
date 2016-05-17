@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include <string.h>
+#include <string>
 #include <sstream>
 
 #include "include/application.h"
@@ -41,11 +41,12 @@ int parseInt(const char *arg) {
     int value = strtol(arg, &end, 10);
 
     if (end[0]) {
-        throw std::string("Wrong number format!");
+        throw std::string("Wrong number format!\n");
     }
 
     return value;
 }
+
 
 std::string Application::operator()(const int argc, const char **argv) {
     Arguments args;
@@ -62,9 +63,21 @@ std::string Application::operator()(const int argc, const char **argv) {
     catch (std::string str) {
         return str;
     }
+    HypothecCalculator calc = HypothecCalculator();
 
+    if (args.propertyCost <= 0 || args.firstPayment <= 0 || args.term <= 0
+        || args.percent <= 0)
+        stream << "Wrong number format! Must be positive!\n";
 
-    HypothecCalculator calc = HypothecCalculator(
+    if (args.propertyCost < args.firstPayment)
+        stream
+            << "First payment must be lesser than property cost\n";
+
+    if (args.term >= calc.MAX_TERM || args.percent >= calc.MAX_PERCENT)
+        stream
+            << "Percent must be lesser than 100, term less then 601\n";
+
+    calc = HypothecCalculator(
         args.propertyCost,
         args.firstPayment,
         args.percent,

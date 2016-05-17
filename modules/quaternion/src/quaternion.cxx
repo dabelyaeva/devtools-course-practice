@@ -1,6 +1,6 @@
 // Copyright 2016 Hramov Ilya
 
-#include "quaternion.h"
+#include "include/quaternion.h"
 
 // Constructor
 Quaternion::Quaternion(

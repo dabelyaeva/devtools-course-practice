@@ -57,8 +57,8 @@ std::string Application::operator()(const int argc, const char **argv) {
     try {
         args.propertyCost = parseInt(argv[1]);
         args.firstPayment = parseInt(argv[2]);
-        args.term = parseInt(argv[3]);
-        args.percent = parseInt(argv[4]);
+        args.percent = parseInt(argv[3]);
+        args.term = parseInt(argv[4]);
     }
     catch (std::string str) {
         return str;

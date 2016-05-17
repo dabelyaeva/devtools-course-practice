@@ -65,3 +65,85 @@ TEST_F(HypothecCalculatorTest, Is_Checking_Number_Format) {
     // Assert
     Assert("Wrong number format!");
 }
+
+TEST_F(HypothecCalculatorTest, Are_Checking_All_Negative_Numbers) {
+    // Arrange
+    vector<string> args = {"-10", "-2", "-3", "-2"};
+    // Act
+    Act(args);
+    // Assert
+    Assert("Wrong number format! Must be positive!");
+}
+
+TEST_F(HypothecCalculatorTest, Is_Checking_Negative_Term) {
+    // Arrange
+    vector<string> args = {"10", "2", "3", "-2"};
+    // Act
+    Act(args);
+    // Assert
+    Assert("Wrong number format! Must be positive!");
+}
+
+TEST_F(HypothecCalculatorTest, Is_Checking_Negative_Persent) {
+    // Arrange
+    vector<string> args = {"10", "2", "-3", "2"};
+    // Act
+    Act(args);
+    // Assert
+    Assert("Wrong number format! Must be positive!");
+}
+
+TEST_F(HypothecCalculatorTest, Is_Checking_Negative_First_Payment) {
+    // Arrange
+    vector<string> args = {"10", "-2", "3", "2"};
+    // Act
+    Act(args);
+    // Assert
+    Assert("Wrong number format! Must be positive!");
+}
+
+TEST_F(HypothecCalculatorTest, Is_Checking_Negative_Cost) {
+    // Arrange
+    vector<string> args = {"-10", "2", "3", "2"};
+    // Act
+    Act(args);
+    // Assert
+    Assert("Wrong number format! Must be positive!");
+}
+
+TEST_F(HypothecCalculatorTest, Is_Checking_Wrong_Cost) {
+    // Arrange
+    vector<string> args = {"10", "20", "3", "2"};
+    // Act
+    Act(args);
+    // Assert
+    Assert("First payment must be lesser than property cost");
+}
+
+TEST_F(HypothecCalculatorTest, Is_Checking_Wrong_Persent) {
+    // Arrange
+    vector<string> args = {"10", "4", "300", "2"};
+    // Act
+    Act(args);
+    // Assert
+    Assert("Percent must be lesser than 100, term less then 601");
+}
+
+TEST_F(HypothecCalculatorTest, Is_Checking_Wrong_Term) {
+    // Arrange
+    vector<string> args = {"10", "4", "30", "2000"};
+    // Act
+    Act(args);
+    // Assert
+    Assert("Percent must be lesser than 100, term less then 601");
+}
+
+TEST_F(HypothecCalculatorTest, Can_Calculate) {
+    // Arrange
+    vector<string> args = {"2000000", "500000", "19", "120"};
+    // Act
+    Act(args);
+    // Assert
+    Assert(
+     "Monthly Payment = 28001; Overpayment = 1860102; Payment's Sum = 3360102");
+}

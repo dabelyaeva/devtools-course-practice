@@ -1,10 +1,11 @@
-// Copyright 2016 Polkanov Nikita
+// Copyright 2016 Vlad Koshechkin
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string>
 #include <sstream>
+#include <include/application.h>
 
 #include "include/application.h"
 #include "include/hypothec_calculator.h"
@@ -57,8 +58,8 @@ std::string Application::operator()(const int argc, const char **argv) {
     try {
         args.propertyCost = parseInt(argv[1]);
         args.firstPayment = parseInt(argv[2]);
-        args.percent = parseInt(argv[3]);
-        args.term = parseInt(argv[4]);
+        args.term = parseInt(argv[3]);
+        args.percent = parseInt(argv[4]);
     }
     catch (std::string str) {
         return str;
@@ -66,22 +67,20 @@ std::string Application::operator()(const int argc, const char **argv) {
     HypothecCalculator calc = HypothecCalculator();
 
     if (args.propertyCost <= 0 || args.firstPayment <= 0 || args.term <= 0
-        || args.percent <= 0)
+        || args.percent <= 0) {
         stream << "Wrong number format! Must be positive!\n";
-
-    if (args.propertyCost < args.firstPayment)
+    } else if (args.propertyCost < args.firstPayment) {
         stream
             << "First payment must be lesser than property cost\n";
-
-    if (args.term >= calc.MAX_TERM || args.percent >= calc.MAX_PERCENT)
+    } else if (args.term >= calc.MAX_TERM || args.percent >= calc.MAX_PERCENT) {
         stream
             << "Percent must be lesser than 100, term less then 601\n";
-
-    calc = HypothecCalculator(
-        args.propertyCost,
-        args.firstPayment,
-        args.percent,
-        args.term);
+    } else
+        calc = HypothecCalculator(
+            args.propertyCost,
+            args.firstPayment,
+            args.term,
+            args.percent);
 
     calc.calculate();
     stream << "Monthly Payment = " << calc.getMonthlyPayment()

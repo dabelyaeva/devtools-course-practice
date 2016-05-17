@@ -1,4 +1,4 @@
-// Copyright 2016 Polkanov Nikita
+// Copyright 2016 Vlad Koshechkin
 
 #include <gtest/gtest.h>
 

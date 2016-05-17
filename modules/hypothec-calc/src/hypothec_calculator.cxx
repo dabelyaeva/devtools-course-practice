@@ -1,4 +1,4 @@
-// Copyright 2016 Polkanov Nikita
+// Copyright 2016 Vlad Koshechkin
 
 #include "include/hypothec_calculator.h"
 #include <math.h>

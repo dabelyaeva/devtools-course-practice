@@ -1,4 +1,4 @@
-// Copyright 2016 Kornyakov Kirill
+// Copyright 2016 Vlad Koshechkin
 
 #include <stdlib.h>
 #include <stdio.h>

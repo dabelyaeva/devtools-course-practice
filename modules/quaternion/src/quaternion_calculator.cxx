@@ -12,9 +12,9 @@
 
 QuaternionCalculator::QuaternionCalculator() : message_str(" ") {}
 
-void QuaternionCalculator::help(const char* appname, const char* message) {
+void QuaternionCalculator::help(const char* appname, const char* mes) {
   message_str =
-    std::string(message) +
+    std::string(mes) +
     "This is a quaternion number calculator application.\n\n" +
     "Please provide arguments in the following format:\n\n" +
 
@@ -30,10 +30,10 @@ bool QuaternionCalculator::validateNumberOfArguments(int argc, const char** argv
   if (argc == 1) {
     help(argv[0]);
     return false;
-  }
-  else if (argc != 6) {
+  } else { if (argc != 6) {
     help(argv[0], "ERROR: Should be min 5 arguments.\n\n");
     return false;
+  }
   }
   return true;
 }
@@ -51,9 +51,10 @@ char parseOperation(const char* arg) {
   char op;
   if (strcmp(arg, "+") == 0) {
     op = '+';
-  }
-  else if (strcmp(arg, "-") == 0) {
+  } else {
+    if (strcmp(arg, "-") == 0) {
     op = '-';
+    }
   }
   else if (strcmp(arg, "*") == 0) {
     op = '*';

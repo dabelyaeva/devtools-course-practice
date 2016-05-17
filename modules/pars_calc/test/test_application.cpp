@@ -13,8 +13,8 @@
 using std::vector;
 using std::string;
 
-const string help_message = 
-        "This is a string parser and calculator.\n" + 
+string help_message =
+        "This is a string parser and calculator.\n" +
         string("Please use following format:\n") +
         "  $ " + "appname" + " <your_math_expression>\n" +
         "Please provide math. expression in legal format.\n" +
@@ -28,7 +28,7 @@ class ParserCalculatorTest : public ::testing::Test {
         vector<const char*> options;
         options.push_back("appname");
         for (size_t i = 0; i < args_.size(); ++i) {
-           options.push_back(args_[i].c_str());         
+           options.push_back(args_[i].c_str());
         }
 
         const char** argv = &options.front();
@@ -61,7 +61,7 @@ TEST_F(ParserCalculatorTest, Is_Checking_Number_Of_Arguments) {
 
     Act(args);
 
-    Assert("ERROR: Should be 1 argument - string with math expression.\n\n"
+    Assert("ERROR: Should be 1 argument.\n\n"
       + help_message);
 }
 

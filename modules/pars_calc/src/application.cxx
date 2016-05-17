@@ -30,8 +30,7 @@ bool Application::validateNumberOfArguments(const int argc, const char** argv) {
     help(argv[0]);
     return false;
   } else if (argc != 2) {
-    help(argv[0], "ERROR: Should be 1 argument - " +
-      "string with math expression.\n\n");
+    help(argv[0], "ERROR: Should be 1 argument.\n\n");
     return false;
   }
   return true;

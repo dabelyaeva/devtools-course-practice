@@ -140,16 +140,6 @@ TEST(Quaternion, Can_Compare_Equal) {
     EXPECT_EQ(quat1, quat2);
 }
 
-TEST(Quaternion, Can_Compare_Zero) {
-    // Arrange
-    Quaternion quat;
-
-    // Act
-
-    // Assert
-    EXPECT_TRUE(Quaternion::isZero(quat));
-}
-
 TEST(Quaternion, Can_Compare_Inequal) {
     // Arrange
     Quaternion quat1(1.0, 2.0, 3.0, 4.0);

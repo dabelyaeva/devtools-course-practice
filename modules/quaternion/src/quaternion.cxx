@@ -1,6 +1,6 @@
 // Copyright 2016 Hramov Ilya
 
-#include "include/quaternion.h"
+#include "quaternion.h"
 
 // Constructor
 Quaternion::Quaternion(
@@ -149,12 +149,4 @@ Quaternion Quaternion::inversed() const {
     tmp.z = -(z * one);
     tmp.w = w * one;
     return tmp;
-}
-
-// Other
-bool Quaternion::isZero(const Quaternion &operand) {
-    return operand.x < epsilon && operand.x > -epsilon &&
-        operand.y < epsilon && operand.y > -epsilon &&
-        operand.z < epsilon && operand.z > -epsilon &&
-        operand.w < epsilon && operand.w > -epsilon;
 }

@@ -37,21 +37,13 @@ class Quaternion {
     Quaternion& operator*=(const Quaternion &operand);
     Quaternion operator!() const;  // conjugate
     Quaternion operator~() const;  // inverse
-    bool operator==(const Quaternion &operand) const;
-    bool operator!=(const Quaternion &operand) const;
-    friend Quaternion operator*(
-        const double &scalar,
-        const Quaternion &operand);
-
+ 
     // Math actions
     double magnitude() const;
     double qmagnitude() const;
     Quaternion normalized() const;
     Quaternion inversed() const;
     Quaternion conjugated() const;
-
-    // Other
-    static bool isZero(const Quaternion &operand);
 
  private:
     // Fields

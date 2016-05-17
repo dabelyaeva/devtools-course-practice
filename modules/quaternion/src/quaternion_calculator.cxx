@@ -1,7 +1,7 @@
 // Copyright 2016 Arhipycheva Anastasia
 
 #include "include\quaternion.h"
-#include "quaternion_calculator.h"
+#include "include\quaternion_calculator.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -118,36 +118,36 @@ std::string QuaternionCalculator::operator()(int argc, const char** argv) {
   case '+':
     q = q1 + q2;
     stream << "Real = " << q.getX() << " "
-      << "Imaginary i = " << q.getY()
-      << "Imaginary j = " << q.getZ()
+      << "Imaginary i = " << q.getY() << " "
+      << "Imaginary j = " << q.getZ() << " "
       << "Imaginary k = " << q.getW();
     break;
   case '-':
     q = q1 - q2;
     stream << "Real = " << q.getX() << " "
-      << "Imaginary i = " << q.getY()
-      << "Imaginary j = " << q.getZ()
+      << "Imaginary i = " << q.getY() << " "
+      << "Imaginary j = " << q.getZ() << " "
       << "Imaginary k = " << q.getW();
     break;
   case '*':
     q = q1 * q2;
     stream << "Real = " << q.getX() << " "
-      << "Imaginary i = " << q.getY()
-      << "Imaginary j = " << q.getZ()
+      << "Imaginary i = " << q.getY() << " "
+      << "Imaginary j = " << q.getZ() << " "
       << "Imaginary k = " << q.getW();
     break;
   case '!':
     q = !q1;
     stream << "Real = " << q.getX() << " "
-      << "Imaginary i = " << q.getY()
-      << "Imaginary j = " << q.getZ()
+      << "Imaginary i = " << q.getY() << " "
+      << "Imaginary j = " << q.getZ() << " "
       << "Imaginary k = " << q.getW();
     break;
   case '~':
     q = ~q1;
     stream << "Real = " << q.getX() << " "
-      << "Imaginary i = " << q.getY()
-      << "Imaginary j = " << q.getZ()
+      << "Imaginary i = " << q.getY() << " "
+      << "Imaginary j = " << q.getZ() << " "
       << "Imaginary k = " << q.getW();
     break;
   case 'M':
@@ -161,8 +161,8 @@ std::string QuaternionCalculator::operator()(int argc, const char** argv) {
   case 'N':
     q = q1.normalized();
     stream << "Real = " << q.getX() << " "
-      << "Imaginary i = " << q.getY()
-      << "Imaginary j = " << q.getZ()
+      << "Imaginary i = " << q.getY() << " "
+      << "Imaginary j = " << q.getZ() << " "
       << "Imaginary k = " << q.getW();
     break;
   }

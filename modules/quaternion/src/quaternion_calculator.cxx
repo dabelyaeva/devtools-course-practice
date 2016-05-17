@@ -2,7 +2,6 @@
 
 #include "include\quaternion.h"
 #include "include\quaternion_calculator.h"
-#include "application\quaternion_aplication.cxx"
 
 #include <stdio.h>
 #include <stdlib.h>

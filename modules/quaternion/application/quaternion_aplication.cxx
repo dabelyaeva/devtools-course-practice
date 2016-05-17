@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string>
 
-#include "quaternion_calculator.h"
+#include "include\quaternion_calculator.h"
 
 int main(int argc, const char** argv) {
   QuaternionCalculator app;

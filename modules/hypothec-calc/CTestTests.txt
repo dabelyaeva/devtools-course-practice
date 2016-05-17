@@ -47,37 +47,30 @@ set_tests_properties (${prefix}_can_Detect_Negative_Term
      PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format! Must be positive!")
 
 add_test(
-    NAME ${prefix}_can_Detect_Wrong_Term_Format
-    COMMAND ${APPLICATION} 10 5 2 1000
-)
-set_tests_properties (${prefix}_can_Detect_Wrong_Term_Format
-  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
-
-add_test(
     NAME ${prefix}_can_Detect_Wrong_Term
-    COMMAND ${APPLICATION} 10 5 2 1000
+    COMMAND ${APPLICATION} 10 5 2000 10
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Term
   PROPERTIES PASS_REGULAR_EXPRESSION "Percent must be lesser than 100, term less then 601")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Percent
-    COMMAND ${APPLICATION} 10 5 200 10
+    COMMAND ${APPLICATION} 10 5 10 200
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Percent
   PROPERTIES PASS_REGULAR_EXPRESSION "Percent must be lesser than 100, term less then 601")
 
 add_test(
-    NAME ${prefix}_can_Detect_Wrong_Percent_Format
-    COMMAND ${APPLICATION} 10 500 200 10
+    NAME ${prefix}_can_Detect_Wrong_First_Payment
+    COMMAND ${APPLICATION} 10 500 10 10
 )
-set_tests_properties (${prefix}_can_Detect_Wrong_Percent_Format
+set_tests_properties (${prefix}_can_Detect_Wrong_First_Payment
   PROPERTIES PASS_REGULAR_EXPRESSION "First payment must be lesser than property cost")
 
 add_test(
     NAME ${prefix}_can_Calc_Hypothec
-    COMMAND ${APPLICATION} 2000000 500000 19 120
+    COMMAND ${APPLICATION} 2000000 500000 120 19
 )
 set_tests_properties (${prefix}_can_Calc_Hypothec
-  PROPERTIES PASS_REGULAR_EXPRESSION "Monthly Payment = 28001; Overpayment = 1860102; Payment's Sum = 3360102")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Monthly Payment = 28000.85; Overpayment = 1860102.40; Payment's Sum = 3360102.40")
 

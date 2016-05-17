@@ -4,8 +4,9 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string>
+#include <iostream>
+#include <iomanip>
 #include <sstream>
-#include <include/application.h>
 
 #include "include/application.h"
 #include "include/hypothec_calculator.h"
@@ -64,7 +65,6 @@ std::string Application::operator()(const int argc, const char **argv) {
     catch (std::string str) {
         return str;
     }
-    HypothecCalculator calc = HypothecCalculator();
 
     if (args.propertyCost <= 0 || args.firstPayment <= 0 || args.term <= 0
         || args.percent <= 0) {
@@ -72,21 +72,24 @@ std::string Application::operator()(const int argc, const char **argv) {
     } else if (args.propertyCost < args.firstPayment) {
         stream
             << "First payment must be lesser than property cost\n";
-    } else if (args.term >= calc.MAX_TERM || args.percent >= calc.MAX_PERCENT) {
+    } else if (args.term >= HypothecCalculator::MAX_TERM || args.percent >=
+        HypothecCalculator::MAX_PERCENT) {
         stream
             << "Percent must be lesser than 100, term less then 601\n";
-    } else
-        calc = HypothecCalculator(
+    } else {
+        HypothecCalculator calc = HypothecCalculator(
             args.propertyCost,
             args.firstPayment,
             args.term,
             args.percent);
 
-    calc.calculate();
-    stream << "Monthly Payment = " << calc.getMonthlyPayment()
-        << "; Overpayment = "
-        << calc.getOverpayment() << "; Payment's Sum = "
-        << calc.getPaymentsSum();
+        calc.calculate();
+        stream << std::fixed<< std::setprecision(2);
+        stream << "Monthly Payment = " << calc.getMonthlyPayment()
+            << "; Overpayment = "
+            << calc.getOverpayment() << "; Payment's Sum = "
+            << calc.getPaymentsSum();
+    }
     message_ = stream.str();
 
     return message_;

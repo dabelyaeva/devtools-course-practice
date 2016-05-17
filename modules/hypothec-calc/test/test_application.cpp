@@ -122,7 +122,7 @@ TEST_F(HypothecCalculatorAppTest, Is_Checking_Wrong_Cost) {
 
 TEST_F(HypothecCalculatorAppTest, Is_Checking_Wrong_Persent) {
     // Arrange
-    vector<string> args = {"10", "4", "300", "2"};
+    vector<string> args = {"10", "4", "2", "300"};
     // Act
     Act(args);
     // Assert
@@ -131,7 +131,7 @@ TEST_F(HypothecCalculatorAppTest, Is_Checking_Wrong_Persent) {
 
 TEST_F(HypothecCalculatorAppTest, Is_Checking_Wrong_Term) {
     // Arrange
-    vector<string> args = {"10", "4", "30", "2000"};
+    vector<string> args = {"10", "4", "3000", "20"};
     // Act
     Act(args);
     // Assert
@@ -140,10 +140,11 @@ TEST_F(HypothecCalculatorAppTest, Is_Checking_Wrong_Term) {
 
 TEST_F(HypothecCalculatorAppTest, Can_Calculate) {
     // Arrange
-    vector<string> args = {"2000000", "500000", "19", "120"};
+    vector<string> args = {"2000000", "500000", "120", "19"};
     // Act
     Act(args);
     // Assert
-    Assert(
-     "Monthly Payment = 28001; Overpayment = 1860102; Payment's Sum = 3360102");
+    Assert("Monthly Payment = 28000.85; Overpayment = 1860102.40; Payment's "
+                "Sum = 3360102.40");
 }
+

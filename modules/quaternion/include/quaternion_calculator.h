@@ -1,16 +1,16 @@
 // Copyright 2016 Arhipycheva Anastasia
 
-#ifndef MODULES_QUATERNION_INCLUDE_COMPLEX_CALCULATOR_H_
-#define MODULES_QUATERNION_INCLUDE_COMPLEX_CALCULATOR_H_
+#ifndef MODULES_QUATERNION_INCLUDE_QUATERNION_CALCULATOR_H_
+#define MODULES_QUATERNION_INCLUDE_QUATERNION_CALCULATOR_H_
 
 #include <string>
 
 class QuaternionCalculator {
-public:
+ public:
   QuaternionCalculator();
   std::string operator()(int argc, const char** argv);
 
-private:
+ private:
   void help(const char* appname, const char* message = "");
   bool validateNumberOfArguments(int argc, const char** argv);
   std::string message_str;
@@ -27,4 +27,4 @@ private:
   } Arguments;
 };
 
-#endif  // MODULES_QUATERNION_INCLUDE_COMPLEX_CALCULATOR_H_
+#endif  // MODULES_QUATERNION_INCLUDE_QUATERNION_CALCULATOR_H_

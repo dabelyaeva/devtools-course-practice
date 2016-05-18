@@ -33,8 +33,9 @@ double Application::strToDouble(const char *str) {
     char *end;
     double value = strtod(str, &end);
 
-    if (end == nullptr)
+    if (end == nullptr) {
         throw std::string("Invalid number format!");
+    }
 
     return value;
 }

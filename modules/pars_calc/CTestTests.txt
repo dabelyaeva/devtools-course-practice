@@ -40,17 +40,17 @@ set_tests_properties (${prefix}_Can_Detect_Wrong_Operation_Format
   PROPERTIES PASS_REGULAR_EXPRESSION "Expected ')'!\n")
 
 add_test(
-    NAME ${prefix}_Can_Add_Multiple
+    NAME ${prefix}_Can_Sum_Multiple_Arguments
     COMMAND ${APPLICATION} "2+3+0"
 )
-set_tests_properties (${prefix}_Can_Add_Multiple
+set_tests_properties (${prefix}_Can_Sum_Multiple_Arguments
   PROPERTIES PASS_REGULAR_EXPRESSION "\nResult is:5.000000")
 
 add_test(
     NAME ${prefix}_Can_Calc_Eval_With_Pow
     COMMAND ${APPLICATION} "3**4"
 )
-set_tests_properties (${prefix}_Can_Add_Multiple
+set_tests_properties (${prefix}_Can_Calc_Eval_With_Pow
   PROPERTIES PASS_REGULAR_EXPRESSION "\nResult is:81.000000")
 
 add_test(

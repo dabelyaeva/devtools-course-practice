@@ -43,7 +43,7 @@ TEST(VolumeCalculatorTest, Example_2_Is_Working) {
             return r;
         },
         0.f,
-        2.f * float(pi),
+        2.f * static_cast<float>(pi),
         [] (float phi) { return 0.f; },
         [] (float phi) { return 5.f; },
         [] (float phi, float r) { return 0.f; },

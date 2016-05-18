@@ -46,7 +46,7 @@ TEST_F(ParserCalculatorTest, Print_Help_Without_Arguments) {
 
     Act(args);
 
-    Assert("This is.*");
+    Assert("This is a string parser and calculator\\.");
 }
 
 TEST_F(ParserCalculatorTest, Is_Checking_Number_Of_Arguments) {
@@ -55,7 +55,7 @@ TEST_F(ParserCalculatorTest, Is_Checking_Number_Of_Arguments) {
 
     Act(args);
 
-    Assert("ERROR: Should be 1 argument.\n\n.*");
+    Assert("ERROR: Should be 1 argument\\.");
 }
 
 TEST_F(ParserCalculatorTest, Is_Checking_Brackets) {
@@ -64,7 +64,7 @@ TEST_F(ParserCalculatorTest, Is_Checking_Brackets) {
 
     Act(args);
 
-    Assert("Expected.*");
+    Assert("Expected '\\)'!");
 }
 
 TEST_F(ParserCalculatorTest, Is_Working_With_Double) {
@@ -73,7 +73,7 @@ TEST_F(ParserCalculatorTest, Is_Working_With_Double) {
 
   Act(args);
 
-  Assert("\nResult is:5.200000");
+  Assert("Result is:5\\.200000");
 }
 
 TEST_F(ParserCalculatorTest, Is_Working_With_Unkown_Obj) {
@@ -82,7 +82,7 @@ TEST_F(ParserCalculatorTest, Is_Working_With_Unkown_Obj) {
 
   Act(args);
 
-  Assert("Invalid input!\n.*");
+  Assert("Invalid input!");
 }
 
 TEST_F(ParserCalculatorTest, Can_Do_Unknown_Operation) {
@@ -91,7 +91,7 @@ TEST_F(ParserCalculatorTest, Can_Do_Unknown_Operation) {
 
     Act(args);
 
-    Assert("Expected.*");
+    Assert("Expected '\\)'!");
 }
 
 TEST_F(ParserCalculatorTest, Can_Add_Several) {
@@ -100,7 +100,7 @@ TEST_F(ParserCalculatorTest, Can_Add_Several) {
 
     Act(args);
 
-    Assert("\nResult is:13.000000");
+    Assert("Result is:13\\.000000");
 }
 
 TEST_F(ParserCalculatorTest, Can_Work_With_Trigonom) {
@@ -109,7 +109,7 @@ TEST_F(ParserCalculatorTest, Can_Work_With_Trigonom) {
 
   Act(args);
 
-  Assert("\nResult is:0.000000");
+  Assert("Result is:0\\.000000");
 }
 
 TEST_F(ParserCalculatorTest, Can_Pow_Sum) {
@@ -118,7 +118,7 @@ TEST_F(ParserCalculatorTest, Can_Pow_Sum) {
 
   Act(args);
 
-  Assert("\nResult is:25.000000");
+  Assert("Result is:25\\.000000");
 }
 
 TEST_F(ParserCalculatorTest, Can_Work_With_Unknown_Input) {
@@ -127,7 +127,7 @@ TEST_F(ParserCalculatorTest, Can_Work_With_Unknown_Input) {
 
   Act(args);
 
-  Assert("Invalid input!\n.*");
+  Assert("Invalid input!");
 }
 
 TEST_F(ParserCalculatorTest, Can_Calculate_Mod_Of_Sum) {
@@ -136,7 +136,7 @@ TEST_F(ParserCalculatorTest, Can_Calculate_Mod_Of_Sum) {
 
   Act(args);
 
-  Assert("\nResult is:2.000000");
+  Assert("Result is:2\\.000000");
 }
 
 TEST_F(ParserCalculatorTest, Can_Get_Zero_Degree_Of_Mul) {
@@ -145,7 +145,7 @@ TEST_F(ParserCalculatorTest, Can_Get_Zero_Degree_Of_Mul) {
 
   Act(args);
 
-  Assert("\nResult is:1.000000");
+  Assert("Result is:1\\.000000");
 }
 
 TEST_F(ParserCalculatorTest, Can_Work_With_Brackets_As_Arguments) {
@@ -154,7 +154,7 @@ TEST_F(ParserCalculatorTest, Can_Work_With_Brackets_As_Arguments) {
 
   Act(args);
 
-  Assert("Invalid input!\n.*");
+  Assert("Invalid input!");
 }
 
 TEST_F(ParserCalculatorTest, Is_Priority_Working_Well) {
@@ -163,7 +163,7 @@ TEST_F(ParserCalculatorTest, Is_Priority_Working_Well) {
 
   Act(args);
 
-  Assert("\nResult is:7.000000");
+  Assert("Result is:7\\.000000");
 }
 
 TEST_F(ParserCalculatorTest, Can_Work_Without_Operands) {
@@ -172,7 +172,7 @@ TEST_F(ParserCalculatorTest, Can_Work_Without_Operands) {
 
   Act(args);
 
-  Assert("Invalid input!\n.*");
+  Assert("Invalid input!");
 }
 
 TEST_F(ParserCalculatorTest, Can_Div_Negatives_Get_Positive) {
@@ -181,5 +181,5 @@ TEST_F(ParserCalculatorTest, Can_Div_Negatives_Get_Positive) {
 
   Act(args);
 
-  Assert("\nResult is:4.000000");
+  Assert("Result is:4\\.000000");
 }

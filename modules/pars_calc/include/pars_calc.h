@@ -35,8 +35,8 @@ class Parser {
     string ParseToken();
     Expression ParseSimpleExpression();
     Expression ParseBinaryExpression(int min_priority);
-    string status_;
     const char* input;
+    string status_;
 };
 
 #endif  // MODULES_PARS_CALC_INCLUDE_PARS_CALC_H_

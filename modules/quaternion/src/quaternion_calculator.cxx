@@ -55,8 +55,7 @@ char parseOperation(const char* arg) {
     if (strcmp(arg, "-") == 0) {
     op = '-';
     }
-  } else {
-    if (strcmp(arg, "*") == 0) {
+  } else { if (strcmp(arg, "*") == 0) {
     op = '*';
     }
   } else {
@@ -87,7 +86,7 @@ char parseOperation(const char* arg) {
 
 std::string QuaternionCalculator::operator()(int argc, const char** argv) {
   Arguments args;
-  if (!validateNumberOfArguments(argc, argv)) {
+  if (!validateNumOfArg(argc, argv)) {
     return message_str;
   }
   try {

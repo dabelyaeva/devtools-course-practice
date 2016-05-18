@@ -8,7 +8,7 @@
 class Application {
  public:
     Application();
-    std::string operator()(int argc, char **argv);
+    std::string operator()(int argc, const char **argv);
  private:
     std::string _message;
 

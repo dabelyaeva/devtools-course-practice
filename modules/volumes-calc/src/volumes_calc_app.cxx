@@ -26,8 +26,7 @@ void Application::help(const char *appname, const char *message) {
             "cylinder <radius> <height>\n";
 }
 
-double Application::strToDouble(const char *str)
-{
+double Application::strToDouble(const char *str) {
     char *end;
     double value = strtod(str, &end);
 
@@ -44,39 +43,38 @@ double sphereVol(double radius) {
         },
         0.0,
         2.0 * pi,
-        [] (double) { return - 0.5 * pi; },
-        [] (double) { return + 0.5 * pi; },
-        [] (double, double) { return 0.0; },
-        [radius] (double, double) { return radius; }
-	);
-	return calc.Calculate(200);
+        [] (double p) { return - 0.5 * pi; },
+        [] (double p) { return + 0.5 * pi; },
+        [] (double p1, double p2) { return 0.0; },
+        [radius] (double p1, double p2) { return radius; }
+    );
+    return calc.Calculate(200);
 }
 
 double cylinderVol(double radius, double height) {
-    volume_calc::VolumeCalculator<double> calc (
+    volume_calc::VolumeCalculator<double> calc(
         [] (double, double r, double) {
             return r;
         },
         0.f,
         2.f * pi,
-        [] (double) { return 0.f; },
-        [radius] (double) { return radius; },
-        [] (double, double) { return 0.f; },
-        [height] (double, double) { return height; }
-	);
+        [] (double p) { return 0.f; },
+        [radius] (double p) { return radius; },
+        [] (double p1, double p2) { return 0.f; },
+        [height] (double p1, double p2) { return height; }
+    );
 
-	return calc.Calculate(200);
+    return calc.Calculate(200);
 }
 
-std::string Application::operator()(int argc, char **argv)
-{
+std::string Application::operator()(int argc, const char **argv) {
     _message = "";
     std::ostringstream stream;
 
     if (argc == 1)
         help(argv[0]);
     else
-		if (strcmp(argv[1], "sphere") == 0) {
+        if (strcmp(argv[1], "sphere") == 0) {
                 if (argc != 3)
                     help(argv[0],
                     "Wrong number of parametres for \'sphere\'\n");

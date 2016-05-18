@@ -26,8 +26,7 @@ class VolumeCalcTest : public ::testing::Test {
         const char** argv = &options.front();
         int argc = static_cast<int>(args_.size()) + 1;
 
-        //output_ = app_(argc, argv);
-        output_ = "Test";
+        output_ = app_(argc, argv);
     }
 
     void Assert(std::string expected) {
@@ -103,5 +102,5 @@ TEST_F(VolumeCalcTest, can_create_app) {
          Act(args);
 
          // Assert
-         Assert("Invalid number format\!.*");
+         Assert("Invalid number format!.*");
       }

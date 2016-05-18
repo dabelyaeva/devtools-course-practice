@@ -41,7 +41,7 @@ double Application::strToDouble(const char *str) {
 double sphereVol(double radius) {
     volume_calc::VolumeCalculator<double> calc(
         [] (double, double theta, double r) {
-            return r * r * std::cos(theta);
+            return r * r * cos(theta);
         },
         0.0,
         2.0 * pi,

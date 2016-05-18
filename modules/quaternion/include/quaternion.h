@@ -37,6 +37,8 @@ class Quaternion {
     Quaternion& operator*=(const Quaternion &operand);
     Quaternion operator!() const;  // conjugate
     Quaternion operator~() const;  // inverse
+    bool operator==(const Quaternion &operand) const;
+    bool operator!=(const Quaternion &operand) const;
     // Math actions
     double magnitude() const;
     double qmagnitude() const;

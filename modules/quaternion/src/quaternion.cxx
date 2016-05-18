@@ -102,6 +102,14 @@ Quaternion Quaternion::operator~() const {
     return this->inversed();
 }
 
+bool Quaternion::operator==(const Quaternion &operand) const {
+    return isZero(*this - operand);
+}
+
+bool Quaternion::operator!=(const Quaternion &operand) const {
+    return !(*this == operand);
+}
+
 // Math actions
 double Quaternion::magnitude() const {
     return sqrt(x*x + y*y + z*z + w*w);

@@ -45,6 +45,9 @@ class Quaternion {
     Quaternion normalized() const;
     Quaternion inversed() const;
     Quaternion conjugated() const;
+	
+    // Other
+    static bool isZero(const Quaternion &operand);
 
     // Fields
     double x;

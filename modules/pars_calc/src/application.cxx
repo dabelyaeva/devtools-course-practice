@@ -39,7 +39,7 @@ bool Application::validateNumberOfArguments(const int argc, const char** argv) {
 std::string Application::operator()(const int argc, const char** argv) {
   if (!validateNumberOfArguments(argc, argv))
     return message_;
-    Parser* pars;
+  Parser* pars;
   try {
     pars = new Parser(argv[1]);
     message_ = "\nResult is:" + std::to_string(pars->eval(pars->parse()));

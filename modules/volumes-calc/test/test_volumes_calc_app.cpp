@@ -50,8 +50,8 @@ TEST_F(VolumeCalcTest, can_create_app) {
     delete app;
  }
 
- TEST_F(VolumeCalcTest, Can_Show_Help_With_Epmty_Arguments) {
-     // Arrange
+TEST_F(VolumeCalcTest, Can_Show_Help_With_Epmty_Arguments) {
+    // Arrange
      std::vector<string> args = {};
 
      // Act
@@ -61,46 +61,46 @@ TEST_F(VolumeCalcTest, can_create_app) {
      Assert("This is volumes calculator application\\..*");
   }
 
-  TEST_F(VolumeCalcTest, Can_Check_Sphere_Parametres_Number) {
-      // Arrange
-      std::vector<string> args = {"sphere", "2.0", "3.0", "aabb"};
+TEST_F(VolumeCalcTest, Can_Check_Sphere_Parametres_Number) {
+    // Arrange
+    std::vector<string> args = {"sphere", "2.0", "3.0", "aabb"};
 
-      // Act
-      Act(args);
+    // Act
+    Act(args);
 
-      // Assert
-      Assert("Wrong number of parametres for \'sphere\'.*");
-   }
+    // Assert
+    Assert("Wrong number of parametres for \'sphere\'.*");
+ }
 
-   TEST_F(VolumeCalcTest, Can_Check_Cylinder_Parametres_Number) {
-       // Arrange
-       std::vector<string> args = {"cylinder", "2.0"};
+TEST_F(VolumeCalcTest, Can_Check_Cylinder_Parametres_Number) {
+    // Arrange
+    std::vector<string> args = {"cylinder", "2.0"};
 
-       // Act
-       Act(args);
+    // Act
+    Act(args);
 
-       // Assert
-       Assert("Wrong number of parametres for \'cylinder\'.*");
-    }
+    // Assert
+    Assert("Wrong number of parametres for \'cylinder\'.*");
+}
 
-    TEST_F(VolumeCalcTest, Can_Check_Volumes_Name_Correctness) {
-        // Arrange
-        std::vector<string> args = {"some_name", "2.0"};
+TEST_F(VolumeCalcTest, Can_Check_Volumes_Name_Correctness) {
+    // Arrange
+    std::vector<string> args = {"some_name", "2.0"};
 
-        // Act
-        Act(args);
+    // Act
+    Act(args);
 
-        // Assert
-        Assert("Invalid volume name.*");
-     }
+    // Assert
+    Assert("Invalid volume name.*");
+}
 
-     TEST_F(VolumeCalcTest, Can_Check_Number_Input_Correctness) {
-         // Arrange
-         std::vector<string> args = {"sphere", "not_number"};
+TEST_F(VolumeCalcTest, Can_Check_Number_Input_Correctness) {
+    // Arrange
+    std::vector<string> args = {"sphere", "not_number"};
 
-         // Act
-         Act(args);
+    // Act
+    Act(args);
 
-         // Assert
-         Assert("Invalid number format!.*");
-      }
+    // Assert
+    Assert("Invalid number format!.*");
+}

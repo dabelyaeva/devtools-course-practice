@@ -4,7 +4,7 @@
 
 #include "include/volumes_calc_app.h"
 
-int main(int argc, char **argv) {
+int main(int argc, const char **argv) {
     Application app;
     std::cout << app(argc, argv);
 }

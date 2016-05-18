@@ -32,6 +32,7 @@ class ParserCalculatorTest : public ::testing::Test {
     }
 
     void Assert(std::string expected) {
+      std::cout << "\nExpected is:" << expected << "\noutput_ is:" << output_ << std::endl;
       EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
 

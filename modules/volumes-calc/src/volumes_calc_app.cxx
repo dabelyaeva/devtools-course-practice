@@ -4,8 +4,7 @@
 #include "include/volumes_calc.h"
 
 #include <sstream>
-
-using std::string;
+#include <string>
 
 const double pi = 3.14159265358979323846;
 

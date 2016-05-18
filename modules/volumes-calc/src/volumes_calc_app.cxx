@@ -46,8 +46,7 @@ double sphereVol(double radius) {
         [] (double p) { return - 0.5 * pi; },
         [] (double p) { return + 0.5 * pi; },
         [] (double p1, double p2) { return 0.0; },
-        [radius] (double p1, double p2) { return radius; }
-    );
+        [radius] (double p1, double p2) { return radius; } );
     return calc.Calculate(200);
 }
 
@@ -61,8 +60,7 @@ double cylinderVol(double radius, double height) {
         [] (double p) { return 0.f; },
         [radius] (double p) { return radius; },
         [] (double p1, double p2) { return 0.f; },
-        [height] (double p1, double p2) { return height; }
-    );
+        [height] (double p1, double p2) { return height; } );
 
     return calc.Calculate(200);
 }
@@ -75,21 +73,22 @@ std::string Application::operator()(int argc, const char **argv) {
         help(argv[0]);
     else
         if (strcmp(argv[1], "sphere") == 0) {
-                if (argc != 3)
+                if (argc != 3) {
                     help(argv[0],
                     "Wrong number of parametres for \'sphere\'\n");
-                else
+                } else {
                     try {
                         stream << sphereVol(strToDouble(argv[2])) << std::endl;
                     }
                     catch(std::string str) {
                         return str;
                     }
+                }
         } else if (strcmp(argv[1], "cylinder") == 0) {
-                if (argc != 4)
+                if (argc != 4) {
                     help(argv[0],
                     "Wrong number of parametres for \'cylinder\'\n");
-                else
+                } else {
                     try {
                         stream << cylinderVol(strToDouble(argv[2]),
                         strToDouble(argv[3])) << std::endl;
@@ -97,8 +96,10 @@ std::string Application::operator()(int argc, const char **argv) {
                     catch(std::string str) {
                         return str;
                     }
-        } else
+                }
+        } else {
             help(argv[0], "Invalid volume name\n");
+        }
 
     _message = _message + stream.str();
 

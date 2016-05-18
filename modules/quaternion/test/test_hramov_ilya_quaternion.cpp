@@ -291,3 +291,13 @@ TEST(Quaternion, Can_Do_Operatons_Combination) {
     // Assert
     EXPECT_EQ(expect, result);
 }
+
+TEST(Quaternion, Can_Compare_Zero) {
+    // Arrange
+    Quaternion quat;
+
+    // Act
+
+    // Assert
+    EXPECT_TRUE(Quaternion::isZero(quat));
+}

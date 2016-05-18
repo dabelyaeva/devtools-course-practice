@@ -98,14 +98,6 @@ Quaternion Quaternion::operator!() const {
     return this->conjugated();
 }
 
-Quaternion operator*(const double &scalar, const Quaternion &operand) {
-    return Quaternion(
-        scalar * operand.x,
-        scalar * operand.y,
-        scalar * operand.z,
-        scalar * operand.w);
-}
-
 Quaternion Quaternion::operator~() const {
     return this->inversed();
 }

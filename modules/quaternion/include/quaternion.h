@@ -44,7 +44,6 @@ class Quaternion {
     Quaternion inversed() const;
     Quaternion conjugated() const;
 
- private:
     // Fields
     double x;
     double y;

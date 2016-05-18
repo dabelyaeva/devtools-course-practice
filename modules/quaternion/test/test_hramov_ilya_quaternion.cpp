@@ -234,11 +234,11 @@ TEST(Quaternion, Can_Inverse) {
 
     // Act
     Quaternion result = ~quat;
-    const double coeff = 1.0 / (1.0 * 1.0 + 2.0 * 2.0 + 3.0 * 3.0 + 4.0 * 4.0);
-    const Quaternion expect(-1.0 * coeff, -2.0 * coeff, -3.0 * coeff, 4.0 * coeff);
+    const double coef = 1.0 / (1.0 * 1.0 + 2.0 * 2.0 + 3.0 * 3.0 + 4.0 * 4.0);
+    const Quaternion exp(-1.0 * coef, -2.0 * coef, -3.0 * coef, 4.0 * coef);
 
     // Assert
-    EXPECT_EQ(result, expect);
+    EXPECT_EQ(result, exp);
 }
 
 TEST(Quaternion, Can_Calculate_Magnitude) {
@@ -255,7 +255,7 @@ TEST(Quaternion, Can_Calculate_Magnitude) {
 
 TEST(Quaternion, Can_Calculate_Quad_Magnitude) {
     // Arrange
-   const  Quaternion quat(1.0, 2.0, 3.0, 4.0);
+    const  Quaternion quat(1.0, 2.0, 3.0, 4.0);
 
     // Act
     double result = quat.qmagnitude();
@@ -271,11 +271,11 @@ TEST(Quaternion, Can_Normalize) {
 
     // Act
     Quaternion result = quat.normalized();
-    const double coeff = 1.0 / sqrt(1.0 * 1.0 + 2.0 * 2.0 + 3.0 * 3.0 + 4.0 * 4.0);
-    const Quaternion expect(1.0 * coeff, 2.0 * coeff, 3.0 * coeff, 4.0 * coeff);
+    const double coeff = 1.0 / sqrt(1 * 1 + 2 * 2 + 3 * 3 + 4 * 4);
+    const Quaternion exp(1.0 * coeff, 2.0 * coeff, 3.0 * coeff, 4.0 * coeff);
 
     // Assert
-    EXPECT_EQ(expect, result);
+    EXPECT_EQ(exp, result);
 }
 
 TEST(Quaternion, Can_Do_Operatons_Combination) {

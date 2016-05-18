@@ -26,14 +26,16 @@ struct Expression {
 
 class Parser {
  public:
-    explicit Parser(const char* input) : input(input) {}
+    explicit Parser(const char* input) : input(input), status_("Ok") {}
     Expression parse();
     static double eval(const Expression& e);
+    string GetStatus();
 
  private:
     string ParseToken();
     Expression ParseSimpleExpression();
     Expression ParseBinaryExpression(int min_priority);
+    string status_;
     const char* input;
 };
 

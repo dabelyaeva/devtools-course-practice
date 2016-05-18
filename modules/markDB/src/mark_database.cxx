@@ -6,7 +6,7 @@
 #include <stdexcept>
 #include <utility>
 
-#include "include/mark_database.h"
+#include "../include/mark_database.h"
 
 using std::find;
 using std::string;
@@ -14,7 +14,7 @@ using std::vector;
 using std::pair;
 using std::out_of_range;
 
-MarkDatabase::ReturnCode MarkDatabase::searchStudent(const Student& student,
+MarkDataBase::ReturnCode MarkDataBase::searchStudent(const Student& student,
                                        size_t* index) const {
     auto findStudent = find(students.begin(), students.end(), student);
     if (findStudent != students.end()) {
@@ -27,7 +27,7 @@ MarkDatabase::ReturnCode MarkDatabase::searchStudent(const Student& student,
     }
 }
 
-MarkDatabase::ReturnCode MarkDatabase::searchSubject(const Subject& subject,
+MarkDataBase::ReturnCode MarkDataBase::searchSubject(const Subject& subject,
                                        size_t* index) const {
     auto findSubject = find(subjects.begin(), subjects.end(), subject);
     if (findSubject != subjects.end()) {
@@ -40,7 +40,7 @@ MarkDatabase::ReturnCode MarkDatabase::searchSubject(const Subject& subject,
     }
 }
 
-MarkDatabase::ReturnCode MarkDatabase::addStudent(const Student& student) {
+MarkDataBase::ReturnCode MarkDataBase::addStudent(const Student& student) {
     if (searchStudent(student) == ReturnCode::StudentNotFound) {
         students.push_back(student);
         return ReturnCode::Success;
@@ -49,7 +49,7 @@ MarkDatabase::ReturnCode MarkDatabase::addStudent(const Student& student) {
     }
 }
 
-MarkDatabase::ReturnCode MarkDatabase::addSubject(const Subject& subject) {
+MarkDataBase::ReturnCode MarkDataBase::addSubject(const Subject& subject) {
     if (searchSubject(subject) == ReturnCode::SubjectNotFound) {
         subjects.push_back(subject);
         return ReturnCode::Success;
@@ -58,7 +58,7 @@ MarkDatabase::ReturnCode MarkDatabase::addSubject(const Subject& subject) {
     }
 }
 
-MarkDatabase::ReturnCode MarkDatabase::deleteStudent(const Student& student) {
+MarkDataBase::ReturnCode MarkDataBase::deleteStudent(const Student& student) {
     size_t index;
     if (searchStudent(student, &index) == ReturnCode::Success) {
         students.erase(students.begin() + index);
@@ -76,7 +76,7 @@ MarkDatabase::ReturnCode MarkDatabase::deleteStudent(const Student& student) {
 }
 
 
-MarkDatabase::ReturnCode MarkDatabase::deleteSubject(const Subject& subject) {
+MarkDataBase::ReturnCode MarkDataBase::deleteSubject(const Subject& subject) {
     size_t index;
     if (searchSubject(subject, &index) == ReturnCode::Success) {
         subjects.erase(subjects.begin() + index);
@@ -93,9 +93,9 @@ MarkDatabase::ReturnCode MarkDatabase::deleteSubject(const Subject& subject) {
     }
 }
 
-MarkDatabase::ReturnCode MarkDatabase::addNewRecord(const Student& student,
+MarkDataBase::ReturnCode MarkDataBase::addNewRecord(const Student& student,
                                       const Subject& subject,
-                                      const Mark& mark) {
+                                      const int& mark) {
     if (searchStudent(student) == ReturnCode::Success) {
         if (searchSubject(subject) == ReturnCode::Success) {
             if (search(student, subject) == ReturnCode::RecordNotFound) {
@@ -112,7 +112,7 @@ MarkDatabase::ReturnCode MarkDatabase::addNewRecord(const Student& student,
     }
 }
 
-MarkDatabase::ReturnCode MarkDatabase::deleteRecord(const Student& student,
+MarkDataBase::ReturnCode MarkDataBase::deleteRecord(const Student& student,
                                       const Subject& subject) {
     if (search(student, subject) == ReturnCode::Success) {
         Record record(student, subject);
@@ -123,7 +123,7 @@ MarkDatabase::ReturnCode MarkDatabase::deleteRecord(const Student& student,
     }
 }
 
-MarkDatabase::ReturnCode MarkDatabase::search(const Student& student,
+MarkDataBase::ReturnCode MarkDataBase::search(const Student& student,
                                 const Subject& subject, size_t* index) const {
     auto findRecord = find(records.begin(), records.end(),
                            Record(student, subject));
@@ -137,7 +137,7 @@ MarkDatabase::ReturnCode MarkDatabase::search(const Student& student,
     }
 }
 
-MarkDatabase::ReturnCode MarkDatabase::getRecord(const size_t& indexOfRecord,
+MarkDataBase::ReturnCode MarkDataBase::getRecord(const size_t& indexOfRecord,
                                    Record* record) const {
     if (indexOfRecord < numberOfRecords()) {
         *record = records[indexOfRecord];
@@ -147,7 +147,7 @@ MarkDatabase::ReturnCode MarkDatabase::getRecord(const size_t& indexOfRecord,
     }
 }
 
-MarkDatabase::ReturnCode MarkDatabase::deleteRecord(const size_t& index) {
+MarkDataBase::ReturnCode MarkDataBase::deleteRecord(const size_t& index) {
     if (index < numberOfRecords()) {
         records.erase(records.begin()+index);
         return ReturnCode::Success;
@@ -156,9 +156,9 @@ MarkDatabase::ReturnCode MarkDatabase::deleteRecord(const size_t& index) {
     }
 }
 
-MarkDatabase::ReturnCode
-MarkDatabase::marksOfStudent(const Student& student,
-                             vector< pair<Subject, Mark> >* marks) const {
+MarkDataBase::ReturnCode
+MarkDataBase::marksOfStudent(const Student& student,
+                             vector< pair<Subject, int> >* marks) const {
     if (searchStudent(student) == ReturnCode::Success) {
         for (size_t recID = 0; recID < numberOfRecords(); recID++) {
             Record record = records[recID];
@@ -172,9 +172,9 @@ MarkDatabase::marksOfStudent(const Student& student,
     }
 }
 
-MarkDatabase::ReturnCode
-MarkDatabase::marksOnSubject(const Subject& subject,
-                             vector< pair<Student, Mark> >* marks) const {
+MarkDataBase::ReturnCode
+MarkDataBase::marksOnSubject(const Subject& subject,
+                             vector< pair<Student, int> >* marks) const {
     if (searchSubject(subject) == ReturnCode::Success) {
         for (size_t recordID = 0; recordID < numberOfRecords(); recordID++) {
             Record record = records[recordID];
@@ -188,27 +188,26 @@ MarkDatabase::marksOnSubject(const Subject& subject,
     }
 }
 
-vector<Student> MarkDatabase::getStudentsList() const {
+vector<Student> MarkDataBase::getStudentsList() const {
     return students;
 }
 
-vector<Subject> MarkDatabase::getSubjectsList() const {
+vector<Subject> MarkDataBase::getSubjectsList() const {
     return subjects;
 }
 
-vector<Record> MarkDatabase::getRecordsList() const {
+vector<Record> MarkDataBase::getRecordsList() const {
     return records;
 }
 
-size_t MarkDatabase::numberOfStudents() const {
+size_t MarkDataBase::numberOfStudents() const {
     return students.size();
 }
 
-size_t MarkDatabase::numberOfSubjects() const {
+size_t MarkDataBase::numberOfSubjects() const {
     return subjects.size();
 }
 
-size_t MarkDatabase::numberOfRecords() const {
+size_t MarkDataBase::numberOfRecords() const {
     return records.size();
 }
-

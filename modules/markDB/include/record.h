@@ -5,14 +5,6 @@
 
 #include <string>
 
-enum class Mark : int {
-    A = 5,
-    B = 4,
-    C = 3,
-    D = 2,
-    E = 1
-};
-
 typedef std::string Student;
 typedef std::string Subject;
 
@@ -20,10 +12,10 @@ struct Record {
  public:
     explicit Record(Student student = "",
                     Subject subject = "",
-                    Mark mark = Mark::A);
+                    int mark = 5);
     Student student;
     Subject subject;
-    Mark mark;
+    int mark;
     bool operator==(const Record& record) const;
 };
 

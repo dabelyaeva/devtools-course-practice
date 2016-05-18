@@ -1,0 +1,68 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is a Mark Data base MarkDataBaseApp")
+
+add_test(
+    NAME ${prefix}_can_Add_New_Record
+    COMMAND ${APPLICATION} Fname_Sname 5 Math addRecord
+)
+set_tests_properties (${prefix}_can_Add_New_Record
+  PROPERTIES PASS_REGULAR_EXPRESSION "Successful added new record ")
+
+add_test(
+    NAME ${prefix}_can_Add_New_Student
+    COMMAND ${APPLICATION} Fname_Sname 5 Math addRecord
+)
+set_tests_properties (${prefix}_can_Add_New_Student
+  PROPERTIES PASS_REGULAR_EXPRESSION "Successful added new student ")
+
+add_test(
+    NAME ${prefix}_can_Add_New_Subject
+    COMMAND ${APPLICATION} Fname_Sname 5 NewMath addRecord
+)
+set_tests_properties (${prefix}_can_Add_New_Subject
+  PROPERTIES PASS_REGULAR_EXPRESSION "Successful added new subject ")
+
+add_test(
+    NAME ${prefix}_can_Checks_Number_Of_Arguments
+    COMMAND ${APPLICATION} name name
+)
+set_tests_properties (${prefix}_can_Checks_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 4 arguments.")
+
+add_test(
+    NAME ${prefix}_can_Detect_Incorrect_Number_Format_Str
+    COMMAND ${APPLICATION} Fname_Sname Incorrent Math addRecord
+)
+set_tests_properties (${prefix}_can_Detect_Incorrect_Number_Format_Str
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format")
+
+add_test(
+    NAME ${prefix}_can_Detect_Incorrect_Number_Format_Less_2
+    COMMAND ${APPLICATION} Fname_Sname 0 Math addRecord
+)
+set_tests_properties (${prefix}_can_Detect_Incorrect_Number_Format_Less_2
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format")
+
+add_test(
+    NAME ${prefix}_can_Detect_Incorrect_Number_Format_More_5
+    COMMAND ${APPLICATION} Fname_Sname 6 Math addRecord
+)
+set_tests_properties (${prefix}_can_Detect_Incorrect_Number_Format_More_5
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format")

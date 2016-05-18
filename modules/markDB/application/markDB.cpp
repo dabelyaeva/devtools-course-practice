@@ -1,13 +1,14 @@
-// Copyright 2016 Kornyakov Kirill
+// Copyright 2016 Zemtsov Artem
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
-#include <iostream>
 
-#include "include/mark_database.h"
+#include "../include/Application.h"
 
 int main(int argc, const char** argv) {
-    std::cout << "Hello kitty" << std::endl;
+    MarkDataBaseApp app;
+    std::string output = app(argc, argv);
+    printf("%s\n", output.c_str());
     return 0;
 }

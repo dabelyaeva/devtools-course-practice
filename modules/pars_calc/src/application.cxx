@@ -8,7 +8,7 @@
 #include <string.h>
 #include <sstream>
 #include <string>
-
+#include <regex>
 #include "include/pars_calc.h"
 
 Application::Application() : message_("") {}
@@ -36,18 +36,30 @@ bool Application::validateNumberOfArguments(const int argc, const char** argv) {
   return true;
 }
 
+bool Application::checkForUnknownSymbols(string expr) {
+  std::smatch m;
+  string str(expr);
+  std::regex e("^([0-9\\(\\+\\-\\*(\\*\\*)\\./]|(sin)|(cos)|(mod)|(abs))+$");
+  if (std::regex_search(str, m, e))
+    return true;
+  else
+    return false;
+}
+
 std::string Application::operator()(const int argc, const char** argv) {
   if (!validateNumberOfArguments(argc, argv))
     return message_;
   Parser* pars;
   try {
     pars = new Parser(argv[1]);
-    message_ = "\nResult is:" + std::to_string(pars->eval(pars->parse()));
-  }
+    string tmp = (string)argv[1];
+    if (checkForUnknownSymbols(tmp))
+      message_ = "\nResult is:" + std::to_string(pars->eval(pars->parse()));
+    else
+      help(argv[0], "Unknown symbols detected!");
+}
   catch (std::exception e) {
     help(argv[0], pars->GetStatus().c_str());
-    delete pars;
-    return message_;
   }
   delete pars;
   return message_;

@@ -37,7 +37,8 @@ Expression Parser::ParseSimpleExpression() {
     }
     if (token == "(") {
         auto result = parse();
-        if (ParseToken() != ")") {
+        string tmp = ParseToken();
+        if (tmp != ")") {
             status_ = "Expected ')'!\n";
             throw std::runtime_error("Expected ')'!\n");
         }

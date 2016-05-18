@@ -84,7 +84,7 @@ TEST_F(ParserCalculatorTest, Is_Working_With_Unkown_Obj) {
 
   Act(args);
 
-  Assert("Invalid input!");
+  Assert("Unknown symbols detected!");
 }
 
 TEST_F(ParserCalculatorTest, Can_Do_Unknown_Operation) {
@@ -93,7 +93,7 @@ TEST_F(ParserCalculatorTest, Can_Do_Unknown_Operation) {
 
     Act(args);
 
-    Assert("Expected '\\)'!");
+    Assert("Unknown symbols detected!");
 }
 
 TEST_F(ParserCalculatorTest, Can_Add_Several) {
@@ -129,7 +129,7 @@ TEST_F(ParserCalculatorTest, Can_Work_With_Unknown_Input) {
 
   Act(args);
 
-  Assert("Invalid input!");
+  Assert("Unknown symbols detected!");
 }
 
 TEST_F(ParserCalculatorTest, Can_Calculate_Mod_Of_Sum) {

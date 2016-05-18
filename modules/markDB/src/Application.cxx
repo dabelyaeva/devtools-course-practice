@@ -46,16 +46,6 @@ int parseInt(const char* arg) {
     return value;
 }
 
-double parseDouble(const char* arg) {
-    char* end;
-    double value = strtod(arg, &end);
-
-    if (end[0]) {
-        throw std::string("Wrong number format!");
-    }
-
-    return value;
-}
 std::string parseString(const char* arg) {
     return arg;
 }

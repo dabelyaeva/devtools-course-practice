@@ -1,19 +1,19 @@
 // Copyright 2016 Hramov Ilya
 
-#ifndef MODULES_VCALC_INCLUDE_VOLUMES_CALCAPP_HPP_
-#define MODULES_VCALC_INCLUDE_VOLUMES_CALCAPP_HPP_
+#ifndef MODULES_VOLUMES_CALC_INCLUDE_VOLUMES_CALC_APP_H_
+#define MODULES_VOLUMES_CALC_INCLUDE_VOLUMES_CALC_APP_H_
 
 #include <string>
 
 class Application {
-public:
+ public:
     Application();
     std::string operator()(int argc, char **argv);
-private:
+ private:
     std::string _message;
 
     void help(const char *appname, const char *message = "");
     double strToDouble(const char *str);
 };
 
-#endif  // MODULES_VCALC_INCLUDE_VOLUMES_CALCAPP_HPP_
+#endif  // MODULES_VOLUMES_CALC_INCLUDE_VOLUMES_CALC_APP_H_

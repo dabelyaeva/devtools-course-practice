@@ -70,9 +70,9 @@ std::string Application::operator()(int argc, const char **argv) {
     _message = "";
     std::ostringstream stream;
 
-    if (argc == 1)
+    if (argc == 1) {
         help(argv[0]);
-    else {
+    } else {
         if (strcmp(argv[1], "sphere") == 0) {
                 if (argc != 3) {
                     help(argv[0],

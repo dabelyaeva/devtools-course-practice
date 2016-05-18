@@ -2,7 +2,9 @@
 
 #include <iostream>
 
-int main(int argc, char **argv)
-{
-    std::cout << "Hello, World!" << std::endl;
+#include "include/volumes_calc_app.h"
+
+int main(int argc, char **argv) {
+    Application app;
+    std::cout << app(argc, argv);
 }

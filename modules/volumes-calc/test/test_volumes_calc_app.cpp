@@ -48,7 +48,7 @@ TEST_F(VolumeCalcTest, can_create_app) {
     // Assert
     EXPECT_NE(nullptr, app);
     delete app;
- }
+}
 
 TEST_F(VolumeCalcTest, Can_Show_Help_With_Epmty_Arguments) {
     // Arrange
@@ -70,7 +70,7 @@ TEST_F(VolumeCalcTest, Can_Check_Sphere_Parametres_Number) {
 
     // Assert
     Assert("Wrong number of parametres for \'sphere\'.*");
- }
+}
 
 TEST_F(VolumeCalcTest, Can_Check_Cylinder_Parametres_Number) {
     // Arrange

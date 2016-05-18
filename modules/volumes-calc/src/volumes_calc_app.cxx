@@ -5,6 +5,8 @@
 
 #include <sstream>
 
+using std::string;
+
 const double pi = 3.14159265358979323846;
 
 Application::Application(): _message("") {}
@@ -71,7 +73,7 @@ std::string Application::operator()(int argc, const char **argv) {
 
     if (argc == 1)
         help(argv[0]);
-    else
+    else {
         if (strcmp(argv[1], "sphere") == 0) {
                 if (argc != 3) {
                     help(argv[0],
@@ -100,6 +102,7 @@ std::string Application::operator()(int argc, const char **argv) {
         } else {
             help(argv[0], "Invalid volume name\n");
         }
+    }
 
     _message = _message + stream.str();
 

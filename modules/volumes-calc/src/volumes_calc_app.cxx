@@ -5,6 +5,7 @@
 
 #include <sstream>
 #include <string>
+#include <math.h>
 
 const double pi = 3.14159265358979323846;
 

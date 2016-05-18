@@ -3,9 +3,9 @@
 #include "include/volumes_calc_app.h"
 #include "include/volumes_calc.h"
 
+#include <math.h>
 #include <sstream>
 #include <string>
-#include <math.h>
 
 const double pi = 3.14159265358979323846;
 

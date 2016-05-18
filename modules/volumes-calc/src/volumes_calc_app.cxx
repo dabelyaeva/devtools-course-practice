@@ -12,7 +12,7 @@ Application::Application(): _message("") {}
 void Application::help(const char *appname, const char *message) {
     _message =
         std::string(message) +
-            "This is volumes calculator application\n\n" +
+            "This is volumes calculator application.\n\n" +
             "Please provide arguments in the following format:\n\n" +
 
             "  $ " + appname + " <volume_name> <volume_numeric_parametres>\n" +

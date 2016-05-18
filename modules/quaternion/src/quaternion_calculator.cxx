@@ -51,36 +51,23 @@ char parseOperation(const char* arg) {
   char op;
   if (strcmp(arg, "+") == 0) {
     op = '+';
-  } else {
-    if (strcmp(arg, "-") == 0) {
+  } else { if (strcmp(arg, "-") == 0) {
     op = '-';
-    }
-  } else { if (strcmp(arg, "*") == 0) {
+    } else { if (strcmp(arg, "*") == 0) {
     op = '*';
-    }
-  } else {
-    if (strcmp(arg, "!") == 0) {
+    } else { if (strcmp(arg, "!") == 0) {
     op = '!';
-    }
-  } else {
-    if (strcmp(arg, "~") == 0) {
+    } else { if (strcmp(arg, "~") == 0) {
     op = '~';
-    }
-  } else {
-    if (strcmp(arg, "M") == 0) {
+    } else { if (strcmp(arg, "M") == 0) {
     op = 'M';
-    }
-  } else {
-    if (strcmp(arg, "Q") == 0) {
+    } else { if (strcmp(arg, "Q") == 0) {
     op = 'Q';
-    }
-  } else {
-    if (strcmp(arg, "N") == 0) {
+    } else { if (strcmp(arg, "N") == 0) {
     op = 'N';
-    }
-  } else {
+    } else {
     throw std::string("Wrong operation format!");
-  }
+  } } } } } } } }
   return op;
 }
 

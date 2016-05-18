@@ -8,7 +8,7 @@
 class Application {
  public:
     Application();
-    std::string operator()(const int argc, const char** argv); 
+    std::string operator()(const int argc, const char** argv);
 
  private:
      bool checkForUnknownSymbols(std::string expr);

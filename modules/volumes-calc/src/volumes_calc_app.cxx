@@ -4,6 +4,7 @@
 #include "include/volumes_calc.h"
 
 #include <math.h>
+#include <string.h>
 #include <sstream>
 #include <string>
 

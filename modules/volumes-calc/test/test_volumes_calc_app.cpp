@@ -43,7 +43,7 @@ TEST_F(VolumeCalcTest, can_create_app) {
     Application* app;
 
     // Act
-    app = new Application();
+    app = new Application;
 
     // Assert
     EXPECT_NE(nullptr, app);

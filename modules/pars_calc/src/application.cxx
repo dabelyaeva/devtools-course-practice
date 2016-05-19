@@ -9,6 +9,11 @@
 #include <sstream>
 #include <string>
 #include "include/pars_calc.h"
+#include <map>
+#include <set>
+
+using std::map;
+using std::set;
 
 Application::Application() : message_("") {}
 
@@ -36,45 +41,34 @@ bool Application::validateNumberOfArguments(const int argc, const char** argv) {
 }
 
 bool Application::checkForUnknownSymbols(string expr) {
+  set<string> sym_operations = { "+", "-",
+  "*", "/", "(", ")" };
+  map <string, string> txt_operations = { {"m", "mod"},
+  {"c", "cos"}, {"s", "sin"}, {"m", "mod"}, {"a", "abs"} };
   for (size_t i = 0; i < expr.length(); i++) {
-    switch (expr[i]) {
-    case '+':case '-':case '*': case '/': case '(':case ')':
-      break;
-    case '.':
-      if (isdigit(expr[i - 1]) && isdigit(expr[i + 1]))
-        i++;
-      else
-        return false;
-      break;
-    case 'm':
-      if (expr.substr(i, 3) == "mod")
-        i += 3;
-      else
-        return false;
-      break;
-    case 's':
-      if (expr.substr(i, 3) == "sin")
-        i += 3;
-      else
-        return false;
-      break;
-    case 'c':
-      if (expr.substr(i, 3) == "cos")
-        i += 3;
-      else
-        return false;
-      break;
-    case 'a':
-      if (expr.substr(i, 3) == "abs")
-        i += 3;
-      else
-        return false;
-      break;
-    default:
-      if (isdigit(expr[i]))
-        break;
-      return false;
+    bool flag = false;
+    if (isdigit(expr[i]))
+      flag = true;
+    else {
+      string str = expr.substr(i, 1);
+      if (sym_operations.find(str) != sym_operations.end())
+        flag = true;
+      else {
+        map<string, string>::const_iterator it = txt_operations.find(str);
+        if (it != txt_operations.end()) {
+          size_t length = it->second.length();
+          if (expr.substr(i, length) == it->second) {
+            i += length;
+            flag = true;
+          }
+        } else
+            if (str == ".")
+              if (isdigit(expr[i - 1]) && isdigit(expr[i + 1]))
+                flag = true;
+      }
     }
+    if (!flag)
+      return false;
   }
   return true;
 }

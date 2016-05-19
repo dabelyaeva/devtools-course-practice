@@ -53,7 +53,7 @@ TEST_F(AppMinesweeperTest,
     Act(args);
 
     // Assert
-    Assert("Error: invalid number of arguments\\..*");
+    Assert("Error: invalid number of arguments or wrong command.*");
 }
 
 TEST_F(AppMinesweeperTest,
@@ -65,7 +65,7 @@ TEST_F(AppMinesweeperTest,
     Act(args);
 
     // Assert
-    Assert("Error: invalid number of arguments\\..*");
+    Assert("Error: invalid number of arguments or wrong command.*");
 }
 
 TEST_F(AppMinesweeperTest,
@@ -77,7 +77,7 @@ TEST_F(AppMinesweeperTest,
     Act(args);
 
     // Assert
-    Assert("Error: invalid number of arguments\\..*");
+    Assert("Error: invalid number of arguments or wrong command.*");
 }
 
 TEST_F(AppMinesweeperTest,
@@ -89,7 +89,7 @@ TEST_F(AppMinesweeperTest,
     Act(args);
 
     // Assert
-    Assert("Error: invalid number of arguments\\..*");
+    Assert("Error: invalid number of arguments.*");
 }
 
 TEST_F(AppMinesweeperTest,
@@ -113,7 +113,7 @@ TEST_F(AppMinesweeperTest,
     Act(args);
 
     // Assert
-    Assert("Error: first argument must be param ");
+    Assert("Error: invalid number of arguments or wrong command.*");
 }
 
 TEST_F(AppMinesweeperTest, can_call_help) {
@@ -124,12 +124,12 @@ TEST_F(AppMinesweeperTest, can_call_help) {
     Act(args);
 
     // Assert
-    Assert("This is a minesweeper application.\\..*");
+    Assert("This is a minesweeper application.*");
 }
 
 TEST_F(AppMinesweeperTest, can_win) {
     // Arrange
-    vector<string> args = { "-tm", "resoursces\\win.txt", "-r", "10" };
+    vector<string> args = { "-tm", "win.txt", "-r", "10" };
 
     // Act
     Act(args);
@@ -140,7 +140,7 @@ TEST_F(AppMinesweeperTest, can_win) {
 
 TEST_F(AppMinesweeperTest, can_lose) {
     // Arrange
-    vector<string> args = { "-tm", "resoursces\\lose.txt", "-r", "10" };
+    vector<string> args = { "-tm", "lose.txt", "-r", "10" };
 
     // Act
     Act(args);

@@ -16,39 +16,46 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_can_Print_Error_Without_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "Error invalid number of arguments.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Error: invalid number of arguments.*")
 
 add_test(
     NAME ${prefix}_can_Check_Number_Of_Arguments_TM
     COMMAND ${APPLICATION} -tm win.txt
 )
 set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_TM
-    PROPERTIES PASS_REGULAR_EXPRESSION "Error invalid number of arguments.")
+    PROPERTIES PASS_REGULAR_EXPRESSION "Error: invalid number of arguments or wrong command.*")
 
 add_test(
     NAME ${prefix}_can_Check_Number_Of_Arguments_Help
     COMMAND ${APPLICATION} -h win.txt
 )
 set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_Help
-    PROPERTIES PASS_REGULAR_EXPRESSION "Error invalid number of arguments.")
+    PROPERTIES PASS_REGULAR_EXPRESSION "Error: invalid number of arguments or wrong command.*")
 
 add_test(
     NAME ${prefix}_can_Check_Number_Of_Arguments_Rand
     COMMAND ${APPLICATION} -r
 )
 set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_Rand
-    PROPERTIES PASS_REGULAR_EXPRESSION "Error invalid number of arguments.")
+    PROPERTIES PASS_REGULAR_EXPRESSION "Error: invalid number of arguments or wrong command.*")
 
 add_test(
     NAME ${prefix}_can_win
-    COMMAND ${APPLICATION} -tm "resources/win.txt"
+    COMMAND ${APPLICATION} -tm "win.txt"
 )
 set_tests_properties (${prefix}_can_win
-    PROPERTIES PASS_REGULAR_EXPRESSION "You win!")
+    PROPERTIES PASS_REGULAR_EXPRESSION ".*You win!")
 
 add_test(
     NAME ${prefix}_can_lose
-    COMMAND ${APPLICATION} -tm "resources/lose.txt"
+    COMMAND ${APPLICATION} -tm "lose.txt"
 )
 set_tests_properties (${prefix}_can_lose
-    PROPERTIES PASS_REGULAR_EXPRESSION "You lose!")
+    PROPERTIES PASS_REGULAR_EXPRESSION ".*You lose!")
+
+add_test(
+    NAME ${prefix}_can_print_help
+    COMMAND ${APPLICATION} -h
+)
+set_tests_properties (${prefix}_can_print_help
+    PROPERTIES PASS_REGULAR_EXPRESSION "This is a minesweeper application.*")

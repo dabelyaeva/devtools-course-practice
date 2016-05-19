@@ -4,10 +4,6 @@
 
 #include <string>
 
-string Parser::GetStatus() {
-    return status_;
-}
-
 string Parser::ParseToken() {
     while (isspace(*input)) ++input;
 
@@ -32,14 +28,12 @@ string Parser::ParseToken() {
 Expression Parser::ParseSimpleExpression() {
     auto token = ParseToken();
     if (token.empty()) {
-        status_ = "Invalid input!\n";
         throw std::runtime_error("Invalid input!\n");
     }
     if (token == "(") {
         auto result = parse();
         string tmp = ParseToken();
         if (tmp != ")") {
-            status_ = "Expected ')'!\n";
             throw std::runtime_error("Expected ')'!\n");
         }
         return result;

@@ -86,8 +86,8 @@ std::string Application::operator()(const int argc, const char** argv) {
     else
       help(argv[0], "Unknown symbols detected!");
 }
-  catch (std::exception e) {
-    help(argv[0], pars->GetStatus().c_str());
+  catch (std::exception &e) {
+    help(argv[0], e.what());
   }
   delete pars;
   return message_;

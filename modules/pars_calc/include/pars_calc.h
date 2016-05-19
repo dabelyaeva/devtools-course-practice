@@ -29,7 +29,6 @@ class Parser {
     explicit Parser(const char* input) : input(input), status_("Ok") {}
     Expression parse();
     static double eval(const Expression& e);
-    string GetStatus();
 
  private:
     string ParseToken();

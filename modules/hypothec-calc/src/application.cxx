@@ -7,6 +7,7 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
+#include <stdexcept>
 
 #include "include/application.h"
 #include "include/hypothec_calculator.h"

@@ -6,11 +6,6 @@
 #include <string>
 #include "include/mine_sweeper.h"
 
-enum class comands
-{
-    PRINT, STEP
-};
-
 class Application {
  public:
     Application();
@@ -18,11 +13,9 @@ class Application {
  private:
     MineSweeper* Foo;
     std::string message_;
-
     void help(const char* appname);
     bool parseAppOperand(int argc, const char** argv);
     bool validateNumberOfArguments(int argc, const char** argv);
-
 };
 
 #endif  // MODULES_MINESWEEPER_INCLUDE_APPLICATION_H_

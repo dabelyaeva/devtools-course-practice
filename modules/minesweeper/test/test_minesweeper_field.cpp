@@ -1,3 +1,4 @@
+// Copyright 2016 Sirotkin Nikita
 // Copyright 2016 Magaziinik Ivan
 
 #include <gtest/gtest.h>

@@ -12,7 +12,7 @@ using std::string;
 using ::testing::internal::RE;
 
 class AppMinesweeperTest : public ::testing::Test {
-protected:
+ protected:
     void Act(vector<string> args_) {
         vector<const char*> options;
             options.push_back("minesweeper");
@@ -23,12 +23,13 @@ protected:
             output_ = app_(argc, argv);
     }
     void Assert(std::string expected) {
-        std::cout << " Expected!! " << expected << std::endl << output_ << std::endl;
+        std::cout << " Expected!! " << expected;
+        std::cout << std::endl << output_ << std::endl;
         EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
-    private:
-        Application app_;
-        string output_;            
+ private:
+    Application app_;
+    string output_;
 };
 
 TEST_F(AppMinesweeperTest, can_create_app) {
@@ -47,7 +48,7 @@ TEST_F(AppMinesweeperTest,
     can_reach_error_msg_when_invalid_argument_number) {
     // Arrange
     vector<string> args = { "a", "b", "c", "d", "f", "g" };
-    
+
     // Act
     Act(args);
 
@@ -58,7 +59,7 @@ TEST_F(AppMinesweeperTest,
 TEST_F(AppMinesweeperTest, can_call_help) {
     // Arrange
     vector<string> args = { "-h" };
-    
+
     // Act
     Act(args);
 

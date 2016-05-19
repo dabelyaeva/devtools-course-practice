@@ -1,6 +1,7 @@
 // Copyright 2016 Sirotkin Nikita
 
 #include "include/Application.h"
+#include <string>
 
 using std::string;
 
@@ -49,8 +50,7 @@ bool Application::validateNumberOfArguments(int argc, const char **argv) {
         message_ = "Error: invalid number of arguments.\n\n"
             "Try $ " + std::string(argv[0]) + "-h for more information";
         return false;
-    }
-    else {
+    } else {
         if ((argc != 2 && string(argv[1]) == "-h") ||
             (argc < 3 && string(argv[1]) != "-h") ||
             (string(argv[1]) != "-tm" && argc > 3) || argc > 5) {

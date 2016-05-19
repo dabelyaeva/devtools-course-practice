@@ -1,7 +1,7 @@
 // Copyright 2016 Malkov Stanislav
 
-#ifndef MODULES_MALKOV_STAS_PATH_INCLUDE_PATHFINDER_H_
-#define MODULES_MALKOV_STAS_PATH_INCLUDE_PATHFINDER_H_
+#ifndef MODULES_PATH_INCLUDE_PATHFINDER_H_
+#define MODULES_PATH_INCLUDE_PATHFINDER_H_
 
 class PathFinder {
  public:
@@ -33,4 +33,4 @@ class PathFinder {
     void CheckVetricesWithoutPath();
 };
 
-#endif  // MODULES_MALKOV_STAS_PATH_INCLUDE_PATHFINDER_H_
+#endif  // MODULES_PATH_INCLUDE_PATHFINDER_H_

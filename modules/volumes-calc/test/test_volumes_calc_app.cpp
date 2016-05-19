@@ -113,7 +113,7 @@ TEST_F(VolumeCalcTest, Can_Calculate_Sphere_Volume) {
     Act(args);
 
     // Assert
-    Assert("\\d*\\.?\\d*");
+    Assert("523\\..*");
 }
 
 TEST_F(VolumeCalcTest, Can_Calculate_Cylinder_Volume) {
@@ -124,5 +124,5 @@ TEST_F(VolumeCalcTest, Can_Calculate_Cylinder_Volume) {
     Act(args);
 
     // Assert
-    Assert("\\d*\\.?\\d*");
+    Assert("62\\..*");
 }

@@ -28,7 +28,7 @@ void EquationApplication::help(const char* appname, const char* message) {
 }
 
 bool EquationApplication::validateNumberOfArguments
- (int argc, const char** argv) {
+  (int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;

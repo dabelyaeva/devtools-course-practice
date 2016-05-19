@@ -1,5 +1,3 @@
-  // Copyright 2016 Kochetova Dasha
-
 #ifndef MODULES_SQR_EQ_INCLUDE_SQR_EQ_H_
 #define MODULES_SQR_EQ_INCLUDE_SQR_EQ_H_
 

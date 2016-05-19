@@ -41,14 +41,14 @@ set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_Rand
 
 add_test(
     NAME ${prefix}_can_win
-    COMMAND ${APPLICATION} -tm "win.txt"
+    COMMAND ${APPLICATION} -tm "modules\\minesweeper\\win.txt"
 )
 set_tests_properties (${prefix}_can_win
     PROPERTIES PASS_REGULAR_EXPRESSION ".*You win!")
 
 add_test(
     NAME ${prefix}_can_lose
-    COMMAND ${APPLICATION} -tm "lose.txt"
+    COMMAND ${APPLICATION} -tm "modules\\minesweeper\\win.txt"
 )
 set_tests_properties (${prefix}_can_lose
     PROPERTIES PASS_REGULAR_EXPRESSION ".*You lose!")

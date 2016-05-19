@@ -175,7 +175,7 @@ NumberType integrate(const NumberType& lower, const NumberType& upper,
     const auto step = (upper - lower) / partitionCount;
     NumberType result(0);
     for (size_t i = 1; i <= partitionCount; ++i) {
-        const auto midPoint = rand() / NumberType(RAND_MAX) * step;
+        const auto midPoint = rand_r() / NumberType(RAND_MAX) * step;
         result += f(lower + step * (i - 1) + midPoint) * step;
     }
     return result;

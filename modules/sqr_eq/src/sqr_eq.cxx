@@ -1,4 +1,5 @@
-// Copyright 2016 Markova Lera
+// Copyright 2016 Kochetova Dasha
+
 #include "include/sqr_eq.h"
 #include <set>
 

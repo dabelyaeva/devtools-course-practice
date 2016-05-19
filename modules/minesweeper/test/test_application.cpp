@@ -129,7 +129,8 @@ TEST_F(AppMinesweeperTest, can_call_help) {
 
 TEST_F(AppMinesweeperTest, can_win) {
     // Arrange
-    vector<string> args = { "-tm", "/modules/minesweeper/win.txt", "-r", "10" };
+    vector<string> args = { "-tm", "/modules/minesweeper/win.txt",
+        "-r", "10" };
 
     // Act
     Act(args);
@@ -140,7 +141,8 @@ TEST_F(AppMinesweeperTest, can_win) {
 
 TEST_F(AppMinesweeperTest, can_lose) {
     // Arrange
-    vector<string> args = { "-tm", "/modules/minesweeper/lose.txt", "-r", "10" };
+    vector<string> args = { "-tm", "/modules/minesweeper/lose.txt",
+        "-r", "10" };
 
     // Act
     Act(args);

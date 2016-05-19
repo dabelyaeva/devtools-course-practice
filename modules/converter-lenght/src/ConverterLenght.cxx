@@ -1,7 +1,7 @@
 // Copyright 2016 Ryabinin Kirill
 
 #include <iostream>
-#include <string>.
+#include <string>
 #include "include/ConvertorLenght.h"
 
 ConverterLenght::ConverterLenght(const double val, Unit measure) {

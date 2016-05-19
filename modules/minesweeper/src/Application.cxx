@@ -130,7 +130,7 @@ bool Application::createRandField(std::string str_size) {
         else
             Foo = new MineSweeper(f_size, f_size, false);
     }
-    catch (std::exception except) {
+    catch (std::invalid_argument except) {
         message_ = "Error: " + string(except.what());
         return false;
     }

@@ -5,6 +5,12 @@
 enable_testing()
 
 set(prefix "${MODULE}")
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/win.txt"
+     "3 4 1 1 6 6 1 7 10 1 8 1 9 1 9 2 4 3 " 
+     ENCODING UTF-8)
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/lose.txt"
+     "3 4 2 7 " 
+     ENCODING UTF-8)
 
 add_test(
     NAME ${prefix}_can_Run
@@ -41,14 +47,14 @@ set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_Rand
 
 add_test(
     NAME ${prefix}_can_win
-    COMMAND ${APPLICATION} -tm "modules\\minesweeper\\win.txt"
+    COMMAND ${APPLICATION} -tm "${CMAKE_CURRENT_BINARY_DIR}/win.txt"
 )
 set_tests_properties (${prefix}_can_win
     PROPERTIES PASS_REGULAR_EXPRESSION ".*You win!")
 
 add_test(
     NAME ${prefix}_can_lose
-    COMMAND ${APPLICATION} -tm "modules\\minesweeper\\win.txt"
+    COMMAND ${APPLICATION} -tm "${CMAKE_CURRENT_BINARY_DIR}/lose.txt"
 )
 set_tests_properties (${prefix}_can_lose
     PROPERTIES PASS_REGULAR_EXPRESSION ".*You lose!")

@@ -33,32 +33,39 @@ set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
 
  add_test(
-      NAME ${prefix}_can_Detect_Negative_Number_Format
-      COMMAND ${APPLICATION} -1 -5 -2 -3
+      NAME ${prefix}_can_Detect_Negative_Property
+      COMMAND ${APPLICATION} -1 5 3 3
 )
-set_tests_properties (${prefix}_can_Detect_Negative_Number_Format
-    PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format! Must be positive!")
+set_tests_properties (${prefix}_can_Detect_Negative_Property
+    PROPERTIES PASS_REGULAR_EXPRESSION "Property cost must be bigger than 0")
+
+add_test(
+      NAME ${prefix}_can_Detect_Negative_Percent
+      COMMAND ${APPLICATION} 10 5 2 -3
+)
+set_tests_properties (${prefix}_can_Detect_Negative_Percent
+     PROPERTIES PASS_REGULAR_EXPRESSION "Percent must be bigger than 0 and lesser than [0-9]+")
 
 add_test(
       NAME ${prefix}_can_Detect_Negative_Term
-      COMMAND ${APPLICATION} 10 5 2 -3
+      COMMAND ${APPLICATION} 10 5 -2 3
 )
 set_tests_properties (${prefix}_can_Detect_Negative_Term
-     PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format! Must be positive!")
+     PROPERTIES PASS_REGULAR_EXPRESSION "Term must be bigger than 0 and lesser than [0-9]+")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Term
     COMMAND ${APPLICATION} 10 5 2000 10
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Term
-  PROPERTIES PASS_REGULAR_EXPRESSION "Percent must be lesser than 100, term less then 601")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Term must be bigger than 0 and lesser than [0-9]+")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Percent
     COMMAND ${APPLICATION} 10 5 10 200
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Percent
-  PROPERTIES PASS_REGULAR_EXPRESSION "Percent must be lesser than 100, term less then 601")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Percent must be bigger than 0 and lesser than [0-9]+")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_First_Payment

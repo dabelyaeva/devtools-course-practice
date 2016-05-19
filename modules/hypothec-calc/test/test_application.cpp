@@ -66,31 +66,31 @@ TEST_F(HypothecCalculatorAppTest, Is_Checking_Number_Format) {
     Assert("Wrong number format!");
 }
 
-TEST_F(HypothecCalculatorAppTest, Are_Checking_All_Negative_Numbers) {
+TEST_F(HypothecCalculatorAppTest, Are_Checking_Negative_Property) {
     // Arrange
-    vector<string> args = {"-10", "-2", "-3", "-2"};
+    vector<string> args = {"-10", "2", "3", "2"};
     // Act
     Act(args);
     // Assert
-    Assert("Wrong number format! Must be positive!");
+    Assert("Property cost must be bigger than 0");
 }
 
-TEST_F(HypothecCalculatorAppTest, Is_Checking_Negative_Term) {
+TEST_F(HypothecCalculatorAppTest, Is_Checking_Negative_Percent) {
     // Arrange
     vector<string> args = {"10", "2", "3", "-2"};
     // Act
     Act(args);
     // Assert
-    Assert("Wrong number format! Must be positive!");
+    Assert("Percent must be bigger than 0 and lesser than [0-9]+");
 }
 
-TEST_F(HypothecCalculatorAppTest, Is_Checking_Negative_Persent) {
+TEST_F(HypothecCalculatorAppTest, Is_Checking_Negative_Term) {
     // Arrange
     vector<string> args = {"10", "2", "-3", "2"};
     // Act
     Act(args);
     // Assert
-    Assert("Wrong number format! Must be positive!");
+    Assert("Term must be bigger than 0 and lesser than [0-9]+");
 }
 
 TEST_F(HypothecCalculatorAppTest, Is_Checking_Negative_First_Payment) {
@@ -99,7 +99,7 @@ TEST_F(HypothecCalculatorAppTest, Is_Checking_Negative_First_Payment) {
     // Act
     Act(args);
     // Assert
-    Assert("Wrong number format! Must be positive!");
+    Assert("First payment must be bigger than 0");
 }
 
 TEST_F(HypothecCalculatorAppTest, Is_Checking_Negative_Cost) {
@@ -108,7 +108,7 @@ TEST_F(HypothecCalculatorAppTest, Is_Checking_Negative_Cost) {
     // Act
     Act(args);
     // Assert
-    Assert("Wrong number format! Must be positive!");
+    Assert("Property cost must be bigger than 0");
 }
 
 TEST_F(HypothecCalculatorAppTest, Is_Checking_Wrong_Cost) {
@@ -126,7 +126,7 @@ TEST_F(HypothecCalculatorAppTest, Is_Checking_Wrong_Persent) {
     // Act
     Act(args);
     // Assert
-    Assert("Percent must be lesser than 100, term less then 601");
+    Assert("Percent must be bigger than 0 and lesser than [0-9]+");
 }
 
 TEST_F(HypothecCalculatorAppTest, Is_Checking_Wrong_Term) {
@@ -135,7 +135,7 @@ TEST_F(HypothecCalculatorAppTest, Is_Checking_Wrong_Term) {
     // Act
     Act(args);
     // Assert
-    Assert("Percent must be lesser than 100, term less then 601");
+    Assert("Term must be bigger than 0 and lesser than [0-9]+");
 }
 
 TEST_F(HypothecCalculatorAppTest, Can_Calculate) {

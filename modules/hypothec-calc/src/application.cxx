@@ -10,11 +10,10 @@
 
 #include "include/application.h"
 #include "include/hypothec_calculator.h"
+using std::string;
 
 
 Application::Application() : message_("") { }
-using std::string;
-std::ostringstream stream;
 
 
 void Application::help(const char *appname, const char *message) {
@@ -52,6 +51,7 @@ int parseInt(const char *arg) {
 
 std::string Application::operator()(const int argc, const char **argv) {
     Arguments args;
+    std::ostringstream stream;
 
     if (!validateNumberOfArguments(argc, argv)) {
         return message_;
@@ -66,29 +66,22 @@ std::string Application::operator()(const int argc, const char **argv) {
         return str;
     }
 
-    if (args.propertyCost <= 0 || args.firstPayment <= 0 || args.term <= 0
-        || args.percent <= 0) {
-        stream << "Wrong number format! Must be positive!\n";
-    } else if (args.propertyCost < args.firstPayment) {
-        stream
-            << "First payment must be lesser than property cost\n";
-    } else if (args.term >= HypothecCalculator::MAX_TERM || args.percent >=
-        HypothecCalculator::MAX_PERCENT) {
-        stream
-            << "Percent must be lesser than 100, term less then 601\n";
-    } else {
-        HypothecCalculator calc = HypothecCalculator(
+    HypothecCalculator calc;
+    try {
+        calc = HypothecCalculator(
             args.propertyCost,
             args.firstPayment,
             args.term,
             args.percent);
-
         calc.calculate();
-        stream << std::fixed<< std::setprecision(2);
+        stream << std::fixed << std::setprecision(2);
         stream << "Monthly Payment = " << calc.getMonthlyPayment()
             << "; Overpayment = "
             << calc.getOverpayment() << "; Payment's Sum = "
             << calc.getPaymentsSum();
+    }
+    catch (std::invalid_argument e) {
+        return e.what();
     }
     message_ = stream.str();
 

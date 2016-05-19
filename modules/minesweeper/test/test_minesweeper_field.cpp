@@ -106,8 +106,8 @@ TEST(MINEsweeper_field, can_create_rihgt_copy) {
     bool flag;
     const unsigned int size = field1.get_field_size();
     flag = size == field2.get_field_size();
-    for (int i = 0; i < size; ++i)
-        for (int j = 0; j < size; ++j)
+    for (unsigned int i = 0; i < size; ++i)
+        for (unsigned int j = 0; j < size; ++j)
             flag = field1.get_cell(i, j) == field2.get_cell(i, j);
     EXPECT_TRUE(flag);
 }

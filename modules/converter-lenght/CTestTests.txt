@@ -23,7 +23,7 @@ add_test(
     COMMAND ${APPLICATION} 1 Mile
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Number_Of_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 1 or 3 arguments")
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments.")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Single_Value_Format

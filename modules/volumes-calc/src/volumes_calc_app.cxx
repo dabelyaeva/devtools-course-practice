@@ -71,8 +71,7 @@ double cylinderVol(double radius, double height) {
     return calc.Calculate(200);
 }
 
-double coneVol(double radius, double height)
-{
+double coneVol(double radius, double height) {
     volume_calc::VolumeCalculator<double> calc(
         [] (double, double r, double) {
             return r;

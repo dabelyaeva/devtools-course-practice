@@ -20,15 +20,13 @@ void SortApplication::help(const char* appname, const char* message) {
         "Where all arguments are int precision, " +
         "and <typesort>: 1-quickSort, 2-selectionSort, 3-gnomeSort\n" +
         "4-pasteSort, 5-mergeSort.\n";
-
 }
 
 int parseInt(const char* arg) {
     int value;
     if (atoi(arg) > 0) {
         value = atoi(arg);
-    }
-    else {
+    } else {
         throw std::string("Wrong number format!");
     }
     return value;
@@ -40,8 +38,7 @@ bool SortApplication::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != (args.length+3)) {
+    } else if (argc != (args.length+3)) {
         help(argv[0], "ERROR: Wrong number of arguments.\n\n");
         return false;
     }
@@ -52,8 +49,7 @@ int parseTypeSort(const char* arg) {
     int value;
     if (atoi(arg) > 0 && atoi(arg) < 6) {
         value = atoi(arg);
-    }
-    else {
+    } else {
         throw std::string("Wrong number of TypeSort!");
     }
     return value;
@@ -76,20 +72,20 @@ std::string SortApplication::operator()(int argc, const char** argv) {
         return str;
     }
     args.intArr = new int[args.length];
-    for (int i = 0; i < args.length; i++){
+    for (int i = 0; i < args.length; i++) {
         args.intArr[i] = parseInt(argv[3 + i]);
     }
     std::ostringstream stream;
     MySort Sort(args.intArr, args.length);
     int* Answer = new int[args.length];
 
-    switch (args.select){
+    switch (args.select) {
     case 1: {
         Sort.quickSort(0, args.length);
         Answer = Sort.getArray();
         stream << "Your sort array:";
         for (int i = 0; i < args.length; i++) {
-            stream << Answer[i]<<" ";
+            stream << Answer[i] << " ";
         }
         break;
     }
@@ -99,7 +95,7 @@ std::string SortApplication::operator()(int argc, const char** argv) {
         Answer = Sort.getArray();
         stream << "Your sort array:";
         for (int i = 0; i < args.length; i++) {
-            stream << Answer[i]<<" ";
+            stream << Answer[i] << " ";
         }
         break;
     }
@@ -109,7 +105,7 @@ std::string SortApplication::operator()(int argc, const char** argv) {
         Answer = Sort.getArray();
         stream << "Your sort array:";
         for (int i = 0; i < args.length; i++) {
-            stream << Answer[i]<<" ";
+            stream << Answer[i] << " ";
         }
         break;
     }
@@ -119,7 +115,7 @@ std::string SortApplication::operator()(int argc, const char** argv) {
         Answer = Sort.getArray();
         stream << "Your sort array:";
         for (int i = 0; i < args.length; i++) {
-            stream << Answer[i]<<" ";
+            stream << Answer[i] << " ";
         }
         break;
     }
@@ -129,7 +125,7 @@ std::string SortApplication::operator()(int argc, const char** argv) {
         Answer = Sort.getArray();
         stream << "Your sort array:";
         for (int i = 0; i < args.length; i++) {
-            stream << Answer[i]<<" ";
+            stream << Answer[i] << " ";
         }
         break;
     }
@@ -137,6 +133,5 @@ std::string SortApplication::operator()(int argc, const char** argv) {
             message_ = stream.str();
 
             return message_;
-
     }
 }

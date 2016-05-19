@@ -75,7 +75,7 @@ std::string SortApplication::operator()(int argc, const char** argv) {
     catch (std::string str) {
         return str;
     }
-    
+   
     std::ostringstream stream;
     MySort Sort(args.intArr, args.length);
     int* Answer = new int[args.length];

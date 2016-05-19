@@ -30,10 +30,11 @@ void Application::help(const char *appname, const char *message) {
 }
 
 double Application::strToDouble(const char *str) {
-    char *end;
-    double value = strtod(str, &end);
+    std::istringstream stream(str);
+    double value;
+    stream >> value;
 
-    if (end == nullptr) {
+    if (stream.fail()) {
         throw std::string("Invalid number format!");
     }
 

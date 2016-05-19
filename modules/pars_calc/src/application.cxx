@@ -36,7 +36,7 @@ bool Application::validateNumberOfArguments(const int argc, const char** argv) {
 }
 
 bool Application::checkForUnknownSymbols(string expr) {
-  for (int i = 0; i < expr.length(); i++) {
+  for (size_t i = 0; i < expr.length(); i++) {
     switch (expr[i]) {
     case '+':case '-':case '*': case '/': case '(':case ')':
       break;

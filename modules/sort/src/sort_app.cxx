@@ -60,7 +60,6 @@ int parseTypeSort(const char* arg) {
 std::string SortApplication::operator()(int argc, const char** argv) {
     Arguments args;
 
-
     if (!validateNumberOfArguments(argc, argv)) {
         return message_;
     }
@@ -135,4 +134,5 @@ std::string SortApplication::operator()(int argc, const char** argv) {
 
             return message_;
     }
+    return "0";
 }

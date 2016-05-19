@@ -36,7 +36,7 @@ class SortApplicationTest : public ::testing::Test {
         EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
 
- private:
+private:
     SortApplication app_;
     string output_;
 };

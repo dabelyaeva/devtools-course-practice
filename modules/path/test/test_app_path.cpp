@@ -4,8 +4,8 @@
 #include "include/PathFinder.h"
 
 TEST(PathFinder, Can_Can) {
-	// Arrange
-	
-	// Act & Assert
-	EXPECT_EQ(1, 1);
+    // Arrange
+
+    // Act & Assert
+    EXPECT_EQ(1, 1);
 }

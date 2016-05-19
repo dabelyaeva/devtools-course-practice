@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include "include/Application.h"
 
 using std::vector;
@@ -129,7 +130,11 @@ TEST_F(AppMinesweeperTest, can_call_help) {
 
 TEST_F(AppMinesweeperTest, can_win) {
     // Arrange
-    vector<string> args = { "-tm", "/modules/minesweeper/win.txt",
+    std::string filename = "win.txt";
+    std::ofstream fout(filename);
+    fout << "3 4 1 1 6 6 1 7 10 1 8 1 9 1 9 2 4 3 \n";
+    fout.close();
+    vector<string> args = { "-tm", filename,
         "-r", "10" };
 
     // Act
@@ -141,7 +146,11 @@ TEST_F(AppMinesweeperTest, can_win) {
 
 TEST_F(AppMinesweeperTest, can_lose) {
     // Arrange
-    vector<string> args = { "-tm", "/modules/minesweeper/lose.txt",
+    std::string filename = "win.txt";
+    std::ofstream fout(filename);
+    fout << "3 4 2 7 \n";
+    fout.close();
+    vector<string> args = { "-tm", filename,
         "-r", "10" };
 
     // Act

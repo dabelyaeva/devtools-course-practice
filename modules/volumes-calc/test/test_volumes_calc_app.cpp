@@ -102,5 +102,27 @@ TEST_F(VolumeCalcTest, Can_Check_Number_Input_Correctness) {
     Act(args);
 
     // Assert
-    Assert("Invalid number format!.*");
+    Assert("Invalid number format\\!.*");
+}
+
+TEST_F(VolumeCalcTest, Can_Calculate_Sphere_Volume) {
+    // Arrange
+    std::vector<string> args = {"sphere", "5"};
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("523.595.*");
+}
+
+TEST_F(VolumeCalcTest, Can_Calculate_Cylinder_Volume) {
+    // Arrange
+    std::vector<string> args = {"cylinder", "2", "5"};
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("62.8312.*");
 }

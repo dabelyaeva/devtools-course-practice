@@ -83,7 +83,8 @@ std::string Application::operator()(int argc, const char **argv) {
                     "Wrong number of parametres for \'sphere\'\n");
                 } else {
                     try {
-                        stream << sphereVol(strToDouble(argv[2])) << std::endl;
+                        stream
+                            << sphereVol(strToDouble(argv[2])) << std::endl;
                     }
                     catch(std::string str) {
                         return str;
@@ -96,7 +97,7 @@ std::string Application::operator()(int argc, const char **argv) {
                 } else {
                     try {
                         stream << cylinderVol(strToDouble(argv[2]),
-                        strToDouble(argv[3])) << std::endl;
+                            strToDouble(argv[3])) << std::endl;
                     }
                     catch(std::string str) {
                         return str;

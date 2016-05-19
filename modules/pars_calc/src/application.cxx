@@ -47,13 +47,13 @@ bool Application::checkForUnknownSymbols(string expr) {
   {"c", "cos"}, {"s", "sin"}, {"m", "mod"}, {"a", "abs"} };
   for (size_t i = 0; i < expr.length(); i++) {
     bool flag = false;
-    if (isdigit(expr[i]))
+    if (isdigit(expr[i])) {
       flag = true;
-    else {
+    } else {
       string str = expr.substr(i, 1);
-      if (sym_operations.find(str) != sym_operations.end())
+      if (sym_operations.find(str) != sym_operations.end()) {
         flag = true;
-      else {
+      } else {
         map<string, string>::const_iterator it = txt_operations.find(str);
         if (it != txt_operations.end()) {
           size_t length = it->second.length();

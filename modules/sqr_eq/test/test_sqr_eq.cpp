@@ -1,4 +1,4 @@
-// Copyright 2016 Kochetova Dasha
+// Copyright 2016 Markova Lera
 
 #include <gtest/gtest.h>
 #include <set>

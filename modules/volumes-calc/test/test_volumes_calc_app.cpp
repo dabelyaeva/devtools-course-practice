@@ -102,5 +102,5 @@ TEST_F(VolumeCalcTest, Can_Check_Number_Input_Correctness) {
     Act(args);
 
     // Assert
-    Assert("Invalid number format\!.*");
+    Assert("Invalid number format!.*");
 }

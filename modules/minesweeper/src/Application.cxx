@@ -1,5 +1,5 @@
+﻿
 // Copyright 2016 Sirotkin Nikita
-
 
 #include <fstream>
 #include <iostream>
@@ -59,19 +59,20 @@ bool Application::parseAppOperand(int argc, const char **argv) {
     if (argument == "-r") {
         if (!createRandField(string(argv[k + 1])))
             return false;
-        return;
+        message_ = printField();
+        return true;
     } else {
         message_ = "Error: wrong comand.\n\n"
             "Try $ " + std::string(argv[0]) +
             " -h for more information";
-        return true;
+        return false;
     }
 }
 
 bool Application::validateNumberOfArguments(int argc, const char **argv) {
     if (argc == 1) {
         message_ = "Error: invalid number of arguments.\n\n"
-            "Try $ " + std::string(argv[0]) + "-h for more information";
+            "Try $ " + std::string(argv[0]) + " -h for more information";
         return false;
     } else {
         if ((argc != 2 && string(argv[1]) == "-h") ||
@@ -79,7 +80,7 @@ bool Application::validateNumberOfArguments(int argc, const char **argv) {
             (string(argv[1]) != "-tm" && argc > 3) ||
             (string(argv[1]) == "-tm" && argc != 5)) {
             message_ = "Error: invalid number of arguments.\n\n"
-                "Try $ " + std::string(argv[0]) + "-h for more information";
+                "Try $ " + std::string(argv[0]) + " -h for more information";
             return false;
         }
     }
@@ -89,9 +90,27 @@ bool Application::validateNumberOfArguments(int argc, const char **argv) {
 string Application::operator()(int argc, const char **argv) {
     if (!validateNumberOfArguments(argc, argv))
         return message_;
-    if (parseAppOperand(argc, argv)) {
-        return "";
+    if (!parseAppOperand(argc, argv))
+        return message_;
+    std::cout << message_ << std::endl;
+    int x, y;
+    while (Foo->get_game_status() != MineSweeper::GAME_STATUS_LOSE &&
+        Foo->get_game_status() != MineSweeper::GAME_STATUS_WIN) {
+        (*in_stream) >> x >> y;
+        if (Foo->get_opened_field_cell(x - 1, y - 1) ==
+            MineSweeper::CLOSED_CELL) {
+            Foo->OpenCell(x - 1, y - 1);
+            message_ = printField();
+        } else {
+            message_ = "Cell is opened!";
+        }
+        std::cout << message_ << std::endl;
+        message_ = "";
     }
+    if (Foo->get_game_status() == MineSweeper::GAME_STATUS_LOSE)
+        message_ = "You lose!";
+    if (Foo->get_game_status() == MineSweeper::GAME_STATUS_WIN)
+        message_ = "You win!";
     return message_;
 }
 
@@ -103,13 +122,46 @@ void Application::testModeInit(std::string file_name) {
 }
 
 bool Application::createRandField(std::string str_size) {
-    int size = atoi(str_size.c_str());
+    int f_size = atoi(str_size.c_str());
     try {
-        Foo = new MineSweeper(size, size, test_mode);
+        Foo = new MineSweeper(f_size, f_size, test_mode);
     }
     catch (std::exception except) {
         message_ = "Error: " + string(except.what());
         return false;
     }
     return true;
+}
+
+string Application::printField() {
+    string out = "";
+    Field opened = Foo->get_opened_field();
+    int f_size = opened.get_field_size();
+    for (int x = 0; x < f_size; ++x)
+        out += "__";
+    out += "__\n";
+    for (int x = 0; x < f_size; ++x) {
+        out += "|";
+        for (int y = 0; y < f_size; ++y)
+            out += printCell(Foo->get_opened_field_cell(x, y));
+        out += " |\n";
+    }
+    out += "|";
+    for (int x = 0; x < f_size; ++x)
+        out += "__";
+    out += "_|\n";
+    return out;
+}
+
+string Application::printCell(unsigned int cell) {
+    string out = " ";
+    if (cell == MineSweeper::MINE)
+        out += "x";
+    else if (cell == MineSweeper::CLOSED_CELL)
+        out += "o";
+    else if (cell == MineSweeper::OPENED_CELL)
+        out += " ";
+    else
+        out += static_cast<char>(cell+48);
+    return out;
 }

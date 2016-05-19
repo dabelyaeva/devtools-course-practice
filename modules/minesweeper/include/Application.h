@@ -22,6 +22,8 @@ class Application {
     bool validateNumberOfArguments(int argc, const char** argv);
     void testModeInit(std::string file_name);
     bool createRandField(std::string str_size);
+    std::string printField();
+    std::string printCell(unsigned int cell);
 };
 
 #endif  // MODULES_MINESWEEPER_INCLUDE_APPLICATION_H_

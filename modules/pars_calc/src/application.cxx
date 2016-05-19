@@ -37,34 +37,38 @@ bool Application::validateNumberOfArguments(const int argc, const char** argv) {
 
 bool Application::checkForUnknownSymbols(string expr) {
   for (int i = 0; i < expr.length(); i++) {
-    switch (expr[i])
-    {
+    switch (expr[i]) {
     case '+':case '-':case '*': case '/': case '(':case ')':
       break;
     case '.':
-      if (isdigit(expr[i - 1]) && isdigit(expr[i + 1])) 
+      if (isdigit(expr[i - 1]) && isdigit(expr[i + 1]))
         i++;
-      else return false;
+      else
+        return false;
       break;
     case 'm':
       if (expr.substr(i, 3) == "mod")
         i += 3;
-      else return false;
+      else
+        return false;
       break;
     case 's':
       if (expr.substr(i, 3) == "sin") 
         i += 3;
-      else return false;
+      else
+        return false;
       break;
     case 'c':
       if (expr.substr(i, 3) == "cos") 
         i += 3;
-      else return false;
+      else
+        return false;
       break;
     case 'a':
       if (expr.substr(i, 3) == "abs") 
         i += 3;
-      else return false;
+      else
+        return false;
       break;
     default:
       if (isdigit(expr[i]))

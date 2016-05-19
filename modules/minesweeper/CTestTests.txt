@@ -47,14 +47,14 @@ set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_Rand
 
 add_test(
     NAME ${prefix}_can_win
-    COMMAND ${APPLICATION} -tm "${CMAKE_CURRENT_BINARY_DIR}/win.txt"
+    COMMAND ${APPLICATION} -tm "${CMAKE_CURRENT_BINARY_DIR}/win.txt" -r 10
 )
 set_tests_properties (${prefix}_can_win
     PROPERTIES PASS_REGULAR_EXPRESSION ".*You win!")
 
 add_test(
     NAME ${prefix}_can_lose
-    COMMAND ${APPLICATION} -tm "${CMAKE_CURRENT_BINARY_DIR}/lose.txt"
+    COMMAND ${APPLICATION} -tm "${CMAKE_CURRENT_BINARY_DIR}/lose.txt" -r 10
 )
 set_tests_properties (${prefix}_can_lose
     PROPERTIES PASS_REGULAR_EXPRESSION ".*You lose!")

@@ -72,6 +72,17 @@ TEST_F(VolumeCalcTest, Can_Check_Sphere_Parametres_Number) {
     Assert("Wrong number of parametres for \'sphere\'.*");
 }
 
+TEST_F(VolumeCalcTest, Can_Check_Sphere_Number_Input_Correctness) {
+    // Arrange
+    std::vector<string> args = {"sphere", "not_number"};
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Invalid number format\\!.*");
+}
+
 TEST_F(VolumeCalcTest, Can_Check_Cylinder_Parametres_Number) {
     // Arrange
     std::vector<string> args = {"cylinder", "2.0"};
@@ -83,6 +94,17 @@ TEST_F(VolumeCalcTest, Can_Check_Cylinder_Parametres_Number) {
     Assert("Wrong number of parametres for \'cylinder\'.*");
 }
 
+TEST_F(VolumeCalcTest, Can_Check_Cylinder_Number_Input_Correctness) {
+    // Arrange
+    std::vector<string> args = {"cylinder", "not_number", "not_number"};
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Invalid number format\\!.*");
+}
+
 TEST_F(VolumeCalcTest, Can_Check_Volumes_Name_Correctness) {
     // Arrange
     std::vector<string> args = {"some_name", "2.0"};
@@ -92,17 +114,6 @@ TEST_F(VolumeCalcTest, Can_Check_Volumes_Name_Correctness) {
 
     // Assert
     Assert("Invalid volume name.*");
-}
-
-TEST_F(VolumeCalcTest, Can_Check_Number_Input_Correctness) {
-    // Arrange
-    std::vector<string> args = {"sphere", "not_number"};
-
-    // Act
-    Act(args);
-
-    // Assert
-    Assert("Invalid number format\\!.*");
 }
 
 TEST_F(VolumeCalcTest, Can_Calculate_Sphere_Volume) {

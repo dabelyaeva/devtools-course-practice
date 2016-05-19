@@ -1,0 +1,54 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_can_Print_Error_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Error_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "Error invalid number of arguments.")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments_TM
+    COMMAND ${APPLICATION} -tm win.txt
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_TM
+    PROPERTIES PASS_REGULAR_EXPRESSION "Error invalid number of arguments.")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments_Help
+    COMMAND ${APPLICATION} -h win.txt
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_Help
+    PROPERTIES PASS_REGULAR_EXPRESSION "Error invalid number of arguments.")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments_Rand
+    COMMAND ${APPLICATION} -r
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_Rand
+    PROPERTIES PASS_REGULAR_EXPRESSION "Error invalid number of arguments.")
+
+add_test(
+    NAME ${prefix}_can_win
+    COMMAND ${APPLICATION} -tm "resources\win.txt"
+)
+set_tests_properties (${prefix}_can_win
+    PROPERTIES PASS_REGULAR_EXPRESSION "You win!")
+
+add_test(
+    NAME ${prefix}_can_lose
+    COMMAND ${APPLICATION} -tm "resources\lose.txt"
+)
+set_tests_properties (${prefix}_can_lose
+    PROPERTIES PASS_REGULAR_EXPRESSION "You lose!")

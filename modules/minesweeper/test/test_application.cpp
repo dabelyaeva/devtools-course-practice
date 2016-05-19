@@ -126,3 +126,25 @@ TEST_F(AppMinesweeperTest, can_call_help) {
     // Assert
     Assert("This is a minesweeper application.\\..*");
 }
+
+TEST_F(AppMinesweeperTest, can_win) {
+    // Arrange
+    vector<string> args = { "-tm", "resoursces\\win.txt", "-r", "10" };
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("You win!");
+}
+
+TEST_F(AppMinesweeperTest, can_lose) {
+    // Arrange
+    vector<string> args = { "-tm", "resoursces\\lose.txt", "-r", "10" };
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("You lose!");
+}

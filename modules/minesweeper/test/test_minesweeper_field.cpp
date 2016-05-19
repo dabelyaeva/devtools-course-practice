@@ -104,7 +104,7 @@ TEST(MINEsweeper_field, can_create_rihgt_copy) {
 
     // Assert
     bool flag;
-    const int size = field1.get_field_size();
+    const unsigned int size = field1.get_field_size();
     flag = size == field2.get_field_size();
     for (int i = 0; i < size; ++i)
         for (int j = 0; j < size; ++j)

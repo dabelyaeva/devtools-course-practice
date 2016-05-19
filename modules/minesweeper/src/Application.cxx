@@ -27,7 +27,7 @@ void Application::help(const char *appname) {
         "\t-r <field_size> - create random field "
         "(mines count is equal field's size \n"
         "\t-tm <filename> - test mode, for testing user input."
-        " Get user's input from file\n\n"
+        " Get user's input from file. Mines count is 10\n\n"
 
         "You must combine '-tm' with '-r' comands"
         " ('-tm' must be first).\n\n"
@@ -124,7 +124,10 @@ void Application::testModeInit(std::string file_name) {
 bool Application::createRandField(std::string str_size) {
     int f_size = atoi(str_size.c_str());
     try {
-        Foo = new MineSweeper(f_size, f_size, test_mode);
+        if (test_mode)
+            Foo = new MineSweeper(f_size, 10, true);
+        else
+            Foo = new MineSweeper(f_size, f_size, false);
     }
     catch (std::exception except) {
         message_ = "Error: " + string(except.what());

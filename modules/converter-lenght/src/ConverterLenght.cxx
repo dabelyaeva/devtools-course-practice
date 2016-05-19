@@ -37,94 +37,94 @@ double ConverterLenght::getCoeff(const std::string& unit) {
 
 void ConverterLenght::converter(const Unit measure) {
     switch (measure) {
-    case Unit::CentimeterL:
+    case Unit::CENTIMETERL:
         switch (measure_) {
-        case Unit::CentimeterL:
+        case Unit::CENTIMETERL:
             measure_ = measure;
             break;
 
-        case Unit::MeterL:
+        case Unit::METERL:
             value_ = value_ * getCoeff("Centimeter");
             measure_ = measure;
             break;
 
-        case Unit::KilometerL:
+        case Unit::KILOMETERL:
             value_ = ((value_ * getCoeff("Centimeter")) /
                 getCoeff("Kilometer"));
             measure_ = measure;
             break;
 
-        case Unit::MileL:
+        case Unit::MILEL:
             value_ = ((value_ * getCoeff("Centimeter")) / getCoeff("Mile"));
             measure_ = measure;
             break;
         }
         break;
 
-    case Unit::MeterL:
+    case Unit::METERL:
         switch (measure_) {
-        case Unit::CentimeterL:
+        case Unit::CENTIMETERL:
             value_ = value_ * getCoeff("Meter");
             measure_ = measure;
             break;
 
-        case Unit::MeterL:
+        case Unit::METERL:
             measure_ = measure;
             break;
 
-        case Unit::KilometerL:
+        case Unit::KILOMETERL:
             value_ = value_ / getCoeff("Kilometer");
             measure_ = measure;
             break;
 
-        case Unit::MileL:
+        case Unit::MILEL:
             value_ = value_ / getCoeff("Mile");
             measure_ = measure;
             break;
         }
         break;
 
-    case Unit::KilometerL:
+    case Unit::KILOMETERL:
         switch (measure_) {
-        case Unit::CentimeterL:
+        case Unit::CENTIMETERL:
             value_ = ((value_ * getCoeff("Kilometer")) * getCoeff("Meter"));
             measure_ = measure;
             break;
 
-        case Unit::MeterL:
+        case Unit::METERL:
             value_ = value_ * getCoeff("Kilometer");
             measure_ = measure;
             break;
 
-        case Unit::KilometerL:
+        case Unit::KILOMETERL:
             measure_ = measure;
             break;
 
-        case Unit::MileL:
+        case Unit::MILEL:
             value_ = ((value_ * getCoeff("Kilometer")) / getCoeff("Mile"));
             measure_ = measure;
             break;
         }
         break;
 
-    case Unit::MileL:
+    case Unit::MILEL:
         switch (measure_) {
-        case Unit::CentimeterL:
+        case Unit::CENTIMETERL:
             value_ = (value_ * getCoeff("Meter") * getCoeff("Mile"));
             measure_ = measure;
             break;
 
-        case Unit::MeterL:
+        case Unit::METERL:
             value_ = value_ * getCoeff("Mile");
             measure_ = measure;
             break;
 
-        case Unit::KilometerL:
+        case Unit::KILOMETERL:
             value_ = ((value_ / getCoeff("Kilometer")) * getCoeff("Mile"));
             measure_ = measure;
             break;
 
-        case Unit::MileL:
+        case Unit::MILEL:
             measure_ = measure;
             break;
         }

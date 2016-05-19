@@ -6,7 +6,7 @@
 TEST(Converterlenght, Can_Not_Create_Negative_Centimeter) {
     // Arrange
     const double value = -5.0;
-    const Unit len = Unit::CentimeterL;
+    const Unit len = Unit::CENTIMETERL;
     ConverterLenght lenght(value, len);
 
     // Act & Assert
@@ -16,7 +16,7 @@ TEST(Converterlenght, Can_Not_Create_Negative_Centimeter) {
 TEST(Converterlenght, Can_Not_Create_Negative_Meter) {
     // Arrange
     const double value = -5.0;
-    const Unit len = Unit::MeterL;
+    const Unit len = Unit::METERL;
     ConverterLenght lenght(value, len);
 
     // Act & Assert
@@ -26,7 +26,7 @@ TEST(Converterlenght, Can_Not_Create_Negative_Meter) {
 TEST(Converterlenght, Can_Not_Create_Negative_Kilometer) {
     // Arrange
     const double value = -5.0;
-    const Unit len = Unit::KilometerL;
+    const Unit len = Unit::KILOMETERL;
     ConverterLenght lenght(value, len);
 
     // Act & Assert
@@ -36,7 +36,7 @@ TEST(Converterlenght, Can_Not_Create_Negative_Kilometer) {
 TEST(Converterlenght, Cant_Not_Create_Negative_Mile) {
     // Arrange
     const double value = -5.0;
-    const Unit len = Unit::MileL;
+    const Unit len = Unit::MILEL;
     ConverterLenght lenght(value, len);
 
     // Act & Assert
@@ -46,7 +46,7 @@ TEST(Converterlenght, Cant_Not_Create_Negative_Mile) {
 TEST(Converterlenght, Can_Create_Lenght) {
     // Arrange
     const double value = 10.0;
-    const Unit len = Unit::CentimeterL;
+    const Unit len = Unit::CENTIMETERL;
     ConverterLenght lenght(value, len);
 
     // Act & Assert
@@ -56,7 +56,7 @@ TEST(Converterlenght, Can_Create_Lenght) {
 TEST(Converterlenght, Can_Create_Null_Centimeter) {
     // Arrange
     const double value = 0.0;
-    const Unit len = Unit::CentimeterL;
+    const Unit len = Unit::CENTIMETERL;
     ConverterLenght lenght(value, len);
 
     // Act & Assert
@@ -66,7 +66,7 @@ TEST(Converterlenght, Can_Create_Null_Centimeter) {
 TEST(Converterlenght, Can_Convert_Centimeter_To_Centimeter) {
     // Arrange
     const double value = 15.0;
-    const Unit len = Unit::CentimeterL;
+    const Unit len = Unit::CENTIMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
@@ -80,11 +80,11 @@ TEST(Converterlenght, Can_Convert_Centimeter_To_Centimeter) {
 TEST(Converterlenght, Can_Convert_Centimeter_To_Meter) {
     // Arrange
     const double value = 100;
-    const Unit len = Unit::MeterL;
+    const Unit len = Unit::METERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::CentimeterL;
+    const Unit result_len = Unit::CENTIMETERL;
     lenght.converter(result_len);
 
     // Assert
@@ -95,11 +95,11 @@ TEST(Converterlenght, Can_Convert_Centimeter_To_Meter) {
 TEST(Converterlenght, Cant_Convert_Centimeter_To_Negative_Meter) {
     // Arrange
     const double value = -10.0;
-    const Unit len = Unit::MeterL;
+    const Unit len = Unit::METERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::CentimeterL;
+    const Unit result_len = Unit::CENTIMETERL;
     lenght.converter(result_len);
 
     // Assert
@@ -109,11 +109,11 @@ TEST(Converterlenght, Cant_Convert_Centimeter_To_Negative_Meter) {
 TEST(Converterlenght, Can_Convert_Centimeter_To_Kilometer) {
     // Arrange
     const double value = 10000;
-    const Unit len = Unit::KilometerL;
+    const Unit len = Unit::KILOMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::CentimeterL;
+    const Unit result_len = Unit::CENTIMETERL;
     lenght.converter(result_len);
 
     // Assert
@@ -124,11 +124,11 @@ TEST(Converterlenght, Can_Convert_Centimeter_To_Kilometer) {
 TEST(Converterlenght, Cant_Convert_Centimeter_To_Negative_Kilometer) {
     // Arrange
     const double value = -10.0;
-    const Unit len = Unit::KilometerL;
+    const Unit len = Unit::KILOMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::CentimeterL;
+    const Unit result_len = Unit::CENTIMETERL;
     lenght.converter(result_len);
 
     // Assert
@@ -138,11 +138,11 @@ TEST(Converterlenght, Cant_Convert_Centimeter_To_Negative_Kilometer) {
 TEST(Converterlenght, Can_Convert_Centimeter_To_Mile) {
     // Arrange
     const double value = 1000000;
-    const Unit len = Unit::MileL;
+    const Unit len = Unit::MILEL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::CentimeterL;
+    const Unit result_len = Unit::CENTIMETERL;
     lenght.converter(result_len);
 
     // Assert
@@ -154,11 +154,11 @@ TEST(Converterlenght, Can_Convert_Centimeter_To_Mile) {
 TEST(Converterlenght, Cant_Convert_Centimeter_To_Negative_Mile) {
     // Arrange
     const double value = -10.0;
-    const Unit len = Unit::MileL;
+    const Unit len = Unit::MILEL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::CentimeterL;
+    const Unit result_len = Unit::CENTIMETERL;
     lenght.converter(result_len);
 
     // Assert
@@ -168,7 +168,7 @@ TEST(Converterlenght, Cant_Convert_Centimeter_To_Negative_Mile) {
 TEST(Converterlenght, Can_Convert_Meter_To_Meter) {
     // Arrange
     const double value = 15.0;
-    const Unit len = Unit::MeterL;
+    const Unit len = Unit::METERL;
     ConverterLenght lenght(value, len);
 
     // Act
@@ -182,11 +182,11 @@ TEST(Converterlenght, Can_Convert_Meter_To_Meter) {
 TEST(Converterlenght, Can_Convert_Meter_To_Centimeter) {
     // Arrange
     const double value = 1;
-    const Unit len = Unit::CentimeterL;
+    const Unit len = Unit::CENTIMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MeterL;
+    const Unit result_len = Unit::METERL;
     lenght.converter(result_len);
 
     // Assert
@@ -197,11 +197,11 @@ TEST(Converterlenght, Can_Convert_Meter_To_Centimeter) {
 TEST(Converterlenght, Cant_Convert_Meter_To_Negative_Centimeter) {
     // Arrange
     const double value = -10.0;
-    const Unit len = Unit::CentimeterL;
+    const Unit len = Unit::CENTIMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MeterL;
+    const Unit result_len = Unit::METERL;
     lenght.converter(result_len);
 
     // Assert
@@ -211,11 +211,11 @@ TEST(Converterlenght, Cant_Convert_Meter_To_Negative_Centimeter) {
 TEST(Converterlenght, Can_Convert_Meter_To_Kilometer) {
     // Arrange
     const double value = 1000;
-    const Unit len = Unit::KilometerL;
+    const Unit len = Unit::KILOMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MeterL;
+    const Unit result_len = Unit::METERL;
     lenght.converter(result_len);
 
     // Assert
@@ -226,11 +226,11 @@ TEST(Converterlenght, Can_Convert_Meter_To_Kilometer) {
 TEST(Converterlenght, Cant_Convert_Meter_To_Negative_Kilometer) {
     // Arrange
     const double value = -10.0;
-    const Unit len = Unit::KilometerL;
+    const Unit len = Unit::KILOMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MeterL;
+    const Unit result_len = Unit::METERL;
     lenght.converter(result_len);
 
     // Assert
@@ -240,11 +240,11 @@ TEST(Converterlenght, Cant_Convert_Meter_To_Negative_Kilometer) {
 TEST(Converterlenght, Can_Convert_Meter_To_Mile) {
     // Arrange
     const double value = 1000;
-    const Unit len = Unit::MileL;
+    const Unit len = Unit::MILEL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MeterL;
+    const Unit result_len = Unit::METERL;
     lenght.converter(result_len);
 
     // Assert
@@ -255,11 +255,11 @@ TEST(Converterlenght, Can_Convert_Meter_To_Mile) {
 TEST(Converterlenght, Cant_Convert_Meter_To_Negative_Mile) {
     // Arrange
     const double value = -10.0;
-    const Unit len = Unit::MileL;
+    const Unit len = Unit::MILEL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MeterL;
+    const Unit result_len = Unit::METERL;
     lenght.converter(result_len);
 
     // Assert
@@ -269,7 +269,7 @@ TEST(Converterlenght, Cant_Convert_Meter_To_Negative_Mile) {
 TEST(Converterlenght, Can_Convert_Kilometer_To_Kilometer) {
     // Arrange
     const double value = 15.0;
-    const Unit len = Unit::KilometerL;
+    const Unit len = Unit::KILOMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
@@ -283,11 +283,11 @@ TEST(Converterlenght, Can_Convert_Kilometer_To_Kilometer) {
 TEST(Converterlenght, Can_Convert_Kilometer_To_Centimeter) {
     // Arrange
     const double value = 1;
-    const Unit len = Unit::CentimeterL;
+    const Unit len = Unit::CENTIMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::KilometerL;
+    const Unit result_len = Unit::KILOMETERL;
     lenght.converter(result_len);
 
     // Assert
@@ -298,11 +298,11 @@ TEST(Converterlenght, Can_Convert_Kilometer_To_Centimeter) {
 TEST(Converterlenght, Cant_Convert_Kilometer_To_Negative_Centimeter) {
     // Arrange
     const double value = -10.0;
-    const Unit len = Unit::CentimeterL;
+    const Unit len = Unit::CENTIMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::KilometerL;
+    const Unit result_len = Unit::KILOMETERL;
     lenght.converter(result_len);
 
     // Assert
@@ -312,11 +312,11 @@ TEST(Converterlenght, Cant_Convert_Kilometer_To_Negative_Centimeter) {
 TEST(Converterlenght, Can_Convert_Kilometer_To_Meter) {
     // Arrange
     const double value = 1;
-    const Unit len = Unit::MeterL;
+    const Unit len = Unit::METERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::KilometerL;
+    const Unit result_len = Unit::KILOMETERL;
     lenght.converter(result_len);
 
     // Assert
@@ -327,11 +327,11 @@ TEST(Converterlenght, Can_Convert_Kilometer_To_Meter) {
 TEST(Converterlenght, Cant_Convert_Kilometer_To_Negative_Meter) {
     // Arrange
     const double value = -10.0;
-    const Unit len = Unit::MeterL;
+    const Unit len = Unit::METERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::KilometerL;
+    const Unit result_len = Unit::KILOMETERL;
     lenght.converter(result_len);
 
     // Assert
@@ -341,11 +341,11 @@ TEST(Converterlenght, Cant_Convert_Kilometer_To_Negative_Meter) {
 TEST(Converterlenght, Can_Convert_Kilometer_To_Mile) {
     // Arrange
     const double value = 100;
-    const Unit len = Unit::MileL;
+    const Unit len = Unit::MILEL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::KilometerL;
+    const Unit result_len = Unit::KILOMETERL;
     lenght.converter(result_len);
 
     // Assert
@@ -356,11 +356,11 @@ TEST(Converterlenght, Can_Convert_Kilometer_To_Mile) {
 TEST(Converterlenght, Cant_Convert_Kilometer_To_Negative_Mile) {
     // Arrange
     const double value = -10.0;
-    const Unit len = Unit::MileL;
+    const Unit len = Unit::MILEL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::KilometerL;
+    const Unit result_len = Unit::KILOMETERL;
     lenght.converter(result_len);
 
     // Assert
@@ -370,7 +370,7 @@ TEST(Converterlenght, Cant_Convert_Kilometer_To_Negative_Mile) {
 TEST(Converterlenght, Can_Convert_Mile_To_Mile) {
     // Arrange
     const double value = 15.0;
-    const Unit len = Unit::MileL;
+    const Unit len = Unit::MILEL;
     ConverterLenght lenght(value, len);
 
     // Act
@@ -384,11 +384,11 @@ TEST(Converterlenght, Can_Convert_Mile_To_Mile) {
 TEST(Converterlenght, Can_Convert_Mile_To_Centimeter) {
     // Arrange
     const double value = 1;
-    const Unit len = Unit::CentimeterL;
+    const Unit len = Unit::CENTIMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MileL;
+    const Unit result_len = Unit::MILEL;
     lenght.converter(result_len);
 
     // Assert
@@ -399,11 +399,11 @@ TEST(Converterlenght, Can_Convert_Mile_To_Centimeter) {
 TEST(Converterlenght, Cant_Convert_Mile_To_Negative_Centimeter) {
     // Arrange
     const double value = -10.0;
-    const Unit len = Unit::CentimeterL;
+    const Unit len = Unit::CENTIMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MileL;
+    const Unit result_len = Unit::MILEL;
     lenght.converter(result_len);
 
     // Assert
@@ -413,11 +413,11 @@ TEST(Converterlenght, Cant_Convert_Mile_To_Negative_Centimeter) {
 TEST(Converterlenght, Can_Convert_Mile_To_Meter) {
     // Arrange
     const double value = 1;
-    const Unit len = Unit::MeterL;
+    const Unit len = Unit::METERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MileL;
+    const Unit result_len = Unit::MILEL;
     lenght.converter(result_len);
 
     // Assert
@@ -428,11 +428,11 @@ TEST(Converterlenght, Can_Convert_Mile_To_Meter) {
 TEST(Converterlenght, Cant_Convert_Mile_To_Negative_Meter) {
     // Arrange
     const double value = -10.0;
-    const Unit len = Unit::MeterL;
+    const Unit len = Unit::METERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MileL;
+    const Unit result_len = Unit::MILEL;
     lenght.converter(result_len);
 
     // Assert
@@ -442,11 +442,11 @@ TEST(Converterlenght, Cant_Convert_Mile_To_Negative_Meter) {
 TEST(Converterlenght, Can_Convert_Mile_To_Kilometer) {
     // Arrange
     const double value = 1;
-    const Unit len = Unit::KilometerL;
+    const Unit len = Unit::KILOMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MileL;
+    const Unit result_len = Unit::MILEL;
     lenght.converter(result_len);
 
     // Assert
@@ -457,11 +457,11 @@ TEST(Converterlenght, Can_Convert_Mile_To_Kilometer) {
 TEST(Converterlenght, Cant_Convert_Mile_To_Negative_Kilometer) {
     // Arrange
     const double value = -10.0;
-    const Unit len = Unit::KilometerL;
+    const Unit len = Unit::KILOMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MileL;
+    const Unit result_len = Unit::MILEL;
     lenght.converter(result_len);
 
     // Assert
@@ -471,11 +471,11 @@ TEST(Converterlenght, Cant_Convert_Mile_To_Negative_Kilometer) {
 TEST(Converterlenght, Can_Convert_Multiple_Times) {
     // Arrange
     const double value = 100.0;
-    const Unit len = Unit::CentimeterL;
+    const Unit len = Unit::CENTIMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MeterL;
+    const Unit result_len = Unit::METERL;
     lenght.converter(result_len);
     lenght.converter(len);
 
@@ -487,22 +487,22 @@ TEST(Converterlenght, Can_Convert_Multiple_Times) {
 TEST(Converterlenght, Can_Return_The_Dimension_Of_This_Object) {
     // Arrange
     const double value = 100.0;
-    const Unit len = Unit::MeterL;
+    const Unit len = Unit::METERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::CentimeterL;
+    const Unit result_len = Unit::CENTIMETERL;
     lenght.converter(result_len);
 
     // Assert
-    const Unit expected_len = Unit::CentimeterL;
+    const Unit expected_len = Unit::CENTIMETERL;
     EXPECT_EQ(lenght.getUnit(), expected_len);
 }
 
 TEST(Converterlenght, Can_Install_The_Value) {
     // Arrange
     const double value = 15.0;
-    const Unit len = Unit::CentimeterL;
+    const Unit len = Unit::CENTIMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
@@ -517,7 +517,7 @@ TEST(Converterlenght, Can_Install_The_Value) {
 TEST(Converterlenght, Can_Not_Install_Negative_Centimeter) {
     // Arrange
     const double value = 10.0;
-    const Unit len = Unit::CentimeterL;
+    const Unit len = Unit::CENTIMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
@@ -531,25 +531,25 @@ TEST(Converterlenght, Can_Not_Install_Negative_Centimeter) {
 TEST(Converterlenght, Can_Install_The_Measure) {
     // Arrange
     const double value = 15.0;
-    const Unit len = Unit::MeterL;
+    const Unit len = Unit::METERL;
     ConverterLenght lenght(value, len);
     // Act
-    const Unit result_len = Unit::KilometerL;
+    const Unit result_len = Unit::KILOMETERL;
     lenght.installUnit(result_len);
 
     // Assert
-    const Unit expected_len = Unit::KilometerL;
+    const Unit expected_len = Unit::KILOMETERL;
     EXPECT_EQ(lenght.getUnit(), expected_len);
 }
 
 TEST(Converterlenght, Can_Not_Install_Meter_To_Negative_Value) {
     // Arrange
     const double value = -15.0;
-    const Unit len = Unit::KilometerL;
+    const Unit len = Unit::KILOMETERL;
     ConverterLenght lenght(value, len);
 
     // Act
-    const Unit result_len = Unit::MeterL;
+    const Unit result_len = Unit::METERL;
     lenght.installUnit(result_len);
 
     // Assert

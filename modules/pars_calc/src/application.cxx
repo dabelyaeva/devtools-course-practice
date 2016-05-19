@@ -8,9 +8,9 @@
 #include <string.h>
 #include <sstream>
 #include <string>
-#include "include/pars_calc.h"
 #include <map>
 #include <set>
+#include "include/pars_calc.h"
 
 using std::map;
 using std::set;
@@ -61,10 +61,11 @@ bool Application::checkForUnknownSymbols(string expr) {
             i += length;
             flag = true;
           }
-        } else
+        } else {
             if (str == ".")
               if (isdigit(expr[i - 1]) && isdigit(expr[i + 1]))
                 flag = true;
+          }
       }
     }
     if (!flag)

@@ -23,7 +23,7 @@ void Application::help(const char *appname, const char *message) {
             "Where <volume_name> is string and <volume_numeric_limits> is\n" +
             "amount of doubles which count is unique for every volume.\n\n" +
 
-            "You can use following volumes with parametres:\n\n" +
+            "You can use following volumes with parameters:\n\n" +
 
             "sphere <radius>\n" +
             "cylinder <radius> <height>\n";

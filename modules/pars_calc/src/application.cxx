@@ -8,7 +8,6 @@
 #include <string.h>
 #include <sstream>
 #include <string>
-#include <regex>
 #include "include/pars_calc.h"
 
 Application::Application() : message_("") {}
@@ -37,13 +36,43 @@ bool Application::validateNumberOfArguments(const int argc, const char** argv) {
 }
 
 bool Application::checkForUnknownSymbols(string expr) {
-  std::smatch m;
-  string str(expr);
-  std::regex e("^([0-9\\(\\+\\-\\*(\\*\\*)\\./]|(sin)|(cos)|(mod)|(abs))+$");
-  if (std::regex_search(str, m, e))
-    return true;
-  else
-    return false;
+  for (int i = 0; i < expr.length(); i++) {
+    switch (expr[i])
+    {
+    case '+':case '-':case '*': case '/': case '(':case ')':
+      break;
+    case '.':
+      if (isdigit(expr[i - 1]) && isdigit(expr[i + 1])) 
+        i++;
+      else return false;
+      break;
+    case 'm':
+      if (expr.substr(i, 3) == "mod")
+        i += 3;
+      else return false;
+      break;
+    case 's':
+      if (expr.substr(i, 3) == "sin") 
+        i += 3;
+      else return false;
+      break;
+    case 'c':
+      if (expr.substr(i, 3) == "cos") 
+        i += 3;
+      else return false;
+      break;
+    case 'a':
+      if (expr.substr(i, 3) == "abs") 
+        i += 3;
+      else return false;
+      break;
+    default:
+      if (isdigit(expr[i]))
+        break;
+      return false;
+    }
+  }
+  return true;
 }
 
 std::string Application::operator()(const int argc, const char** argv) {

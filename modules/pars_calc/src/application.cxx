@@ -53,19 +53,19 @@ bool Application::checkForUnknownSymbols(string expr) {
         return false;
       break;
     case 's':
-      if (expr.substr(i, 3) == "sin") 
+      if (expr.substr(i, 3) == "sin")
         i += 3;
       else
         return false;
       break;
     case 'c':
-      if (expr.substr(i, 3) == "cos") 
+      if (expr.substr(i, 3) == "cos")
         i += 3;
       else
         return false;
       break;
     case 'a':
-      if (expr.substr(i, 3) == "abs") 
+      if (expr.substr(i, 3) == "abs")
         i += 3;
       else
         return false;

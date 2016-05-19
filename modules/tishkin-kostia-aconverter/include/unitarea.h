@@ -7,8 +7,6 @@
 #include <vector>
 
 class AreaUnit {
-     double coefficient_;
-     std::string AreaType;
  public:
      AreaUnit(double coefficient, const std::string);
 
@@ -29,7 +27,9 @@ AreaType(a.GetAreaType()) { }
     bool operator==(const AreaUnit &other) const;
 
     bool operator!=(const AreaUnit &other) const;
-
+ private:
+    double coefficient_;
+    std::string AreaType;
 };
 extern const AreaUnit AreaUnitMeter;
 extern const AreaUnit AreaUnitWeaving;

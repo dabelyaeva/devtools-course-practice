@@ -70,7 +70,7 @@ std::string EquationApplication::operator()(int argc, const char** argv) {
         args.a = parseDouble(argv[1]);
         args.b = parseDouble(argv[2]);
         args.c = parseDouble(argv[3]);
-        args.number = parseNumberOperation(argv[4]);
+        args.option = parseNumberOperation(argv[4]);
     }
     catch (std::string str) {
         return str;
@@ -80,7 +80,7 @@ std::string EquationApplication::operator()(int argc, const char** argv) {
     std::array<double, 2> topcoordinat;
 
     std::ostringstream stream;
-    switch (args.number) {
+    switch (args.option) {
     case 1:
         eq.SolveDiscrim();
         stream << "x1 = " << eq.GetX1()

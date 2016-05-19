@@ -18,7 +18,7 @@ class EquationApplication {
         double a;
         double b;
         double c;
-        int number;
+        int option;
     } Arguments;
 };
 

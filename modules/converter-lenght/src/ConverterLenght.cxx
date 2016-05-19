@@ -10,7 +10,7 @@ ConverterLenght::ConverterLenght(const double val, Unit measure) {
         value_ = val;
         measure_ = measure;
     } else {
-        retcode_ = Data::ERROR;ñ
+        retcode_ = Data::ERROR;
     }
 }
 

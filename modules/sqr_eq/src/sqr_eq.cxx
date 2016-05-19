@@ -1,3 +1,4 @@
+// Copyright 2016 Markova Lera
 #include "include/sqr_eq.h"
 #include <set>
 

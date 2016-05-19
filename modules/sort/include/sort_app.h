@@ -1,4 +1,4 @@
-//Copyright 2016 Sveta Goncharova
+// Copyright 2016 Sveta Goncharova
 
 #ifndef MODULES_SORT_INCLUDE_SORT_APP_H_
 #define MODULES_SORT_INCLUDE_SORT_APP_H_

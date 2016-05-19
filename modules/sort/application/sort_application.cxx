@@ -1,4 +1,4 @@
-//Copyright 2016 Sveta Goncharova
+// Copyright 2016 Sveta Goncharova
 
 #include <stdlib.h>
 #include <stdio.h>

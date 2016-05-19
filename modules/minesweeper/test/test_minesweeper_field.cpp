@@ -96,8 +96,6 @@ TEST(MINEsweeper_field, can_set_cell) {
 TEST(MINEsweeper_field, can_create_rihgt_copy) {
     // Arrange
     Field field1;
-    unsigned int x = 1;
-    unsigned int y = 1;
 
     // Act
     field1.set_cell(1, 1, 1);

@@ -2,9 +2,11 @@
 
 #include <stdio.h>
 #include <string>
+#include "include/Application.h"
 
 int main(int argc, const char** argv) {
-    std::string output = "Hello world!";
+    Application app;
+    std::string output = app(argc, argv);
     printf("%s\n", output.c_str());
 
     return 0;

@@ -7,4 +7,4 @@
 #include "include/PathFinder.h"
 
 
-#endif // MODULES_PATH_INCLUDE_APPLICATION_H_
+#endif  // MODULES_PATH_INCLUDE_APPLICATION_H_

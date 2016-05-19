@@ -3,7 +3,7 @@
 #ifndef MODULES_VOLUMES_CALC_INCLUDE_VOLUMES_CALC_H_
 #define MODULES_VOLUMES_CALC_INCLUDE_VOLUMES_CALC_H_
 
-#include <stdlib.h>
+#include <cstdlib>
 #include <functional>
 
 namespace volume_calc {
@@ -175,7 +175,7 @@ NumberType integrate(const NumberType& lower, const NumberType& upper,
     const auto step = (upper - lower) / partitionCount;
     NumberType result(0);
     for (size_t i = 1; i <= partitionCount; ++i) {
-        const auto midPoint = rand_r() / NumberType(RAND_MAX) * step;
+        const auto midPoint = std::rand() / NumberType(RAND_MAX) * step;
         result += f(lower + step * (i - 1) + midPoint) * step;
     }
     return result;

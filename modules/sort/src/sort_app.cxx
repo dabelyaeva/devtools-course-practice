@@ -67,14 +67,15 @@ std::string SortApplication::operator()(int argc, const char** argv) {
     try {
         args.length = parseInt(argv[1]);
         args.select = parseTypeSort(argv[2]);
+        args.intArr = new int[args.length];
+        for (int i = 0; i < args.length; i++) {
+            args.intArr[i] = parseInt(argv[3 + i]);
+        }
     }
     catch (std::string str) {
         return str;
     }
-    args.intArr = new int[args.length];
-    for (int i = 0; i < args.length; i++) {
-        args.intArr[i] = parseInt(argv[3 + i]);
-    }
+    
     std::ostringstream stream;
     MySort Sort(args.intArr, args.length);
     int* Answer = new int[args.length];

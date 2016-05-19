@@ -15,7 +15,7 @@ using std::vector;
 using std::string;
 
 class SortApplicationTest : public ::testing::Test {
-protected:
+ protected:
     // virtual void SetUp() {}
 
     void Act(vector<string> args_) {
@@ -36,7 +36,7 @@ protected:
         EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
 
-private:
+ private:
     SortApplication app_;
     string output_;
 };
@@ -74,7 +74,7 @@ TEST_F(SortApplicationTest, Can_Detect_Wrong_TypeSort_Format) {
 }
 
 TEST_F(SortApplicationTest, Can_QuickSort) {
-    vector<string> args = { "2","1","4","2" };
+    vector<string> args = { "2", "1", "4", "2" };
 
     Act(args);
 

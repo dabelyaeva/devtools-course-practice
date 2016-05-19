@@ -50,7 +50,7 @@ TEST_F(AppFinanceNotepadTest, can_create_app) {
 TEST_F(AppFinanceNotepadTest,
        can_reach_inexistent_param_error) {
     // Arrange
-    std::string argument = "-a";
+    std::string argument = "-inexistent_param";
     vector<string> args = {argument};
 
     // Act

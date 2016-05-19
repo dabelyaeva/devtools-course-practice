@@ -27,12 +27,12 @@ void EquationApplication::help(const char* appname, const char* message) {
         "2. Find the coordinates of the initial point of the parabola ";
 }
 
-bool EquationApplication::validateNumberOfArguments(int argc, const char** argv) {
+bool EquationApplication::validateNumberOfArguments
+ (int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 5) {
+    } else if (argc != 5) {
         help(argv[0], "ERROR: Should be 4 arguments.\n\n");
         return false;
     }
@@ -56,7 +56,6 @@ double parseNumberOperation(const char* arg) {
         value = atoi(arg);
     } else {
         throw std::string("Wrong number format!Only two option");
-
     }
     return value;
 }

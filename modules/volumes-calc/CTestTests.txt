@@ -51,6 +51,22 @@ set_tests_properties (${prefix}_Can_Check_Cylinder_Number_Input_Correctness
     PROPERTIES PASS_REGULAR_EXPRESSION "Invalid number format!")
 
 add_test(
+    NAME ${prefix}_Can_Check_Cone_Parametres_Number
+    COMMAND ${APPLICATION} cone 2.0
+)
+
+set_tests_properties (${prefix}_Can_Check_Cone_Parametres_Number
+    PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number of parametres for 'cone'")
+
+add_test(
+    NAME ${prefix}_Can_Check_Cone_Number_Input_Correctness
+    COMMAND ${APPLICATION} cone not_number not_number
+)
+
+set_tests_properties (${prefix}_Can_Check_Cone_Number_Input_Correctness
+    PROPERTIES PASS_REGULAR_EXPRESSION "Invalid number format!")
+
+add_test(
     NAME ${prefix}_Can_Check_Volumes_Name_Correctness
     COMMAND ${APPLICATION} some_name 2.0
 )
@@ -73,3 +89,11 @@ add_test(
 
 set_tests_properties (${prefix}_Can_Calculate_Cylinder_Volume
     PROPERTIES PASS_REGULAR_EXPRESSION "62.")
+
+add_test(
+    NAME ${prefix}_Can_Calculate_Cone_Volume
+    COMMAND ${APPLICATION} cone 2 5
+)
+
+set_tests_properties (${prefix}_Can_Calculate_Cone_Volume
+    PROPERTIES PASS_REGULAR_EXPRESSION "20.")

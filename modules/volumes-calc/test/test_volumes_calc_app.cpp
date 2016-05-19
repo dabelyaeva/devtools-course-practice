@@ -105,6 +105,28 @@ TEST_F(VolumeCalcTest, Can_Check_Cylinder_Number_Input_Correctness) {
     Assert("Invalid number format\\!.*");
 }
 
+TEST_F(VolumeCalcTest, Can_Check_Cone_Parametres_Number) {
+    // Arrange
+    std::vector<string> args = {"cone", "2.0"};
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Wrong number of parametres for \'cone\'.*");
+}
+
+TEST_F(VolumeCalcTest, Can_Check_Cone_Number_Input_Correctness) {
+    // Arrange
+    std::vector<string> args = {"cone", "not_number", "not_number"};
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Invalid number format\\!.*");
+}
+
 TEST_F(VolumeCalcTest, Can_Check_Volumes_Name_Correctness) {
     // Arrange
     std::vector<string> args = {"some_name", "2.0"};
@@ -136,4 +158,15 @@ TEST_F(VolumeCalcTest, Can_Calculate_Cylinder_Volume) {
 
     // Assert
     Assert("62\\..*");
+}
+
+TEST_F(VolumeCalcTest, Can_Calculate_Cone_Volume) {
+    // Arrange
+    std::vector<string> args = {"cone", "2", "5"};
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("20\\..*");
 }

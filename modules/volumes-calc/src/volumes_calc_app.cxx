@@ -26,7 +26,8 @@ void Application::help(const char *appname, const char *message) {
             "You can use following volumes with parameters:\n\n" +
 
             "sphere <radius>\n" +
-            "cylinder <radius> <height>\n";
+            "cylinder <radius> <height>\n" +
+            "cone <radius> <height>\n";
 }
 
 double Application::strToDouble(const char *str) {
@@ -60,12 +61,29 @@ double cylinderVol(double radius, double height) {
         [] (double, double r, double) {
             return r;
         },
-        0.f,
+        0.0,
         2.f * pi,
-        [] (double p) { return 0.f; },
+        [] (double p) { return 0.0; },
         [radius] (double p) { return radius; },
-        [] (double p1, double p2) { return 0.f; },
+        [] (double p1, double p2) { return 0.0; },
         [height] (double p1, double p2) { return height; } );
+
+    return calc.Calculate(200);
+}
+
+double coneVol(double radius, double height)
+{
+    volume_calc::VolumeCalculator<double> calc(
+        [] (double, double r, double) {
+            return r;
+        },
+        0.0,
+        2.f * pi,
+        [] (double phi) { return 0.0; },
+        [radius] (double phi) { return radius; },
+        [] (double phi, double r) { return 0.0; },
+        [radius, height](double phi, double r) {
+            return -(height * r) / radius + height; } );
 
     return calc.Calculate(200);
 }
@@ -97,6 +115,19 @@ std::string Application::operator()(int argc, const char **argv) {
                 } else {
                     try {
                         stream << cylinderVol(strToDouble(argv[2]),
+                            strToDouble(argv[3])) << std::endl;
+                    }
+                    catch(std::string str) {
+                        return str;
+                    }
+                }
+        } else if (strcmp(argv[1], "cone") == 0) {
+                if (argc != 4) {
+                    help(argv[0],
+                    "Wrong number of parametres for \'cone\'\n");
+                } else {
+                    try {
+                        stream << coneVol(strToDouble(argv[2]),
                             strToDouble(argv[3])) << std::endl;
                     }
                     catch(std::string str) {

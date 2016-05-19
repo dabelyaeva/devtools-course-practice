@@ -2,6 +2,7 @@
 
 #include <ctime>
 #include <stdexcept>
+#include <stdlib.h>
 #include <iostream>
 #include "include/mine_sweeper.h"
 

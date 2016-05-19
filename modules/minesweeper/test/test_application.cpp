@@ -45,15 +45,75 @@ TEST_F(AppMinesweeperTest, can_create_app) {
 }
 
 TEST_F(AppMinesweeperTest,
-    can_reach_error_msg_when_invalid_argument_number) {
+    can_reach_error_msg_when_too_many_argument_number_test_mode) {
     // Arrange
-    vector<string> args = { "a", "b", "c", "d", "f", "g" };
+    vector<string> args = { "-tm", "b", "c", "d", "f", "g" };
 
     // Act
     Act(args);
 
     // Assert
     Assert("Error: invalid number of arguments\\..*");
+}
+
+TEST_F(AppMinesweeperTest,
+    can_reach_error_msg_when_less_argument_number_test_mode) {
+    // Arrange
+    vector<string> args = { "-tm", "b" };
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Error: invalid number of arguments\\..*");
+}
+
+TEST_F(AppMinesweeperTest,
+    can_reach_error_msg_when_invalid_argument_number_help) {
+    // Arrange
+    vector<string> args = { "-h", "b", "c", "d", "f", "g" };
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Error: invalid number of arguments\\..*");
+}
+
+TEST_F(AppMinesweeperTest,
+    can_reach_error_msg_when_no_arguments) {
+    // Arrange
+    vector<string> args = { };
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Error: invalid number of arguments\\..*");
+}
+
+TEST_F(AppMinesweeperTest,
+    can_reach_error_msg_when_invalid_field_size) {
+    // Arrange
+    vector<string> args = { "-r", "101" };
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Error: Invalid field len");
+}
+
+TEST_F(AppMinesweeperTest,
+    can_reach_error_msg_when_first_arg_is_not_param) {
+    // Arrange
+    vector<string> args = { "help" };
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Error: first argument must be param ");
 }
 
 TEST_F(AppMinesweeperTest, can_call_help) {
@@ -64,5 +124,5 @@ TEST_F(AppMinesweeperTest, can_call_help) {
     Act(args);
 
     // Assert
-    Assert("This is a minesweeper application\\..*");
+    Assert("This is a minesweeper application.\\..*");
 }

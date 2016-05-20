@@ -41,7 +41,7 @@ AreaUnit& AreaConverter::GetUnit(const std::string& qualifier) const {
     std::vector<AreaUnit>::const_iterator res = units_.end();
 
     for (auto it = units_.begin(); it != units_.end(); ++it) {
-        if (it->Qualifier() == qualifier) {
+        if (it->GetAreaType() == qualifier) {
            res = it;
            break;
         }

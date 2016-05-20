@@ -13,22 +13,21 @@ using std::string;
 class MatrixApplication_Test : public ::testing::Test {
  protected:
   void Act(const vector<string>& args_) {
-    vector<const char*> options;
+  vector<const char*> options;
 
-    options.push_back("appname");
+  options.push_back("appname");
     for (size_t i = 0; i < args_.size(); ++i) {
-      options.push_back(args_[i].c_str());
-    }
+    options.push_back(args_[i].c_str());
+  }
 
-    const char** argv = &options.front();
-    int argc = static_cast<int>(args_.size()) + 1;
+  const char** argv = &options.front();
+  int argc = static_cast<int>(args_.size()) + 1;
 
-    output_ = app_(argc, argv);
+  output_ = app_(argc, argv);
 
   }
   void Assert(const string& expected) {
     EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
-
   }
  private:
   MatrixApplication app_;

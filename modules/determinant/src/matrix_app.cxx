@@ -77,14 +77,15 @@ std::string MatrixApplication::operator()(int argc, const char** argv) {
   return message_;
 }
 
-bool MatrixApplication::validateNumberOfArguments(int argc, const char ** argv) {
+bool MatrixApplication::validateNumberOfArguments(int argc, 
+                                         const char ** argv) {
   if (argc == 1) {
     help(argv[0]);
     return false;
   } else { if (argc != (pow(atoi(argv[1]), 2) + 5)) {   
     help(argv[0], "ERROR: not enougth arguments");
-    return false;
+  return false;
   }
  }
-  return true;
+ return true;
 }

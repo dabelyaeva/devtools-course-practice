@@ -3,8 +3,6 @@
 #include <iostream>
 #include "../include/tbitfield_calculator.h"
 
-using namespace std;
-
 int main(int argc, char **argv) {
     TBitFieldCalculator calc;
     printf("%s\n", calc.Execute(argc, argv).c_str());

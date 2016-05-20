@@ -15,6 +15,7 @@ class SQConverter {
     void help(const char* appname, const char* message = "");
     bool validateNumberOfArguments(int argc, const char** argv);
     std::string message_;
+    AreaConverter converter_;
     typedef struct {
         double value;
         std::string from;

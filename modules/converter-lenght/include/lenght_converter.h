@@ -14,12 +14,12 @@ class LenghtConverter {
  private:
     void help(const char* appname, const char* message = "");
     bool validateNumberOfArguments(int argc, const char** argv);
+    Unit getMeasure(const std::string&);
     std::string message_;
     typedef struct {
-        std::string _value;
-        std::string _measure;
-        std::string _measure_result;
-        char operation;
+        std::string value_;
+        std::string measure_;
+        std::string measure_result_;
     } Arguments;
 };
 

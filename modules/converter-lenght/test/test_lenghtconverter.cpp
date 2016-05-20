@@ -50,12 +50,20 @@ TEST_F(LenghtConverterTest, Can_Detect_Wrong_Number_Of_Arguments) {
     Assert("ERROR: Should be 3 arguments.");
 }
 
+TEST_F(LenghtConverterTest, Can_Detect_Invalid_Values) {
+    vector<string> args = { "A", "Mile", "Meter" };
+
+    Act(args);
+
+    Assert("Entered is not a number or a number other than zero");
+}
+
 TEST_F(LenghtConverterTest, Can_Detect_Wrong_Single_Value_Format) {
     vector<string> args = { "-1", "Mile", "Meter" };
 
     Act(args);
 
-    Assert("Value less than zero!");
+    Assert("Entered is not a number or a number other than zero");
 }
 
 TEST_F(LenghtConverterTest, Can_Convert_Centimeter_To_Centimeter) {
@@ -95,7 +103,7 @@ TEST_F(LenghtConverterTest, Can_Detect_Wrong_First_Measure_Format) {
 
     Act(args);
 
-    Assert("First measure ");
+    Assert("First or second measure have wrong format!");
 }
 
 TEST_F(LenghtConverterTest, Can_Detect_Wrong_Second_Measure_Format) {
@@ -103,5 +111,22 @@ TEST_F(LenghtConverterTest, Can_Detect_Wrong_Second_Measure_Format) {
 
     Act(args);
 
-    Assert("Second measure ");
+    Assert("First or second measure have wrong format!");
 }
+
+TEST_F(LenghtConverterTest, Can_Convert_Centimeter_To_Meter) {
+    vector<string> args = { "100.0", "Centimeter", "Meter" };
+
+    Act(args);
+
+    Assert("1.0");
+}
+
+TEST_F(LenghtConverterTest, Can_Convert_Centimeter_To_Kilometer) {
+    vector<string> args = { "1000.0", "Centimeter", "Kilometer" };
+
+    Act(args);
+
+    Assert("1.0");
+}
+

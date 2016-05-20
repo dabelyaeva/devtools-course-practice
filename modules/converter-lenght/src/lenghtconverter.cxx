@@ -9,6 +9,21 @@
 
 LenghtConverter::LenghtConverter() : message_("") {}
 
+Unit LenghtConverter::getMeasure(const std::string& unit) {
+    Unit result;
+    if (unit == "Centimeter")
+        result = Unit::CENTIMETERL;
+    else if (unit == "Meter")
+        result = Unit::METERL;
+    else if (unit == "Kilometer")
+        result = Unit::KILOMETERL;
+    else if (unit == "Mile")
+        result = Unit::MILEL;
+    else
+        throw std::string("First or second measure have wrong format! \n");
+    return result;
+}
+
 void LenghtConverter::help(const char *appname, const char *message) {
     message_ =
         std::string(message) +
@@ -17,8 +32,8 @@ void LenghtConverter::help(const char *appname, const char *message) {
 
         " $" + std::string(appname) + " <number> <measure> " +
         "<result_measure>  \n\n"
-        "Where <number> is valid positive number, and <measure> " +
-        "and <result_measure> is one of 'Centimeter', 'Meter'," +
+        "Where <number> is valid positive number, and <measure> \n" +
+        "and <result_measure> is one of 'Centimeter', 'Meter', \n" +
         " 'Kilometer', 'Mile'. \n";
 }
 
@@ -35,50 +50,30 @@ std::string LenghtConverter::operator()(int argc, const char** argv) {
     if (!validateNumberOfArguments(argc, argv)) {
         return message_;
     }
-    args._value = argv[1];
-    args._measure = argv[2];
-    args._measure_result = argv[3];
+    args.value_ = argv[1];
+    args.measure_ = argv[2];
+    args.measure_result_ = argv[3];
     Unit meas;
 
-    double value = atof(args._value.c_str());
+    double value = atof(args.value_.c_str());
     try {
-        if (args._measure == "Centimeter")
-            meas = Unit::CENTIMETERL;
-        else if (args._measure == "Meter")
-            meas = Unit::METERL;
-        else if (args._measure == "Kilometer")
-            meas = Unit::KILOMETERL;
-        else if (args._measure == "Mile")
-            meas = Unit::MILEL;
-        else
-            throw std::string("First measure " + args._measure +
-                "have wrong format!");
-    ConverterLenght app(value, meas);
-    if (app.getRetCode() == Data ::ERROR)
-        throw std::string("Value less than zero!");
+    meas = getMeasure(args.measure_);
+    ConverterLenght lenght(value, meas);
+    if (lenght.getRetCode() == Data ::ERROR)
+        throw std::string("Entered is not a number or a number "
+            "other than zero \n");
     Unit result_meas;
-    if (args._measure_result == "Centimeter")
-            result_meas = Unit::CENTIMETERL;
-    else if (args._measure_result == "Meter")
-            result_meas = Unit::METERL;
-    else if (args._measure_result == "Kilometer")
-            result_meas = Unit::KILOMETERL;
-    else if (args._measure_result == "Mile")
-            result_meas = Unit::MILEL;
-    else
-      throw std::string("Second measure " + args._measure +
-           " have wrong format!");
+    result_meas = getMeasure(args.measure_result_);
 
-    app.converter(result_meas);
+    lenght.converter(result_meas);
     std::ostringstream ost;
-    ost << app.getValue();
-    message_ = "The result of the conversion of a " + args._value + " " +
-    args._measure + " to " + args._measure_result +
+    ost << lenght.getValue();
+    message_ = "The result of the conversion of a " + args.value_ + " " +
+    args.measure_ + " to " + args.measure_result_ +
     " number equal " + ost.str();
     }
     catch (std::string str) {
         message_ = str;
-        return message_;
     }
     return message_;
 }

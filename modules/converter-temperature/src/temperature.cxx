@@ -71,7 +71,7 @@ std::string TemperConverter::operator()(int argc, const char** argv) {
         std::ostringstream ost;
         ost << temperature.getValue();
         message_ = "reuslt of convertion " + argum.value_con + " " +
-            argum.unit_con + "to" + argum.unit_res + "number" + ost.str();
+          argum.unit_con + "to" + argum.unit_res + "number" + ost.str();
     }
     catch (std::string str) {
         message_ = str;

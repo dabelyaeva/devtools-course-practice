@@ -53,7 +53,7 @@ TEST_F(MatrixApplication_Test, Help_Then_Incorrect_Number_of_Args) {
 }
 
 TEST_F(MatrixApplication_Test, Help_Then_Incorrect_Number_of_Args_v1) {
-  vector<string> args = { "3", "DEM", "1", "2", "3", 
+  vector<string> args = { "3", "DEM", "1", "2", "3",
                                       "4", "5", "6",
                                       "7", "8", "9", "3", "5" };
 
@@ -90,7 +90,6 @@ TEST_F(MatrixApplication_Test, Wrong_Collum_in_minor) {
   Act(args);
 
   Assert("Incorrect collum of row!");
-
 }
 
 TEST_F(MatrixApplication_Test, Wrong_Row_in_minor) {

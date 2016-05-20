@@ -5,10 +5,10 @@
 
 #include "./matrix_app.h"
 
-MatrixApplication::MatrixApplication() :message_("") {}
+MatrixApplication::MatrixApplication() :_message("") {}
 
 void MatrixApplication::help(const char *appname, const char* message) {
-  message_ = std::string("") + "This is matrix determinant application\n" +
+  _message = std::string("") + "This is matrix determinant application\n" +
     "Please provide arguments in the following format:\n" +
     "Matrix is always N*N\n" +
     "Elements must be entered in format "+
@@ -18,22 +18,12 @@ void MatrixApplication::help(const char *appname, const char* message) {
     "Minor (MINOR)";
 }
 
-int MatrixApplication::parseToInt(const char * arg) {
-  int value;
-  if (atoi(arg)) {
-    value = atoi(arg);
-  } else {
-    throw std::string("Wrong number format!");
-  }
-  return value;
-}
-
 std::string MatrixApplication::operator()(int argc, const char** argv) {
   Arguments arg;
   double det;
 
   if (!validateNumberOfArguments(argc, argv)) {
-    return message_;
+    return _message;
   }
 
   arg._size = atoi(argv[1]);
@@ -55,27 +45,27 @@ std::string MatrixApplication::operator()(int argc, const char** argv) {
 
   if (arg._act == "DET") {
     det = matrix.Determinant();
-    message_ = "Determinant of matix = " + std::to_string(det);
+    _message = "Determinant of matix = " + std::to_string(det);
   }  else if (arg._act == "MINOR") {
       if (arg._row <= arg._size-1 && arg._collum <= arg._size-1) {
         matrix = matrix.Minor(arg._row, arg._collum);
-        message_ = "Your minor is\n" + matrix.PrintMatrix();
+        _message = "Your minor is\n" + matrix.PrintMatrix();
       } else {
-        message_ = "Incorrect collum of row!";
+        _message = "Incorrect collum of row!";
       }
   } else if (arg._act == "GET_ROW") {
     if (arg._row <= arg._size-1) {
       vector<int> vect = matrix[arg._row];
       for (vector<int>::iterator it = vect.begin(); it != vect.end(); ++it)
-        message_ += std::to_string(*it) + " ";
+        _message += std::to_string(*it) + " ";
     } else {
-      message_ = "Incorrect row!";
+      _message = "Incorrect row!";
     }
   } else  {
-    message_ = "Wrong act!";
+    _message = "Wrong act!";
   }
 
-  return message_;
+  return _message;
 }
 
 bool MatrixApplication::validateNumberOfArguments

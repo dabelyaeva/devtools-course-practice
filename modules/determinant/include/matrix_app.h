@@ -16,16 +16,15 @@ class MatrixApplication {
   bool validateNumberOfArguments(int argc, const char** argv);
  private:
   void help(const char* arg, const char* message = "");
-  std::string message_;
-  int parseToInt(const char* arg);
+  std::string _message;
 
-typedef struct {
+ typedef struct {
   int _size;
   vector<int> _elems;
   std::string _act;
   int _row = 0;
   int _collum = 0;
-} Arguments;
+ } Arguments;
 };
 
 #endif  // MODULES_DETERMINANT_INCLUDE_MATRIX_APP_H_

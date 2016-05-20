@@ -83,7 +83,7 @@ set_tests_properties (${prefix}_can_Detect_Wrong_Second_Measure_Format
 
 add_test(
     NAME ${prefix}_can_Convert_Centimeter_To_Meter
-    COMMAND ${APPLICATION} 100.0 Centimeter Meter
+    COMMAND ${APPLICATION} 100.0 Meter Centimeter
 )
 set_tests_properties (${prefix}_can_Convert_Centimeter_To_Meter
   PROPERTIES PASS_REGULAR_EXPRESSION "1\\.0")

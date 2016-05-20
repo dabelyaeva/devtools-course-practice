@@ -9,7 +9,7 @@
 
 LenghtConverter::LenghtConverter() : message_("") {}
 
-Unit LenghtConverter::getMeasure(const std::string& unit) {
+Unit LenghtConverter::getMeasure(const std::string& unit)const {
     Unit result;
     if (unit == "Centimeter")
         result = Unit::CENTIMETERL;

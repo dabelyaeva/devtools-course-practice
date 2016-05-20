@@ -115,7 +115,7 @@ TEST_F(LenghtConverterTest, Can_Detect_Wrong_Second_Measure_Format) {
 }
 
 TEST_F(LenghtConverterTest, Can_Convert_Centimeter_To_Meter) {
-    vector<string> args = { "100.0", "Centimeter", "Meter" };
+    vector<string> args = { "100.0", "Meter", "Centimeter" };
 
     Act(args);
 

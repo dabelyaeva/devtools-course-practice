@@ -14,7 +14,7 @@ class LenghtConverter {
  private:
     void help(const char* appname, const char* message = "");
     bool validateNumberOfArguments(int argc, const char** argv);
-    Unit getMeasure(const std::string&);
+    Unit getMeasure(const std::string&)const;
     std::string message_;
     typedef struct {
         std::string value_;

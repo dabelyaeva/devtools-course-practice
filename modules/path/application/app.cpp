@@ -1,9 +1,14 @@
 // Copyright 2016 Orlov Georgy
 
-#include <iostream>
-#include "include/PathFinder.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
+#include "../include/AppPath.h"
 
 int main(int argc, const char** argv) {
-    std::cout << "Check" << std::endl;
+    AppPath app;
+    std::string output = app(argc, argv);
+    printf("%s\n", output.c_str());
+
     return 0;
 }

@@ -50,11 +50,11 @@ TEST_F(SortApplicationTest, Do_Print_Help_Without_Arguments) {
 }
 
 TEST_F(SortApplicationTest, Is_Checking_Number_Of_Arguments) {
-    vector<string> args = { "5", "2" };
+    vector<string> args = { "5" };
 
     Act(args);
 
-    Assert("ERROR: Wrong number of arguments.\\..*");
+    Assert("ERROR: Wrong number of arguments\\..*");
 }
 
 TEST_F(SortApplicationTest, Can_Detect_Wrong_Number_Format) {

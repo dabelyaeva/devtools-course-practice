@@ -33,12 +33,10 @@ int parseInt(const char* arg) {
 }
 
 bool SortApplication::validateNumberOfArguments(int argc, const char** argv) {
-    Arguments args;
-    args.length = parseInt(argv[1]);
     if (argc == 1) {
         help(argv[0]);
         return false;
-    } else if (argc != (args.length+3)) {
+    } else if (argc == 2) {
         help(argv[0], "ERROR: Wrong number of arguments.\n\n");
         return false;
     }
@@ -129,10 +127,11 @@ std::string SortApplication::operator()(int argc, const char** argv) {
         }
         break;
     }
-
+    default:
+        break;
+    }
             message_ = stream.str();
 
             return message_;
-    }
-    return "0";
+            
 }

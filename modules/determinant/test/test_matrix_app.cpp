@@ -42,120 +42,166 @@ TEST_F(MatrixApplication_Test, Print_Help_Without_Arguments) {
   Assert("This is matrix determinant application");
 }
 
-TEST_F(MatrixApplication_Test, Help_Then_Incorrect_Number_of_Args) {
-  vector<string> args = { "3", "DET", "1", "2", "3",
-                                       "4", "5", "6",
-                                       "7", "8"};
+TEST_F(MatrixApplication_Test, Print_Help_Then_Incorrect_Number_of_Args) {
+  vector<string> args = { "3",
+                          "DET", 
+                          "1", "2", "3",
+                          "4", "5", "6",
+                          "7", "8"};
 
   Act(args);
 
   Assert("This is matrix determinant application");
 }
 
-TEST_F(MatrixApplication_Test, Help_Then_Incorrect_Number_of_Args_v1) {
-  vector<string> args = { "3", "DEM", "1", "2", "3",
-                                      "4", "5", "6",
-                                      "7", "8", "9", "3", "5" };
+TEST_F(MatrixApplication_Test, Print_Help_Then_enter_Wrong_Act) {
+  vector<string> args = { "3",
+                          "DEM",
+                          "1", "2", "3",
+                          "4", "5", "6",
+                          "7", "8", "9",
+                          "3",
+                          "5" };
 
   Act(args);
 
   Assert("Wrong act!");
 }
 
-TEST_F(MatrixApplication_Test, Dterminant_test) {
-  vector<string> args = { "3", "DET", "1", "2", "3",
-                                      "4", "5", "6",
-                                      "7", "8", "9", "3", "5" };
+TEST_F(MatrixApplication_Test, Can_Find_Determinant) {
+  vector<string> args = { "3",
+                          "DET",
+                          "1", "2", "3",
+                          "4", "5", "6",
+                          "7", "8", "9",
+                          "3",
+                          "5" };
 
   Act(args);
 
   Assert("Determinant of matix = 0");
 }
 
-TEST_F(MatrixApplication_Test, Minor_Test) {
-  vector<string> args = { "3", "MINOR", "1", "2", "3",
-                                        "4", "5", "6",
-                                        "7", "8", "9", "1", "1" };
+TEST_F(MatrixApplication_Test, Can_Find_Minor) {
+  vector<string> args = { "3",
+                          "MINOR",
+                          "1", "2", "3",
+                          "4", "5", "6",
+                          "7", "8", "9",
+                          "1",
+                          "1" };
 
   Act(args);
 
   Assert("Your minor is\n5 6 \n8 9 ");
 }
 
-TEST_F(MatrixApplication_Test, Wrong_Collum_in_minor) {
-  vector<string> args = { "3", "MINOR", "1", "2", "3",
-                                        "4", "5", "6",
-                                        "7", "8", "9", "6", "3" };
+TEST_F(MatrixApplication_Test, Print_Error_If_Incorrect_Collum) {
+  vector<string> args = { "3",
+                          "MINOR",
+                          "1", "2", "3",
+                          "4", "5", "6",
+                          "7", "8", "9",
+                          "6",
+                          "3" };
 
   Act(args);
 
   Assert("Incorrect collum of row!");
 }
 
-TEST_F(MatrixApplication_Test, Wrong_Row_in_minor) {
-  vector<string> args = { "3", "MINOR", "1", "2", "3",
-                                        "4", "5", "6",
-                                        "7", "8", "9", "3", "5" };
+TEST_F(MatrixApplication_Test, Print_Error_If_Incorrect_Row) {
+  vector<string> args = { "3",
+                          "MINOR",
+                          "1", "2", "3",
+                           "4", "5", "6",
+                           "7", "8", "9",
+                           "3",
+                           "5" };
 
   Act(args);
 
   Assert("Incorrect collum of row!");
 }
 
-TEST_F(MatrixApplication_Test, Wrong_Row_And_Collum_in_minor) {
-  vector<string> args = { "3", "MINOR", "1", "2", "3",
-                                        "4", "5", "6",
-                                        "7", "8", "9", "4", "5" };
+TEST_F(MatrixApplication_Test, Print_Error_If_Incorrect_Collum_And_Row) {
+  vector<string> args = { "3",
+                          "MINOR",
+                          "1", "2", "3",
+                          "4", "5", "6",
+                          "7", "8", "9",
+                          "4",
+                          "5" };
 
   Act(args);
 
   Assert("Incorrect collum of row!");
 }
 
-TEST_F(MatrixApplication_Test, Minor_Test_v2) {
-  vector<string> args = { "3", "MINOR", "1", "2", "3",
-                                        "4", "5", "6",
-                                        "7", "8", "9", "2", "2" };
+TEST_F(MatrixApplication_Test, Can_Find_Bigger_Minor) {
+  vector<string> args = { "3",
+                          "MINOR",
+                          "1", "2", "3",
+                          "4", "5", "6",
+                          "7", "8", "9",
+                          "2",
+                          "2" };
 
   Act(args);
 
   Assert("Your minor is\n1 3 \n7 9 \n");
 }
 
-TEST_F(MatrixApplication_Test, Minor_Test_v3) {
-  vector<string> args = { "4", "MINOR", "1", "2", "3", "4",
-                                        "5", "6", "7", "8",
-                                        "9", "10", "11", "12",
-                                        "13", "14", "15", "16", "2", "3" };
+TEST_F(MatrixApplication_Test, Can_Find_Minor_In_Large_Matrix) {
+  vector<string> args = { "4",
+                          "MINOR",
+                          "1", "2", "3", "4",
+                          "5", "6", "7", "8",
+                          "9", "10", "11", "12",
+                          "13", "14", "15", "16",
+                          "2",
+                          "3" };
 
   Act(args);
 
   Assert("Your minor is\n1 2 4 \n9 10 12 \n13 14 16 ");
 }
 
-TEST_F(MatrixApplication_Test, Dterminant_test_V2) {
-  vector<string> args = { "3", "DET", "-1", "2", "3",
-                                      "4", "5", "6",
-                                      "7", "8", "9", "3", "3" };
+TEST_F(MatrixApplication_Test, Can_Find_Determinant_With_Negitiv_Vals) {
+  vector<string> args = { "3",
+                          "DET",
+                          "-1", "2", "3",    
+                          "4", "5", "6",
+                          "7", "8", "9",
+                          "3",
+                          "3" };
   Act(args);
 
   Assert("Determinant of matix = 6");
 }
 
-TEST_F(MatrixApplication_Test, Get_Row_Test) {
-  vector<string> args = { "3", "GET_ROW", "-1", "2", "3",
-                                          "4", "5", "6",
-                                          "7", "8", "9", "3", "3" };
+TEST_F(MatrixApplication_Test, Can_Get_Row) {
+  vector<string> args = { "3",
+                          "GET_ROW",
+                          "-1", "2", "3",
+                          "4", "5", "6",
+                          "7", "8", "9",
+                          "3",
+                          "3" };
 
   Act(args);
 
   Assert("7 8 9 ");
 }
 
-TEST_F(MatrixApplication_Test, Get_Raw_Test_Incorrect_Row) {
-  vector<string> args = { "3", "GET_ROW", "-1", "2", "3",
-                                          "4", "5", "6",
-                                          "7", "8", "9", "4", "3" };
+TEST_F(MatrixApplication_Test, Print_Error_If_Incorrect_Row) {
+  vector<string> args = { "3",
+                          "GET_ROW",
+                          "-1", "2", "3",
+                          "4", "5", "6",
+                          "7", "8", "9",
+                          "4",
+                          "3" };
 
   Act(args);
 

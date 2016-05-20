@@ -14,8 +14,8 @@ void MatrixApplication::help(const char *appname, const char* message) {
     "Elements must be entered in format "+
     "size act 1 2 3 4 5 6 7 8 9 row collum\n" +
     "Supported operations:\n"+
-    "Find determinant (DET)"+
-    "Minor (MINOR)";
+    "Find determinant (DET)\n"+
+    "Minor (MINOR)\n";
 }
 
 std::string MatrixApplication::operator()(int argc, const char** argv) {

@@ -8,7 +8,7 @@
 
 enum class Data { OK, ERROR };
 
-enum class Unit { CENTIMETERL, METERL, KILOMETERL, MILEL };
+enum class Unit { CENTIMETER, METER, KILOMETER, MILE };
 
 class ConverterLenght {
  public:

@@ -38,15 +38,16 @@ std::string MatrixApplication::operator()(int argc, const char** argv) {
 
   arg._size = atoi(argv[1]);
   arg._act = argv[2];
+  int argLen = pow(arg._size, 2);
 
-  for (int i = 0; i < (pow(arg._size, 2) + 5); i++) {
-    if (i >= 3 && i < (pow(arg._size, 2) + 3))
+  for (int i = 0; i < (argLen + 5); i++) {
+    if (i >= 3 && i < (argLen + 3))
       arg._elems.push_back(atoi(argv[i]));
 
-    if (i == (pow(arg._size, 2) + 3))
+    if (i == (argLen + 3))
       arg._row = atoi(argv[i])-1;
 
-    if (i == (pow(arg._size, 2) + 4))
+    if (i == (argLen + 4))
       arg._collum = atoi(argv[i])-1;
   }
 

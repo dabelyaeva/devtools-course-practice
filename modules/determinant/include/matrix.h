@@ -4,7 +4,6 @@
 #define MODULES_DETERMINANT_INCLUDE_MATRIX_H_
 
 #include <string>
-#include <iostream>
 #include <stdexcept>
 #include <vector>
 

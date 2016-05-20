@@ -71,7 +71,6 @@ TEST(quaternion_calculation, parseOperation_Q) {
   // Arrange
   const char* arg = "Q";
   QuaternionCalculator QC;
-  
 
   // Act && Assert
   EXPECT_EQ('Q', QC.parseOperation(arg));

@@ -109,7 +109,7 @@ void ConverterLenght::converter(const Unit measure) {
 
     case Unit::MILE:
         switch (measure_) {
-        case Unit::CENTIMETERL:
+        case Unit::CENTIMETER:
             value_ = (value_ * getCoeff("Meter") * getCoeff("Mile"));
             measure_ = measure;
             break;

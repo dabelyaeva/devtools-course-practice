@@ -170,7 +170,7 @@ TEST_F(MatrixApplication_Test, Can_Find_Minor_In_Large_Matrix) {
 TEST_F(MatrixApplication_Test, Can_Find_Determinant_With_Negitiv_Vals) {
   vector<string> args = { "3",
                           "DET",
-                          "-1", "2", "3", 
+                          "-1", "2", "3",
                           "4", "5", "6",
                           "7", "8", "9",
                           "3",

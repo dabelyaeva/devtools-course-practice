@@ -161,5 +161,5 @@ TEST_F(TemperatureTests, Can_Identify_Wrong_Second_Format) {
 
     Act(args);
 
-    Assert("Wrong second format");
+    Assert("Wrong second format!");
 }

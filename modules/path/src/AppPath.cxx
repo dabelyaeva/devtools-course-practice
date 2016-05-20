@@ -25,8 +25,7 @@ bool AppPath::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 3) {
+    } else if (argc != 3) {
         help(argv[0], "ERROR: Should be 3 arguments.\n\n");
         return false;
     }
@@ -84,7 +83,7 @@ string AppPath::operator()(int argc, const char** argv) {
 
     int size = getGraphSizeFromFile(args.filename);
     int** graph = readFile(args.filename);
-    
+
     pf.SetGraph(graph, size, args.first_vertex);
     int result = pf.GetDistance(args.second_vertex);
 

@@ -102,7 +102,7 @@ TEST_F(AppMinesweeperTest,
     Act(args);
 
     // Assert
-    Assert("Error: wrong size of field.*");
+    Assert("Error: Wrong size of field.*");
 }
 
 TEST_F(AppMinesweeperTest,

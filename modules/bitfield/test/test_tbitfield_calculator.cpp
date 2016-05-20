@@ -5,7 +5,8 @@
 
 TEST(TBitFieldCalculator, Can_Inverse) {
     // Arrange & Act
-    const char* args[2] = { "", "~1100" };
+    const char* args[2];
+    args[1] = "~1100";
     TBitFieldCalculator calculator;
     // Assert
     EXPECT_EQ("0011", calculator.Execute(2, args));

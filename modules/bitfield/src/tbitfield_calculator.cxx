@@ -29,6 +29,8 @@ bool TBitFieldCalculator::ParseArguments(int argc, const char** argv) {
             buf[index++] = argv[i][j];
     buf[index] = '\0';
 
+    pBitField1 = nullptr;
+    pBitField2 = nullptr;
     char buf1[100];
     char buf2[100];
     bool first = true;
@@ -89,6 +91,8 @@ std::string TBitFieldCalculator::ExecuteOperation() {
 }
 
 void TBitFieldCalculator::Clear() {
-    delete pBitField1;
-    delete pBitField2;
+    if(pBitField1 != nullptr)
+        delete pBitField1;
+    if(pBitField2 != nullptr)
+        delete pBitField2;
 }

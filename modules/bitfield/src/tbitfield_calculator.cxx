@@ -19,11 +19,13 @@ std::string TBitFieldCalculator::Execute(int argc, char** argv) {
 bool TBitFieldCalculator::ParseArguments(int argc, char** argv) {
     if (argc < 2)
         return false;
+    if (argv == nullptr)
+        return false;
 
     char buf[1000];
     int index = 0;
     for (int i = 1; i < argc; i++)
-        for (int j = 0; argv[i][j]; j++)
+        for (int j = 0; argv[i][j] != '\0'; j++)
             buf[index++] = argv[i][j];
     buf[index] = '\0';
 
@@ -49,6 +51,8 @@ bool TBitFieldCalculator::ParseArguments(int argc, char** argv) {
         case '|':
         case '~':
             Operation = buf[i];
+            if (first && index1 > 0)
+                first = false;
             break;
         default:
             return false;

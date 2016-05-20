@@ -1,3 +1,5 @@
+// Copyright 2016 Kulish Sem
+
 #include <gtest/gtest.h>
 #include <vector>
 #include <string>

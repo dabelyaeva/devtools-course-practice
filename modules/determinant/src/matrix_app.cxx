@@ -1,3 +1,5 @@
+// Copyright 2016 Kulish Sem
+
 #include "matrix_app.h"
 
 MatrixApplication::MatrixApplication() :message_("") {}

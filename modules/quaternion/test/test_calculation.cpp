@@ -7,9 +7,10 @@ TEST(quaternion_calculation, parseOperation_1) {
   // Arrange
   const char* arg;
   arg = "+";
-
+  char result = parseOperation(arg);
+  char exp = '+';
   // Act && Assert
-  EXPECT_EQ('+', parseOperation(arg));
+  EXPECT_EQ(exp, result);
 }
 
 TEST(quaternion_calculation, parseOperation_2) {

@@ -121,12 +121,3 @@ TEST_F(LenghtConverterTest, Can_Convert_Centimeter_To_Meter) {
 
     Assert("1.0");
 }
-
-TEST_F(LenghtConverterTest, Can_Convert_Centimeter_To_Kilometer) {
-    vector<string> args = { "1000.0", "Centimeter", "Kilometer" };
-
-    Act(args);
-
-    Assert("1.0");
-}
-

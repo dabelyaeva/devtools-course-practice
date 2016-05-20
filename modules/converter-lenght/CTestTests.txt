@@ -87,10 +87,3 @@ add_test(
 )
 set_tests_properties (${prefix}_can_Convert_Mile_To_Mile
   PROPERTIES PASS_REGULAR_EXPRESSION "1.0")
-
-add_test(
-    NAME ${prefix}_can_Convert_Centimeter_To_Kilometer
-    COMMAND ${APPLICATION} 1000.0 Centimeter Kilometer
-)
-set_tests_properties (${prefix}_can_Convert_Mile_To_Mile
-  PROPERTIES PASS_REGULAR_EXPRESSION "1.0")

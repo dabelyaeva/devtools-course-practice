@@ -1,6 +1,15 @@
-#include <iostream>
+// Copyright 2016 Sharadze Georgy
 
-int main() {
-    std::cout << "Hello world! " << std::endl;
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
+
+#include "include/binary_tree_app.h"
+
+int main(int argc, const char** argv) {
+    BinaryTreeApplication app;
+    std::string output = app(argc, argv);
+    printf("%s\n", output.c_str());
+
     return 0;
 }

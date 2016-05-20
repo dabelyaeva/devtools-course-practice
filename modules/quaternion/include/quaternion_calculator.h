@@ -9,6 +9,8 @@ class QuaternionCalculator {
  public:
   QuaternionCalculator();
   std::string operator()(int argc, const char** argv);
+  double parseDouble(const char* arg);
+  char parseOperation(const char* arg);
 
  private:
   void help(const char* appname, const char* message = "");

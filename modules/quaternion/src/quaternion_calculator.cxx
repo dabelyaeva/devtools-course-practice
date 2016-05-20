@@ -38,7 +38,7 @@ bool QuaternionCalculator::validateNumOfArg(int argc, const char** argv) {
   return true;
 }
 
-double parseDouble(const char* arg) {
+double QuaternionCalculator::parseDouble(const char* arg) {
   char* end;
   double value = strtod(arg, &end);
   if (end[0]) {
@@ -47,7 +47,7 @@ double parseDouble(const char* arg) {
   return value;
 }
 
-char parseOperation(const char* arg) {
+char QuaternionCalculator::parseOperation(const char* arg) {
   char op;
   if (strcmp(arg, "+") == 0) {
     op = '+';

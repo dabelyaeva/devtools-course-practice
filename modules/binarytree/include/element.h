@@ -1,6 +1,6 @@
 // Copyright 2016 Litsov Alex
-#ifndef MODULES_LITSOV_ALEX_BINARYTREE_INCLUDE_ELEMENT_H_
-#define MODULES_LITSOV_ALEX_BINARYTREE_INCLUDE_ELEMENT_H_
+#ifndef MODULES_INCLUDE_ELEMENT_H_
+#define MODULES_INCLUDE_ELEMENT_H_
 
 #include <string>
 using std::string;
@@ -30,4 +30,4 @@ class Element {
     string value_;
 };
 
-#endif  // MODULES_LITSOV_ALEX_BINARYTREE_INCLUDE_ELEMENT_H_
+#endif  // MODULES_INCLUDE_ELEMENT_H_

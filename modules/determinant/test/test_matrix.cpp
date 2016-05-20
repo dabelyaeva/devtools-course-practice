@@ -1,12 +1,8 @@
-// Copyright 2016 Koshechkin Vlad
-
 #include <gtest/gtest.h>
-
 #include <string>
 #include <map>
 #include <vector>
-
-#include "include/matrix.h"
+#include "matrix.h"
 
 using std::invalid_argument;
 using std::vector;
@@ -32,8 +28,10 @@ TEST(MatrixTest, Can_Create_Matrix_From_Vector) {
     // Arrange
     int n = 2;
     vector<int> v = {1, 8, 1, 5};
+
     // Act
     Matrix m = Matrix(n, v);
+
     // Assert
     EXPECT_EQ(m.to_vector(), v);
 }
@@ -42,6 +40,7 @@ TEST(MatrixTest, Throws_Count_Negative_In_Matrix) {
     // Arrange
     int n = -2;
     vector<int> v = {1, 8, 1, 5};
+
     // Act&Assert
     EXPECT_THROW(Matrix m(n, v), std::invalid_argument);
 }
@@ -50,6 +49,7 @@ TEST(MatrixTest, Throws_Vecor_More_Size_In_Matrix) {
     // Arrange
     int n = 1;
     vector<int> v = {1, 8, 1, 5};
+
     // Act&Assert
     EXPECT_THROW(Matrix m(n, v), std::invalid_argument);
 }
@@ -58,6 +58,7 @@ TEST(MatrixTest, Throws_Vecor_Less_Size_In_Matrix) {
     // Arrange
     int n = 5;
     vector<int> v = {1, 8, 1, 5};
+
     // Act&Assert
     EXPECT_THROW(Matrix m(n, v), std::invalid_argument);
 }
@@ -70,9 +71,11 @@ TEST(MatrixTest, Can_Make_First_Minor) {
                      4, 6, 2};
     vector<int> minor = {5, 3, 6, 2};
     Matrix m = Matrix(n, v);
+
     // Act
     Matrix res = m.Minor(0, 0);
     v = res.to_vector();
+
     // Assert
     EXPECT_EQ(v, minor);
 }
@@ -85,9 +88,11 @@ TEST(MatrixTest, Can_Make_Second_Minor) {
                      4, 6, 2};
     vector<int> minor = {1, 3, 4, 2};
     Matrix m = Matrix(n, v);
+
     // Act
     Matrix res = m.Minor(0, 1);
     v = res.to_vector();
+
     // Assert
     EXPECT_EQ(v, minor);
 }
@@ -146,9 +151,11 @@ TEST(MatrixTest, Can_Set_Element) {
     int n = 2;
     vector<int> v = {1, 8, 1, 5};
     Matrix m = Matrix(n, v);
+
     // Act
     m.Set(0, 0, 100);
     int x00 = m.Get(0, 0);
+
     // Assert
     EXPECT_EQ(x00, 100);
 }
@@ -198,11 +205,13 @@ TEST(MatrixTest, Can_Get_Element) {
     int n = 2;
     vector<int> v = {1, 8, 1, 5};
     Matrix m = Matrix(n, v);
+
     // Act
     int x00 = m.Get(0, 0);
     int x11 = m.Get(1, 1);
     int x01 = m.Get(0, 1);
     int x10 = m.Get(1, 0);
+
     // Assert
     EXPECT_EQ(x00, 1);
     EXPECT_EQ(x01, 8);

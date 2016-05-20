@@ -4,7 +4,7 @@
 #include <utility>
 #include <cstdlib>
 #include <vector>
-#include "include/matrix.h"
+#include "matrix.h"
 
 
 using std::vector;
@@ -35,6 +35,24 @@ vector<int> Matrix::operator[](const int row_numder) {
     for (int j = 0; j < size_; j++)
         row.push_back(data_[row_numder*size_+j]);
         return row;
+}
+
+std::string Matrix::PrintMatrix()
+{
+  int count = 0;
+  std::string message;
+
+  for (vector<int>::iterator it = data_.begin(); it != data_.end(); ++it) {
+    message+= std::to_string(*it)+" ";
+    count++;
+
+    if (count == size_) {
+      message += "\n";
+      count = 0;
+    }
+  }
+
+  return message;
 }
 
 const vector<int> &Matrix::to_vector() {

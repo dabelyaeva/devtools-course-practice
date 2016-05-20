@@ -4,7 +4,7 @@
 #include <utility>
 #include <cstdlib>
 #include <vector>
-#include "matrix.h"
+#include "./matrix.h"
 
 
 using std::vector;

@@ -17,14 +17,13 @@ class MatrixApplication {
  private:
   void help(const char* arg, const char* message = "");
   std::string _message;
-
- typedef struct {
-  int _size;
-  vector<int> _elems;
-  std::string _act;
-  int _row = 0;
-  int _collum = 0;
- } Arguments;
+  typedef struct {
+    int _size;
+    vector<int> _elems;
+    std::string _act;
+    int _row = 0;
+    int _collum = 0;
+    } Arguments;
 };
 
 #endif  // MODULES_DETERMINANT_INCLUDE_MATRIX_APP_H_

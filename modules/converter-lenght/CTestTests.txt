@@ -29,7 +29,7 @@ add_test(
     NAME ${prefix}_can_Detect_Invalid_Values
     COMMAND ${APPLICATION} A Mile Meter
 )
-set_tests_properties (${prefix}_can_Detect_Wrong_Single_Value_Format
+set_tests_properties (${prefix}_can_Detect_Invalid_Values
   PROPERTIES PASS_REGULAR_EXPRESSION "Entered is not a number or a number other than zero")
 
 add_test(
@@ -85,5 +85,19 @@ add_test(
     NAME ${prefix}_can_Convert_Centimeter_To_Meter
     COMMAND ${APPLICATION} 100.0 Centimeter Meter
 )
-set_tests_properties (${prefix}_can_Convert_Mile_To_Mile
+set_tests_properties (${prefix}_can_Convert_Centimeter_To_Meter
   PROPERTIES PASS_REGULAR_EXPRESSION "1.0")
+
+add_test(
+    NAME ${prefix}_can_Convert_Centimeter_To_Kilometer
+    COMMAND ${APPLICATION} 100.0 Kilometer Centimeter
+)
+set_tests_properties (${prefix}_can_Convert_Centimeter_To_Kilometer
+  PROPERTIES PASS_REGULAR_EXPRESSION "0.001")
+
+add_test(
+    NAME ${prefix}_can_Convert_Centimeter_To_Mile
+    COMMAND ${APPLICATION} 100000.0 Kilometer Centimeter
+)
+set_tests_properties (${prefix}_can_Convert_Centimeter_To_Mile
+  PROPERTIES PASS_REGULAR_EXPRESSION "0.62")

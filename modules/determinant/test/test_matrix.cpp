@@ -1,8 +1,10 @@
+// Copyright 2016 Koshechkin Vlad
+
 #include <gtest/gtest.h>
 #include <string>
 #include <map>
 #include <vector>
-#include "matrix.h"
+#include "./matrix.h"
 
 using std::invalid_argument;
 using std::vector;

@@ -94,10 +94,3 @@ add_test(
 )
 set_tests_properties (${prefix}_can_Convert_Centimeter_To_Kilometer
   PROPERTIES PASS_REGULAR_EXPRESSION "0.001")
-
-add_test(
-    NAME ${prefix}_can_Convert_Centimeter_To_Mile
-    COMMAND ${APPLICATION} 100000.0 Kilometer Centimeter
-)
-set_tests_properties (${prefix}_can_Convert_Centimeter_To_Mile
-  PROPERTIES PASS_REGULAR_EXPRESSION "0.62")

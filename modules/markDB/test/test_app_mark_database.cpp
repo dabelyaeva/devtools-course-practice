@@ -33,7 +33,7 @@ class DataBaseAppTest : public ::testing::Test {
   string output_;
 };
 
-TEST_F(DataBaseAppTest, Test_Help) {
+TEST_F(DataBaseAppTest, Can_Print_Help_Without_Arguments) {
     // Arrange
     const vector<string> args = { };
 
@@ -71,7 +71,7 @@ TEST_F(DataBaseAppTest, Can_Add_New_Subject) {
     Assert("Successful added new subject ");
 }
 
-TEST_F(DataBaseAppTest, Checks_Number_Of_Arguments) {
+TEST_F(DataBaseAppTest, Can_Checks_Number_Of_Arguments) {
     // Arrange
     vector<string> args{ "Name", "Name" };
 
@@ -79,7 +79,7 @@ TEST_F(DataBaseAppTest, Checks_Number_Of_Arguments) {
     Act(args);
 
     // Assert
-    Assert("ERROR: Should be 4 arguments\\.");
+    Assert("ERROR: Should be 4 arguments.");
 }
 
 TEST_F(DataBaseAppTest, Can_Detect_Incorrect_Number_Format_Str) {

@@ -59,7 +59,7 @@ char parseOperation(const char* arg) {
         op = 'R';
     } else if (strcmp(arg, "deleteRecord") == 0) {
         op = 'D';
-    }  else {
+    } else {
         throw std::string("Wrong operation format!");
     }
     return op;
@@ -97,13 +97,14 @@ std::string MarkDataBaseApp::operator()(int argc, const char** argv) {
             ourBase.addSubject(args.subject);
             stream << "Successful added new subject ";
             break;
+
         case 'S':
             ourBase.addStudent(args.student_Name);
             stream << "Successful added new student ";
             break;
         case 'D':
             ourBase.deleteRecord(args.student_Name, args.subject);
-            stream << "Successful added new subject ";
+            stream << "Successful delete record";
             break;
     }
 

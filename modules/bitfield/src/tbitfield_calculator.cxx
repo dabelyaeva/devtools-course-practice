@@ -91,8 +91,8 @@ std::string TBitFieldCalculator::ExecuteOperation() {
 }
 
 void TBitFieldCalculator::Clear() {
-    if(pBitField1 != nullptr)
+    if (pBitField1 != nullptr)
         delete pBitField1;
-    if(pBitField2 != nullptr)
+    if (pBitField2 != nullptr)
         delete pBitField2;
 }

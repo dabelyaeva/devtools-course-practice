@@ -32,6 +32,10 @@ std::string MatrixApplication::operator()(int argc, const char** argv) {
   int argLen = atoi(argv[1])*atoi(argv[1]);
 
   for (int i = 0; i < (argLen + 5); i++) {
+    if ((!isdigit(argv[i][0]) && strlen(argv[i]) == 1) && argv[i] != "0" && i >= 3) {
+      _message = "Matrix contains CHAR symbol!";
+      return _message;
+    }
     if (i >= 3 && i < (argLen + 3))
       arg._elems.push_back(atoi(argv[i]));
 

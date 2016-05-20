@@ -234,3 +234,17 @@ TEST_F(MatrixApplication_Test, Can_Calculate_Determinant_If_All_Zero) {
 
   Assert("Determinant of matix = 0");
 }
+
+TEST_F(MatrixApplication_Test, Error_If_Matrix_Contains_Not_Int) {
+  vector<string> args = { "3",
+    "DET",
+    "A", "2", "3",
+    "4", "5", "6",
+    "7", "8", "9",
+    "3",
+    "3" };
+
+  Act(args);
+
+  Assert("Matrix contains CHAR symbol!");
+}

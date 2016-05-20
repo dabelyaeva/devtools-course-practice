@@ -3,7 +3,7 @@
 #include "gtest/gtest.h"
 #include "include/quaternion_calculator.h"
 
-TEST(quaternion_calculation, parseOperation_+) {
+TEST(quaternion_calculation, parseOperation_1) {
   // Arrange
   const char* arg;
   arg = "+";
@@ -12,7 +12,7 @@ TEST(quaternion_calculation, parseOperation_+) {
   EXPECT_EQ('+', parseOperation(arg));
 }
 
-TEST(quaternion_calculation, parseOperation_-) {
+TEST(quaternion_calculation, parseOperation_2) {
   // Arrange
   const char* arg;
   arg = "-";
@@ -21,7 +21,7 @@ TEST(quaternion_calculation, parseOperation_-) {
   EXPECT_EQ('-', parseOperation(arg));
 }
 
-TEST(quaternion_calculation, parseOperation_*) {
+TEST(quaternion_calculation, parseOperation_3) {
   // Arrange
   const char* arg;
   arg = "*";
@@ -30,7 +30,7 @@ TEST(quaternion_calculation, parseOperation_*) {
   EXPECT_EQ('*', parseOperation(arg));
 }
 
-TEST(quaternion_calculation, parseOperation_!) {
+TEST(quaternion_calculation, parseOperation_4) {
   // Arrange
   const char* arg;
   arg = "!";
@@ -39,7 +39,7 @@ TEST(quaternion_calculation, parseOperation_!) {
   EXPECT_EQ('!', parseOperation(arg));
 }
 
-TEST(quaternion_calculation, parseOperation_*) {
+TEST(quaternion_calculation, parseOperation_5) {
   // Arrange
   const char* arg;
   arg = "*";
@@ -48,7 +48,7 @@ TEST(quaternion_calculation, parseOperation_*) {
   EXPECT_EQ('*', parseOperation(arg));
 }
 
-TEST(quaternion_calculation, parseOperation_~) {
+TEST(quaternion_calculation, parseOperation_6) {
   // Arrange
   const char* arg;
   arg = "~";

@@ -1,6 +1,6 @@
 // Copyright 2016 Malkov Stanislav
 
-#include <gtest\gtest.h>
+#include "gtest/gtest.h"
 #include "../include/tbitfield_calculator.h"
 
 TEST(TBitFieldCalculator, Can_Inverse) {

@@ -95,7 +95,7 @@ TEST(Converterlenght, Can_Convert_Centimeter_To_Meter) {
 TEST(Converterlenght, Cant_Convert_Centimeter_To_Negative_Meter) {
     // Arrange
     const double value = -10.0;
-    const Unit len = Unit::METERL;
+    const Unit len = Unit::METER;
     ConverterLenght lenght(value, len);
 
     // Act
@@ -138,7 +138,7 @@ TEST(Converterlenght, Cant_Convert_Centimeter_To_Negative_Kilometer) {
 TEST(Converterlenght, Can_Convert_Centimeter_To_Mile) {
     // Arrange
     const double value = 1000000;
-    const Unit len = Unit::MILEL;
+    const Unit len = Unit::MILE;
     ConverterLenght lenght(value, len);
 
     // Act

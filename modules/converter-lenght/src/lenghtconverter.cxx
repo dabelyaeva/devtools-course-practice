@@ -12,13 +12,13 @@ LenghtConverter::LenghtConverter() : message_("") {}
 Unit LenghtConverter::getMeasure(const std::string& unit)const {
     Unit result;
     if (unit == "Centimeter")
-        result = Unit::CENTIMETERL;
+        result = Unit::CENTIMETER;
     else if (unit == "Meter")
-        result = Unit::METERL;
+        result = Unit::METER;
     else if (unit == "Kilometer")
-        result = Unit::KILOMETERL;
+        result = Unit::KILOMETER;
     else if (unit == "Mile")
-        result = Unit::MILEL;
+        result = Unit::MILE;
     else
         throw std::string("First or second measure have wrong format! \n");
     return result;

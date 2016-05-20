@@ -1,5 +1,5 @@
 // Copyright 2016 Litsov Alex
-#include "include/Element.h"
+#include "include/element.h"
 
 #include <stdlib.h>
 #include <string>

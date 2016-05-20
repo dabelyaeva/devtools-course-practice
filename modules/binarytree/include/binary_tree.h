@@ -2,7 +2,7 @@
 #ifndef MODULES_INCLUDE_BINARY_TREE_H_
 #define MODULES_INCLUDE_BINARY_TREE_H_
 
-#include "Element.h"
+#include "element.h"
 #include <string>
 using std::string;
 

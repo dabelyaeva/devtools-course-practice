@@ -1,5 +1,5 @@
 // Copyright 2016 Litsov Alex
-#include "include/BinaryTree.h"
+#include "include/binary_tree.h"
 
 #include <stdlib.h>
 #include <string>

@@ -33,7 +33,6 @@ TEST(TBitFieldCalculator, Can_Conjugate) {
 TEST(TBitFieldCalculator, Can_Detect_No_Arguments) {
     // Arrange & Act
     TBitFieldCalculator calculator;
-    
     // Assert
     EXPECT_EQ(calculator.Execute(0, NULL).substr(0, 15), "Wrong arguments");
 }
@@ -52,7 +51,6 @@ TEST(TBitFieldCalculator, Can_Detect_Not_Enough_Arguments) {
     char* args[2];
     args[1] = "1100&";
     TBitFieldCalculator calculator;
-
     // Assert
     EXPECT_EQ(calculator.Execute(2, args).substr(0, 15), "Wrong arguments");
 }
@@ -62,7 +60,6 @@ TEST(TBitFieldCalculator, Can_Detect_Wrong_Arguments_Number) {
     char* args[2];
     args[1] = "1100~";
     TBitFieldCalculator calculator;
-
     // Assert
     EXPECT_EQ(calculator.Execute(0, args).substr(0, 15), "Wrong arguments");
 }
@@ -72,7 +69,6 @@ TEST(TBitFieldCalculator, Can_Inverse_With_Space) {
     char* args[2];
     args[1] = "1100 ~";
     TBitFieldCalculator calculator;
-
     // Assert
     EXPECT_EQ(calculator.Execute(2, args), "0011");
 }
@@ -82,7 +78,6 @@ TEST(TBitFieldCalculator, Can_Calculate_With_Spaces) {
     char* args[2];
     args[1] = "    1100 &      0011";
     TBitFieldCalculator calculator;
-
     // Assert
     EXPECT_EQ(calculator.Execute(2, args), "0000");
 }
@@ -91,7 +86,6 @@ TEST(TBitFieldCalculator, Can_Detect_Null_Arguments) {
     // Arrange & Act
     char** args = nullptr;
     TBitFieldCalculator calculator;
-
     // Assert
     EXPECT_EQ(calculator.Execute(2, args).substr(0, 15), "Wrong arguments");
 }
@@ -101,7 +95,6 @@ TEST(TBitFieldCalculator, Can_Calculate_With_Different_Bitfields_Length) {
     char* args[2];
     args[1] = "0011100 & 001";
     TBitFieldCalculator calculator;
-
     // Assert
     EXPECT_EQ(calculator.Execute(2, args), "0010000");
 }

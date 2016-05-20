@@ -47,7 +47,7 @@ TEST_F(LenghtConverterTest, Can_Detect_Wrong_Number_Of_Arguments) {
 
     Act(args);
 
-    Assert("ERROR: Should be 3 arguments.");
+    Assert("ERROR: Should be 3 arguments\\.");
 }
 
 TEST_F(LenghtConverterTest, Can_Detect_Invalid_Values) {
@@ -71,7 +71,7 @@ TEST_F(LenghtConverterTest, Can_Convert_Centimeter_To_Centimeter) {
 
     Act(args);
 
-    Assert("1.0");
+    Assert("1");
 }
 
 TEST_F(LenghtConverterTest, Can_Convert_Meter_To_Meter) {
@@ -79,7 +79,7 @@ TEST_F(LenghtConverterTest, Can_Convert_Meter_To_Meter) {
 
     Act(args);
 
-    Assert("1.0");
+    Assert("1");
 }
 
 TEST_F(LenghtConverterTest, Can_Convert_Kilometer_To_Kilometer) {
@@ -87,7 +87,7 @@ TEST_F(LenghtConverterTest, Can_Convert_Kilometer_To_Kilometer) {
 
     Act(args);
 
-    Assert("1.0");
+    Assert("1");
 }
 
 TEST_F(LenghtConverterTest, Can_Convert_Mile_To_Mile) {
@@ -95,7 +95,7 @@ TEST_F(LenghtConverterTest, Can_Convert_Mile_To_Mile) {
 
     Act(args);
 
-    Assert("2.0");
+    Assert("2");
 }
 
 TEST_F(LenghtConverterTest, Can_Detect_Wrong_First_Measure_Format) {
@@ -119,7 +119,7 @@ TEST_F(LenghtConverterTest, Can_Convert_Centimeter_To_Meter) {
 
     Act(args);
 
-    Assert("1.0");
+    Assert("1");
 }
 
 TEST_F(LenghtConverterTest, Can_Convert_Centimeter_To_Kilometer) {
@@ -127,7 +127,7 @@ TEST_F(LenghtConverterTest, Can_Convert_Centimeter_To_Kilometer) {
 
     Act(args);
 
-    Assert("0.001");
+    Assert("0\\.001");
 }
 
 TEST_F(LenghtConverterTest, Can_Convert_Centimeter_To_Mile) {
@@ -135,5 +135,5 @@ TEST_F(LenghtConverterTest, Can_Convert_Centimeter_To_Mile) {
 
     Act(args);
 
-    Assert("0.62");
+    Assert("0\\.62");
 }

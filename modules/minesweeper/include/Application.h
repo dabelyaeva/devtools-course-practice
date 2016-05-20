@@ -10,9 +10,10 @@
 class Application {
  public:
     Application();
+    ~Application();
     std::string operator()(int argc, const char** argv);
  private:
-    MineSweeper* Foo;
+    MineSweeper* game_MS;
     std::string message_;
     std::istream *in_stream;
     bool test_mode;

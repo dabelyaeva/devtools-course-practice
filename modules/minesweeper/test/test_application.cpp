@@ -84,13 +84,25 @@ TEST_F(AppMinesweeperTest,
 TEST_F(AppMinesweeperTest,
     can_reach_error_msg_when_no_arguments) {
     // Arrange
-    vector<string> args = { };
+    vector<string> args = {};
 
     // Act
     Act(args);
 
     // Assert
     Assert("Error: invalid number of arguments.*");
+}
+
+TEST_F(AppMinesweeperTest,
+    can_reach_error_size_is_not_num) {
+    // Arrange
+    vector<string> args = { "-r", "r" };
+
+    // Act
+    Act(args);
+
+    // Assert
+    Assert("Error: wrong size of field.*");
 }
 
 TEST_F(AppMinesweeperTest,
@@ -146,7 +158,7 @@ TEST_F(AppMinesweeperTest, can_win) {
 
 TEST_F(AppMinesweeperTest, can_lose) {
     // Arrange
-    std::string filename = "win.txt";
+    std::string filename = "lose.txt";
     std::ofstream fout(filename);
     fout << "3 4 2 7 \n";
     fout.close();

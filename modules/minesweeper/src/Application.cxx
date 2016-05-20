@@ -10,10 +10,14 @@
 using std::string;
 
 Application::Application() {
-    Foo = nullptr;
+    game_MS = nullptr;
     message_ = "";
     in_stream = &(std::cin);
     test_mode = false;
+}
+
+Application::~Application() {
+    delete game_MS;
 }
 
 void Application::help(const char *appname) {
@@ -95,12 +99,12 @@ string Application::operator()(int argc, const char **argv) {
         return message_;
     std::cout << message_ << std::endl;
     int x, y;
-    while (Foo->get_game_status() != MineSweeper::GAME_STATUS_LOSE &&
-        Foo->get_game_status() != MineSweeper::GAME_STATUS_WIN) {
+    while (game_MS->get_game_status() != MineSweeper::GAME_STATUS_LOSE &&
+        game_MS->get_game_status() != MineSweeper::GAME_STATUS_WIN) {
         (*in_stream) >> x >> y;
-        if (Foo->get_opened_field_cell(x - 1, y - 1) ==
+        if (game_MS->get_opened_field_cell(x - 1, y - 1) ==
             MineSweeper::CLOSED_CELL) {
-            Foo->OpenCell(x - 1, y - 1);
+            game_MS->OpenCell(x - 1, y - 1);
             message_ = printField();
         } else {
             message_ = "Cell is opened!";
@@ -108,10 +112,14 @@ string Application::operator()(int argc, const char **argv) {
         std::cout << message_ << std::endl;
         message_ = "";
     }
-    if (Foo->get_game_status() == MineSweeper::GAME_STATUS_LOSE)
+    if (game_MS->get_game_status() == MineSweeper::GAME_STATUS_LOSE)
         message_ = "You lose!";
-    if (Foo->get_game_status() == MineSweeper::GAME_STATUS_WIN)
+    if (game_MS->get_game_status() == MineSweeper::GAME_STATUS_WIN)
         message_ = "You win!";
+    if (test_mode) {
+        dynamic_cast<std::ifstream*>(in_stream)->close();
+        delete in_stream;
+    }
     return message_;
 }
 
@@ -123,12 +131,19 @@ void Application::testModeInit(std::string file_name) {
 }
 
 bool Application::createRandField(std::string str_size) {
-    int f_size = atoi(str_size.c_str());
+    int f_size;
+    try {
+        f_size = atoi(str_size.c_str());
+    }
+    catch (std::exception  except) {
+        message_ = "Error: Wrong size of field";
+        return false;
+    }
     try {
         if (test_mode)
-            Foo = new MineSweeper(f_size, 10, true);
+            game_MS = new MineSweeper(f_size, 10, true);
         else
-            Foo = new MineSweeper(f_size, f_size, false);
+            game_MS = new MineSweeper(f_size, f_size, false);
     }
     catch (std::exception  except) {
         message_ = "Error: Invalid field len";
@@ -139,7 +154,7 @@ bool Application::createRandField(std::string str_size) {
 
 string Application::printField() {
     string out = "";
-    Field opened = Foo->get_opened_field();
+    Field opened = game_MS->get_opened_field();
     int f_size = opened.get_field_size();
     for (int x = 0; x < f_size; ++x)
         out += "__";
@@ -147,7 +162,7 @@ string Application::printField() {
     for (int x = 0; x < f_size; ++x) {
         out += "|";
         for (int y = 0; y < f_size; ++y)
-            out += printCell(Foo->get_opened_field_cell(x, y));
+            out += printCell(game_MS->get_opened_field_cell(x, y));
         out += " |\n";
     }
     out += "|";

@@ -21,5 +21,4 @@ class SQConverter {
         std::string to;
     } Arguments;
 };
-
 #endif  // MODULES_ACONVERTER_INCLUDE_SQ_CONVERTER_H_

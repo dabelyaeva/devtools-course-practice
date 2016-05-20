@@ -132,10 +132,8 @@ void Application::testModeInit(std::string file_name) {
 
 bool Application::createRandField(std::string str_size) {
     int f_size;
-    try {
-        f_size = atoi(str_size.c_str());
-    }
-    catch (std::exception  except) {
+    f_size = atoi(str_size.c_str());
+    if (f_size == 0) {
         message_ = "Error: Wrong size of field";
         return false;
     }

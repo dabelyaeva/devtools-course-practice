@@ -24,7 +24,7 @@ void SQConverter::help(const char* appname, const char* message) {
         "This is a area units converter application.\n\n" +
         "Please provide arguments in the folowing format:\n\n" +
 
-        "  $ " + apn + " <value> " +
+        " <value> " +
         "<unit_from> <unit_to>\n\n" +
 
         "Where value is double-precision number, " +

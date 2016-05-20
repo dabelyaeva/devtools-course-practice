@@ -30,6 +30,7 @@ class TBitField {
     TBitField  operator|(const TBitField &bf);
     TBitField  operator&(const TBitField &bf);
     TBitField  operator~(void);
+
  private:
     int  BitLen;
     TELEM *pMem;

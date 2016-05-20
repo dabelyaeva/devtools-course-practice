@@ -49,14 +49,14 @@ TEST_F(AreaConverterApplicationTest, Can_Detect_Wrong_Number_Format) {
     Assert("Wrong number format!.*");
 }
 
-TEST_F(AreaConverterApplicationTest, Can_Detect_Dont_Existence_MassUnits) {
+TEST_F(AreaConverterApplicationTest, Can_Detect_Dont_Existence_AreaUnits) {
     vector<string> args = { "1.12", "m", "wrong" };
     Act(args);
     Assert("Undefined AreaUnit with qualifier wrong!.*");
 }
 
 TEST_F(AreaConverterApplicationTest, Can_Convert) {
-    vector<string> args = { "20000", "m", "g" };
+    vector<string> args = { "200000", "m", "g" };
     Act(args);
     Assert("2.000 g.*");
 }

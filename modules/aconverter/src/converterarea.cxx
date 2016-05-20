@@ -49,8 +49,7 @@ AreaUnit& AreaConverter::GetUnit(const std::string& qualifier) const {
 
     if (res != units_.end()) {
        return const_cast<AreaUnit&>(*res);
-    }
-    else {
+    } else {
        throw std::domain_error("Undefined AreaUnit with qualifier "
            + qualifier + "!");
     }

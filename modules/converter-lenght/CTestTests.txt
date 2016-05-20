@@ -20,7 +20,7 @@ set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Number_Of_Arguments
-    COMMAND ${APPLICATION} 1 Mile
+    COMMAND ${APPLICATION} 1\\.0 Mile
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Number_Of_Arguments
   PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments.")
@@ -34,63 +34,63 @@ set_tests_properties (${prefix}_can_Detect_Invalid_Values
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Single_Value_Format
-    COMMAND ${APPLICATION} -1.0 Mile Meter
+    COMMAND ${APPLICATION} -1\\.0 Mile Meter
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Single_Value_Format
   PROPERTIES PASS_REGULAR_EXPRESSION "Entered is not a number or a number other than zero")
 
 add_test(
     NAME ${prefix}_can_Convert_Centimeter_To_Centimeter
-    COMMAND ${APPLICATION} 1.0 Centimeter Centimeter
+    COMMAND ${APPLICATION} 1\\.0 Centimeter Centimeter
 )
 set_tests_properties (${prefix}_can_Convert_Centimeter_To_Centimeter
-  PROPERTIES PASS_REGULAR_EXPRESSION "1.0")
+  PROPERTIES PASS_REGULAR_EXPRESSION "1\\.0")
 
 add_test(
     NAME ${prefix}_can_Convert_Meter_To_Meter
-    COMMAND ${APPLICATION} 1.0 Meter Meter
+    COMMAND ${APPLICATION} 1\\.0 Meter Meter
 )
 set_tests_properties (${prefix}_can_Convert_Meter_To_Meter
-  PROPERTIES PASS_REGULAR_EXPRESSION "1.0")
+  PROPERTIES PASS_REGULAR_EXPRESSION "1\\.0")
 
 add_test(
     NAME ${prefix}_can_Convert_Kilometer_To_Kilometer
-    COMMAND ${APPLICATION} 1.0 Kilometer Kilometer
+    COMMAND ${APPLICATION} 1\\.0 Kilometer Kilometer
 )
 set_tests_properties (${prefix}_can_Convert_Kilometer_To_Kilometer
-  PROPERTIES PASS_REGULAR_EXPRESSION "1.0")
+  PROPERTIES PASS_REGULAR_EXPRESSION "1\\.0")
 
 add_test(
     NAME ${prefix}_can_Convert_Mile_To_Mile
-    COMMAND ${APPLICATION} 1.0 Mile Mile
+    COMMAND ${APPLICATION} 1\\.0 Mile Mile
 )
 set_tests_properties (${prefix}_can_Convert_Mile_To_Mile
-  PROPERTIES PASS_REGULAR_EXPRESSION "1.0")
+  PROPERTIES PASS_REGULAR_EXPRESSION "1\\.0")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_First_Measure_Format
-    COMMAND ${APPLICATION} 1.0 Miles Mile
+    COMMAND ${APPLICATION} 1\\.0 Miles Mile
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_First_Measure_Format
   PROPERTIES PASS_REGULAR_EXPRESSION "First or second measure have wrong format!")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Second_Measure_Format
-    COMMAND ${APPLICATION} 1.0 Mile Miles
+    COMMAND ${APPLICATION} 1\\.0 Mile Miles
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Second_Measure_Format
   PROPERTIES PASS_REGULAR_EXPRESSION "First or second measure have wrong format!")
 
 add_test(
     NAME ${prefix}_can_Convert_Centimeter_To_Meter
-    COMMAND ${APPLICATION} 100.0 Centimeter Meter
+    COMMAND ${APPLICATION} 100\\.0 Centimeter Meter
 )
 set_tests_properties (${prefix}_can_Convert_Centimeter_To_Meter
-  PROPERTIES PASS_REGULAR_EXPRESSION "1.0")
+  PROPERTIES PASS_REGULAR_EXPRESSION "1\\.0")
 
 add_test(
     NAME ${prefix}_can_Convert_Centimeter_To_Kilometer
-    COMMAND ${APPLICATION} 100.0 Kilometer Centimeter
+    COMMAND ${APPLICATION} 100\\.0 Kilometer Centimeter
 )
 set_tests_properties (${prefix}_can_Convert_Centimeter_To_Kilometer
-  PROPERTIES PASS_REGULAR_EXPRESSION "0.001")
+  PROPERTIES PASS_REGULAR_EXPRESSION "0\\.001")

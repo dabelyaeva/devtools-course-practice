@@ -1,5 +1,6 @@
 // Copyright 2016 Sharadze Georgy
 
+// Copyright 2016 Sharadze Georgy
 #ifndef MODULES_INCLUDE_BINARY_TREE_APP_H_
 #define MODULES_INCLUDE_BINARY_TREE_APP_H_
 

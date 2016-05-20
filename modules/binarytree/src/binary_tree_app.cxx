@@ -1,5 +1,3 @@
-#include "..\include\binary_tree_app.h"
-#include "include\binary_tree.h"
 // Copyright 2016 Sharadze Georgy
 
 #include <stdio.h>
@@ -9,6 +7,8 @@
 #include <string>
 #include <sstream>
 #include <cstdlib>
+#include "..\include\binary_tree_app.h"
+#include "include\binary_tree.h"
 
 BinaryTreeApplication::BinaryTreeApplication() : message_("") {
 }

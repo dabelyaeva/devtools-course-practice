@@ -24,7 +24,7 @@ class AreaConverterApplicationTest : public ::testing::Test {
         output_ = app_(argc, argv);
     }
     void Assert(std::string expected) {
-        EXPECT_TRUE(!(RE::PartialMatch(output_, RE(expected))));
+        EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
  private:
     SQConverter app_;

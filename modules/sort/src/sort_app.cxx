@@ -80,10 +80,10 @@ std::string SortApplication::operator()(int argc, const char** argv) {
 
     switch (args.select) {
     case 1: {
-        Sort.quickSort(0, args.length);
+        Sort.quickSort(0, args.length-1);
         Answer = Sort.getArray();
         stream << "Your sort array:";
-        for (int i = 1; i <= args.length; i++) {
+        for (int i = 0; i < args.length; i++) {
             stream << Answer[i] << " ";
         }
         break;

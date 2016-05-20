@@ -54,7 +54,7 @@ TEST_F(MatrixApplication_Test, Print_Help_Then_Incorrect_Number_of_Args) {
   Assert("This is matrix determinant application");
 }
 
-TEST_F(MatrixApplication_Test, Print_Help_Then_enter_Wrong_Act) {
+TEST_F(MatrixApplication_Test, Print_Error_Then_enter_Wrong_Act) {
   vector<string> args = { "3",
                           "DEM",
                           "1", "2", "3",

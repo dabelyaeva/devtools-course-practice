@@ -292,3 +292,14 @@ TEST(MatrixTest, Throws_When_Get_Row_With_Negative_Number_Of_Row) {
     // Act&Assert
     EXPECT_THROW(m[-3], std::invalid_argument);
 }
+
+TEST(MatrixTest, Print_Works) {
+  // Arrange
+  int n = 2;
+  vector<int> v = { 1, 8, 1, 5 };
+  Matrix m = Matrix(n, v);
+
+  // Act&Assert
+  const std::string expected = "1 8 \n1 5 \n";
+  EXPECT_EQ(m.PrintMatrix(), expected);
+}

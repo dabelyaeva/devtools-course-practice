@@ -3,7 +3,7 @@
 #include "../include/tbitfield_calculator.h"
 #include <string>
 
-std::string TBitFieldCalculator::Execute(int argc, char** argv) {
+std::string TBitFieldCalculator::Execute(int argc, const char** argv) {
     if (ParseArguments(argc, argv)) {
         Result = ExecuteOperation();
         Clear();
@@ -16,7 +16,7 @@ std::string TBitFieldCalculator::Execute(int argc, char** argv) {
     }
 }
 
-bool TBitFieldCalculator::ParseArguments(int argc, char** argv) {
+bool TBitFieldCalculator::ParseArguments(int argc, const char** argv) {
     if (argc < 2)
         return false;
     if (argv == nullptr)

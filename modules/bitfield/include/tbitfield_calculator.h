@@ -8,9 +8,9 @@
 
 class TBitFieldCalculator {
  public:
-     std::string Execute(int argc, char** argv);
+     std::string Execute(int argc, const char** argv);
  private:
-     bool ParseArguments(int argc, char** argv);
+     bool ParseArguments(int argc, const char** argv);
      std::string ExecuteOperation();
      void Clear();
      TBitField* pBitField1;

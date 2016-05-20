@@ -21,7 +21,7 @@ class TemperConverter {
         std::string value_con;
         std::string unit_con;
         std::string unit_res;
-    } Arguments;
+     } Arguments;
 };
 
 #endif  // MODULES_CONVERTER_TEMPERATURE_INCLUDE_TEMPERATURE_H_

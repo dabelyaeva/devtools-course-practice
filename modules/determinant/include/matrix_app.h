@@ -21,8 +21,8 @@ class MatrixApplication {
     int _size;
     vector<int> _elems;
     std::string _act;
-    int _row = 0;
-    int _collum = 0;
+    int _row;
+    int _collum;    
     } Arguments;
 };
 

@@ -7,6 +7,7 @@
 
 MatrixApplication::MatrixApplication() :_message("") {}
 
+
 void MatrixApplication::help(const char *appname, const char* message) {
   _message = std::string("") + "This is matrix determinant application\n" +
     "Please provide arguments in the following format:\n" +

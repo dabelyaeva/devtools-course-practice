@@ -18,10 +18,7 @@ void AppPath::help(const char* appname, const char* message) {
         "Please provide arguments in the following format:\n\n" +
 
         "  $ " + appname + " <name of file with graph> " +
-        "<first_vertex> <second_vertex> \n\n" +
-
-        "Where all arguments are double-precision numbers, " +
-        "and <operation> is one of '+', '-', '*', '/'.\n";
+        "<first_vertex> <second_vertex> \n\n";
 }
 
 bool AppPath::validateNumberOfArguments(int argc, const char** argv) {
@@ -45,7 +42,7 @@ bool AppPath::checkFileName(const char** argv) {
     true;
 }
 
-int getGraphSizeFromFile(string filename) {
+int AppPath::getGraphSizeFromFile(string filename) {
     int size;
     ifstream file(filename);
     file >> size;

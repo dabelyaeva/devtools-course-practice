@@ -22,7 +22,7 @@ class MatrixApplication {
     vector<int> _elems;
     std::string _act;
     int _row;
-    int _collum;    
+    int _collum;  
     } Arguments;
 };
 

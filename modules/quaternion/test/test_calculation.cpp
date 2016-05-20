@@ -87,7 +87,7 @@ TEST(quaternion_calculation, parseOperation_N) {
 
 TEST(quaternion_calculation, parseDouble) {
   // Arrange
-  const char* arg = '9';
+  const char* arg = "9";
   QuaternionCalculator QC;
 
   // Act && Assert

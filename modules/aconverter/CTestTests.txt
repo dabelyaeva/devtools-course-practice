@@ -16,7 +16,8 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
-    PROPERTIES PASS_REGULAR_EXPRESSION "This is a area units converter application.
+    PROPERTIES PASS_REGULAR_EXPRESSION "
+This is a area units converter application.
 
 Please provide arguments in the folowing format:
 

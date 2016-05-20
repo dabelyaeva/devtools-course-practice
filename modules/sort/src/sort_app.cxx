@@ -3,8 +3,9 @@
 #include "include/sort.h"
 #include "include/sort_app.h"
 
-#include <string>
 #include <sstream>
+#include <string>
+
 
 SortApplication::SortApplication() : message_("") {}
 

@@ -38,7 +38,7 @@ bool AppPath::checkFileName(const char** argv) {
         help(argv[0], "ERROR: Can not open the file.\n\n");
         return false;
     }
-    true;
+    return true;
 }
 
 int AppPath::getGraphSizeFromFile(string filename) {
@@ -55,8 +55,8 @@ int** AppPath::readFile(string filename) {
     ifstream file(filename);
     file >> size;
     result = new int*[size];
-    for (int s = 0; i < size; i++)
-        result[i] = new int[size];
+    for (int s = 0; s < size; s++)
+        result[s] = new int[size];
     while (file.eof()) {
         file >> result[i][j];
         j++;

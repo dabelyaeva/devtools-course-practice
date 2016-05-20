@@ -120,10 +120,10 @@ std::string SortApplication::operator()(int argc, const char** argv) {
     }
 
     case 5: {
-        Sort.mergeSort(0, args.length);
+        Sort.mergeSort(0, args.length-1);
         Answer = Sort.getArray();
         stream << "Your sort array:";
-        for (int i = 1; i <= args.length; i++) {
+        for (int i = 0; i < args.length; i++) {
             stream << Answer[i] << " ";
         }
         break;

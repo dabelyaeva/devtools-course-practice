@@ -237,14 +237,28 @@ TEST_F(MatrixApplication_Test, Can_Calculate_Determinant_If_All_Zero) {
 
 TEST_F(MatrixApplication_Test, Error_If_Matrix_Contains_Not_Int) {
   vector<string> args = { "3",
-    "DET",
-    "A", "2", "3",
-    "4", "5", "6",
-    "7", "8", "9",
-    "3",
-    "3" };
+                          "DET",
+                          "A", "2", "3",
+                          "4", "5", "6",
+                          "7", "8", "9",
+                          "3",
+                          "3" };
 
   Act(args);
 
   Assert("Matrix contains CHAR symbol!");
+}
+
+TEST_F(MatrixApplication_Test, Print_Help_If_Matrix_Size_Less_Zero) {
+  vector<string> args = { "-1",
+                          "DET",
+                          "1", "2", "3",
+                          "4", "5", "6",
+                          "7", "8", "9",
+                          "3",
+                          "3" };
+
+  Act(args);
+
+  Assert("This is matrix determinant application");
 }

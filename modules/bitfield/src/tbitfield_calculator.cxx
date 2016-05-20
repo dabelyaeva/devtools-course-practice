@@ -1,15 +1,16 @@
 // Copyright 2016 Malkov Stanislav
 
 #include "../include/tbitfield_calculator.h"
+#include <string>
 
 std::string TBitFieldCalculator::Execute(int argc, char** argv) {
     if (ParseArguments(argc, argv)) {
         Result = ExecuteOperation();
         Clear();
         return Result;
-    }
-    else
-        return "Wrong arguments! You need to pass two bitfields and operation |,& (ex 0010 | 0100) or ~ and bitfield (~0010).";
+    } else
+        return "Wrong arguments! You need to pass two bitfields and \
+        operation |,& (ex 0010 | 0100) or ~ and bitfield (~0010).";
 }
 
 bool TBitFieldCalculator::ParseArguments(int argc, char** argv) {
@@ -56,9 +57,9 @@ bool TBitFieldCalculator::ParseArguments(int argc, char** argv) {
         if (buf1[i] == '1')
             pBitField1->SetBit(i);
 
-    if (index2 == 0)
+    if (index2 == 0) {
         return Operation == '~';
-    else {
+    } else {
         pBitField2 = new TBitField(index2);
         for (int i = 0; i < index2; i++)
             if (buf2[i] == '1')

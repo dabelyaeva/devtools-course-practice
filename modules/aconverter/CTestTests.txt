@@ -12,20 +12,6 @@ add_test(
 )
 
 add_test(
-    NAME ${prefix}_can_Print_Help_Without_Arguments
-    COMMAND ${APPLICATION}
-)
-set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
-    PROPERTIES PASS_REGULAR_EXPRESSION "
-This is a area units converter application.
-
-Please provide arguments in the folowing format:
-
- <value> <unit_from> <unit_to>
-
-Where value is double-precision number, and <unit_*> is one of m, ar, g")
-
-add_test(
     NAME ${prefix}_can_Check_Number_Of_Arguments
     COMMAND ${APPLICATION} 1 g
 )

@@ -4,6 +4,7 @@
 #include <utility>
 #include <cstdlib>
 #include <vector>
+#include <string>
 #include "./matrix.h"
 
 
@@ -37,8 +38,7 @@ vector<int> Matrix::operator[](const int row_numder) {
         return row;
 }
 
-std::string Matrix::PrintMatrix()
-{
+std::string Matrix::PrintMatrix() {
   int count = 0;
   std::string message;
 

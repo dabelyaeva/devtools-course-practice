@@ -30,13 +30,13 @@ void SQConverter::help(const char* appname, const char* message) {
         "Where value is double-precision number, " +
         "and <unit_*> is one of ";
 
-    vector<AreaUnit> v = converter_.GetUnits();
+    std::vector<AreaUnit> v = converter_.GetUnits();
 
     for (size_t i = 0; i < v.size(); ++i) {
         if (i != 0) {
            message_ += ", ";
         }
-        message_ += v[i].Qualifier();
+        message_ += v[i].GetAreaType();
     }
     message_ += "\n";
 }

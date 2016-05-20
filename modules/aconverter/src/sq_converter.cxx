@@ -6,7 +6,7 @@
 #include <stdexcept>
 #include <cstdlib>
 
-#include "include/sqconverter.h"
+#include "include/sq_converter.h"
 #include "include/converterarea.h"
 
 

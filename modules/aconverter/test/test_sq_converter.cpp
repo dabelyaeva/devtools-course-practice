@@ -56,7 +56,7 @@ TEST_F(AreaConverterApplicationTest, Can_Detect_Dont_Existence_MassUnits) {
 }
 
 TEST_F(AreaConverterApplicationTest, Can_Convert) {
-    vector<string> args = { "200", "m", "g" };
+    vector<string> args = { "2000", "m", "g" };
     Act(args);
     Assert("2.000 g.*");
 }

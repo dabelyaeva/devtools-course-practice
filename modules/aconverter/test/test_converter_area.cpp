@@ -160,8 +160,8 @@ TEST(AreaConverterTest,
     std::string result = convert.ConvertToString(AreaUnitWeaving, value);
 
     // Assert
-    std::string _result = "10.01 ar";
-    EXPECT_EQ(result, _result);
+    std::string _result = "10.0100 ar";
+    EXPECT_NEAR(result, _result, 0.0001);
 }
 
 TEST(AreaConverterTest,

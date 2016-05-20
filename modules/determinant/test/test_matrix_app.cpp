@@ -194,7 +194,7 @@ TEST_F(MatrixApplication_Test, Can_Get_Row) {
   Assert("7 8 9 ");
 }
 
-TEST_F(MatrixApplication_Test, Print_Error_If_Incorrect_Row) {
+TEST_F(MatrixApplication_Test, Print_Error_If_Trying_to_Get_Incorrect_Row) {
   vector<string> args = { "3",
                           "GET_ROW",
                           "-1", "2", "3",
@@ -206,4 +206,31 @@ TEST_F(MatrixApplication_Test, Print_Error_If_Incorrect_Row) {
   Act(args);
 
   Assert("Incorrect row!");
+}
+
+TEST_F(MatrixApplication_Test, Print_Error_If_Size_Not_Int) {
+  vector<string> args = { "A",
+                          "DET",
+                          "-1", "2", "3",
+                          "4", "5", "6",
+                          "7", "8", "9",
+                          "3",
+                          "3" };
+  Act(args);
+
+  Assert("This is matrix determinant application");
+}
+
+TEST_F(MatrixApplication_Test, Can_Calculate_Determinant_If_All_Zero) {
+  vector<string> args = { "3",
+                          "DET",
+                          "0", "0", "0",
+                          "0", "0", "0",
+                          "0", "0", "0",
+                          "3",
+                          "3" };
+
+  Act(args);
+
+  Assert("Determinant of matix = 0");
 }

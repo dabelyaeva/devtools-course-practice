@@ -31,6 +31,7 @@ std::string MatrixApplication::operator()(int argc, const char** argv) {
   int argLen = atoi(argv[1])*atoi(argv[1]);
 
   for (int i = 0; i < (argLen + 5); i++) {
+      
     if (i >= 3 && i < (argLen + 3))
       arg._elems.push_back(atoi(argv[i]));
 
@@ -73,7 +74,7 @@ bool MatrixApplication::validateNumberOfArguments
   if (argc == 1) {
     help(argv[0]);
   return false;
-  } else { if (argc != atoi(argv[1])*atoi(argv[1])+5) {
+  } else { if (argc != atoi(argv[1])*atoi(argv[1])+5 || !atoi(argv[1])) {
   help(argv[0], "ERROR: not enougth arguments");
   return false;
   }

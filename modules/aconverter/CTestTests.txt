@@ -16,7 +16,13 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
-    PROPERTIES PASS_REGULAR_EXPRESSION "This is a mass units converter application")
+    PROPERTIES PASS_REGULAR_EXPRESSION "This is a area units converter application.
+
+Please provide arguments in the folowing format:
+
+  $ /home/travis/build/UNN-VMK-Software/devtools_build/bin/aconverter <value> <unit_from> <unit_to>
+
+Where value is double-precision number, and <unit_*> is one of m, ar, g")
 
 add_test(
     NAME ${prefix}_can_Check_Number_Of_Arguments
@@ -37,11 +43,11 @@ add_test(
     COMMAND ${APPLICATION} 17323 m g
 )
 set_tests_properties (${prefix}_can_Convert_From_m_To_g
-    PROPERTIES PASS_REGULAR_EXPRESSION "1.73230 g")
+    PROPERTIES PASS_REGULAR_EXPRESSION "1.7323 g")
 
 add_test(
     NAME ${prefix}_can_Convert_From_m_To_ar
     COMMAND ${APPLICATION} 1235 m ar
 )
 set_tests_properties (${prefix}_can_Convert_From_m_To_ar
-    PROPERTIES PASS_REGULAR_EXPRESSION "0.5602 ar")
+    PROPERTIES PASS_REGULAR_EXPRESSION "12.3500 ar")

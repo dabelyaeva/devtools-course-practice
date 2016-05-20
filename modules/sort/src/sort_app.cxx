@@ -133,5 +133,4 @@ std::string SortApplication::operator()(int argc, const char** argv) {
             message_ = stream.str();
 
             return message_;
-            
 }

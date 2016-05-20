@@ -76,7 +76,7 @@ TEST(quaternion_calculation, parseOperation_Q) {
   EXPECT_EQ('Q', QC.parseOperation(arg));
 }
 
-TEST(quaternion_calculation, parseOperation_Q) {
+TEST(quaternion_calculation, parseOperation_N) {
   // Arrange
   const char* arg = "N";
   QuaternionCalculator QC;

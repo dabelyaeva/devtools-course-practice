@@ -8,9 +8,12 @@ std::string TBitFieldCalculator::Execute(int argc, char** argv) {
         Result = ExecuteOperation();
         Clear();
         return Result;
-    } else
-        return "Wrong arguments! You need to pass two bitfields and \
-        operation |,& (ex 0010 | 0100) or ~ and bitfield (~0010).";
+    } else {
+        std::string error = "Wrong arguments! You need to pass ";
+        error += "two bitfields and operation |,& (ex 0010 | 0100) ";
+        error += "or ~ and bitfield (~0010).";
+        return error;
+    }
 }
 
 bool TBitFieldCalculator::ParseArguments(int argc, char** argv) {

@@ -83,7 +83,7 @@ std::string SortApplication::operator()(int argc, const char** argv) {
         Sort.quickSort(0, args.length);
         Answer = Sort.getArray();
         stream << "Your sort array:";
-        for (int i = 0; i < args.length; i++) {
+        for (int i = 1; i <= args.length; i++) {
             stream << Answer[i] << " ";
         }
         break;
@@ -123,7 +123,7 @@ std::string SortApplication::operator()(int argc, const char** argv) {
         Sort.mergeSort(0, args.length);
         Answer = Sort.getArray();
         stream << "Your sort array:";
-        for (int i = 0; i < args.length; i++) {
+        for (int i = 1; i <= args.length; i++) {
             stream << Answer[i] << " ";
         }
         break;

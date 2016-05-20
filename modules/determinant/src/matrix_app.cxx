@@ -15,12 +15,12 @@ void MatrixApplication::help(const char *appname, const char* message) {
     "size act 1 2 3 4 5 6 7 8 9 row collum\n" +
     "Supported operations:\n"+
     "Find determinant (DET)\n"+
-    "Minor (MINOR)\n";
+    "Minor (MINOR)\n\n";
 }
 
 std::string MatrixApplication::operator()(int argc, const char** argv) {
   Arguments arg;
-  double det;
+  int det;
 
   if (!validateNumberOfArguments(argc, argv)) {
     return _message;

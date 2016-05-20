@@ -23,8 +23,8 @@ class Matrix {
     std::string PrintMatrix();
 
  private:
-    int size_;
-    vector<int> data_;
+    int _size;
+    vector<int> _data;
 };
 
 #endif  // MODULES_DETERMINANT_INCLUDE_MATRIX_H_

@@ -44,7 +44,7 @@ TEST_F(MatrixApplication_Test, Print_Help_Without_Arguments) {
 
 TEST_F(MatrixApplication_Test, Print_Help_Then_Incorrect_Number_of_Args) {
   vector<string> args = { "3",
-                          "DET", 
+                          "DET",
                           "1", "2", "3",
                           "4", "5", "6",
                           "7", "8"};
@@ -170,7 +170,7 @@ TEST_F(MatrixApplication_Test, Can_Find_Minor_In_Large_Matrix) {
 TEST_F(MatrixApplication_Test, Can_Find_Determinant_With_Negitiv_Vals) {
   vector<string> args = { "3",
                           "DET",
-                          "-1", "2", "3",    
+                          "-1", "2", "3", 
                           "4", "5", "6",
                           "7", "8", "9",
                           "3",

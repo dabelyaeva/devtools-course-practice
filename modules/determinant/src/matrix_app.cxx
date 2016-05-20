@@ -31,7 +31,6 @@ std::string MatrixApplication::operator()(int argc, const char** argv) {
   int argLen = atoi(argv[1])*atoi(argv[1]);
 
   for (int i = 0; i < (argLen + 5); i++) {
-      
     if (i >= 3 && i < (argLen + 3))
       arg._elems.push_back(atoi(argv[i]));
 

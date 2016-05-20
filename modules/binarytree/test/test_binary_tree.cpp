@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 
 #include <string>
-#include "include/BinaryTree.h"
+#include "include/binary_tree.h"
 
 TEST(BinaryTree_Test_Cases, Can_Create_Correctly) {
     // Arrange

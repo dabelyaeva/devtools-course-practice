@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 
 #include <string>
-#include "include/Element.h"
+#include "include/element.h"
 
 TEST(Element_Test_Cases, Can_Create_Correctly) {
     // Arrange

@@ -16,49 +16,49 @@ set_tests_properties (${prefix}_Can_Print_Help_Without_Arguments
 
 add_test(
     NAME ${prefix}_Print_Help_Then_Incorrect_Number_of_Args
-    COMMAND ${APPLICATION} 3, DET, 1, 2, 3, 4, 5, 6, 7, 8
+    COMMAND ${APPLICATION} 3,DET,1,2,3,4,5,6,7,8
 )
 set_tests_properties (${prefix}_Print_Help_Then_Incorrect_Number_of_Args
   PROPERTIES PASS_REGULAR_EXPRESSION "This is matrix determinant application")
 
 add_test(
     NAME ${prefix}_Print_Error_Then_enter_Wrong_Act
-    COMMAND ${APPLICATION} 3, DEM, 1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 5
+    COMMAND ${APPLICATION} 3,DEM,1,2,3,4,5,6,7,8,9,3,5
 )
 set_tests_properties (${prefix}_Print_Error_Then_enter_Wrong_Act
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong act!")
 
 add_test(
     NAME ${prefix}_Can_Find_Determinant
-    COMMAND ${APPLICATION} 3, DET, 1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 5
+    COMMAND ${APPLICATION} 3,DET,1,2,3,4,5,6,7,8,9,3,5
 )
 set_tests_properties (${prefix}_Can_Find_Determinant
   PROPERTIES PASS_REGULAR_EXPRESSION "Determinant of matix = 0")
 
 add_test(
     NAME ${prefix}_Can_Find_Minor
-    COMMAND ${APPLICATION} 3, MINOR, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 1 
+    COMMAND ${APPLICATION} 3,MINOR,1,2,3,4,5,6,7,8,9,1,1 
 )
 set_tests_properties (${prefix}_Can_Find_Minor
   PROPERTIES PASS_REGULAR_EXPRESSION "Your minor is\n5 6 \n8 9 ")
 
 add_test(
     NAME ${prefix}_Print_Error_If_Incorrect_Collum_And_Row
-    COMMAND ${APPLICATION} 3, MINOR, 1, 2, 3, 4, 5, 6, 7, 8, 9, 4, 5
+    COMMAND ${APPLICATION} 3,MINOR,1,2,3,4,5,6,7,8,9,4,5
 )
 set_tests_properties (${prefix}_Print_Error_If_Incorrect_Collum_And_Row
   PROPERTIES PASS_REGULAR_EXPRESSION "Incorrect collum of row!")
 
 add_test(
     NAME ${prefix}_Can_Get_Row
-    COMMAND ${APPLICATION} 3, GET_ROW, 1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 3 
+    COMMAND ${APPLICATION} 3,GET_ROW,1,2,3,4,5,6,7,8,9,3,3 
 )
 set_tests_properties (${prefix}_Can_Get_Row
   PROPERTIES PASS_REGULAR_EXPRESSION "7 8 9 ")
 
 add_test(
     NAME ${prefix}_Can_Calculate_Determinant_If_All_Zero
-    COMMAND ${APPLICATION} 3, DET, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3
+    COMMAND ${APPLICATION} 3,DET,0,0,0,0,0,0,0,0,0,3,3
 )
 set_tests_properties (${prefix}_Can_Calculate_Determinant_If_All_Zero
   PROPERTIES PASS_REGULAR_EXPRESSION "Determinant of matix = 0")

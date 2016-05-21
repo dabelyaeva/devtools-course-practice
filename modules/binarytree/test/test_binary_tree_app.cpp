@@ -72,3 +72,11 @@ TEST_F(BinaryTreeApplicationTest, Can_Search_Elem_By_Value) {
 
     Assert("Cant find any matches");
 }
+
+TEST_F(BinaryTreeApplicationTest, Can_Show_Elements) {
+    const vector<string> args = { "423654", "Sharadze", "showElements" };
+
+    Act(args);
+
+    Assert("Tree is empty ");
+}

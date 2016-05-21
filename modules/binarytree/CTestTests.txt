@@ -59,3 +59,10 @@ add_test(
 )
 set_tests_properties (${prefix}_can_Search_By_Value
   PROPERTIES PASS_REGULAR_EXPRESSION "Cant find any matches")
+
+add_test(
+    NAME ${prefix}_can_Show_Elements
+    COMMAND ${APPLICATION} 123456 Sharadze showElements
+)
+set_tests_properties (${prefix}_can_Show_Elements
+  PROPERTIES PASS_REGULAR_EXPRESSION "Tree is empty")

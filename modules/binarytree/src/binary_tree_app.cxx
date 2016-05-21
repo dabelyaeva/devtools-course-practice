@@ -7,8 +7,8 @@
 #include <string>
 #include <sstream>
 #include <cstdlib>
-#include "..\include\binary_tree_app.h"
-#include "include\binary_tree.h"
+#include "include/binary_tree_app.h"
+#include "include/binary_tree.h"
 
 BinaryTreeApplication::BinaryTreeApplication() : message_("") {
 }
@@ -28,12 +28,12 @@ void BinaryTreeApplication::help(const char* appname, const char* message) {
         "searchByKey, searchByString, delElem '/'.\n";
 }
 
-bool BinaryTreeApplication::validateNumberOfArguments(int argc, const char** argv) {
+bool BinaryTreeApplication::validateNumberOfArguments(int argc, 
+                                                      const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 4) {
+    } else if (argc != 4) {
         help(argv[0], "ERROR: Should be 3 arguments.\n\n");
         return false;
     }

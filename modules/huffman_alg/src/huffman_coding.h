@@ -1,0 +1,8 @@
+// Copyright 2016 Sergey Shumihin
+
+#ifndef MODULES_HUFFMAN_ALG_INCLUDE_HUFFMAN_CODING_H_
+#define MODULES_HUFFMAN_ALG_INCLUDE_HUFFMAN_CODING_H_
+
+#include "include/huffman_alg.h"
+
+#endif  // MODULES_HUFFMAN_ALG_INCLUDE_HUFFMAN_CODING_H_

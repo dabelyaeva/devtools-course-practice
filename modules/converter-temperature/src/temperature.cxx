@@ -28,7 +28,6 @@ void TemperConverter::help(const char *appname, const char *message) {
         std::string(message) +
         "This is a convertor temperature application. \n\n" +
         "Please provide arguments in the folowing formats: \n\n" +
-        
         "  $" + std::string(appname) + " <number> <measure> " +
         "<result_unit>  \n\n"
         "Where <number> is valid positive number, and <measure> \n" +

@@ -1,8 +1,8 @@
 // Copyright 2016 Kulish Sem
 
+#include <stdlib.h>
 #include <vector>
 #include <string>
-#include <stdlib.h>
 
 #include "./matrix_app.h"
 

@@ -47,22 +47,46 @@ set_tests_properties (${prefix}_can_Insert_Element
   PROPERTIES PASS_REGULAR_EXPRESSION "Element successfuly inserted")
 
 add_test(
-    NAME ${prefix}_can_Search_By_Key
+    NAME ${prefix}_cant_Search_By_Undefined_Key
     COMMAND ${APPLICATION} 312524 Sharadze searchByKey
 )
-set_tests_properties (${prefix}_can_Search_By_Key
+set_tests_properties (${prefix}_cant_Search_By_Unefined_Key
   PROPERTIES PASS_REGULAR_EXPRESSION "Cant find any matches")
 
 add_test(
-    NAME ${prefix}_can_Search_By_Value
-    COMMAND ${APPLICATION} 13 -2 4.6 7.3 *
+    NAME ${prefix}_can_Search_By_Key
+    COMMAND ${APPLICATION} 423214 Sharadze insElem
+    COMMAND ${APPLICATION} 423214 Sharadze searchByKey
 )
-set_tests_properties (${prefix}_can_Search_By_Value
+set_tests_properties (${prefix}_can_Search_By_Key
+  PROPERTIES PASS_REGULAR_EXPRESSION "Found element with")
+
+add_test(
+    NAME ${prefix}_cant_Search_By_Undefined_String
+    COMMAND ${APPLICATION} 312524 Sharadze searchByString
+)
+set_tests_properties (${prefix}_cant_Search_By_Undefined_String
   PROPERTIES PASS_REGULAR_EXPRESSION "Cant find any matches")
 
 add_test(
-    NAME ${prefix}_can_Show_Elements
+    NAME ${prefix}_can_Search_By_String
+    COMMAND ${APPLICATION} 423214 Sharadze insElem
+    COMMAND ${APPLICATION} 423214 Sharadze searchByValue
+)
+set_tests_properties (${prefix}_can_Search_By_String
+  PROPERTIES PASS_REGULAR_EXPRESSION "Found element with")
+
+add_test(
+    NAME ${prefix}_cant_Show_Undefined_Element
     COMMAND ${APPLICATION} 123456 Sharadze showElements
 )
-set_tests_properties (${prefix}_can_Show_Elements
+set_tests_properties (${prefix}_cant_Show_Undefined_Elements
   PROPERTIES PASS_REGULAR_EXPRESSION "Tree is empty")
+
+add_test(
+    NAME ${prefix}_can_Show_Element
+    COMMAND ${APPLICATION} 123456 Sharadze insElem
+    COMMAND ${APPLICATION} 123456 Sharadze showElements
+)
+set_tests_properties (${prefix}_can_Show_Element
+  PROPERTIES PASS_REGULAR_EXPRESSION "123456;\nSharadze;")

@@ -1,8 +1,8 @@
 // Copyright 2016 Litsov Alex
-#include "include/element.h"
-
 #include <stdlib.h>
 #include <string>
+
+#include "include/element.h"
 
 Element::Element(const int init_key, const string& init_value,
     Element* const init_parent, Element* const init_right,

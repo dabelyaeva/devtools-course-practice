@@ -1,8 +1,8 @@
 // Copyright 2016 Litsov Alex
-#include "include/binary_tree.h"
-
 #include <stdlib.h>
 #include <string>
+
+#include "include/binary_tree.h"
 
 Element* BinaryTree::CopySubtree(Element* const subtree_root,
                                  Element* const roots_parent) const {

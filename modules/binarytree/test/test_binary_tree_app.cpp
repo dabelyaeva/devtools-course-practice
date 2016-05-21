@@ -1,9 +1,8 @@
-// Copyright 2016 Zemtsov Artem
-
-#include <gtest/gtest.h>
-
+// Copyright 2016 Sharadze Georgy
 #include <string>
 #include <vector>
+
+#include <gtest/gtest.h>
 
 #include "include/binary_tree_app.h"
 using std::vector;

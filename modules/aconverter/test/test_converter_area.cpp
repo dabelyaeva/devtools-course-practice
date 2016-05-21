@@ -58,8 +58,8 @@ TEST(AreaConverterTest, Throws_Negative_Number) {
     double Number = -1;
 
     // Act & Assert
-    EXPECT_THROW(converter.Convert(AreaUnitMeter,
-        AreaUnitWeaving, Number), std::invalid_argument);
+    EXPECT_THROW(converter.Convert(AREA_UNIT_METER,
+       AREA_UNIT_WEAVING, Number), std::invalid_argument);
 }
 
 TEST(AreaConverterTest, Can_Convert_Zero_Area) {
@@ -68,7 +68,7 @@ TEST(AreaConverterTest, Can_Convert_Zero_Area) {
     double value = 0;
 
     // Act
-    double result = converter.Convert(AreaUnitMeter, AreaUnitWeaving, value);
+    double result = converter.Convert(AREA_UNIT_METER, AREA_UNIT_WEAVING, value);
 
     // Assert
     double _result = 0;
@@ -81,7 +81,7 @@ TEST(AreaConverterTest, Can_Convert_Meter_To_Meter) {
     double value = 1.0;
 
     // Act
-    double result = converter.Convert(AreaUnitMeter, AreaUnitMeter, value);
+    double result = converter.Convert(AREA_UNIT_METER, AREA_UNIT_METER, value);
 
     // Assert
     double _result = 1.0;
@@ -94,7 +94,7 @@ TEST(AreaConverterTest, Can_Convert_Meter_To_Weaving) {
     double value = 100.0;
 
     // Act
-    double result = converter.Convert(AreaUnitMeter, AreaUnitWeaving, value);
+    double result = converter.Convert(AREA_UNIT_METER, AREA_UNIT_WEAVING, value);
 
     // Assert
     double _result = 1.0;
@@ -107,7 +107,7 @@ TEST(AreaConverterTest, Can_Convert_Weaving_To_Meter) {
     double value = 1.0;
 
     // Act
-    double result = converter.Convert(AreaUnitWeaving, AreaUnitMeter, value);
+    double result = converter.Convert(AREA_UNIT_WEAVING, AREA_UNIT_METER, value);
 
     // Assert
     double _result = 100.0;
@@ -159,7 +159,7 @@ TEST(AreaConverterTest,
     double value = 10.01;
 
     // Act
-    std::string result = convert.ConvertToString(AreaUnitWeaving, value);
+    std::string result = convert.ConvertToString(AREA_UNIT_WEAVING, value);
 
     // Assert
     std::string _result = "10.0100 ar";
@@ -173,7 +173,7 @@ TEST(AreaConverterTest,
     double value = 20.1234;
 
     // Act
-    std::string result = convert.ConvertToString(AreaUnitWeaving, value, 4);
+    std::string result = convert.ConvertToString(AREA_UNIT_WEAVING, value, 4);
 
     // Assert
     std::string expected_result = "20.1234 ar";
@@ -187,7 +187,7 @@ TEST(AreaConverterTest,
     double value = 5.0;
 
     // Act & Assert
-    EXPECT_THROW(convert.ConvertToString(AreaUnitWeaving,
+    EXPECT_THROW(convert.ConvertToString(AREA_UNIT_WEAVING,
         value, -1), std::invalid_argument);
 }
 
@@ -197,7 +197,7 @@ TEST(AreaConverterTest, Can_Convert_Weaving_To_Hectare) {
     double value = 10.0;
 
     // Act
-    double result = convert.Convert(AreaUnitWeaving, AreaUnitHectare, value);
+    double result = convert.Convert(AREA_UNIT_WEAVING, AREA_UNIT_HECTARE, value);
 
     // Assert
     double _result = 0.1;
@@ -210,7 +210,7 @@ TEST(AreaConverterTest, Can_Convert_Hectare_To_Weaving) {
     double value = 1.0;
 
     // Act
-    double result = convert.Convert(AreaUnitHectare, AreaUnitWeaving, value);
+    double result = convert.Convert(AREA_UNIT_HECTARE, AREA_UNIT_WEAVING, value);
 
     // Assert
     double _result = 100.0;

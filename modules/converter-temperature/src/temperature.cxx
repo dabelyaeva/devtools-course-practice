@@ -27,9 +27,13 @@ void TemperConverter::help(const char *appname, const char *message) {
     message_ =
         std::string(message) +
         "This is a convertor temperature application. \n\n" +
-        "Please provide arguments in the folowing format:\n\n" +
-        "  $ " + std::string(appname) + " <value> <unit> " +
-        "Digital values must be entered in double format";
+        "Please provide arguments in the folowing formats: \n\n" +
+        
+        "  $" + std::string(appname) + " <number> <measure> " +
+        "<result_unit>  \n\n"
+        "Where <number> is valid positive number, and <measure> \n" +
+        "and <result_unit> is one of 'Kelvin', 'Celsius', \n" +
+        " 'Fahrenheit', 'Newton'. \n";
 }
 
 bool TemperConverter::validateNumberOfArguments(int argc, const char** argv) {

@@ -45,95 +45,89 @@ TEST_F(TemperatureTests, Can_Do_Print_Help_Without_Arguments) {
 
 
 TEST_F(TemperatureTests, Can_Detect_Wrong_Number_Of_Arguments) {
-    vector<string> args = { "4.0", "Kelvin" };
+    vector<string> argum = { "4.0", "Kelvin" };
 
-    Act(args);
+    Act(argum);
 
     Assert("ERROR: Should be 3 arguments\\..*");
 }
 
-TEST_F(TemperatureTests, Can_Be_Found_Invalid_Number_Format) {
-    vector<string> args = { "Three" };
-
-    Act(args);
-
-    Assert("Wrong number format!");
-}
-
 TEST_F(TemperatureTests, Can_Detect_Invalid_Values) {
-    vector<string> args = { "Five", "Kelvin", "Newton" };
+    vector<string> argum = { "A", "Kelvin", "Newton" };
 
-    Act(args);
+    Act(argum);
 
-    Assert("Received a number in the wrong format!");
+    Assert("Entered is not a number or a number other than zero");
 }
 
 TEST_F(TemperatureTests, Can_Detect_Wrong_Single_Value_Format) {
-    vector<string> args = { "15", "Kelvin", "Celsius" };
+    vector<string> argum = { "-1", "Kelvin", "Celsius" };
 
-    Act(args);
+    Act(argum);
 
-    Assert("Received a number in the wrong format!");
-}
-
-TEST_F(TemperatureTests, Can_Verify_That_The_Formats_Do_Not_Match) {
-    vector<string> args = { "1.0", "Kelvin", "Newton" };
-
-    Act(args);
-
-    Assert("Do not match format");
-}
-
-TEST_F(TemperatureTests, Can_Detect_Wrong_Second_Measure_Format) {
-    vector<string> args = { "1.0", "Kelvin", "Kelvin" };
-
-    Act(args);
-
-    Assert("wrong the second format");
+    Assert("Entered is not a number or a number other than zero");
 }
 
 TEST_F(TemperatureTests, Can_Convert_Kelvin_To_Kelvin) {
-    vector<string> args = { "1.0", "Kelvin", "Kelvin" };
+    vector<string> argum = { "1.0", "Kelvin", "Kelvin" };
 
-    Act(args);
+    Act(argum);
 
     Assert("1");
 }
 
 TEST_F(TemperatureTests, Can_Convert_Celsius_To_Celsius) {
-    vector<string> args = { "1.0", "Celsius", "Celsius" };
+    vector<string> argum = { "1.0", "Celsius", "Celsius" };
 
-    Act(args);
+    Act(argum);
 
     Assert("1");
 }
 
 TEST_F(TemperatureTests, Can_Convert_Fahrenheit_To_Fahrenheit) {
-    vector<string> args = { "1.0", "Fahrenheit", "Fahrenheit" };
+    vector<string> argum = { "1.0", "Fahrenheit", "Fahrenheit" };
 
-    Act(args);
+    Act(argum);
 
     Assert("1");
 }
 
 TEST_F(TemperatureTests, Can_Convert_Newton_To_Newton) {
-    vector<string> args = { "1.0", "Newton", "Newton" };
+    vector<string> argum = { "1.0", "Newton", "Newton" };
 
-    Act(args);
+    Act(argum);
 
     Assert("1");
 }
 
+
+TEST_F(TemperatureTests, Can_Detect_Wrong_First_Measure_Format) {
+    vector<string> argum = { "1.0", "Kelvins", "Kelvin" };
+
+    Act(argum);
+
+    Assert("First or second measure have wrong format!");
+}
+
+
+TEST_F(TemperatureTests, Can_Detect_Wrong_Second_Measure_Format) {
+    vector<string> argum = { "1.0", "Kelvin", "Kelvins" };
+
+    Act(argum);
+
+    Assert("First or second measure have wrong format!");
+}
+
 TEST_F(TemperatureTests, Can_Convert_Celsius_To_Kelvin) {
-    vector<string> args = { "-273.1", "Kelvin", "Celsius" };
+    vector<string> args = { "-273.0", "Kelvin", "Celsius" };
 
     Act(args);
 
     Assert("0");
 }
 
-TEST_F(TemperatureTests, Can_Convert_Fahrenheit_To_Kelvin) {
-    vector<string> args = { "-459.67", "Kelvin", "Fahrenheit" };
+TEST_F(TemperatureTests, Can_Convert_Kelvin_To_Fahrenheit) {
+    vector<string> args = { "255.0", "Fahrenheit", "Kelvin" };
 
     Act(args);
 
@@ -141,25 +135,9 @@ TEST_F(TemperatureTests, Can_Convert_Fahrenheit_To_Kelvin) {
 }
 
 TEST_F(TemperatureTests, Can_Convert_Newton_To_Celsius) {
-    vector<string> args = { "10.0", "Kelvin", "Newton" };
+    vector<string> args = { "100.0", "Celsius", "Newton" };
 
     Act(args);
 
-    Assert("30\\.3");
-}
-
-TEST_F(TemperatureTests, Can_Identify_Wrong_First_Format) {
-    vector<string> args = { "1.0", "Kelvins", "Newton" };
-
-    Act(args);
-
-    Assert("Wrong first format");
-}
-
-TEST_F(TemperatureTests, Can_Identify_Wrong_Second_Format) {
-    vector<string> args = { "1.0", "Kelvin", "Newtons" };
-
-    Act(args);
-
-    Assert("Wrong second format!");
+    Assert("33");
 }

@@ -60,15 +60,3 @@ TEST_F(AreaConverterApplicationTest, Can_Convert) {
     Act(args);
     Assert("2.0000 ar.*");
 }
-
-TEST_F(AreaConverterApplicationTest, Can_Convert1) {
-    vector<string> args = { "2", "g", "ar" };
-    Act(args);
-    Assert("200.0000 ar.*");
-}
-
-TEST_F(AreaConverterApplicationTest, Can_Convert2) {
-    vector<string> args = { "20000", "m", "g" };
-    Act(args);
-    Assert("2.0000 g.*");
-}

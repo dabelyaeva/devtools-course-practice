@@ -52,14 +52,6 @@ TEST_F(TemperatureTests, Can_Detect_Wrong_Number_Of_Arguments) {
     Assert("ERROR: Should be 3 arguments\\..*");
 }
 
-TEST_F(TemperatureTests, Can_Detect_Invalid_Values) {
-    vector<string> argum = { "A", "Kelvin", "Newton" };
-
-    Act(argum);
-
-    Assert("Entered is not a number or a number other than zero");
-}
-
 TEST_F(TemperatureTests, Can_Detect_Wrong_Single_Value_Format) {
     vector<string> argum = { "-1", "Kelvin", "Celsius" };
 
@@ -102,7 +94,7 @@ TEST_F(TemperatureTests, Can_Convert_Newton_To_Newton) {
 
 
 TEST_F(TemperatureTests, Can_Detect_Wrong_First_Measure_Format) {
-    vector<string> argum = { "1.0", "Kelvins", "Kelvin" };
+    vector<string> argum = { "1.0", "KelvinSQ", "Kelvin" };
 
     Act(argum);
 
@@ -111,7 +103,7 @@ TEST_F(TemperatureTests, Can_Detect_Wrong_First_Measure_Format) {
 
 
 TEST_F(TemperatureTests, Can_Detect_Wrong_Second_Measure_Format) {
-    vector<string> argum = { "1.0", "Kelvin", "Kelvins" };
+    vector<string> argum = { "1.0", "Kelvin", "KelvinSQ" };
 
     Act(argum);
 
@@ -135,9 +127,9 @@ TEST_F(TemperatureTests, Can_Convert_Kelvin_To_Fahrenheit) {
 }
 
 TEST_F(TemperatureTests, Can_Convert_Newton_To_Celsius) {
-    vector<string> args = { "100.0", "Celsius", "Newton" };
+    vector<string> args = { "33.0", "Celsius", "Newton" };
 
     Act(args);
 
-    Assert("33");
+    Assert("100");
 }

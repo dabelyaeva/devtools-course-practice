@@ -8,7 +8,6 @@
 #include "include/converterarea.h"
 
 using std::vector;
-using std::string;
 
 TEST(AreaConverterTest, Can_Create_Object_Area_Converter) {
     // Arrange
@@ -160,10 +159,10 @@ TEST(AreaConverterTest,
     double value = 10.01;
 
     // Act
-    string result = convert.ConvertToString(AreaUnitWeaving, value);
+    std::string result = convert.ConvertToString(AreaUnitWeaving, value);
 
     // Assert
-    string _result = "10.0100 ar";
+    std::string _result = "10.0100 ar";
     EXPECT_EQ(result, _result);
 }
 
@@ -174,10 +173,10 @@ TEST(AreaConverterTest,
     double value = 20.1234;
 
     // Act
-    string result = convert.ConvertToString(AreaUnitWeaving, value, 4);
+    std::string result = convert.ConvertToString(AreaUnitWeaving, value, 4);
 
     // Assert
-    string expected_result = "20.1234 ar";
+    std::string expected_result = "20.1234 ar";
     EXPECT_EQ(result, expected_result);
 }
 

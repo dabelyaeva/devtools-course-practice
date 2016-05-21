@@ -57,7 +57,7 @@ std::string TemperConverter::operator()(int argc, const char** argv) {
 
     double value = atof(argum.value_con.c_str());
     try {
-        unit = getMeasure(argum.value_con);
+        unit = getMeasure(args.unit_con);;
         ConverterTemp temperature(value, unit);
         if (temperature.getRetCode() == Data::ERROR)
             throw std::string("Entered is not a number or a number "

@@ -62,7 +62,7 @@ void AreaConverter::ClearUnit() {
 }
 
 double AreaConverter::Convert(const AreaUnit &from,
-    const AreaUnit &to, double value) const {
+    const AreaUnit &to, const double value) const {
     if (value < 0)
        throw std::invalid_argument("value must be not negative");
 

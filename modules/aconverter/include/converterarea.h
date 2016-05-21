@@ -26,7 +26,7 @@ class AreaConverter {
     AreaUnit& GetUnit(const string &qualifier) const;
 
     double Convert(const AreaUnit &from,
-        const AreaUnit &to, double value) const;
+        const AreaUnit &to, const double value) const;
 
     string ConvertToString(const AreaUnit
         &unit, double value, int precision = 4) const;

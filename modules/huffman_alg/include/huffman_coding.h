@@ -11,13 +11,13 @@ using std::string;
 
 class HuffmanCoding {
  public:
-   HuffmanCoding();
-   string operator()(int argc, const char** argv);
+     HuffmanCoding();
+     string operator()(int argc, const char** argv);
 
  private:
-   void help(const char* appname);
+     void help(const char* appname);
 
-   string _message;
+     string _message;
 };
 
 #endif  // MODULES_HUFFMAN_ALG_INCLUDE_HUFFMAN_CODING_H_

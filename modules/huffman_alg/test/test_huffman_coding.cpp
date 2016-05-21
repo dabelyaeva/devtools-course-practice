@@ -5,5 +5,5 @@
 
 TEST(HuffmanCoding, just_checking)
 {
-  EXPECT_EQ(2, 2);
+    EXPECT_EQ(2, 2);
 }

@@ -13,11 +13,11 @@
 using std::vector;
 using std::string;
 
-const AreaUnit AREA_UNIT_METER = AreaUnit(0.01, "m");
-const AreaUnit AREA_UNIT_WEAVING = AreaUnit(1, "ar");
-const AreaUnit AREA_UNIT_HECTARE = AreaUnit(100, "g");
+static const AreaUnit AREA_UNIT_METER = AreaUnit(0.01, "m");
+static const AreaUnit AREA_UNIT_WEAVING = AreaUnit(1, "ar");
+static const AreaUnit AREA_UNIT_HECTARE = AreaUnit(100, "g");
 
-const vector<AreaUnit> DefaultAreaUnits = {
+static const vector<AreaUnit> DefaultAreaUnits = {
       AREA_UNIT_METER,
       AREA_UNIT_WEAVING,
       AREA_UNIT_HECTARE

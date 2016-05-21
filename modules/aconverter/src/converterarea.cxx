@@ -18,9 +18,9 @@ const AreaUnit AREA_UNIT_WEAVING = AreaUnit(1, "ar");
 const AreaUnit AREA_UNIT_HECTARE = AreaUnit(100, "g");
 
 const vector<AreaUnit> DefaultAreaUnits = {
-	AREA_UNIT_METER,
-	AREA_UNIT_WEAVING,
-	AREA_UNIT_HECTARE
+      AREA_UNIT_METER,
+      AREA_UNIT_WEAVING,
+      AREA_UNIT_HECTARE
 };
 
 AreaConverter::AreaConverter(const vector<AreaUnit> &units) {

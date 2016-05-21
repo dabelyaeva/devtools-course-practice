@@ -68,7 +68,8 @@ TEST(AreaConverterTest, Can_Convert_Zero_Area) {
     double value = 0;
 
     // Act
-    double result = converter.Convert(AREA_UNIT_METER, AREA_UNIT_WEAVING, value);
+    double result = converter.Convert(AREA_UNIT_METER,
+        AREA_UNIT_WEAVING, value);
 
     // Assert
     double _result = 0;
@@ -94,7 +95,8 @@ TEST(AreaConverterTest, Can_Convert_Meter_To_Weaving) {
     double value = 100.0;
 
     // Act
-    double result = converter.Convert(AREA_UNIT_METER, AREA_UNIT_WEAVING, value);
+    double result = converter.Convert(AREA_UNIT_METER,
+        AREA_UNIT_WEAVING, value);
 
     // Assert
     double _result = 1.0;
@@ -107,7 +109,8 @@ TEST(AreaConverterTest, Can_Convert_Weaving_To_Meter) {
     double value = 1.0;
 
     // Act
-    double result = converter.Convert(AREA_UNIT_WEAVING, AREA_UNIT_METER, value);
+    double result = converter.Convert(AREA_UNIT_WEAVING,
+        AREA_UNIT_METER, value);
 
     // Assert
     double _result = 100.0;
@@ -197,7 +200,8 @@ TEST(AreaConverterTest, Can_Convert_Weaving_To_Hectare) {
     double value = 10.0;
 
     // Act
-    double result = convert.Convert(AREA_UNIT_WEAVING, AREA_UNIT_HECTARE, value);
+    double result = convert.Convert(AREA_UNIT_WEAVING,
+        AREA_UNIT_HECTARE, value);
 
     // Assert
     double _result = 0.1;
@@ -210,7 +214,8 @@ TEST(AreaConverterTest, Can_Convert_Hectare_To_Weaving) {
     double value = 1.0;
 
     // Act
-    double result = convert.Convert(AREA_UNIT_HECTARE, AREA_UNIT_WEAVING, value);
+    double result = convert.Convert(AREA_UNIT_HECTARE,
+       AREA_UNIT_WEAVING, value);
 
     // Assert
     double _result = 100.0;

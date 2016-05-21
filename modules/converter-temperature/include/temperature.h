@@ -18,7 +18,7 @@ class TemperConverter {
     Measure getMeasure(const std::string& measure) const;
     std::string message_;
     typedef struct {
-        std::string value_con;
+        double value_con;
         std::string unit_con;
         std::string unit_res;
      } Arguments;

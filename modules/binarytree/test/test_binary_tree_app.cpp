@@ -58,6 +58,16 @@ TEST_F(BinaryTreeApplicationTest, Can_Print_Wrong_Format_Message) {
 }
 
 TEST_F(BinaryTreeApplicationTest, Can_Search_Elem_By_Key) {
+    const vector<string> args1 = { "423654", "Sharadze", "insElem" };
+    const vector<string> args2 = { "423654", "Sharadze", "searchByKey" };
+
+    Act(args1);
+    Act(args2);
+
+    Assert("Found element with");
+}
+
+TEST_F(BinaryTreeApplicationTest, Cant_Search_Undefined_Elem_By_Key) {
     const vector<string> args = { "423654", "Sharadze", "searchByKey" };
 
     Act(args);
@@ -65,8 +75,18 @@ TEST_F(BinaryTreeApplicationTest, Can_Search_Elem_By_Key) {
     Assert("Cant find any matches");
 }
 
-TEST_F(BinaryTreeApplicationTest, Can_Search_Elem_By_Value) {
-    const vector<string> args = { "423654", "Sharadze", "searchByKey" };
+TEST_F(BinaryTreeApplicationTest, Can_Search_Elem_By_String) {
+    const vector<string> args1 = { "423654", "Sharadze", "insElem" };
+    const vector<string> args2 = { "423654", "Sharadze", "searchByString" };
+
+    Act(args1);
+    Act(args2);
+
+    Assert("Found element with");
+}
+
+TEST_F(BinaryTreeApplicationTest, Cant_Search_Undefined_Elem_By_String) {
+    const vector<string> args = { "423654", "Sharadze", "searchByString" };
 
     Act(args);
 
@@ -74,9 +94,19 @@ TEST_F(BinaryTreeApplicationTest, Can_Search_Elem_By_Value) {
 }
 
 TEST_F(BinaryTreeApplicationTest, Can_Show_Elements) {
+    const vector<string> args1 = { "423654", "Sharadze", "insElem" };
+    const vector<string> args2 = { "423654", "Sharadze", "showElements" };
+
+    Act(args1);
+    Act(args2);
+
+    Assert("423654;\nSharadze;");
+}
+
+TEST_F(BinaryTreeApplicationTest, Cant_Show_Elements_In_Empty_Tree) {
     const vector<string> args = { "423654", "Sharadze", "showElements" };
 
     Act(args);
 
-    Assert("Tree is empty ");
+    Assert("Tree is empty");
 }

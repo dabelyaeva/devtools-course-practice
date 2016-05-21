@@ -10,7 +10,7 @@
 #include "include/binary_tree_app.h"
 #include "include/binary_tree.h"
 
-BinaryTreeApplication::BinaryTreeApplication() : message_("") {
+BinaryTreeApplication::BinaryTreeApplication() : message_(""), tree() {
 }
 
 void BinaryTreeApplication::help(const char* appname, const char* message) {
@@ -51,8 +51,9 @@ int parseInt(const char* arg) {
 }
 
 std::string parseString(const char* arg) {
-    return arg;
+    return static_cast<string>(arg);
 }
+
 char parseOperation(const char* arg) {
     char op;
     if (strcmp(arg, "insElem") == 0) {
@@ -61,7 +62,7 @@ char parseOperation(const char* arg) {
         op = 'K';
     } else if (strcmp(arg, "searchByString") == 0) {
         op = 'S';
-    } else if (strcmp(arg, "showElements") == 0){
+    } else if (strcmp(arg, "showElements") == 0) {
         op = 'E';
     } else {
         throw std::string("Wrong operation format! ");
@@ -71,7 +72,6 @@ char parseOperation(const char* arg) {
 
 std::string BinaryTreeApplication::operator()(int argc, const char** argv) {
     Arguments args;
-    BinaryTree tree;
 
     if (!validateNumberOfArguments(argc, argv)) {
         return message_;
@@ -98,23 +98,29 @@ std::string BinaryTreeApplication::operator()(int argc, const char** argv) {
     } else if (args.operation == 'K') {
         Element* elem;
         elem = tree.SearchByKey(args.key);
-        (elem == nullptr) ?
-            stream << "Cant find any matches " :
+        if (elem == nullptr) {
+            stream << "Cant find any matches ";
+        } else {
             stream << "Found element with " + std::to_string(args.key) +
-            " key and \"" + elem->GetValue() + "\" value ";
+                      " key and \"" + elem->GetValue() + "\" value ";
+        }
     } else if (args.operation == 'S') {
         Element* elem;
         elem = tree.SearchByValue(args.value);
-        (elem == nullptr) ?
-            stream << "Cant find any matches " :
+        if (elem == nullptr) {
+            stream << "Cant find any matches ";
+        } else {
             stream << "Found element with " + std::to_string(elem->GetKey()) +
-            " key and \"" + args.value + "\" value ";
+                      " key and \"" + args.value + "\" value ";
+        }
     } else if (args.operation == 'E') {
         Element* tmp = tree.GetRoot();
-        (tmp == nullptr) ?
-            stream << "Tree is empty " :
+        if (tmp == nullptr) {
+            stream << "Tree is empty ";
+        } else {
             stream << tree.GetKeysOrder() + "\n" +
-            tree.GetValuesOrderByKeys() + "\n";
+                      tree.GetValuesOrderByKeys();
+        }
     }
 
     message_ = stream.str();

@@ -4,6 +4,7 @@
 #define MODULES_BINARYTREE_INCLUDE_BINARY_TREE_APP_H_
 
 #include <string>
+#include "include/binary_tree.h"
 
 class BinaryTreeApplication {
  public:
@@ -19,6 +20,7 @@ class BinaryTreeApplication {
         std::string value;
         char operation;
     } Arguments;
+    BinaryTree tree;
 };
 
 #endif  // MODULES_BINARYTREE_INCLUDE_BINARY_TREE_APP_H_

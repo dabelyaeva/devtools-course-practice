@@ -25,7 +25,7 @@ void BinaryTreeApplication::help(const char* appname, const char* message) {
         "Where <element key> is int number " +
         "<string value> is string value of element in tree, and" +
         "<operation> is one of the insElem, " +
-        "searchByKey, searchByString, delElem '/'.\n";
+        "searchByKey, searchByString, delElem, showKeys '/'.\n";
 }
 
 bool BinaryTreeApplication::validateNumberOfArguments(int argc,
@@ -61,6 +61,8 @@ char parseOperation(const char* arg) {
         op = 'K';
     } else if (strcmp(arg, "searchByString") == 0) {
         op = 'S';
+    } else if (strcmp(arg, "showElements") == 0){
+        op = 'E';
     } else {
         throw std::string("Wrong operation format! ");
     }
@@ -107,6 +109,9 @@ std::string BinaryTreeApplication::operator()(int argc, const char** argv) {
             stream << "Cant find any matches " :
             stream << "Found element with " + std::to_string(elem->GetKey()) +
             " key and \"" + args.value + "\" value ";
+    } else if (args.operation == 'E') {
+        stream << tree.GetKeysOrder() + "\n" +
+                  tree.GetValuesOrderByKeys() + "\n";
     }
 
     message_ = stream.str();

@@ -149,7 +149,7 @@ void BinaryTree::GetValuesOrderInSubtree(Element* const start_element,
                                          string* order) {
     if (start_element != nullptr) {
         GetValuesOrderInSubtree(start_element->GetLeft(), order);
-        *order += std::to_string(start_element->GetKey()) + ";";
+        *order += start_element->GetValue() + ";";
         GetValuesOrderInSubtree(start_element->GetRight(), order);
     }
 }

@@ -29,7 +29,7 @@ class AreaConverter {
         const AreaUnit &to, const double value) const;
 
     string ConvertToString(const AreaUnit
-        &unit, double value, int precision = 4) const;
+        &unit, const double value, const int precision = 4) const;
  private:
     vector<AreaUnit> units_;
 };

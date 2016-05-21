@@ -73,7 +73,7 @@ double AreaConverter::Convert(const AreaUnit &from,
 }
 
 string AreaConverter::ConvertToString(const AreaUnit &unit,
-    double value, int precision) const {
+    const double value, const int precision) const {
     if (precision < 0)
        throw std::invalid_argument("precision must be positive");
 

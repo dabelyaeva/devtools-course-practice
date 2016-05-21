@@ -1,8 +1,8 @@
 // Copyright 2016 Sharadze Georgy
+#include <gtest/gtest.h>
+
 #include <string>
 #include <vector>
-
-#include <gtest/gtest.h>
 
 #include "include/binary_tree_app.h"
 using std::vector;
@@ -10,7 +10,7 @@ using std::string;
 using ::testing::internal::RE;
 
 class BinaryTreeApplicationTest : public ::testing::Test {
-protected:
+ protected:
     void Act(const vector<string>& args_) {
         vector<const char*> options;
 
@@ -27,7 +27,8 @@ protected:
     void Assert(const string& expected) {
         EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
-private:
+
+ private:
     BinaryTreeApplication app_;
     string output_;
 };

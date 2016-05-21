@@ -33,7 +33,7 @@ bool BinaryTreeApplication::validateNumberOfArguments(int argc, const char** arg
         help(argv[0]);
         return false;
     }
-    else if (argc != 3) {
+    else if (argc != 4) {
         help(argv[0], "ERROR: Should be 3 arguments.\n\n");
         return false;
     }
@@ -44,8 +44,7 @@ int parseInt(const char* arg) {
     int value;
     if (atoi(arg)) {
         value = atoi(arg);
-    }
-    else {
+    } else {
         throw std::string("Wrong number format! ");
     }
     return value;
@@ -70,7 +69,6 @@ char parseOperation(const char* arg) {
 
 std::string BinaryTreeApplication::operator()(int argc, const char** argv) {
     Arguments args;
-    Element* elem;
     BinaryTree tree;
 
     if (!validateNumberOfArguments(argc, argv)) {
@@ -88,33 +86,51 @@ std::string BinaryTreeApplication::operator()(int argc, const char** argv) {
     }
 
     std::ostringstream stream;
-    switch (args.operation) {
-    case 'I':
-        elem->SetKey(args.key);
-        elem->SetValue(args.value);
-        tree.InsertElem(elem);
+
+    if (args.operation == 'I') {
+        Element elem;
+        elem.SetKey(args.key);
+        elem.SetValue(args.value);
+        tree.InsertElem(&elem);
         stream << "Element successfuly inserted ";
-        break;
-    case 'K':
+    } else if (args.operation == 'K') {
+        Element* elem;
         elem = tree.SearchByKey(args.key);
-        if (elem == nullptr) {
-            stream << "Cant find any matches ";
-        } else {
+        (elem == nullptr) ?
+            stream << "Cant find any matches " :
             stream << "Found element with " + std::to_string(args.key) +
-                      " key and \'" + elem->GetValue() + "\' value ";
-        }
-        break;
-    case 'S':
+            " key and \"" + elem->GetValue() + "\" value ";
+    } else if (args.operation == 'S') {
+        Element* elem;
         elem = tree.SearchByValue(args.value);
-        if (elem == nullptr) {
-            stream << "Cant find any matches ";
-        }
-        else {
+        (elem == nullptr) ?
+            stream << "Cant find any matches " :
             stream << "Found element with " + std::to_string(elem->GetKey()) +
-                " key and \"" + args.value + "\" value ";
-        }
-        break;
+            " key and \"" + args.value + "\" value ";
     }
+
+    //switch (args.operation) {
+    //case 'I':
+    //    elem->SetKey(args.key);
+    //    elem->SetValue(args.value);
+    //    tree.InsertElem(elem);
+    //    stream << "Element successfuly inserted ";
+    //    break;
+    //case 'K':
+    //    elem = tree.SearchByKey(args.key);
+    //    (elem == nullptr) ?
+    //        stream << "Cant find any matches " :
+    //        stream << "Found element with " + std::to_string(args.key) +
+    //        " key and \"" + elem->GetValue() + "\" value ";
+    //    break;
+    //case 'S':
+    //    elem = tree.SearchByValue(args.value);
+    //    (elem == nullptr) ?
+    //        stream << "Cant find any matches " :
+    //        stream << "Found element with " + std::to_string(elem->GetKey()) +
+    //        " key and \"" + args.value + "\" value ";
+    //    break;
+    //}
 
     message_ = stream.str();
 

@@ -7,12 +7,12 @@ using std::string;
 
 class Element {
  public:
-    explicit Element(const int& init_key = 0, const string& init_value = "",
+    explicit Element(const int init_key = 0, const string& init_value = "",
         Element* const init_parent = 0, Element* const init_right = 0,
         Element* const init_left = 0);
     Element(const Element& init_element);
     int GetKey() const;
-    void SetKey(const int& assigned_key);
+    void SetKey(const int assigned_key);
     string GetValue() const;
     void SetValue(const string& assigned_value);
     void SetRight(Element* const  assigned_right);

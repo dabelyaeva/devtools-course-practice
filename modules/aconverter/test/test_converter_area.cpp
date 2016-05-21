@@ -7,6 +7,9 @@
 
 #include "include/converterarea.h"
 
+using std::vector;
+using std::string;
+
 TEST(AreaConverterTest, Can_Create_Object_Area_Converter) {
     // Arrange
     AreaConverter *convert;
@@ -23,20 +26,20 @@ TEST(AreaConverterTest, Can_Create_Default_Unit) {
     AreaConverter convert;
 
     // Act
-    std::vector<AreaUnit> unit = convert.GetUnit();
+    vector<AreaUnit> unit = convert.GetUnit();
 
     // Assert
-    std::vector<AreaUnit> _unit = DefaultAreaUnits;
+    vector<AreaUnit> _unit = DefaultAreaUnits;
     EXPECT_EQ(unit, _unit);
 }
 
 TEST(AreaConverterTest, Can_Create_Custom_Unit) {
     // Arrange
-    std::vector<AreaUnit> _unit = { AreaUnit(1, "ar"), AreaUnit(2, "g") };
+    vector<AreaUnit> _unit = { AreaUnit(1, "ar"), AreaUnit(2, "g") };
 
     // Act
     AreaConverter convert(_unit);
-    std::vector<AreaUnit> unit = convert.GetUnit();
+    vector<AreaUnit> unit = convert.GetUnit();
 
     // Assert
     EXPECT_EQ(unit, _unit);
@@ -44,7 +47,7 @@ TEST(AreaConverterTest, Can_Create_Custom_Unit) {
 
 TEST(AreaConverterTest, Throws_When_Duplicate_Units) {
     // Arrange
-    std::vector<AreaUnit> unit = { AreaUnit(1, "ar"), AreaUnit(1, "ar") };
+    vector<AreaUnit> unit = { AreaUnit(1, "ar"), AreaUnit(1, "ar") };
 
     // Act & Assert
     EXPECT_THROW(new AreaConverter(unit), std::invalid_argument);
@@ -114,7 +117,7 @@ TEST(AreaConverterTest, Can_Convert_Weaving_To_Meter) {
 
 TEST(AreaConverterTest, Can_Add_New_Unit) {
     // Arrange
-    std::vector<AreaUnit> a;
+    vector<AreaUnit> a;
     AreaConverter convert(a);
     AreaUnit unit = AreaUnit(10000, "det");
 
@@ -128,7 +131,7 @@ TEST(AreaConverterTest, Can_Add_New_Unit) {
 
 TEST(AreaConverterTest, Throws_Add_Existing_Unit) {
     // Arrange
-    std::vector<AreaUnit> a;
+    vector<AreaUnit> a;
     AreaConverter converter(a);
     AreaUnit unit = AreaUnit(10000, "det");
 
@@ -157,10 +160,10 @@ TEST(AreaConverterTest,
     double value = 10.01;
 
     // Act
-    std::string result = convert.ConvertToString(AreaUnitWeaving, value);
+    string result = convert.ConvertToString(AreaUnitWeaving, value);
 
     // Assert
-    std::string _result = "10.0100 ar";
+    string _result = "10.0100 ar";
     EXPECT_EQ(result, _result);
 }
 
@@ -171,10 +174,10 @@ TEST(AreaConverterTest,
     double value = 20.1234;
 
     // Act
-    std::string result = convert.ConvertToString(AreaUnitWeaving, value, 4);
+    string result = convert.ConvertToString(AreaUnitWeaving, value, 4);
 
     // Assert
-    std::string expected_result = "20.1234 ar";
+    string expected_result = "20.1234 ar";
     EXPECT_EQ(result, expected_result);
 }
 

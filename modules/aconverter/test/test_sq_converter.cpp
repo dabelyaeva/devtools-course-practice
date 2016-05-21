@@ -1,4 +1,4 @@
-// Copyright 2016 Podchischaeva Mary
+// Copyright 2016 Voevodin Andrew
 
 #include <gtest/gtest.h>
 
@@ -59,4 +59,16 @@ TEST_F(AreaConverterApplicationTest, Can_Convert) {
     vector<string> args = { "200", "m", "ar" };
     Act(args);
     Assert("2.0000 ar.*");
+}
+
+TEST_F(AreaConverterApplicationTest, Can_Convert) {
+    vector<string> args = { "2", "g", "ar" };
+    Act(args);
+    Assert("200.0000 ar.*");
+}
+
+TEST_F(AreaConverterApplicationTest, Can_Convert) {
+    vector<string> args = { "20000", "m", "g" };
+    Act(args);
+    Assert("2.0000 g.*");
 }

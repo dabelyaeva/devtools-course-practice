@@ -62,7 +62,7 @@ char parseOperation(const char* arg) {
     } else if (strcmp(arg, "searchByString") == 0) {
         op = 'S';
     } else {
-        throw std::string("Wrong operation format!");
+        throw std::string("Wrong operation format! ");
     }
     return op;
 }
@@ -108,29 +108,6 @@ std::string BinaryTreeApplication::operator()(int argc, const char** argv) {
             stream << "Found element with " + std::to_string(elem->GetKey()) +
             " key and \"" + args.value + "\" value ";
     }
-
-    //switch (args.operation) {
-    //case 'I':
-    //    elem->SetKey(args.key);
-    //    elem->SetValue(args.value);
-    //    tree.InsertElem(elem);
-    //    stream << "Element successfuly inserted ";
-    //    break;
-    //case 'K':
-    //    elem = tree.SearchByKey(args.key);
-    //    (elem == nullptr) ?
-    //        stream << "Cant find any matches " :
-    //        stream << "Found element with " + std::to_string(args.key) +
-    //        " key and \"" + elem->GetValue() + "\" value ";
-    //    break;
-    //case 'S':
-    //    elem = tree.SearchByValue(args.value);
-    //    (elem == nullptr) ?
-    //        stream << "Cant find any matches " :
-    //        stream << "Found element with " + std::to_string(elem->GetKey()) +
-    //        " key and \"" + args.value + "\" value ";
-    //    break;
-    //}
 
     message_ = stream.str();
 

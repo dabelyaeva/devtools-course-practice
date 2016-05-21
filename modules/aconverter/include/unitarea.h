@@ -6,9 +6,12 @@
 #include <string>
 #include <vector>
 
+using std::string;
+using std::vector;
+
 class AreaUnit {
  public:
-    AreaUnit(double coefficient, const std::string);
+    AreaUnit(double coefficient, const string);
 
     AreaUnit(const AreaUnit &a)
         : coefficient_(a.GetCoefficient()),
@@ -20,7 +23,7 @@ class AreaUnit {
         return coefficient_;
     }
 
-    std::string GetAreaType() const {
+    string GetAreaType() const {
         return AreaType;
     }
 
@@ -29,11 +32,11 @@ class AreaUnit {
     bool operator!=(const AreaUnit &other) const;
  private:
     double coefficient_;
-    std::string AreaType;
+    string AreaType;
 };
 extern const AreaUnit AreaUnitMeter;
 extern const AreaUnit AreaUnitWeaving;
 extern const AreaUnit AreaUnitHectare;
-extern const std::vector<AreaUnit> DefaultAreaUnits;
+extern const vector<AreaUnit> DefaultAreaUnits;
 #endif  // MODULES_ACONVERTER_INCLUDE_UNITAREA_H_
 

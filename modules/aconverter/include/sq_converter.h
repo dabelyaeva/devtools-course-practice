@@ -6,20 +6,22 @@
 #include <string>
 #include "include/converterarea.h"
 
+using std::string;
+
 class SQConverter {
  public:
     SQConverter();
-    std::string operator()(int argc, const char** argv);
+    string operator()(const int argc, const char** argv);
 
  private:
     void help(const char* appname, const char* message = "");
     bool validateNumberOfArguments(int argc, const char** argv);
-    std::string message_;
+    string message_;
     AreaConverter converter_;
     typedef struct {
         double value;
-        std::string from;
-        std::string to;
+        string from;
+        string to;
     } Arguments;
 };
 #endif  // MODULES_ACONVERTER_INCLUDE_SQ_CONVERTER_H_

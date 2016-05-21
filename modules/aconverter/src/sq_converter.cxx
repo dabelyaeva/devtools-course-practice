@@ -63,7 +63,7 @@ double parseDouble(const char* arg) {
     return value;
 }
 
-std::string SQConverter::operator()(int argc, const char** argv) {
+std::string SQConverter::operator()(const int argc, const char** argv) {
     Arguments args;
     if (!validateNumberOfArguments(argc, argv)) {
         return message_;

@@ -66,8 +66,8 @@ double AreaConverter::Convert(const AreaUnit &from,
     if (value < 0)
        throw std::invalid_argument("value must be not negative");
 
-    double conversion_coefficient = from.GetCoefficient()
-       / to.GetCoefficient();
+    double conversion_coefficient = from.GetCoefficient() /
+       to.GetCoefficient();
 
     return value * conversion_coefficient;
 }

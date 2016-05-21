@@ -33,15 +33,12 @@ void TemperConverter::help(const char *appname, const char *message) {
 }
 
 bool TemperConverter::validateNumberOfArguments(int argc, const char** argv) {
-    if (argc == 1) {
-        help(argv[0]);
+    if (argc != 4) {
+        help(argv[0], "ERROR: Should be 3 arguments. \n\n");
         return false;
-    } else if (argc != 4) {
-        help(argv[0], "ERROR: Should be 3 arguments.\n\n");
-        return false;
-    } else {
-        return true;
+        
     }
+    return true;
 }
 
 std::string TemperConverter::operator()(int argc, const char** argv) {

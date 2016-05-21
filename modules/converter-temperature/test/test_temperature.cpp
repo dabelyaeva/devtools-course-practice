@@ -127,9 +127,9 @@ TEST_F(TemperatureTests, Can_Convert_Kelvin_To_Fahrenheit) {
 }
 
 TEST_F(TemperatureTests, Can_Convert_Newton_To_Kelvin) {
-    vector<string> args = { "1.0", "Kelvin", "Newton" };
+    vector<string> args = { "0.0", "Kelvin", "Newton" };
 
     Act(args);
 
-    Assert("276\\.030303");
+    Assert("273");
 }

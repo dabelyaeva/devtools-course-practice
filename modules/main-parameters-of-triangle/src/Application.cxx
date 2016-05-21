@@ -38,7 +38,7 @@ void Application::help(const char* appname, const char* message) {
         "numbers \n ";
 }
 
-bool Application::validateNumberOfArguments(int argc, const char** argv) {
+bool Application::validateNumberOfArguments(const int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
@@ -84,7 +84,7 @@ Functions parseFunction(const char* arg) {
     return func;
 }
 
-string Application::operator()(int argc, const char ** argv) {
+string Application::operator()(const int argc, const char ** argv) {
     Arguments args;
 
     if (!validateNumberOfArguments(argc, argv)) {

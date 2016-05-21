@@ -23,10 +23,10 @@ enum Functions {
 class Application {
  public:
     Application();
-    std::string operator()(int argc, const char** argv);
+    std::string operator()(const int argc, const char** argv);
  private:
      void help(const char* appname, const char* message = "");
-     bool validateNumberOfArguments(int argc, const char** argv);
+     bool validateNumberOfArguments(const int argc, const char** argv);
      std::string message_;
      Triangle triangle;
 

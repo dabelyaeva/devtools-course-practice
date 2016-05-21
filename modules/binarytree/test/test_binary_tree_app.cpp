@@ -58,11 +58,17 @@ TEST_F(BinaryTreeApplicationTest, Can_Print_Wrong_Format_Message) {
 }
 
 TEST_F(BinaryTreeApplicationTest, Can_Search_Elem_By_Key) {
-    const vector<string> args1 = { "423654", "Sharadze", "insElem" };
-    const vector<string> args2 = { "423654", "Sharadze", "searchByKey" };
+    const vector<string> args = { "423654", "Sharadze", "searchByKey" };
 
-    Act(args1);
-    Act(args2);
+    Act(args);
+
+    Assert("Cant find any matches");
+}
+
+TEST_F(BinaryTreeApplicationTest, Can_Search_Elem_By_Value) {
+    const vector<string> args = { "423654", "Sharadze", "searchByKey" };
+
+    Act(args);
 
     Assert("Cant find any matches");
 }

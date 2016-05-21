@@ -9,10 +9,6 @@
 using std::string;
 using std::vector;
 
-const AreaUnit AREA_UNIT_METER;
-const AreaUnit AREA_UNIT_WEAVING;
-const AreaUnit AREA_UNIT_HECTARE;
-
 class AreaUnit {
  public:
     AreaUnit(double coefficient, const string);

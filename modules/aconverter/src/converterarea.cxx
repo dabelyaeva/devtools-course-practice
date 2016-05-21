@@ -10,9 +10,11 @@
 
 #include "include/converterarea.h"
 
+using std::vector;
+using std::string;
 
-AreaConverter::AreaConverter(const std::vector<AreaUnit> &units) {
-    this->units_ = std::vector<AreaUnit>(units);
+AreaConverter::AreaConverter(const vector<AreaUnit> &units) {
+    this->units_ = vector<AreaUnit>(units);
 
     auto last = std::unique(this->units_.begin(),
         this->units_.end(),
@@ -33,12 +35,12 @@ void AreaConverter::AddUnit(const AreaUnit &new_unit) {
     units_.push_back(new_unit);
 }
 
-std::vector<AreaUnit> AreaConverter::GetUnit() const {
+vector<AreaUnit> AreaConverter::GetUnit() const {
     return units_;
 }
 
-AreaUnit& AreaConverter::GetUnit(const std::string& qualifier) const {
-    std::vector<AreaUnit>::const_iterator res = units_.end();
+AreaUnit& AreaConverter::GetUnit(const string& qualifier) const {
+    vector<AreaUnit>::const_iterator res = units_.end();
 
     for (auto it = units_.begin(); it != units_.end(); ++it) {
         if (it->GetAreaType() == qualifier) {
@@ -70,7 +72,7 @@ double AreaConverter::Convert(const AreaUnit &from,
     return value * conversion_coefficient;
 }
 
-std::string AreaConverter::ConvertToString(const AreaUnit &unit,
+string AreaConverter::ConvertToString(const AreaUnit &unit,
     double value, int precision) const {
     if (precision < 0)
        throw std::invalid_argument("precision must be positive");

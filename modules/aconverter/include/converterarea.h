@@ -9,25 +9,28 @@
 
 #include "include/unitarea.h"
 
+using std::vector;
+using std::string;
+
 class AreaConverter {
  public:
-    explicit AreaConverter(const std::vector<AreaUnit>
+    explicit AreaConverter(const vector<AreaUnit>
         &units = DefaultAreaUnits);
 
     void AddUnit(const AreaUnit &unit);
 
-    std::vector<AreaUnit> GetUnit() const;
+    vector<AreaUnit> GetUnit() const;
 
     void ClearUnit();
 
-    AreaUnit& GetUnit(const std::string &qualifier) const;
+    AreaUnit& GetUnit(const string &qualifier) const;
 
     double Convert(const AreaUnit &from,
         const AreaUnit &to, double value) const;
 
-    std::string ConvertToString(const AreaUnit
+    string ConvertToString(const AreaUnit
         &unit, double value, int precision = 4) const;
  private:
-    std::vector<AreaUnit> units_;
+    vector<AreaUnit> units_;
 };
 #endif  // MODULES_ACONVERTER_INCLUDE_CONVERTERAREA_H_

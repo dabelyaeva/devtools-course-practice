@@ -111,11 +111,11 @@ TEST_F(TemperatureTests, Can_Detect_Wrong_Second_Measure_Format) {
 }
 
 TEST_F(TemperatureTests, Can_Convert_Celsius_To_Kelvin) {
-    vector<string> args = { "-273.0", "Kelvin", "Celsius" };
+    vector<string> args = { "0.0", "Kelvin", "Celsius" };
 
     Act(args);
 
-    Assert("0");
+    Assert("273");
 }
 
 TEST_F(TemperatureTests, Can_Convert_Kelvin_To_Fahrenheit) {
@@ -127,9 +127,9 @@ TEST_F(TemperatureTests, Can_Convert_Kelvin_To_Fahrenheit) {
 }
 
 TEST_F(TemperatureTests, Can_Convert_Newton_To_Celsius) {
-    vector<string> args = { "33.0", "Celsius", "Newton" };
+    vector<string> args = { "1.0", "Celsius", "Newton" };
 
     Act(args);
 
-    Assert("100");
+    Assert("3\\.03");
 }

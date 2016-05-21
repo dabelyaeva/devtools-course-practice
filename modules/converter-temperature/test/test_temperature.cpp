@@ -131,5 +131,5 @@ TEST_F(TemperatureTests, Can_Convert_Newton_To_Kelvin) {
 
     Act(args);
 
-    Assert("276\\.18");
+    Assert("276\\.030303");
 }

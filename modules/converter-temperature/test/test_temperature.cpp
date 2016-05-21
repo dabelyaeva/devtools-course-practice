@@ -40,7 +40,7 @@ TEST_F(TemperatureTests, Can_Do_Print_Help_Without_Arguments) {
 
     Act(argum);
 
-    Assert("This is a temperature converter application\\..*");
+    Assert("This is a convertor temperature application\\..*");
 }
 
 
@@ -149,7 +149,7 @@ TEST_F(TemperatureTests, Can_Convert_Newton_To_Celsius) {
 }
 
 TEST_F(TemperatureTests, Can_Identify_Wrong_First_Format) {
-    vector<string> args = { "10.0", "Kelvins", "Newton" };
+    vector<string> args = { "1.0", "Kelvins", "Newton" };
 
     Act(args);
 
@@ -157,7 +157,7 @@ TEST_F(TemperatureTests, Can_Identify_Wrong_First_Format) {
 }
 
 TEST_F(TemperatureTests, Can_Identify_Wrong_Second_Format) {
-    vector<string> args = { "10.0", "Kelvin", "Newtons" };
+    vector<string> args = { "1.0", "Kelvin", "Newtons" };
 
     Act(args);
 

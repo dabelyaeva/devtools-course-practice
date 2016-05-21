@@ -28,7 +28,7 @@ void BinaryTreeApplication::help(const char* appname, const char* message) {
         "searchByKey, searchByString, delElem '/'.\n";
 }
 
-bool BinaryTreeApplication::validateNumberOfArguments(int argc, 
+bool BinaryTreeApplication::validateNumberOfArguments(int argc,
                                                       const char** argv) {
     if (argc == 1) {
         help(argv[0]);

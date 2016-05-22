@@ -1,13 +1,12 @@
 // Copyright 2016 Orlov Georgy
 
 #include <string>
-#include <fstream>
+#include <sstream>
 
 #include "include/AppPath.h"
 #include "include/PathFinder.h"
 
 using std::string;
-using std::ifstream;
 
 AppPath::AppPath(): message_("") {}
 
@@ -16,77 +15,64 @@ void AppPath::help(const char* appname, const char* message) {
         string(message) +
         "This is a Dijkstra's algorithm's path finder application.\n\n" +
         "Please provide arguments in the following format:\n\n" +
-
-        "  $ " + appname + " <name of file with graph> " +
-        "<first_vertex> <second_vertex> \n\n";
+        "  $ " + appname + " matrix_size " +
+        "values first_vertex second_vertex \n\n" +
+        " graph is always the matrix n*n \n\n";
 }
 
 bool AppPath::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    } else if (argc != 3) {
-        help(argv[0], "ERROR: Should be 3 arguments.\n\n");
+    }
+    else if (argc != atoi(argv[1])*atoi(argv[1]) + 4 || !atoi(argv[1])) {
+        help(argv[0], "ERROR: wrong number of arguments.\n\n");
         return false;
     }
     return true;
-}
-
-bool AppPath::checkFileName(const char** argv) {
-    ifstream file(argv[1]);
-    if (!file.is_open()) {
-        help(argv[0], "ERROR: Can not open the file.\n\n");
-        return false;
-    }
-    return true;
-}
-
-int AppPath::getGraphSizeFromFile(string filename) {
-    int size;
-    ifstream file(filename);
-    file >> size;
-    file.close();
-    return size;
-}
-
-int** AppPath::readFile(string filename) {
-    int size, i = 0, j = 0;
-    int** result;
-    ifstream file(filename);
-    file >> size;
-    result = new int*[size];
-    for (int s = 0; s < size; s++)
-        result[s] = new int[size];
-    while (file.eof()) {
-        file >> result[i][j];
-        j++;
-        if (j > size) {
-            j = 0;
-            i++;
-        }
-    }
-    file.close();
-    return result;
 }
 
 string AppPath::operator()(int argc, const char** argv) {
     Arguments args;
+    int** matr;
+    std::ostringstream stream;
 
     if (!validateNumberOfArguments(argc, argv))
         return message_;
-    else if (!checkFileName(argv))
+
+    args.size = atoi(argv[1]);
+    stream << "Successful added size of matrix\n";
+
+    args.first_vertex = atoi(argv[2+(args.size*args.size)]);
+    if (args.first_vertex >= args.size) {
+        message_ = "ERROR: First vertex index more than matrix size";
         return message_;
+    }
+    stream << "Successful added first vertex\n";
 
-    args.filename = argv[1];
-    args.first_vertex = atoi(argv[2]);
-    args.second_vertex = atoi(argv[3]);
+    args.second_vertex = atoi(argv[3+(args.size*args.size)]);
+    if (args.second_vertex >= args.size) {
+        message_ = "ERROR: Second vertex index more than matrix size";
+        return message_;
+    }
+    stream << "Successful added second vertex\n";
 
-    int size = getGraphSizeFromFile(args.filename);
-    int** graph = readFile(args.filename);
+    int arg_count = 2;
 
-    pf.SetGraph(graph, size, args.first_vertex);
+    matr = new int*[args.size];
+    for (int i = 0; i < args.size; i++)
+        matr[i] = new int[args.size];
+    for (int i = 0; i < args.size; i++)
+        for (int j = 0; j < args.size; j++) {
+            matr[i][j] = atoi(argv[arg_count]);
+            arg_count++;
+        }
+    stream << "Successful written matrix\n";
+
+    pf.SetGraph(matr, args.size, args.first_vertex);
+    stream << "Successful set graph\n";
     int result = pf.GetDistance(args.second_vertex);
-
-    string result_str = std::to_string(result);
-    return result_str;
+    stream << "Result: " << result << "\n";
+    message_ = stream.str();
+    return message_;
 }

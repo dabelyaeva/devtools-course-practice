@@ -4,6 +4,7 @@
 #define MODULES_PATH_INCLUDE_APPPATH_H_
 
 #include <string>
+#include <vector>
 #include "include/PathFinder.h"
 
 class AppPath {
@@ -13,16 +14,10 @@ class AppPath {
 
  private:
     void help(const char* appname, const char* message = "");
-    int** readFile(std::string filename);
-    int getGraphSizeFromFile(std::string filename);
-
     bool validateNumberOfArguments(int argc, const char** argv);
-    bool checkFileName(const char** argv);
-
     std::string message_;
-
     typedef struct {
-        std::string filename;
+        int size;
         int first_vertex;
         int second_vertex;
     } Arguments;

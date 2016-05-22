@@ -9,6 +9,11 @@
 
 using std::vector;
 
+const AreaUnit AreaUnitMeter;
+const AreaUnit AreaUnitWeaving;
+const AreaUnit AreaUnitHectare;
+const vector<AreaUnit> DefaultAreaUnits;
+
 TEST(AreaConverterTest, Can_Create_Object_Area_Converter) {
     // Arrange
     AreaConverter *convert;

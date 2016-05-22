@@ -17,7 +17,7 @@ extern const AreaUnit AREA_UNIT_METER = AreaUnit(0.01, "m");
 extern const AreaUnit AREA_UNIT_WEAVING = AreaUnit(1, "ar");
 extern const AreaUnit AREA_UNIT_HECTARE = AreaUnit(100, "g");
 
-extern const vector<AreaUnit> DefaultAreaUnits = {
+extern const vector<AreaUnit> DEFAULT_AREA_UNIT = {
      AREA_UNIT_METER,
      AREA_UNIT_WEAVING,
      AREA_UNIT_HECTARE

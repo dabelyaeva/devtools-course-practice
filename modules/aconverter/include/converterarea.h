@@ -15,12 +15,12 @@ using std::string;
 extern const AreaUnit AREA_UNIT_METER;
 extern const AreaUnit AREA_UNIT_WEAVING;
 extern const AreaUnit AREA_UNIT_HECTARE;
-extern const vector<AreaUnit> DefaultAreaUnits;
+extern const vector<AreaUnit> DEFAULT_AREA_UNIT;
 
 class AreaConverter {
  public:
     explicit AreaConverter(const vector<AreaUnit>
-        &units = DefaultAreaUnits);
+        &units = DEFAULT_AREA_UNIT);
 
     void AddUnit(const AreaUnit &unit);
 

@@ -28,7 +28,7 @@ TEST(AreaConverterTest, Can_Create_Default_Unit) {
     vector<AreaUnit> unit = convert.GetUnit();
 
     // Assert
-    vector<AreaUnit> _unit = DefaultAreaUnits;
+    vector<AreaUnit> _unit = DEFAULT_AREA_UNIT;
     EXPECT_EQ(unit, _unit);
 }
 

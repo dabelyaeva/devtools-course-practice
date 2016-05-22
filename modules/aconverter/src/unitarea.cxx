@@ -6,11 +6,11 @@
 
 #include "include/unitarea.h"
 
-static const AreaUnit AREA_UNIT_METER = AreaUnit(0.01, "m");
-static const AreaUnit AREA_UNIT_WEAVING = AreaUnit(1, "ar");
-static const AreaUnit AREA_UNIT_HECTARE = AreaUnit(100, "g");
+extern const AreaUnit AREA_UNIT_METER = AreaUnit(0.01, "m");
+extern const AreaUnit AREA_UNIT_WEAVING = AreaUnit(1, "ar");
+extern const AreaUnit AREA_UNIT_HECTARE = AreaUnit(100, "g");
 
-static const vector<AreaUnit> DefaultAreaUnits = {
+extern const vector<AreaUnit> DefaultAreaUnits = {
     AREA_UNIT_METER,
     AREA_UNIT_WEAVING,
     AREA_UNIT_HECTARE

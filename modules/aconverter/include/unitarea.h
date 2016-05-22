@@ -34,9 +34,9 @@ class AreaUnit {
     double coefficient_;
     string AreaType;
 };
-extern const AreaUnit AreaUnitMeter;
-extern const AreaUnit AreaUnitWeaving;
-extern const AreaUnit AreaUnitHectare;
-extern const vector<AreaUnit> DefaultAreaUnits;
+static const AreaUnit AreaUnitMeter;
+static const AreaUnit AreaUnitWeaving;
+static const AreaUnit AreaUnitHectare;
+static const vector<AreaUnit> DefaultAreaUnits;
 #endif  // MODULES_ACONVERTER_INCLUDE_UNITAREA_H_
 

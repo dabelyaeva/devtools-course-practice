@@ -13,16 +13,6 @@
 using std::vector;
 using std::string;
 
-static const AreaUnit AREA_UNIT_METER = AreaUnit(0.01, "m");
-static const AreaUnit AREA_UNIT_WEAVING = AreaUnit(1, "ar");
-static const AreaUnit AREA_UNIT_HECTARE = AreaUnit(100, "g");
-
-static const vector<AreaUnit> DefaultAreaUnits = {
-      AREA_UNIT_METER,
-      AREA_UNIT_WEAVING,
-      AREA_UNIT_HECTARE
-};
-
 AreaConverter::AreaConverter(const vector<AreaUnit> &units) {
     this->units_ = vector<AreaUnit>(units);
 

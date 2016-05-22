@@ -6,6 +6,16 @@
 
 #include "include/unitarea.h"
 
+extern const AreaUnit AREA_UNIT_METER = AreaUnit(0.01, "m");
+extern const AreaUnit AREA_UNIT_WEAVING = AreaUnit(1, "ar");
+extern const AreaUnit AREA_UNIT_HECTARE = AreaUnit(100, "g");
+
+extern const vector<AreaUnit> DefaultAreaUnits = {
+    AREA_UNIT_METER,
+    AREA_UNIT_WEAVING,
+    AREA_UNIT_HECTARE
+};
+
 AreaUnit::AreaUnit(double coefficient, const std::string type)
     : coefficient_(coefficient), AreaType(type) {
     if (coefficient <= 0)

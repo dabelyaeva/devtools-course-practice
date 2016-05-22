@@ -50,19 +50,23 @@ TableMap Huff::fillTable(string str) {
 
     for (auto iter = str.begin(); iter != str.end(); iter++) {
         vect.clear();
-        while (isdigit(*iter)) {
-            vect.push_back(*iter);
-            ++iter;
-        }
-        ++iter;
-        if (!vect.empty()) {
-            if (isalpha(*iter)) {
-                result[(*iter)] = vect;
+        if (isdigit(*iter)) {
+            while ((*iter == '0' || *iter == '1') && (iter != str.end())) {
+                char temp = *iter;
+                vect.push_back(atoi(&temp));
+                if (next(iter) == str.end())
+                    break;
+                else
+                    ++iter;
+            }
+            if (next(iter) != str.end()) {
+                ++iter;
+                if (isalpha(*iter))
+                    result[*iter] = vect;
             }
         }
-        ++iter;
     }
-    return TableMap();
+    return result;
 }
 
 map<char, int> Huff::readString(string str) {

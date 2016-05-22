@@ -277,7 +277,7 @@ TEST(Huff, Can_Fill_Table) {
     TableMap result = huf.fillTable(str);
 
     TableMap expected;
-    expected['a'] = vector<bool>(0);
-    expected['b'] = vector<bool>(01);
+    expected['a'] = { false };
+    expected['b'] = { false, true };
     EXPECT_EQ(expected, result);
 }

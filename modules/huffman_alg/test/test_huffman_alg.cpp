@@ -269,3 +269,15 @@ TEST(huffman_alg, Can_Right_Decode) {
     string expected_str = "abacacb";
     EXPECT_EQ(expected_str, actual_str);
 }
+
+TEST(Huff, Can_Fill_Table) {
+    string str("0 a 01 b");
+    Huff huf;
+
+    TableMap result = huf.fillTable(str);
+
+    TableMap expected;
+    expected['a'] = vector<bool>(0);
+    expected['b'] = vector<bool>(01);
+    EXPECT_EQ(expected, result);
+}

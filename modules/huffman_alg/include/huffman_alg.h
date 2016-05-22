@@ -58,6 +58,8 @@ class Huff {
     TableMap getTable();
     string printTable();
 
+    TableMap fillTable(string str);
+
  private:
     vector<bool> code;
     list<Node*> node_list;

@@ -5,6 +5,7 @@
 #include <map>
 #include <list>
 #include <string>
+#include <cctype>
 
 bool operator==(const Huff::Node& left, const Huff::Node& right) {
     if (left.number != right.number)
@@ -41,6 +42,27 @@ string Huff::printTable() {
         result.append("\n");
     }
     return result;
+}
+
+TableMap Huff::fillTable(string str) {
+    TableMap result;
+    vector<bool> vect;
+
+    for (auto iter = str.begin(); iter != str.end(); iter++) {
+        vect.clear();
+        while (isdigit(*iter)) {
+            vect.push_back(*iter);
+            ++iter;
+        }
+        ++iter;
+        if (!vect.empty()) {
+            if (isalpha(*iter)) {
+                result[(*iter)] = vect;
+            }
+        }
+        ++iter;
+    }
+    return TableMap();
 }
 
 map<char, int> Huff::readString(string str) {

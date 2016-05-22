@@ -12,6 +12,11 @@
 using std::vector;
 using std::string;
 
+extern const AreaUnit AreaUnitMeter;
+extern const AreaUnit AreaUnitWeaving;
+extern const AreaUnit AreaUnitHectare;
+extern const vector<AreaUnit> DefaultAreaUnits;
+
 class AreaConverter {
  public:
     explicit AreaConverter(const vector<AreaUnit>
@@ -33,8 +38,4 @@ class AreaConverter {
  private:
     vector<AreaUnit> units_;
 };
-extern const AreaUnit AreaUnitMeter;
-extern const AreaUnit AreaUnitWeaving;
-extern const AreaUnit AreaUnitHectare;
-extern const vector<AreaUnit> DefaultAreaUnits;
 #endif  // MODULES_ACONVERTER_INCLUDE_CONVERTERAREA_H_

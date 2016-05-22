@@ -18,6 +18,7 @@ class HuffmanCoding {
      void help(const char* appname);
 
      string _message;
+     string _operation;
 };
 
 #endif  // MODULES_HUFFMAN_ALG_INCLUDE_HUFFMAN_CODING_H_

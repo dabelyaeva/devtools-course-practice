@@ -52,6 +52,7 @@ class Huff {
     void buildTable(Node* root);
     void coding(FreqMap);
     string decoding(TableMap, string);
+    string decoding(const string& str);
 
     list<Node*> getNodeList();
     Node* getRoot();

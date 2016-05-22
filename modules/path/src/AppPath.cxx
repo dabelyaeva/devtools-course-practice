@@ -24,8 +24,7 @@ bool AppPath::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != atoi(argv[1])*atoi(argv[1]) + 4 || !atoi(argv[1])) {
+    } else if (argc != atoi(argv[1])*atoi(argv[1]) + 4 || !atoi(argv[1])) {
         help(argv[0], "ERROR: wrong number of arguments.\n\n");
         return false;
     }

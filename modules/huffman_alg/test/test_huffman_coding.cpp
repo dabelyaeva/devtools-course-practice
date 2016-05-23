@@ -113,3 +113,11 @@ TEST_F(HuffmanCodingTest, Cant_Decode_With_Wrong_Arguments) {
 
     Assert("Wrong code to decode.\n");
 }
+
+TEST_F(HuffmanCodingTest, Get_Error_When_Bad_Decode_Input) {
+    const vector<string> args = { "-d", "101", "a", "a", "1", "w" };
+
+    Act(args);
+
+    Assert("Wrong input.\n");
+}

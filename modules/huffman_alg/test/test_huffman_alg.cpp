@@ -308,3 +308,10 @@ TEST(Huff, Can_Fill_Table_With_Many_Options) {
     expected['e'] = { true, false, true };
     EXPECT_EQ(expected, result);
 }
+
+TEST(Huff, Get_Throw_When_Wrong_fillTable_input) {
+    string str("A a 01 b");
+    Huff huf;
+
+    ASSERT_ANY_THROW(huf.fillTable(str));
+}

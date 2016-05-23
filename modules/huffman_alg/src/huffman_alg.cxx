@@ -66,6 +66,8 @@ TableMap Huff::fillTable(string str) {
                 if (isalpha(*iter))
                     result[*iter] = vect;
             }
+        } else if (isalpha(*iter)) {
+            throw string("Wrong input.\n");
         }
     }
     return result;

@@ -118,7 +118,7 @@ TEST_F(DataBaseAppTest, Can_Detect_Incorrect_Number_Format_More_5) {
     Assert("Wrong number format!");
 }
 
-TEST_F(DataBaseAppTest, Can_Delete_Make_Delete) {
+TEST_F(DataBaseAppTest, Can_Make_Delete) {
     // Arrange
     const vector<string> args = {"Fname_Sname",
                                    "5",

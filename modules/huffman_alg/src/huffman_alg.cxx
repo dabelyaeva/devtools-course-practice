@@ -155,4 +155,3 @@ string Huff::decoding(TableMap Tbl, string str) {
     }
     return result;
 }
-

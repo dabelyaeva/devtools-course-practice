@@ -30,7 +30,7 @@ add_test(
     COMMAND ${APPLICATION} -c
 )
 set_tests_properties (${prefix}_Get_Error_When_Wrong_Number_Of_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "Should be 3 or more arguments.\n Use - h for help")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Should be 3 or more arguments.\n Use -h for help")
   
 add_test(
     NAME ${prefix}_Get_Error_When_Wrong_Number_Of_Arguments_For_Code
@@ -59,3 +59,10 @@ add_test(
 )
 set_tests_properties (${prefix}_Can_Encode_String_With_Dubl_Symbol
   PROPERTIES PASS_REGULAR_EXPRESSION "n: 10\no: 0\nx: 11\n")
+  
+  add_test(
+    NAME ${prefix}_Can_Get_Help
+    COMMAND ${APPLICATION} -h
+)
+set_tests_properties (${prefix}_Can_Get_Help
+  PROPERTIES PASS_REGULAR_EXPRESSION "This application work with Huffman coding\\.")

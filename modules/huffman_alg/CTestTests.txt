@@ -16,7 +16,7 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "This application work with Huffman coding.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "This application work with Huffman coding\\.")
 
 add_test(
     NAME ${prefix}_Get_Error_When_Not_Right_Argument

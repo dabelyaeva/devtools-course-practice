@@ -6,15 +6,14 @@
 HuffmanCoding::HuffmanCoding() : _message("") {}
 
 string HuffmanCoding::operator()(int argc, const char ** argv) {
-    _operation = argv[1];
-    if (argc == 1 || _operation == "-h") {
+    if (argc == 1) {
         help(argv[0]);
         return _message;
     } else if (argc < 3) {
         _message = "Should be 3 or more arguments.\n Use - h for help";
         return _message;
     }
-
+    _operation = argv[1];
     if (_operation == "-c") {
         if (argc == 3) {
             Huff huf;

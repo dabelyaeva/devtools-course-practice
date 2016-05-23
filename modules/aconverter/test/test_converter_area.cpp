@@ -99,7 +99,7 @@ TEST(AreaConverterTest, Can_Convert_Meter_To_Weaving) {
         AREA_UNIT_WEAVING, value);
 
     // Assert
-    double _result = 100.0;
+    double _result = 0.01;
     EXPECT_DOUBLE_EQ(result, _result);
 }
 
@@ -113,7 +113,7 @@ TEST(AreaConverterTest, Can_Convert_Weaving_To_Meter) {
         AREA_UNIT_METER, value);
 
     // Assert
-    double _result = 1.0;
+    double _result = 10000.0;
     EXPECT_DOUBLE_EQ(result, _result);
 }
 

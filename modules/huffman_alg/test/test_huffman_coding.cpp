@@ -34,7 +34,7 @@ class HuffmanCodingTest : public ::testing::Test {
      string _output;
 };
 
-TEST_F(HuffmanCodingTest, Print_Help_Without_Arguments) {
+TEST_F(HuffmanCodingTest, Can_Print_Help_Without_Arguments) {
     const vector<string> args = {};
 
     Act(args);
@@ -42,7 +42,7 @@ TEST_F(HuffmanCodingTest, Print_Help_Without_Arguments) {
     Assert("This application work with Huffman coding.");
 }
 
-TEST_F(HuffmanCodingTest, Error_When_Not_Right_Argument) {
+TEST_F(HuffmanCodingTest, Get_Error_When_Not_Right_Argument) {
     const vector<string> args = {"-e", "absde"};
 
     Act(args);
@@ -50,7 +50,7 @@ TEST_F(HuffmanCodingTest, Error_When_Not_Right_Argument) {
     Assert("Wrong argument.\n Use -h for help.");
 }
 
-TEST_F(HuffmanCodingTest, Error_When_Wrong_Number_Of_Arguments) {
+TEST_F(HuffmanCodingTest, Get_Error_When_Wrong_Number_Of_Arguments) {
     const vector<string> args = { "-c" };
 
     Act(args);
@@ -58,7 +58,7 @@ TEST_F(HuffmanCodingTest, Error_When_Wrong_Number_Of_Arguments) {
     Assert("Should be 3 or more arguments.\n Use - h for help");
 }
 
-TEST_F(HuffmanCodingTest, Error_When_Wrong_Number_Of_Arguments_For_Code) {
+TEST_F(HuffmanCodingTest, Get_Error_When_Wrong_Number_Of_Arguments_For_Code) {
     const vector<string> args = { "-c", "str", "excess" };
 
     Act(args);
@@ -74,7 +74,7 @@ TEST_F(HuffmanCodingTest, Error_When_Wrong_Number_Of_Arguments_For_Decode) {
     Assert("Decode must have 4 or more arguments.\n");
 }
 
-TEST_F(HuffmanCodingTest, Can_Code_String) {
+TEST_F(HuffmanCodingTest, Can_Encode_String) {
     const vector<string> args = { "-c", "string"};
 
     Act(args);
@@ -82,7 +82,7 @@ TEST_F(HuffmanCodingTest, Can_Code_String) {
     Assert("g: 100\ni: 101\nn: 110\nr: 111\ns: 00\nt: 01\n");
 }
 
-TEST_F(HuffmanCodingTest, Can_Code_String_With_Dubl_Symbol) {
+TEST_F(HuffmanCodingTest, Can_Encode_String_With_Dubl_Symbol) {
     const vector<string> args = { "-c", "oxon" };
 
     Act(args);

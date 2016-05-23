@@ -6,7 +6,8 @@
 HuffmanCoding::HuffmanCoding() : _message("") {}
 
 string HuffmanCoding::operator()(int argc, const char ** argv) {
-    if (argc == 1 || !strcmp(argv[1], "-h")) {
+    _operation = argv[1];
+    if (argc == 1 || _operation == "-h") {
         help(argv[0]);
         return _message;
     } else if (argc < 3) {
@@ -14,7 +15,6 @@ string HuffmanCoding::operator()(int argc, const char ** argv) {
         return _message;
     }
 
-    _operation = argv[1];
     if (_operation == "-c") {
         if (argc == 3) {
             Huff huf;

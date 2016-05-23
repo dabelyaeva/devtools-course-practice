@@ -34,7 +34,7 @@ class HuffmanCodingTest : public ::testing::Test {
      string _output;
 };
 
-TEST_F(HuffmanCodingTest, Print_Help_Without_Arguments){
+TEST_F(HuffmanCodingTest, Print_Help_Without_Arguments) {
     const vector<string> args = {};
 
     Act(args);
@@ -88,4 +88,12 @@ TEST_F(HuffmanCodingTest, Can_Code_String_With_Dubl_Symbol) {
     Act(args);
 
     Assert("n: 10\no: 0\nx: 11\n");
+}
+
+TEST_F(HuffmanCodingTest, Can_Decode_String) {
+    const vector<string> args = { "-d", "101", "0", "o", "1", "w" };
+
+    Act(args);
+
+    Assert("wow");
 }

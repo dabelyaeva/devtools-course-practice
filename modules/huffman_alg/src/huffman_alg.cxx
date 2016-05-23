@@ -154,19 +154,16 @@ string Huff::decoding(TableMap Tbl, string str) {
     return result;
 }
 
-string Huff::decoding(const string& str)
-{
+string Huff::decoding(const string& str) {
     string result;
     vector<bool> buf;
     for (unsigned int i = 0; i < str.size(); i++) {
         if (str[i] != '0' && str[i] != '1') {
             cout << "String contains not only 0 or 1" << endl;
             throw 1;
-        }
-        else if (str[i] == '1') {
+        } else if (str[i] == '1') {
             buf.push_back(1);
-        }
-        else {
+        } else {
             buf.push_back(0);
         }
         for (auto& itr : table)

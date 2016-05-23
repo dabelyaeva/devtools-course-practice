@@ -39,7 +39,7 @@ TEST_F(HuffmanCodingTest, Can_Print_Help_Without_Arguments) {
 
     Act(args);
 
-    Assert("This application work with Huffman coding.");
+    Assert("This application work with Huffman coding\\.");
 }
 
 TEST_F(HuffmanCodingTest, Get_Error_When_Not_Right_Argument) {
@@ -47,7 +47,7 @@ TEST_F(HuffmanCodingTest, Get_Error_When_Not_Right_Argument) {
 
     Act(args);
 
-    Assert("Wrong argument.\n Use -h for help.");
+    Assert("Wrong argument\\.\n Use -h for help.");
 }
 
 TEST_F(HuffmanCodingTest, Get_Error_When_Wrong_Number_Of_Arguments) {
@@ -55,7 +55,7 @@ TEST_F(HuffmanCodingTest, Get_Error_When_Wrong_Number_Of_Arguments) {
 
     Act(args);
 
-    Assert("Should be 3 or more arguments.\n Use -h for help");
+    Assert("Should be 3 or more arguments\\.\n Use -h for help");
 }
 
 TEST_F(HuffmanCodingTest, Get_Error_When_Wrong_Number_Of_Arguments_For_Code) {
@@ -63,7 +63,7 @@ TEST_F(HuffmanCodingTest, Get_Error_When_Wrong_Number_Of_Arguments_For_Code) {
 
     Act(args);
 
-    Assert("Encode must have 2 arguments.\n");
+    Assert("Encode must have 2 arguments\\.\n");
 }
 
 TEST_F(HuffmanCodingTest, Error_When_Wrong_Number_Of_Arguments_For_Decode) {
@@ -71,7 +71,7 @@ TEST_F(HuffmanCodingTest, Error_When_Wrong_Number_Of_Arguments_For_Decode) {
 
     Act(args);
 
-    Assert("Decode must have 4 or more arguments.\n");
+    Assert("Decode must have 4 or more arguments\\.\n");
 }
 
 TEST_F(HuffmanCodingTest, Can_Encode_String) {
@@ -103,7 +103,7 @@ TEST_F(HuffmanCodingTest, Can_Print_Help) {
 
     Act(args);
 
-    Assert("This application work with Huffman coding.");
+    Assert("This application work with Huffman coding\\.");
 }
 
 TEST_F(HuffmanCodingTest, Cant_Decode_With_Wrong_Arguments) {
@@ -111,7 +111,7 @@ TEST_F(HuffmanCodingTest, Cant_Decode_With_Wrong_Arguments) {
 
     Act(args);
 
-    Assert("Wrong code to decode.\n");
+    Assert("Wrong code to decode\\.\n");
 }
 
 TEST_F(HuffmanCodingTest, Get_Error_When_Bad_Decode_Input) {
@@ -119,5 +119,5 @@ TEST_F(HuffmanCodingTest, Get_Error_When_Bad_Decode_Input) {
 
     Act(args);
 
-    Assert("Wrong input.\n");
+    Assert("Wrong input\\.\n");
 }

@@ -23,28 +23,28 @@ add_test(
     COMMAND ${APPLICATION} -e absde
 )
 set_tests_properties (${prefix}_Get_Error_When_Not_Right_Argument
-  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong argument.\n Use -h for help.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong argument\\.\n Use -h for help\\.")
 
 add_test(
     NAME ${prefix}_Get_Error_When_Wrong_Number_Of_Arguments
     COMMAND ${APPLICATION} -c
 )
 set_tests_properties (${prefix}_Get_Error_When_Wrong_Number_Of_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "Should be 3 or more arguments.\n Use -h for help")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Should be 3 or more arguments\\.\n Use -h for help")
   
 add_test(
     NAME ${prefix}_Get_Error_When_Wrong_Number_Of_Arguments_For_Code
     COMMAND ${APPLICATION} -c str excess
 )
 set_tests_properties (${prefix}_Get_Error_When_Wrong_Number_Of_Arguments_For_Code
-  PROPERTIES PASS_REGULAR_EXPRESSION "Encode must have 2 arguments.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Encode must have 2 arguments\\.")
   
 add_test(
     NAME ${prefix}_Get_Error_When_Wrong_Number_Of_Arguments_For_Decode
     COMMAND ${APPLICATION} -d 100101 0
 )
 set_tests_properties (${prefix}_Get_Error_When_Wrong_Number_Of_Arguments_For_Decode
-  PROPERTIES PASS_REGULAR_EXPRESSION "Decode must have 4 or more arguments.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Decode must have 4 or more arguments\\.")
   
 add_test(
     NAME ${prefix}_Can_Encode_String

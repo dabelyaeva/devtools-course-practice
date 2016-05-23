@@ -141,7 +141,7 @@ string Huff::decoding(TableMap Tbl, string str) {
     for (unsigned int i = 0; i < str.size(); i++) {
         if (str[i] != '0' && str[i] != '1') {
             cout << "String contains not only 0 or 1" << endl;
-            throw 1;
+            throw string("Wrong code to decode.\n");
         } else if (str[i] == '1') {
             buf.push_back(1);
         } else {

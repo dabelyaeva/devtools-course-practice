@@ -31,14 +31,19 @@ string HuffmanCoding::operator()(int argc, const char ** argv) {
         }
     } else if (_operation == "-d") {
         if (argc >= 5) {
-            Huff huf;
-            TableMap table;
-            string toParse("");
-            string toDecode(argv[2]);
-            for (int i = 3; i < argc; i++)
-                toParse += (argv[i] + string(" "));
-            table = huf.fillTable(toParse);
-            _message = huf.decoding(table, toDecode);
+            try {
+                Huff huf;
+                TableMap table;
+                string toParse("");
+                string toDecode(argv[2]);
+                for (int i = 3; i < argc; i++)
+                    toParse += (argv[i] + string(" "));
+                table = huf.fillTable(toParse);
+                _message = huf.decoding(table, toDecode);
+            }
+            catch (string str) {
+                _message = str;
+            }
         } else {
             _message = "Decode must have 4 or more arguments.\n";
         }

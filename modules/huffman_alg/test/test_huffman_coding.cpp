@@ -105,3 +105,11 @@ TEST_F(HuffmanCodingTest, Can_Print_Help) {
 
     Assert("This application work with Huffman coding.");
 }
+
+TEST_F(HuffmanCodingTest, Cant_Decode_With_Wrong_Arguments) {
+    const vector<string> args = { "-d", "1A1", "0", "o", "1", "w" };
+
+    Act(args);
+
+    Assert("Wrong code to decode.\n");
+}

@@ -293,3 +293,18 @@ TEST(Huff, Can_Fill_Table_With_Unknow_Parametr) {
     expected['b'] = { false, true };
     EXPECT_EQ(expected, result);
 }
+
+TEST(Huff, Can_Fill_Table_With_Many_Options) {
+    string str("0 a 001 b 010 c 011 d 101 e");
+    Huff huf;
+
+    TableMap result = huf.fillTable(str);
+
+    TableMap expected;
+    expected['a'] = { false };
+    expected['b'] = { false, false, true };
+    expected['c'] = { false, true, false };
+    expected['d'] = { false, true, true };
+    expected['e'] = { true, false, true };
+    EXPECT_EQ(expected, result);
+}

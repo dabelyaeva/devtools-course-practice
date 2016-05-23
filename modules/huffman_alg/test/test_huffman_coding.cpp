@@ -47,7 +47,7 @@ TEST_F(HuffmanCodingTest, Get_Error_When_Not_Right_Argument) {
 
     Act(args);
 
-    Assert("Wrong argument\\.\n Use -h for help.");
+    Assert("Wrong argument\\.\n Use -h for help\\.");
 }
 
 TEST_F(HuffmanCodingTest, Get_Error_When_Wrong_Number_Of_Arguments) {

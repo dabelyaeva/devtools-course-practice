@@ -1,8 +1,10 @@
 // Copyright 2016 Voevodin Andrew
 
 #include <gtest/gtest.h>
+
 #include <string>
 #include <vector>
+
 #include "include/sq_converter.h"
 
 using ::testing::internal::RE;

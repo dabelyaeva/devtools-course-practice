@@ -73,3 +73,19 @@ TEST_F(HuffmanCodingTest, Error_When_Wrong_Number_Of_Arguments_For_Decode) {
 
     Assert("Decode must have 4 or more arguments.\n");
 }
+
+TEST_F(HuffmanCodingTest, Can_Code_String) {
+    const vector<string> args = { "-c", "string"};
+
+    Act(args);
+
+    Assert("g: 100\ni: 101\nn: 110\nr: 111\ns: 00\nt: 01\n");
+}
+
+TEST_F(HuffmanCodingTest, Can_Code_String_With_Dubl_Symbol) {
+    const vector<string> args = { "-c", "oxon" };
+
+    Act(args);
+
+    Assert("n: 10\no: 0\nx: 11\n");
+}

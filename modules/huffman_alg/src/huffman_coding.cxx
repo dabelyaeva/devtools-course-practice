@@ -5,8 +5,7 @@
 
 HuffmanCoding::HuffmanCoding() : _message("") {}
 
-string HuffmanCoding::operator()(int argc, const char ** argv)
-{
+string HuffmanCoding::operator()(int argc, const char ** argv) {
     if (argc == 1 || !strcmp(argv[1], "-h")) {
         help(argv[0]);
         return _message;
@@ -16,10 +15,12 @@ string HuffmanCoding::operator()(int argc, const char ** argv)
     }
 
     _operation = argv[1];
-    if (_operation == "-c"){
+    if (_operation == "-c") {
         if (argc == 3) {
             Huff huf;
-            huf.readString(argv[2]);
+            FreqMap map;
+            map = huf.readString(argv[2]);
+            huf.coding(map);
             _message = huf.printTable();
         } else {
             _message = "Encode must have 2 arguments.\n";
@@ -43,7 +44,8 @@ string HuffmanCoding::operator()(int argc, const char ** argv)
 }
 
 void HuffmanCoding::help(const char * appname) {
-    _message = std::string("") + "This application work with Huffman coding.\n" +
+    _message = std::string("")
+        + "This application work with Huffman coding.\n" +
         "To work with it specify what action should be performed in format:\n"
         + "# " + appname + " <operation> " + " <string> \n\n"
 

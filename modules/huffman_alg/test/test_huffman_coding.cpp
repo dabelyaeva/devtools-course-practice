@@ -55,7 +55,7 @@ TEST_F(HuffmanCodingTest, Get_Error_When_Wrong_Number_Of_Arguments) {
 
     Act(args);
 
-    Assert("Should be 3 or more arguments.\n Use - h for help");
+    Assert("Should be 3 or more arguments.\n Use -h for help");
 }
 
 TEST_F(HuffmanCodingTest, Get_Error_When_Wrong_Number_Of_Arguments_For_Code) {
@@ -96,4 +96,12 @@ TEST_F(HuffmanCodingTest, Can_Decode_String) {
     Act(args);
 
     Assert("wow");
+}
+
+TEST_F(HuffmanCodingTest, Can_Print_Help) {
+    const vector<string> args = { "-h" };
+
+    Act(args);
+
+    Assert("This application work with Huffman coding.");
 }

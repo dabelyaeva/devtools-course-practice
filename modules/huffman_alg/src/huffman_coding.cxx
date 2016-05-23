@@ -9,8 +9,15 @@ string HuffmanCoding::operator()(int argc, const char ** argv) {
     if (argc == 1) {
         help(argv[0]);
         return _message;
+    } else if (argc == 2){
+        _operation = argv[1];
+        if (_operation == "-h" || _operation == "-help")
+            help(argv[0]);
+        else
+            _message = "Should be 3 or more arguments.\n Use -h for help";
+        return _message;
     } else if (argc < 3) {
-        _message = "Should be 3 or more arguments.\n Use - h for help";
+        _message = "Should be 3 or more arguments.\n Use -h for help";
         return _message;
     }
     _operation = argv[1];
@@ -53,10 +60,12 @@ void HuffmanCoding::help(const char * appname) {
         + "-c \tIf you want to encode some string.\n"
         + "For example:\t -c test\n"
         + "This command will code word \"test\" using huffman code\n\n"
-        + "FUCK\n"
+
         + "-d \tIf you want to decode some code.\n"
-        + "After -d argument, you must enter, code for using symbol.\n"
-        + "Using format: \t -d <code> <symbol>\n"
-        + "For example:\t -d 0 a 01 b 04 c\n"
-        + "This command will code word \"test\" using huffman code\n\n";
+        + "After -d argument, you must enter, code to decode\n"
+        + "and code for all using symbol.\n"
+        + "Using format: \t -d <code_to_decode> <code> <symbol> ...\n"
+        + "For example:\t -d 010110 10 a 11 b 0 c\n"
+        + "This command will decode \"010110\" into"
+        + "\"cabc\" using huffman code\n\n";
 }

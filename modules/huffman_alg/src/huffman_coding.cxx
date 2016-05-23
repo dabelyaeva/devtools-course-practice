@@ -9,7 +9,7 @@ string HuffmanCoding::operator()(int argc, const char ** argv) {
     if (argc == 1) {
         help(argv[0]);
         return _message;
-    } else if (argc == 2){
+    } else if (argc == 2) {
         _operation = argv[1];
         if (_operation == "-h" || _operation == "-help")
             help(argv[0]);

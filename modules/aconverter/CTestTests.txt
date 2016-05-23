@@ -37,7 +37,7 @@ add_test(
     COMMAND ${APPLICATION} 12 m ar
 )
 set_tests_properties (${prefix}_can_Convert_From_m_To_ar
-    PROPERTIES PASS_REGULAR_EXPRESSION "1200.0000 ar")
+    PROPERTIES PASS_REGULAR_EXPRESSION "0.1200 ar")
 
 add_test(
     NAME ${prefix}_can_Convert_From_g_To_m

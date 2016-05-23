@@ -16,10 +16,8 @@ string HuffmanCoding::operator()(int argc, const char ** argv) {
         else
             _message = "Should be 3 or more arguments.\n Use -h for help";
         return _message;
-    } else if (argc < 3) {
-        _message = "Should be 3 or more arguments.\n Use -h for help";
-        return _message;
     }
+
     _operation = argv[1];
     if (_operation == "-c") {
         if (argc == 3) {

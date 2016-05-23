@@ -73,7 +73,7 @@ TEST_F(DataBaseAppTest, Can_Add_New_Subject) {
 
 TEST_F(DataBaseAppTest, Can_Checks_Number_Of_Arguments) {
     // Arrange
-    vector<string> args{ "Name", "Name" };
+    const vector<string> args{ "Name", "Name" };
 
     // Act
     Act(args);
@@ -84,7 +84,7 @@ TEST_F(DataBaseAppTest, Can_Checks_Number_Of_Arguments) {
 
 TEST_F(DataBaseAppTest, Can_Detect_Incorrect_Number_Format_Str) {
     // Arrange
-    vector<string> args{"Fname_Sname",
+    const vector<string> args{"Fname_Sname",
                                    "Incorrent",
                                   "NewSubject", "addSubject"};
 
@@ -96,7 +96,7 @@ TEST_F(DataBaseAppTest, Can_Detect_Incorrect_Number_Format_Str) {
 
 TEST_F(DataBaseAppTest, Can_Detect_Incorrect_Number_Format_Less_2) {
     // Arrange
-    vector<string> args{"Fname_Sname",
+    const vector<string> args{"Fname_Sname",
                                    "0",
                                   "NewSubject", "addSubject"};
 
@@ -108,7 +108,7 @@ TEST_F(DataBaseAppTest, Can_Detect_Incorrect_Number_Format_Less_2) {
 
 TEST_F(DataBaseAppTest, Can_Detect_Incorrect_Number_Format_More_5) {
     // Arrange
-    vector<string> args{"Fname_Sname",
+    const vector<string> args{"Fname_Sname",
                                    "6",
                                  "NewSubject", "addSubject"};
 
@@ -117,3 +117,24 @@ TEST_F(DataBaseAppTest, Can_Detect_Incorrect_Number_Format_More_5) {
     // Assert
     Assert("Wrong number format!");
 }
+
+TEST_F(DataBaseAppTest, Can_Delete_Make_Delete) {
+    // Arrange
+    const vector<string> args = {"Fname_Sname",
+                                   "5",
+                                 "NewSubject", "deleteRecord" };
+
+    Act(args);
+    Assert("Successful delete record");
+}
+
+TEST_F(DataBaseAppTest, Can_Check_Operation) {
+    // Arrange
+    const vector<string> args = {"Fname_Sname",
+                                   "5",
+                                 "NewSubject", "defaultOper" };
+
+    Act(args);
+    Assert("Wrong operation format!");
+}
+

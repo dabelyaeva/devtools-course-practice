@@ -53,7 +53,7 @@ TableMap Huff::fillTable(string str) {
         if (isdigit(*iter)) {
             while ((*iter == '0' || *iter == '1') && (iter != str.end())) {
                 char temp = *iter;
-                vect.push_back(atoi(&temp));
+                vect.push_back(static_cast<bool>(atoi(&temp)));
                 if (next(iter) == str.end())
                     break;
                 else

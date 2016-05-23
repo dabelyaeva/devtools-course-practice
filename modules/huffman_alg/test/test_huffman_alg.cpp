@@ -283,7 +283,7 @@ TEST(Huff, Can_Fill_Table) {
 }
 
 TEST(Huff, Can_Fill_Table_With_Unknow_Parametrs) {
-    string str("0 a 1 b 10");
+    string str("0 a 1 b 11");
     Huff huf;
 
     TableMap result = huf.fillTable(str);

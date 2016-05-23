@@ -55,20 +55,20 @@ TEST_F(AreaConverterApplicationTest, Can_Detect_Dont_Existence_AreaUnits) {
     Assert("Undefined AreaUnit with qualifier wrong!.*");
 }
 
-TEST_F(AreaConverterApplicationTest, Can_Convert) {
-    vector<string> args = { "2", "ar", "m" };
+TEST_F(AreaConverterApplicationTest, Can_Convert_From_m_To_g) {
+    vector<string> args = { "1000", "m", "g" };
     Act(args);
-    Assert("200.0000 m.*");
+    Assert("1.0000 g.*");
 }
 
-TEST_F(AreaConverterApplicationTest, Can_Convert1) {
-    vector<string> args = { "2", "g", "ar" };
+TEST_F(AreaConverterApplicationTest, Can_Convert_From_m_To_ar) {
+    vector<string> args = { "12", "m", "ar" };
     Act(args);
-    Assert("200.0000 ar.*");
+    Assert("0.1200 ar.*");
 }
 
-TEST_F(AreaConverterApplicationTest, Can_Convert2) {
-    vector<string> args = { "2", "g", "m" };
+TEST_F(AreaConverterApplicationTest, Can_Convert_From_g_To_m) {
+    vector<string> args = { "1", "g", "m" };
     Act(args);
-    Assert("20000.0000 m.*");
+    Assert("10000.0000 m.*");
 }

@@ -56,13 +56,19 @@ TEST_F(AreaConverterApplicationTest, Can_Detect_Dont_Existence_AreaUnits) {
 }
 
 TEST_F(AreaConverterApplicationTest, Can_Convert) {
-    vector<string> args = { "200", "m", "ar" };
+    vector<string> args = { "2", "ar", "m" };
     Act(args);
-    Assert("2.0000 ar.*");
+    Assert("200.0000 m.*");
 }
 
 TEST_F(AreaConverterApplicationTest, Can_Convert1) {
     vector<string> args = { "2", "g", "ar" };
     Act(args);
     Assert("200.0000 ar.*");
+}
+
+TEST_F(AreaConverterApplicationTest, Can_Convert1) {
+    vector<string> args = { "2", "g", "m" };
+    Act(args);
+    Assert("20000.0000 m.*");
 }

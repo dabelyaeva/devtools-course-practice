@@ -13,9 +13,9 @@
 using std::vector;
 using std::string;
 
-extern const AreaUnit AREA_UNIT_METER = AreaUnit(0.01, "m");
-extern const AreaUnit AREA_UNIT_WEAVING = AreaUnit(1, "ar");
-extern const AreaUnit AREA_UNIT_HECTARE = AreaUnit(100, "g");
+extern const AreaUnit AREA_UNIT_METER = AreaUnit(1, "m");
+extern const AreaUnit AREA_UNIT_WEAVING = AreaUnit(100, "ar");
+extern const AreaUnit AREA_UNIT_HECTARE = AreaUnit(10000, "g");
 
 extern const vector<AreaUnit> DEFAULT_AREA_UNIT = {
      AREA_UNIT_METER,

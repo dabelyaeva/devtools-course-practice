@@ -92,28 +92,28 @@ TEST(AreaConverterTest, Can_Convert_Meter_To_Meter) {
 TEST(AreaConverterTest, Can_Convert_Meter_To_Weaving) {
     // Arrange
     AreaConverter converter;
-    double value = 100.0;
+    double value = 1.0;
 
     // Act
     double result = converter.Convert(AREA_UNIT_METER,
         AREA_UNIT_WEAVING, value);
 
     // Assert
-    double _result = 1.0;
+    double _result = 100.0;
     EXPECT_DOUBLE_EQ(result, _result);
 }
 
 TEST(AreaConverterTest, Can_Convert_Weaving_To_Meter) {
     // Arrange
     AreaConverter converter;
-    double value = 1.0;
+    double value = 100.0;
 
     // Act
     double result = converter.Convert(AREA_UNIT_WEAVING,
         AREA_UNIT_METER, value);
 
     // Assert
-    double _result = 100.0;
+    double _result = 1.0;
     EXPECT_DOUBLE_EQ(result, _result);
 }
 

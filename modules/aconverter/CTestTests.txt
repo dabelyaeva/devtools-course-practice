@@ -27,14 +27,21 @@ set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format
 
 add_test(
     NAME ${prefix}_can_Convert_From_m_To_g
-    COMMAND ${APPLICATION} 17323 m g
+    COMMAND ${APPLICATION} 1 m g
 )
 set_tests_properties (${prefix}_can_Convert_From_m_To_g
-    PROPERTIES PASS_REGULAR_EXPRESSION "1.7323 g")
+    PROPERTIES PASS_REGULAR_EXPRESSION "10000.0000 g")
 
 add_test(
     NAME ${prefix}_can_Convert_From_m_To_ar
-    COMMAND ${APPLICATION} 1235 m ar
+    COMMAND ${APPLICATION} 12 m ar
 )
 set_tests_properties (${prefix}_can_Convert_From_m_To_ar
-    PROPERTIES PASS_REGULAR_EXPRESSION "12.3500 ar")
+    PROPERTIES PASS_REGULAR_EXPRESSION "1200.0000 ar")
+
+add_test(
+    NAME ${prefix}_can_Convert_From_g_To_m
+    COMMAND ${APPLICATION} 1 g m
+)
+set_tests_properties (${prefix}_can_Convert_From_m_To_ar
+    PROPERTIES PASS_REGULAR_EXPRESSION "10000.0000 m")

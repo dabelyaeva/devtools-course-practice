@@ -282,14 +282,14 @@ TEST(Huff, Can_Fill_Table) {
     EXPECT_EQ(expected, result);
 }
 
-TEST(Huff, Can_Fill_Table_With_Unknow_Parametrs) {
-    string str("0 a 1 b 11");
+TEST(Huff, Can_Fill_Table_With_Unknow_Parametr) {
+    string str("1 a 01 b 1");
     Huff huf;
 
     TableMap result = huf.fillTable(str);
 
     TableMap expected;
-    expected['a'] = { false };
-    expected['b'] = { true };
+    expected['a'] = { true };
+    expected['b'] = { false, true };
     EXPECT_EQ(expected, result);
 }

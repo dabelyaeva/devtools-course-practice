@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include "include/list.hpp"
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, lists_isEmpty_is_worked) {
+TEST(FinanceNotepadTest, lists_isEmpty_is_worked) {
   // Arrange
   lite_list<int> test_list;
 
@@ -13,7 +13,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, lists_isEmpty_is_worked) {
   EXPECT_TRUE(test_list.isEmpty());
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest,
+TEST(FinanceNotepadTest,
     can_add_and_read_first_element_from_list) {
   // Arrange
   lite_list<int> test_list;
@@ -27,7 +27,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest,
   // Assert
   EXPECT_EQ(result, expect);
 }
-TEST(Sirotkin_Nikita_FinanceNotepadTest, can_see_all_list) {
+TEST(FinanceNotepadTest, can_see_all_list) {
   // Arrange
   lite_list<int> test_list;
 
@@ -42,7 +42,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, can_see_all_list) {
   EXPECT_FALSE(++test_list);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, can_read_current_element_in_list) {
+TEST(FinanceNotepadTest, can_read_current_element_in_list) {
   // Arrange
   lite_list<int> test_list;
   int result;
@@ -59,7 +59,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, can_read_current_element_in_list) {
   EXPECT_EQ(result, expect);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, can_navigte_by_list) {
+TEST(FinanceNotepadTest, can_navigte_by_list) {
   // Arrange
   lite_list<int> test_list;
   int result;
@@ -78,7 +78,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, can_navigte_by_list) {
   EXPECT_EQ(result, expect);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, can_reset_list) {
+TEST(FinanceNotepadTest, can_reset_list) {
   // Arrange
   lite_list<int> test_list;
   int result;
@@ -98,7 +98,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, can_reset_list) {
   EXPECT_EQ(result, expect);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, can_sort_easy_list) {
+TEST(FinanceNotepadTest, can_sort_easy_list) {
   // Arrange
   lite_list<int> test_list;
 
@@ -119,7 +119,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, can_sort_easy_list) {
   EXPECT_EQ(4, test_list.getValue());
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, cat_navigate_by_empty_list) {
+TEST(FinanceNotepadTest, cat_navigate_by_empty_list) {
   // Arrange
   lite_list<int> test_list;
 

@@ -1,6 +1,6 @@
 // Copyright 2016 Sirotkin_Nikita
-#ifndef MODULES_SIROTKIN_NIKITA_FINANCE_NOTEPAD_INCLUDE_lite_list_H_
-#define MODULES_SIROTKIN_NIKITA_FINANCE_NOTEPAD_INCLUDE_lite_list_H_
+#ifndef MODULES_FINANCE_NOTEPAD_INCLUDE_lite_list_H_
+#define MODULES_FINANCE_NOTEPAD_INCLUDE_lite_list_H_
 
 template<class ELEMENTS_TYPE>
 class node {
@@ -140,4 +140,4 @@ void lite_list<ELEMENTS_TYPE>::sort() {
   }
 }
 
-#endif  // MODULES_SIROTKIN_NIKITA_FINANCE_NOTEPAD_INCLUDE_lite_list_H_
+#endif  // MODULES_FINANCE_NOTEPAD_INCLUDE_lite_list_H_

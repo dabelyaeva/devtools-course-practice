@@ -6,7 +6,7 @@
 
 using std::string;
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, note_can_get_category_id) {
+TEST(FinanceNotepadTest, note_can_get_category_id) {
   // Arrange
   category_table table;
   note debt(date(1, months::JANUARY, 2000), 10.f, table.getIdOf("Debt"),
@@ -21,7 +21,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, note_can_get_category_id) {
   EXPECT_EQ(result, expect);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, note_can_get_category_name) {
+TEST(FinanceNotepadTest, note_can_get_category_name) {
   // Arrange
   category_table table;
   note debt(date(1, months::JANUARY, 2000), 10.f, table.getIdOf("Debt"),
@@ -36,7 +36,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, note_can_get_category_name) {
   EXPECT_EQ(result.compare(expect), 0);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, note_can_get_sum) {
+TEST(FinanceNotepadTest, note_can_get_sum) {
   // Arrange
   category_table table;
   note debt(date(1, months::JANUARY, 2000), 10.f,
@@ -51,7 +51,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, note_can_get_sum) {
   EXPECT_FLOAT_EQ(result, expect);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, note_can_get_date) {
+TEST(FinanceNotepadTest, note_can_get_date) {
   // Arrange
   category_table table;
   note debt(date(1, months::JANUARY, 2000), 10.f, table.getIdOf("Debt"),
@@ -66,7 +66,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, note_can_get_date) {
   EXPECT_TRUE(expect == result);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, note_can_get_comment) {
+TEST(FinanceNotepadTest, note_can_get_comment) {
   // Arrange
   category_table table;
   note debt(date(1, months::JANUARY, 2000), 10.f, table.getIdOf("Debt"),
@@ -81,7 +81,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, note_can_get_comment) {
   EXPECT_EQ(result.compare(expect), 0);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, note_can_compare_less) {
+TEST(FinanceNotepadTest, note_can_compare_less) {
   // Arrange
   category_table table;
   note max_note(date(1, months::JANUARY, 2001), 10.f,

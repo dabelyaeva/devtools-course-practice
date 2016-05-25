@@ -1,3 +1,4 @@
+// Copyright 2016 Magazinnik Ivan
 // Copyright 2016 Sirotkin_Nikita
 
 #include <gtest/gtest.h>
@@ -6,42 +7,47 @@
 
 using std::string;
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, throw_when_set_number_great_max_31) {
+TEST(FinanceNotepadTest, throw_when_set_number_great_max_31) {
   // Arrange & Act & Assert
   EXPECT_THROW(date(32, months::JANUARY, 2010), std::invalid_argument);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, throw_when_set_number_great_max_30) {
+TEST(FinanceNotepadTest, throw_when_set_number_less_then_1) {
+  // Arrange & Act & Assert
+  EXPECT_THROW(date(0, months::JANUARY, 2010), std::invalid_argument);
+}
+
+TEST(FinanceNotepadTest, throw_when_set_number_great_max_30) {
   // Arrange & Act & Assert
   EXPECT_THROW(date(32, months::APRIL, 2010), std::invalid_argument);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, throw_when_set_number_great_max_29) {
+TEST(FinanceNotepadTest, throw_when_set_number_great_max_29) {
   // Arrange & Act & Assert
   EXPECT_THROW(date(30, months::FEBRUARY, 2010), std::invalid_argument);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, throw_when_set_number_great_max_28) {
+TEST(FinanceNotepadTest, throw_when_set_number_great_max_28) {
   // Arrange & Act & Assert
   EXPECT_THROW(date(29, months::FEBRUARY, 2009), std::invalid_argument);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, throw_when_less_number_dates) {
+TEST(FinanceNotepadTest, throw_when_less_number_dates) {
   // Arrange & Act & Assert
   EXPECT_THROW(date(0, months::JANUARY, 2101), std::invalid_argument);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, throw_when_great_year_dates) {
+TEST(FinanceNotepadTest, throw_when_great_year_dates) {
   // Arrange & Act & Assert
   EXPECT_THROW(date(1, months::JANUARY, 2101), std::invalid_argument);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, throw_when_less_year_dates) {
+TEST(FinanceNotepadTest, throw_when_less_year_dates) {
   // Arrange & Act & Assert
   EXPECT_THROW(date(1, months::JANUARY, 1999), std::invalid_argument);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest,
+TEST(FinanceNotepadTest,
     dates_with_dif_numbers_can_compare_true) {
   // Arrange
   date number_less = date(1, months::JANUARY, 2001);
@@ -53,7 +59,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest,
   EXPECT_TRUE(number_less < number_great);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest,
+TEST(FinanceNotepadTest,
     dates_with_dif_numbers_can_compare_false) {
   // Arrange
   date number_less = date(1, months::JANUARY, 2001);
@@ -65,7 +71,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest,
   EXPECT_FALSE(number_less > number_great);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest,
+TEST(FinanceNotepadTest,
     dates_with_dif_months_can_compare_true) {
   // Arrange
   date month_less = date(1, months::JANUARY, 2001);
@@ -77,7 +83,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest,
   EXPECT_TRUE(month_great > month_less);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest,
+TEST(FinanceNotepadTest,
     dates_with_dif_months_can_compare_false) {
   // Arrange
   date month_less = date(1, months::JANUARY, 2001);
@@ -89,7 +95,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest,
   EXPECT_FALSE(month_great < month_less);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest,
+TEST(FinanceNotepadTest,
     dates_with_dif_year_can_compare_true) {
   // Arrange
   date year_less = date(1, months::JANUARY, 2001);
@@ -101,7 +107,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest,
   EXPECT_TRUE(year_great > year_less);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest,
+TEST(FinanceNotepadTest,
     dates_with_dif_year_can_compare_false) {
   // Arrange
   date year_less = date(1, months::JANUARY, 2001);
@@ -113,7 +119,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest,
   EXPECT_FALSE(year_great < year_less);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, dates__can_compare_by_eq_true) {
+TEST(FinanceNotepadTest, dates__can_compare_by_eq_true) {
   // Arrange
   date first = date(1, months::JANUARY, 2016);
   date second = date(1, months::JANUARY, 2016);
@@ -124,7 +130,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, dates__can_compare_by_eq_true) {
   EXPECT_TRUE(first == second);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, dates__can_compare_by_eq_false) {
+TEST(FinanceNotepadTest, dates__can_compare_by_eq_false) {
   // Arrange
   date first = date(1, months::JANUARY, 2016);
   date second = date(5, months::JANUARY, 2016);
@@ -133,4 +139,25 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, dates__can_compare_by_eq_false) {
 
   // Assert
   EXPECT_FALSE(first == second);
+}
+
+TEST(FinanceNotepadTest, can_convert_month) {
+  // Arrange & Act & Assert
+  EXPECT_EQ(months::JANUARY, date::stringToMonth("january"));
+  EXPECT_EQ(months::FEBRUARY, date::stringToMonth("february"));
+  EXPECT_EQ(months::MARCH, date::stringToMonth("march"));
+  EXPECT_EQ(months::APRIL, date::stringToMonth("april"));
+  EXPECT_EQ(months::MAY, date::stringToMonth("may"));
+  EXPECT_EQ(months::JUNE, date::stringToMonth("june"));
+  EXPECT_EQ(months::JULY, date::stringToMonth("july"));
+  EXPECT_EQ(months::AUGUST, date::stringToMonth("august"));
+  EXPECT_EQ(months::SEPTEMBER, date::stringToMonth("september"));
+  EXPECT_EQ(months::OCTOBER, date::stringToMonth("october"));
+  EXPECT_EQ(months::NOVEMBER, date::stringToMonth("november"));
+  EXPECT_EQ(months::DECEMBER, date::stringToMonth("december"));
+}
+
+TEST(FinanceNotepadTest, can_reach_throw_when_convert_incorrect_month) {
+    // Arrange & Act & Assert
+    EXPECT_THROW(date::stringToMonth("none"), std::invalid_argument);
 }

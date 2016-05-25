@@ -1,3 +1,4 @@
+// Copyright 2016 Magazinnik Ivan
 // Copyright 2016 Sirotkin_Nikita
 
 #include <string>
@@ -6,6 +7,9 @@
 using std::string;
 
 notepad::notepad(float pouch) {
+  this->pouch = pouch;
+}
+void notepad::setPouch(float pouch) {
   this->pouch = pouch;
 }
 void notepad::addNote(date notes_date, float sum, string categoriy,
@@ -56,6 +60,17 @@ string notepad::toFormatedString() {
   bool flag = !(notes.isEmpty());
   while (flag) {
     result += notes.getValue().toFormatedString();
+    flag = ++notes;
+  }
+  return result;
+}
+
+string notepad::toString() {
+  string result;
+  notes.reset();
+  bool flag = !(notes.isEmpty());
+  while (flag) {
+    result += notes.getValue().toString();
     flag = ++notes;
   }
   return result;

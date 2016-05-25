@@ -1,3 +1,4 @@
+// Copyright 2016 Magazinnik Ivan
 // Copyright 2016 Sirotkin_Nikita
 
 #include <stdexcept>
@@ -38,9 +39,9 @@ date::date(char number, months month, int year) {
 
 string date::toString() const {
   string result;
-  result = to_string<int>(number) + "." +
+  result = to_string<int>(number) + " " +
           to_string<int>(static_cast<int>(month)) +
-           "." + to_string<int>(year);
+           " " + to_string<int>(year);
   return result;
 }
 
@@ -87,4 +88,20 @@ bool date::wrongDate(char number, months month, int year) {
     return true;
   else
     return false;
+}
+
+months date::stringToMonth(string month) {
+  if (month == "january" || month == "1") return months::JANUARY;
+  if (month == "february" || month == "2") return months::FEBRUARY;
+  if (month == "march" || month == "3") return months::MARCH;
+  if (month == "april" || month == "4") return months::APRIL;
+  if (month == "may" || month == "5") return months::MAY;
+  if (month == "june" || month == "6") return months::JUNE;
+  if (month == "july" || month == "7") return months::JULY;
+  if (month == "august" || month == "8") return months::AUGUST;
+  if (month == "september" || month == "9") return months::SEPTEMBER;
+  if (month == "october" || month == "10") return months::OCTOBER;
+  if (month == "november" || month == "11") return months::NOVEMBER;
+  if (month == "december" || month == "12") return months::DECEMBER;
+  throw invalid_argument("Invalid date");
 }

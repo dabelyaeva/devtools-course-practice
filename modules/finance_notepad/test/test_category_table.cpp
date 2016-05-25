@@ -6,7 +6,7 @@
 
 using std::string;
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, table_can_get_category_id) {
+TEST(FinanceNotepadTest, table_can_get_category_id) {
   // Arrange
   category_table table;
   string input("Food");
@@ -20,7 +20,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, table_can_get_category_id) {
   EXPECT_EQ(result, expect);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest, table_can_get_category_name) {
+TEST(FinanceNotepadTest, table_can_get_category_name) {
   // Arrange
   category_table table;
   int input = 5;
@@ -34,7 +34,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest, table_can_get_category_name) {
   EXPECT_EQ(result.compare(expect), 0);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest,
+TEST(FinanceNotepadTest,
     table_can_get_default_category_by_wrong_id) {
   // Arrange
   category_table table;
@@ -49,7 +49,7 @@ TEST(Sirotkin_Nikita_FinanceNotepadTest,
   EXPECT_EQ(result.compare(expect), 0);
 }
 
-TEST(Sirotkin_Nikita_FinanceNotepadTest,
+TEST(FinanceNotepadTest,
     table_can_get_default_category_by_wrong_name) {
   // Arrange
   category_table table;

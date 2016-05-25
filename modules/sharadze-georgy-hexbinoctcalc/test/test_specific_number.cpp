@@ -300,7 +300,7 @@ TEST(Sharadze_Georgy_SpecificNumberTest,
     ASSERT_ANY_THROW(calc(sNum1, sNum2, 'q'));
 }
 
-TEST(Sharadze_Georgy_SpecificNumberTest, CanSetValueIntHEX) {
+TEST(Sharadze_Georgy_SpecificNumberTest, CanSetValueInBIN) {
     // Arrange
     SpecificNumber sNum(TNumbers::BIN, 0);
 
@@ -308,5 +308,84 @@ TEST(Sharadze_Georgy_SpecificNumberTest, CanSetValueIntHEX) {
     sNum.setValue("1111", TNumbers::BIN);
 
     // Assert
+    EXPECT_EQ(15, sNum.getIntValue());
+}
 
+TEST(Sharadze_Georgy_SpecificNumberTest, CanSetZeroValueInBIN) {
+    // Arrange
+    SpecificNumber sNum(TNumbers::BIN, 0);
+
+    // Act
+    sNum.setValue("0", TNumbers::BIN);
+
+    // Assert
+    EXPECT_EQ(0, sNum.getIntValue());
+}
+
+TEST(Sharadze_Georgy_SpecificNumberTest, CantSetWrongValueInBIN) {
+    // Arrange
+    SpecificNumber sNum(TNumbers::BIN, 0);
+
+    // Assert & Act
+    ASSERT_ANY_THROW(sNum.setValue("2lolwrongnum1", TNumbers::BIN));
+}
+
+TEST(Sharadze_Georgy_SpecificNumberTest, CanSetValueInHEX) {
+    // Arrange
+    SpecificNumber sNum(TNumbers::HEX, 0);
+
+    // Act
+    sNum.setValue("1E", TNumbers::HEX);
+
+    // Assert
+    EXPECT_EQ(30, sNum.getIntValue());
+}
+
+TEST(Sharadze_Georgy_SpecificNumberTest, CanSetZeroValueInHEX) {
+    // Arrange
+    SpecificNumber sNum(TNumbers::HEX, 0);
+
+    // Act
+    sNum.setValue("0", TNumbers::HEX);
+
+    // Assert
+    EXPECT_EQ(0, sNum.getIntValue());
+}
+
+TEST(Sharadze_Georgy_SpecificNumberTest, CantSetWrongValueInHEX) {
+    // Arrange
+    SpecificNumber sNum(TNumbers::HEX, 0);
+
+    // Assert & Act
+    ASSERT_ANY_THROW(sNum.setValue("2lolwrongnum1", TNumbers::HEX));
+}
+
+TEST(Sharadze_Georgy_SpecificNumberTest, CanSetValueInOCT) {
+    // Arrange
+    SpecificNumber sNum(TNumbers::OCT, 0);
+
+    // Act
+    sNum.setValue("17", TNumbers::OCT);
+
+    // Assert
+    EXPECT_EQ(15, sNum.getIntValue());
+}
+
+TEST(Sharadze_Georgy_SpecificNumberTest, CanSetZeroValueInOCT) {
+    // Arrange
+    SpecificNumber sNum(TNumbers::OCT, 0);
+
+    // Act
+    sNum.setValue("0", TNumbers::OCT);
+
+    // Assert
+    EXPECT_EQ(0, sNum.getIntValue());
+}
+
+TEST(Sharadze_Georgy_SpecificNumberTest, CantSetWrongValueInOCT) {
+    // Arrange
+    SpecificNumber sNum(TNumbers::OCT, 0);
+
+    // Assert & Act
+    ASSERT_ANY_THROW(sNum.setValue("2lolwrongnum1", TNumbers::OCT));
 }

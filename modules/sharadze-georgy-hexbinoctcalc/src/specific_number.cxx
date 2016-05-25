@@ -179,7 +179,7 @@ void SpecificNumber::setValue(std::string _number, TNumbers _mode) {
     {
     case TNumbers::HEX:
         for each(char n in _number) {
-            if ((n < '0' || n > '9') && (n < 'A' || n > 'E')) {
+            if ((n < '0' || n > '9') && (n < 'A' || n > 'F')) {
                 throw std::string("Wrong HEX-number format \n ");
                 return;
             }
@@ -208,15 +208,36 @@ void SpecificNumber::setValue(std::string _number, TNumbers _mode) {
 
     switch (_mode) {
     case TNumbers::HEX:
+        for (unsigned int i = 0; i < _number.length(); i++) {
+            result *= basis;
+            if (_number[i] >= '0' && _number[i] <= '9') {
+                result += (int)_number[i] - 48;
+            } else if (_number[i] == 'A') {
+                result += 10;
+            } else if (_number[i] == 'B') {
+                result += 11;
+            } else if (_number[i] == 'C') {
+                result += 12;
+            } else if (_number[i] == 'D') {
+                result += 13;
+            } else if (_number[i] == 'E') {
+                result += 14;
+            } else if (_number[i] == 'F') {
+                result += 15;
+            }
+        }
         break;
     case TNumbers::BIN:
-        unsigned int size = sizeof(_number);
-        for (unsigned int i = 0; i < sizeof(_number); i++) {
-            result += (int)_number[i];
+        for (unsigned int i = 0; i < _number.length(); i++) {
             result *= basis;
+            result += (int)_number[i] - 48;
         }
         break;
     case TNumbers::OCT:
+        for (unsigned int i = 0; i < _number.length(); i++) {
+            result *= basis;
+            result += (int)_number[i] - 48;
+        }
         break;
     }
 

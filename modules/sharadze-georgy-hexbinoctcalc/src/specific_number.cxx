@@ -178,8 +178,8 @@ void SpecificNumber::setValue(std::string _number, TNumbers _mode) {
 
     switch (_mode) {
     case TNumbers::HEX:
-        for each(char n in _number) {
-            if ((n < '0' || n > '9') && (n < 'A' || n > 'F')) {
+        for (int i = 0; i < _number.length(); i++) {
+            if ((_number[i] < '0' || _number[i] > '9') && (_number[i] < 'A' || _number[i] > 'F')) {
                 throw std::string("Wrong HEX-number format \n ");
                 return;
             }
@@ -187,8 +187,8 @@ void SpecificNumber::setValue(std::string _number, TNumbers _mode) {
         basis = 16;
         break;
     case TNumbers::OCT:
-        for each(char n in _number) {
-            if (n < '0' || n > '8') {
+        for (int i = 0; i < _number.length(); i++) {
+            if (_number[i] < '0' || _number[i] > '8') {
                 throw std::string("Wrong OCT-number format \n ");
                 return;
             }
@@ -196,8 +196,8 @@ void SpecificNumber::setValue(std::string _number, TNumbers _mode) {
         basis = 8;
         break;
     case TNumbers::BIN:
-        for each(char n in _number) {
-            if (n < '0' || n > '1') {
+        for (int i = 0; i < _number.length(); i++) {
+            if (_number[i] < '0' || _number[i] > '1') {
                 throw std::string("Wrong BIN-number format \n ");
                 return;
             }

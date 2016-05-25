@@ -5,12 +5,12 @@
 
 SpecificNumber::SpecificNumber(const TNumbers _mode, const int _value) {
     setMode(_mode);
-    setValue(_value);
+    setIntValue(_value);
 }
 
 SpecificNumber::SpecificNumber(const SpecificNumber & _sNum) {
     setMode(_sNum.getMode());
-    setValue(_sNum.getValue());
+    setIntValue(_sNum.getIntValue());
 }
 
 SpecificNumber SpecificNumber::operator+(const SpecificNumber & _sNum) const {
@@ -18,7 +18,7 @@ SpecificNumber SpecificNumber::operator+(const SpecificNumber & _sNum) const {
     if (getMode() != _sNum.getMode()) {
         throw std::string("Can\'t operate with different types of numbers \n ");
     } else {
-        result.setValue(getValue() + _sNum.getValue());
+        result.setIntValue(getIntValue() + _sNum.getIntValue());
         result.setMode(getMode());
     }
     return result;
@@ -29,7 +29,7 @@ SpecificNumber SpecificNumber::operator-(const SpecificNumber & _sNum) const {
     if (getMode() != _sNum.getMode()) {
         throw std::string("Can\'t operate with different types of numbers \n ");
     } else {
-        result.setValue(getValue() - _sNum.getValue());
+        result.setIntValue(getIntValue() - _sNum.getIntValue());
         result.setMode(getMode());
     }
     return result;
@@ -40,7 +40,7 @@ SpecificNumber SpecificNumber::operator*(const SpecificNumber & _sNum) const {
     if (getMode() != _sNum.getMode()) {
         throw std::string("Can\'t operate with different types of numbers \n ");
     } else {
-        result.setValue(getValue() * _sNum.getValue());
+        result.setIntValue(getIntValue() * _sNum.getIntValue());
         result.setMode(getMode());
     }
     return result;
@@ -53,28 +53,28 @@ SpecificNumber SpecificNumber::operator/(const SpecificNumber & _sNum) const {
     } else if (_sNum.equalsZero()) {
         throw std::string("Can\'t divide with zero \n ");
     } else {
-        result.setValue(static_cast<int>(getValue() / _sNum.getValue()));
+        result.setIntValue(static_cast<int>(getIntValue() / _sNum.getIntValue()));
         result.setMode(getMode());
     }
     return result;
 }
 
 SpecificNumber SpecificNumber::operator=(const SpecificNumber & _sNum) {
-    setValue(_sNum.getValue());
+    setIntValue(_sNum.getIntValue());
     setMode(_sNum.getMode());
     return *this;
 }
 
 bool SpecificNumber::operator == (const SpecificNumber & _sNum) const {
     return (getMode() == _sNum.getMode() &&
-        getValue() == _sNum.getValue());
+        getIntValue() == _sNum.getIntValue());
 }
 
 bool SpecificNumber::operator != (const SpecificNumber & _sNum) const {
     return !(*this == _sNum);
 }
 
-int SpecificNumber::getValue() const {
+int SpecificNumber::getIntValue() const {
     return value;
 }
 
@@ -82,7 +82,7 @@ TNumbers SpecificNumber::getMode() const {
     return mode;
 }
 
-void SpecificNumber::setValue(const int _value) {
+void SpecificNumber::setIntValue(const int _value) {
     value = _value;
 }
 
@@ -169,4 +169,56 @@ SpecificNumber calc(const SpecificNumber & _SpecificNumber1,
         throw std::string("Wrong operation format \n ");
     }
     return result;
+}
+
+void SpecificNumber::setValue(std::string _number, TNumbers _mode) {
+    int result = 0;
+    unsigned int basis;
+
+    switch (_mode)
+    {
+    case TNumbers::HEX:
+        for each(char n in _number) {
+            if ((n < '0' || n > '9') && (n < 'A' || n > 'E')) {
+                throw std::string("Wrong HEX-number format \n ");
+                return;
+            }
+        }
+        basis = 16;
+        break;
+    case TNumbers::OCT:
+        for each(char n in _number) {
+            if (n < '0' || n > '8') {
+                throw std::string("Wrong OCT-number format \n ");
+                return;
+            }
+        }
+        basis = 8;
+        break;
+    case TNumbers::BIN:
+        for each(char n in _number) {
+            if (n < '0' || n > '1') {
+                throw std::string("Wrong BIN-number format \n ");
+                return;
+            }
+        }
+        basis = 2;
+        break;
+    }
+
+    switch (_mode) {
+    case TNumbers::HEX:
+        break;
+    case TNumbers::BIN:
+        unsigned int size = sizeof(_number);
+        for (unsigned int i = 0; i < sizeof(_number); i++) {
+            result += (int)_number[i];
+            result *= basis;
+        }
+        break;
+    case TNumbers::OCT:
+        break;
+    }
+
+    setIntValue(result);
 }

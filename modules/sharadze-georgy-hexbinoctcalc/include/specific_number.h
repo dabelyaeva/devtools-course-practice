@@ -21,10 +21,11 @@ class SpecificNumber {
     bool operator == (const SpecificNumber& _SpecificNumber) const;
     bool operator != (const SpecificNumber& _SpecificNumber) const;
 
-    int getValue() const;
+    int getIntValue() const;
     TNumbers getMode() const;
-    void setValue(const int _value);
+    void setIntValue(const int _value);
     void setMode(const TNumbers _mode);
+    void setValue(std::string _number, TNumbers _mode);
 
     std::string showNum() const;
     friend SpecificNumber calc(const SpecificNumber & _SpecificNumber1,

@@ -10,7 +10,7 @@ TEST(Sharadze_Georgy_SpecificNumberTest, Can_Create_Number) {
 
     // Assert & Act
     EXPECT_EQ(TNumbers::BIN, sNum.getMode());
-    EXPECT_EQ(0, sNum.getValue());
+    EXPECT_EQ(0, sNum.getIntValue());
 }
 
 TEST(Sharadze_Georgy_SpecificNumberTest, Can_Create_Number_With_Copy) {
@@ -191,7 +191,7 @@ TEST(Sharadze_Georgy_SpecificNumberTest, Can_Get_Value_Correctly) {
     const SpecificNumber sNum(TNumbers::OCT, -5000);
 
     // Act
-    const int result = sNum.getValue();
+    const int result = sNum.getIntValue();
 
     // Assert
     const int expected = -5000;
@@ -216,11 +216,11 @@ TEST(Sharadze_Georgy_SpecificNumberTest, Can_Set_Value_Correctly) {
     const int _value = 4000;
 
     // Act
-    sNum.setValue(_value);
+    sNum.setIntValue(_value);
 
     // Assert
     const int expected = _value;
-    EXPECT_TRUE(expected == sNum.getValue());
+    EXPECT_TRUE(expected == sNum.getIntValue());
 }
 
 TEST(Sharadze_Georgy_SpecificNumberTest, Can_Set_Mode_Correctly) {
@@ -298,4 +298,15 @@ TEST(Sharadze_Georgy_SpecificNumberTest,
 
     // Assert & Act
     ASSERT_ANY_THROW(calc(sNum1, sNum2, 'q'));
+}
+
+TEST(Sharadze_Georgy_SpecificNumberTest, CanSetValueIntHEX) {
+    // Arrange
+    SpecificNumber sNum(TNumbers::BIN, 0);
+
+    // Act
+    sNum.setValue("1111", TNumbers::BIN);
+
+    // Assert
+
 }

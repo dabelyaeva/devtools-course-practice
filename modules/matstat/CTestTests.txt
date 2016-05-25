@@ -1,0 +1,152 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_Can_Print_Help_Without_Parameters
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_Can_Print_Help_Without_Parameters
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is a main statistic values calculator application")
+
+add_test(
+    NAME ${prefix}_Can_Detect_Wrong_Function_Format
+    COMMAND ${APPLICATION} 2 1 2 0.5 0.5 wrong_function
+)
+set_tests_properties (${prefix}_Can_Detect_Wrong_Function_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong function format!")
+
+add_test(
+    NAME ${prefix}_Can_Detect_Wrong_Double_Number_Format
+    COMMAND ${APPLICATION} 2 1 h 0.5 0.5 CalcDispersion
+)
+set_tests_properties (${prefix}_Can_Detect_Wrong_Double_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+add_test(
+    NAME ${prefix}_Can_Detect_Wrong_Int_Number_Format
+    COMMAND ${APPLICATION} h 1 2 0.5 0.5 CalcDispersion
+)
+set_tests_properties (${prefix}_Can_Detect_Wrong_Int_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+add_test(
+    NAME ${prefix}_Is_Checking_Wrong_Number_Of_Function_Arguments
+    COMMAND ${APPLICATION} 2 1 h 0.5 0.5 CalcDispersion 1
+)
+set_tests_properties (${prefix}_Is_Checking_Wrong_Number_Of_Function_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number of arguments!!")
+
+add_test(
+    NAME ${prefix}_Is_Checking_Wrong_Number_Of_Parameters
+    COMMAND ${APPLICATION} 2 1 0.5 0.5 CalcDispersion
+)
+set_tests_properties (${prefix}_Is_Checking_Wrong_Number_Of_Parameters
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number of parameters!")
+
+add_test(
+    NAME ${prefix}_Is_Checking_Wrong_Size
+    COMMAND ${APPLICATION} -1
+)
+set_tests_properties (${prefix}_Is_Checking_Wrong_Size
+  PROPERTIES PASS_REGULAR_EXPRESSION "Size must be positive!")
+
+add_test(
+    NAME ${prefix}_Can_Not_Create_Sampe_With_Not_Zero_Probabilities
+    COMMAND ${APPLICATION} 2 1 2 0.5 0.4 CalcDispersion
+)
+set_tests_properties (${prefix}_Can_Not_Create_Sampe_With_Not_Zero_Probabilities
+  PROPERTIES PASS_REGULAR_EXPRESSION "Probabilities is not correct!")
+
+add_test(
+    NAME ${prefix}_Can_Not_Create_Sampe_With_Same_Values
+    COMMAND ${APPLICATION} 2 1 1 0.5 0.4 CalcDispersion
+)
+set_tests_properties (${prefix}_Can_Not_Create_Sampe_With_Same_Values
+  PROPERTIES PASS_REGULAR_EXPRESSION "Sample is not correct, values must be different!")
+
+add_test(
+    NAME ${prefix}_Can_Calculate_Dispersion
+    COMMAND ${APPLICATION} 2 1 2 0.5 0.5 CalcDispersion
+)
+set_tests_properties (${prefix}_Can_Calculate_Dispersion
+  PROPERTIES PASS_REGULAR_EXPRESSION "Dispersion is equal 0.25")
+
+add_test(
+    NAME ${prefix}_Can_Calculate_Central_Moment
+    COMMAND ${APPLICATION} 2 1 2 0.5 0.5 CalcCentralMoment 2
+)
+set_tests_properties (${prefix}_Can_Calculate_Central_Moment
+  PROPERTIES PASS_REGULAR_EXPRESSION "Central moment is equal 0.25")
+
+add_test(
+    NAME ${prefix}_Can_Not_Calculate_Central_Moment_With_Incorrect_Args
+    COMMAND ${APPLICATION} 2 1 2 0.5 0.5 CalcCentralMoment
+)
+set_tests_properties (${prefix}_Can_Not_Calculate_Central_Moment_With_Incorrect_Args
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number of arguments!")
+
+add_test(
+    NAME ${prefix}_Can_Calculate_Moment
+    COMMAND ${APPLICATION} 2 1 2 0.5 0.5 CalcMoment 1 2
+)
+set_tests_properties (${prefix}_Can_Calculate_Moment
+  PROPERTIES PASS_REGULAR_EXPRESSION "Moment is equal 0.5")
+
+add_test(
+    NAME ${prefix}_Can_Not_Calculate_Moment_With_Incorrect_Arguments
+    COMMAND ${APPLICATION} 2 1 2 0.5 0.5 CalcMoment 1
+)
+set_tests_properties (${prefix}_Can_Not_Calculate_Moment_With_Incorrect_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number of arguments!")
+
+add_test(
+    NAME ${prefix}_Can_Calculate_Mathematical_Expectation
+    COMMAND ${APPLICATION} 2 1 2 0.5 0.5 CalcMathematicalExpectation
+)
+set_tests_properties (${prefix}_Can_Calculate_Mathematical_Expectation
+  PROPERTIES PASS_REGULAR_EXPRESSION "Mathematical Expectation is equal 1.5")
+
+add_test(
+    NAME ${prefix}_Can_Calculate_Mathematical_Expectation_With_Incorrect_Arguments
+    COMMAND ${APPLICATION} 2 1 2 0.5 0.5 CalcMathematicalExpectation 1
+)
+set_tests_properties (${prefix}_Can_Calculate_Mathematical_Expectation_With_Incorrect_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number of arguments!")
+
+add_test(
+    NAME ${prefix}_Can_Calculate_Average_Quadratic_Deviation
+    COMMAND ${APPLICATION} 2 1 2 0.5 0.5 CalcAverageQuadraticDeviation
+)
+set_tests_properties (${prefix}_Can_Calculate_Average_Quadratic_Deviation
+  PROPERTIES PASS_REGULAR_EXPRESSION "Average Quadratic Deviation is equal 0.5")
+
+add_test(
+    NAME ${prefix}_Can_Not_Calculate_Average_Quadratic_Deviation_With_Incorrect_Arguments
+    COMMAND ${APPLICATION} 2 1 2 0.5 0.5 CalcAverageQuadraticDeviation 1
+)
+set_tests_properties (${prefix}_Can_Not_Calculate_Average_Quadratic_Deviation_With_Incorrect_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number of arguments!")
+
+add_test(
+    NAME ${prefix}_Can_Calculate_Elementary_Moment
+    COMMAND ${APPLICATION} 2 1 2 0.5 0.5 CalcElementaryMoment 1
+)
+set_tests_properties (${prefix}_Can_Calculate_Elementary_Moment
+  PROPERTIES PASS_REGULAR_EXPRESSION "Elementary moment is equal 1.5")
+
+add_test(
+    NAME ${prefix}_Can_Not_Calculate_Elementary_Moment_With_Incorrect_Arguments
+    COMMAND ${APPLICATION} 2 1 2 0.5 0.5 CalcElementaryMoment
+)
+set_tests_properties (${prefix}_Can_Not_Calculate_Elementary_Moment_With_Incorrect_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number of arguments!")

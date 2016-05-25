@@ -1,7 +1,7 @@
 // Copyright 2016 Polyakov Igor
 
-#ifndef MODULES_POLYAKOV_IGOR_MATSTAT_INCLUDE_MATSTAT_H_
-#define MODULES_POLYAKOV_IGOR_MATSTAT_INCLUDE_MATSTAT_H_
+#ifndef MODULES_MATSTAT_INCLUDE_MATSTAT_H_
+#define MODULES_MATSTAT_INCLUDE_MATSTAT_H_
 
 #include <vector>
 #include <stdexcept>
@@ -14,36 +14,26 @@ const double SAMPLE_EPSILON = 0.001;
 class IncorrectSample :public std::runtime_error {
  public:
      IncorrectSample() :
-     std::runtime_error("Sample is not correct, values must be different") {}
+     std::runtime_error("Sample is not correct, values must be different!") {}
 };
 
 class IncorrectProbabilities :public std::runtime_error {
  public:
     IncorrectProbabilities() :
-    std::runtime_error("Probabilities is not correct") {}
+    std::runtime_error("Probabilities is not correct!") {}
 };
 
 class IncorrectSizesOfSampleAndProbs :public std::runtime_error {
  public:
      IncorrectSizesOfSampleAndProbs() :
-     std::runtime_error("Sizes of sample and probs must be identical") {}
+     std::runtime_error("Sizes of sample and probs must be identical!") {}
 };
 
-
 class Sample {
- private:
-    int sample_size;
-    vector<double> sample;
-    vector<double> probabilities;
-
-    bool IsSummOfProbsEqualUnity(const vector<double> _pr) const;
-    bool AreProbsCorrect(const vector<double> _pr) const;
-    bool IsSampleCorrect(const vector<double> _sample) const;
-
  public:
     Sample();
-    Sample(const vector<double> _sample,
-           const vector<double> _probabilities);
+    Sample(const vector<double> sample,
+           const vector<double> probabilities);
     ~Sample();
 
     Sample& operator=(const Sample& S);
@@ -59,6 +49,15 @@ class Sample {
     double CalcDispersion() const;
     double CalcAverageQuadraticDeviation() const;
     double CalcCentralMoment(const int exponent) const;
+
+ private:
+    int sample_size;
+    vector<double> sample;
+    vector<double> probabilities;
+
+    bool IsSummOfProbsEqualUnity(const vector<double> _pr) const;
+    bool AreProbsCorrect(const vector<double> _pr) const;
+    bool IsSampleCorrect(const vector<double> _sample) const;
 };
 
-#endif  // MODULES_POLYAKOV_IGOR_MATSTAT_INCLUDE_MATSTAT_H_
+#endif  // MODULES_MATSTAT_INCLUDE_MATSTAT_H_

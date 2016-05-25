@@ -1,6 +1,6 @@
 // Copyright 2016 Voevodin Andrew
 
-#include "include/Color_Converter.h"
+#include "include/color_converter.h"
 #include <math.h>
 #include <vector>
 #include <string>
@@ -8,57 +8,57 @@
 using std::string;
 using std::vector;
 
-const vector<vector<double>> color_converter::kMatrCoefXYZToRGB{
+const vector<vector<double>> ColorConverter::kMatrCoefXYZToRGB{
     { 3.2404542, -1.5371385, -0.4985314 },
     { -0.9693660, 1.87560108, 0.0415560},
     { 0.0556434, -0.2040259, 1.0572252},
 };
 
-const vector<vector<double>> color_converter::kMatrCoefRGBToXYZ{
+const vector<vector<double>> ColorConverter::kMatrCoefRGBToXYZ{
     { 0.4124564, 0.3575761, 0.1804375 },
     { 0.2126729, 0.7151522, 0.0721750 },
     { 0.0193339, 0.1191920, 0.9503041 },
 };
 
-const double color_converter::kEpsilonInLAB = 0.008856;
-const double color_converter::kEpsilonInRGBToXYZ = 0.04045;
-const double color_converter::kEpsilonInXYZToRGB = 0.0031308;
-const double color_converter::kMaxValueInRGB = 255.0;
-const double color_converter::kNormalizingNumberXYZToRGB = 100.0;
-const double color_converter::kKInLAB = 7.787;
-const vector<double> color_converter::
+const double ColorConverter::kEpsilonInLAB = 0.008856;
+const double ColorConverter::kEpsilonInRGBToXYZ = 0.04045;
+const double ColorConverter::kEpsilonInXYZToRGB = 0.0031308;
+const double ColorConverter::kMaxValueInRGB = 255.0;
+const double ColorConverter::kNormalizingNumberXYZToRGB = 100.0;
+const double ColorConverter::kKInLAB = 7.787;
+const vector<double> ColorConverter::
            kNormalizingVectorXYZToLAB{ 95.047, 100.000, 108.883 };
 
-bool color_converter::IsVectorSizeCorrect(const vector<double>& vector) {
+bool ColorConverter::IsVectorSizeCorrect(const vector<double>& vector) {
     if (vector.size() != 3) return false;
     return true;
 }
 
-bool color_converter::IsVectorSizeCorrect(const vector<int>& vector) {
+bool ColorConverter::IsVectorSizeCorrect(const vector<int>& vector) {
     if (vector.size() != 3) return false;
     return true;
 }
 
-bool color_converter::IsRGBVectorinRange(const vector<int>& rgb) {
+bool ColorConverter::IsRGBVectorInRange(const vector<int>& rgb) {
     for (size_t i = 0; i < rgb.size(); i++)
         if ((rgb[i] > 255) || (rgb[i] < 0)) return false;
     return true;
 }
 
-bool color_converter::IsHSVVectorinRange(const vector<double>& hsv) {
+bool ColorConverter::IsHSVVectorInRange(const vector<double>& hsv) {
     for (size_t i = 0; i < hsv.size(); i++)
         if ((hsv[i] > 1.0) || (hsv[i] < 0.0)) return false;
     return true;
 }
 
-bool color_converter::IsLABVectorinRange(const vector<int>& lab) {
+bool ColorConverter::IsLABVectorInRange(const vector<int>& lab) {
     if ((lab[0] > 100) || (lab[0] < 0) ||
         (lab[1] > 128) || (lab[1] < -127) ||
         (lab[2] > 128) || (lab[2] < -127)) return false;
     return true;
 }
 
-vector<int> color_converter::XYZToRGB(const vector<double>& xyz) {
+vector<int> ColorConverter::XYZToRGB(const vector<double>& xyz) {
     vector<int> rgb(3);
     vector<double> norm_rgb(3);
     vector<double> norm_xyz(3);
@@ -82,7 +82,7 @@ vector<int> color_converter::XYZToRGB(const vector<double>& xyz) {
     return rgb;
 }
 
-vector<int> color_converter::XYZToLAB(const vector<double>& xyz) {
+vector<int> ColorConverter::XYZToLAB(const vector<double>& xyz) {
     vector<int> lab(3);
     vector<double> lab_res(3);
     vector<double> norm_xyz(3);
@@ -109,7 +109,7 @@ vector<int> color_converter::XYZToLAB(const vector<double>& xyz) {
     return lab;
 }
 
-vector<double> color_converter::RGBToXYZ(const vector<int>& rgb) {
+vector<double> ColorConverter::RGBToXYZ(const vector<int>& rgb) {
     vector<double> xyz_res{ 0.0, 0.0, 0.0 };
     vector<double> norm_rgb(3);
     for (size_t i = 0; i < xyz_res.size(); i++)
@@ -129,7 +129,7 @@ vector<double> color_converter::RGBToXYZ(const vector<int>& rgb) {
     return xyz_res;
 }
 
-vector<double> color_converter::LABToXYZ(const vector<int>& lab) {
+vector<double> ColorConverter::LABToXYZ(const vector<int>& lab) {
     vector<double> xyz_res(3);
     vector<double> norm_xyz(3);
 
@@ -149,9 +149,9 @@ vector<double> color_converter::LABToXYZ(const vector<int>& lab) {
     return xyz_res;
 }
 
-vector<int> color_converter::HSVToRGB(const vector<double>& hsv) {
+vector<int> ColorConverter::HSVToRGB(const vector<double>& hsv) {
     if (!IsVectorSizeCorrect(hsv)) throw IncorrectSizeOfVector();
-    if (!IsHSVVectorinRange(hsv)) throw IncorrectValueOfHSV();
+    if (!IsHSVVectorInRange(hsv)) throw IncorrectValueOfHSV();
     vector<int> rgb_res(3);
     vector<double> norm_rgb(3);
     vector<double> intermediate_hsv(3);
@@ -207,16 +207,16 @@ vector<int> color_converter::HSVToRGB(const vector<double>& hsv) {
     return rgb_res;
 }
 
-vector<int> color_converter::LABToRGB(const vector<int>& lab) {
+vector<int> ColorConverter::LABToRGB(const vector<int>& lab) {
     if (!IsVectorSizeCorrect(lab)) throw IncorrectSizeOfVector();
-    if (!IsLABVectorinRange(lab)) throw IncorrectValueOfLAB();
+    if (!IsLABVectorInRange(lab)) throw IncorrectValueOfLAB();
     return XYZToRGB(LABToXYZ(lab));
 }
 
 
-vector<double> color_converter::RGBToHSV(const vector<int>& rgb) {
+vector<double> ColorConverter::RGBToHSV(const vector<int>& rgb) {
     if (!IsVectorSizeCorrect(rgb)) throw IncorrectSizeOfVector();
-    if (!IsRGBVectorinRange(rgb)) throw IncorrectValueOfRGB();
+    if (!IsRGBVectorInRange(rgb)) throw IncorrectValueOfRGB();
     vector<double> hsv(3);
     vector<int> rgb_res(rgb);
     vector<double> norm_rgb(3);
@@ -257,21 +257,21 @@ vector<double> color_converter::RGBToHSV(const vector<int>& rgb) {
     return hsv;
 }
 
-vector<double> color_converter::LABToHSV(const vector<int>& lab) {
+vector<double> ColorConverter::LABToHSV(const vector<int>& lab) {
     if (!IsVectorSizeCorrect(lab)) throw IncorrectSizeOfVector();
-    if (!IsLABVectorinRange(lab)) throw IncorrectValueOfLAB();
+    if (!IsLABVectorInRange(lab)) throw IncorrectValueOfLAB();
     return RGBToHSV(LABToRGB(lab));
 }
 
 
-vector<int> color_converter::RGBToLAB(const vector<int>& rgb) {
+vector<int> ColorConverter::RGBToLAB(const vector<int>& rgb) {
     if (!IsVectorSizeCorrect(rgb)) throw IncorrectSizeOfVector();
-    if (!IsRGBVectorinRange(rgb)) throw IncorrectValueOfRGB();
+    if (!IsRGBVectorInRange(rgb)) throw IncorrectValueOfRGB();
     return XYZToLAB(RGBToXYZ(rgb));
 }
 
-vector<int> color_converter::HSVToLAB(const vector<double>& hsv) {
+vector<int> ColorConverter::HSVToLAB(const vector<double>& hsv) {
     if (!IsVectorSizeCorrect(hsv)) throw IncorrectSizeOfVector();
-    if (!IsHSVVectorinRange(hsv)) throw IncorrectValueOfHSV();
+    if (!IsHSVVectorInRange(hsv)) throw IncorrectValueOfHSV();
     return RGBToLAB(HSVToRGB(hsv));
 }

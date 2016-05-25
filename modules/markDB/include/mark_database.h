@@ -1,16 +1,16 @@
 // Copyright 2016 Dolotov Evgeniy
 
-#ifndef MODULES_DOLOTOV_EVGENIY_MARKDB_INCLUDE_MARK_DATABASE_H_
-#define MODULES_DOLOTOV_EVGENIY_MARKDB_INCLUDE_MARK_DATABASE_H_
+#ifndef MODULES_MARKDB_INCLUDE_MARK_DATABASE_H_
+#define MODULES_MARKDB_INCLUDE_MARK_DATABASE_H_
 
 #include <string>
 #include <vector>
 #include <utility>
 #include <exception>
 
-#include "include/record.h"
+#include "../include/record.h"
 
-class MarkDatabase {
+class MarkDataBase {
  public:
     enum class ReturnCode {
         StudentNotFound,
@@ -31,16 +31,16 @@ class MarkDatabase {
     ReturnCode searchSubject(const Subject& subject,
                              size_t* index = nullptr) const;
     ReturnCode addNewRecord(const Student& student, const Subject& subject,
-                            const Mark& mark);
+                            const int& mark);
     ReturnCode deleteRecord(const Student& student, const Subject& subject);
     ReturnCode search(const Student& student, const Subject& subject,
                       size_t* index = 0) const;
     ReturnCode getRecord(const size_t& indexOfRecord, Record* record) const;
     ReturnCode deleteRecord(const size_t& indexOfRecord);
     ReturnCode marksOfStudent(const Student& student,
-                       std::vector< std::pair<Subject, Mark> >* marks) const;
+                       std::vector< std::pair<Subject, int> >* marks) const;
     ReturnCode marksOnSubject(const Subject& subject,
-                       std::vector< std::pair<Student, Mark> >* marks) const;
+                       std::vector< std::pair<Student, int> >* marks) const;
     std::vector<Student> getStudentsList() const;
     std::vector<Subject> getSubjectsList() const;
     std::vector<Record> getRecordsList() const;
@@ -54,4 +54,4 @@ class MarkDatabase {
     std::vector<Record> records;
 };
 
-#endif  // MODULES_DOLOTOV_EVGENIY_MARKDB_INCLUDE_MARK_DATABASE_H_
+#endif  // MODULES_MARKDB_INCLUDE_MARK_DATABASE_H_

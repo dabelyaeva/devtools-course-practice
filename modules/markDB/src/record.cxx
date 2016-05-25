@@ -1,6 +1,6 @@
 // Copyright 2016 Dolotov Evgeniy
 
-#include "include/record.h"
+#include "../include/record.h"
 
 bool Record::operator ==(const Record& record) const {
     bool areStudentSame = (this->student == record.student);
@@ -8,7 +8,7 @@ bool Record::operator ==(const Record& record) const {
     return areStudentSame && areSubjectSame;
 }
 
-Record::Record(Student student, Subject subject, Mark mark) {
+Record::Record(Student student, Subject subject, int mark) {
     this->student = student;
     this->subject = subject;
     this->mark = mark;

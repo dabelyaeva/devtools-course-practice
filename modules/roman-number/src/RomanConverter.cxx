@@ -3,6 +3,10 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+
+using std::vector;
+using std::string;
+
 static const vector<int> kValues =
 {1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
 static const vector<string> kSymbols =

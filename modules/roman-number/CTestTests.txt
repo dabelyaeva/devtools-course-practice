@@ -1,0 +1,145 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is a roman number calculator application")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Of_Arguments
+    COMMAND ${APPLICATION} I I
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 1 or 3 arguments")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Single_Roman_Number_Format
+    COMMAND ${APPLICATION} IIX
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Single_Roman_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Single_Arabic_Number_Format
+    COMMAND ${APPLICATION} -1
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Single_Arabic_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+add_test(
+    NAME ${prefix}_can_Convert_Roman
+    COMMAND ${APPLICATION} I
+)
+set_tests_properties (${prefix}_can_Convert_Roman
+  PROPERTIES PASS_REGULAR_EXPRESSION "1")
+
+add_test(
+    NAME ${prefix}_can_Convert_Arabic
+    COMMAND ${APPLICATION} 1
+)
+set_tests_properties (${prefix}_can_Convert_Arabic
+  PROPERTIES PASS_REGULAR_EXPRESSION "I")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_First_Number_Format
+    COMMAND ${APPLICATION} IIX I +
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_First_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "First roman number.*have wrong format!")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Second_Number_Format
+    COMMAND ${APPLICATION} I IIX +
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Second_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Second roman number.*have wrong format!")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Operation_Format
+    COMMAND ${APPLICATION} I I ^
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation format!")
+
+add_test(
+    NAME ${prefix}_can_Add_Roman
+    COMMAND ${APPLICATION} I I +
+)
+set_tests_properties (${prefix}_can_Add_Roman
+  PROPERTIES PASS_REGULAR_EXPRESSION "I \\+ I = II")
+
+add_test(
+    NAME ${prefix}_can_Diff_Roman
+    COMMAND ${APPLICATION} II I -
+)
+set_tests_properties (${prefix}_can_Diff_Roman
+  PROPERTIES PASS_REGULAR_EXPRESSION "II - I = I")
+
+add_test(
+    NAME ${prefix}_can_Mult_Roman
+    COMMAND ${APPLICATION} II II x
+)
+set_tests_properties (${prefix}_can_Mult_Roman
+  PROPERTIES PASS_REGULAR_EXPRESSION "II x II = IV")
+
+add_test(
+    NAME ${prefix}_can_Divide_Roman
+    COMMAND ${APPLICATION} IV II /
+)
+set_tests_properties (${prefix}_can_Divide_Roman
+  PROPERTIES PASS_REGULAR_EXPRESSION "IV / II = II")
+
+add_test(
+    NAME ${prefix}_can_Mode_Roman
+    COMMAND ${APPLICATION} III II %
+)
+set_tests_properties (${prefix}_can_Mode_Roman
+  PROPERTIES PASS_REGULAR_EXPRESSION "III % II = I")
+
+add_test(
+    NAME ${prefix}_can_Not_Diff_Greater_From_Less
+    COMMAND ${APPLICATION} I II -
+)
+set_tests_properties (${prefix}_can_Not_Diff_Greater_From_Less
+  PROPERTIES PASS_REGULAR_EXPRESSION "Resulting roman number have wrong format!")
+
+add_test(
+    NAME ${prefix}_can_Not_Divide_Less_On_Greater
+    COMMAND ${APPLICATION} I II /
+)
+set_tests_properties (${prefix}_can_Not_Divide_Less_On_Greater
+  PROPERTIES PASS_REGULAR_EXPRESSION "Resulting roman number have wrong format!")
+
+add_test(
+    NAME ${prefix}_can_Not_Mod_Divisible_Number
+    COMMAND ${APPLICATION} IV II %
+)
+set_tests_properties (${prefix}_can_Not_Mod_Divisible_Number
+  PROPERTIES PASS_REGULAR_EXPRESSION "Resulting roman number have wrong format!")
+
+add_test(
+    NAME ${prefix}_can_Not_Add_Large_Numbers
+    COMMAND ${APPLICATION} MM MM +
+)
+set_tests_properties (${prefix}_can_Not_Add_Large_Numbers
+  PROPERTIES PASS_REGULAR_EXPRESSION "Resulting roman number have wrong format!")
+
+add_test(
+    NAME ${prefix}_can_Not_Mult_Large_Numbers
+    COMMAND ${APPLICATION} MM MM x
+)
+set_tests_properties (${prefix}_can_Not_Mult_Large_Numbers
+  PROPERTIES PASS_REGULAR_EXPRESSION "Resulting roman number have wrong format!")

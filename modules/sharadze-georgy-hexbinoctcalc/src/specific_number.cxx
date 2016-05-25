@@ -179,7 +179,8 @@ void SpecificNumber::setValue(std::string _number, TNumbers _mode) {
     switch (_mode) {
     case TNumbers::HEX:
         for (int i = 0; i < _number.length(); i++) {
-            if ((_number[i] < '0' || _number[i] > '9') && (_number[i] < 'A' || _number[i] > 'F')) {
+            if ((_number[i] < '0' || _number[i] > '9') &&
+                (_number[i] < 'A' || _number[i] > 'F')) {
                 throw std::string("Wrong HEX-number format \n ");
                 return;
             }

@@ -1,0 +1,110 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is application for work with Triangle")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 2.0 5.0 4.0
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 7 arguments.")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} 2.0 5.5 4.0 h 11 -40.0 calc_angle_a
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Function_Format
+    COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 wrong_func
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Function_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong function format!")
+
+add_test(
+    NAME ${prefix}_can_Not_Create_Triangle_With_Two_Same_Points
+    COMMAND ${APPLICATION} 0.0 0.0 0.0 0.0 11 -40.0 calc_angle_a
+)
+set_tests_properties (${prefix}_can_Not_Create_Triangle_With_Two_Same_Points
+  PROPERTIES PASS_REGULAR_EXPRESSION "Triangle is not correct, two points are identical")
+
+add_test(
+    NAME ${prefix}_can_Not_Create_Triangle_With_Three_Same_Points
+    COMMAND ${APPLICATION} 0.0 0.0 0.0 0.0 0.0 0.0 calc_angle_a
+)
+set_tests_properties (${prefix}_can_Not_Create_Triangle_With_Three_Same_Points
+  PROPERTIES PASS_REGULAR_EXPRESSION "Triangle is not correct, three points are identical")
+
+add_test(
+    NAME ${prefix}_can_Not_Create_Triangle_With_Points_On_One_Line
+    COMMAND ${APPLICATION} 0.0 0.0 1.0 1.0 2.0 2.0 calc_angle_a
+)
+set_tests_properties (${prefix}_can_Not_Create_Triangle_With_Points_On_One_Line
+  PROPERTIES PASS_REGULAR_EXPRESSION "Triangle is not correct, all points on one line")
+
+add_test(
+    NAME ${prefix}_can_Calculate_Angle_A
+    COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_angle_a
+)
+set_tests_properties (${prefix}_can_Calculate_Angle_A
+  PROPERTIES PASS_REGULAR_EXPRESSION "Angle A is equal 0.47194")
+
+add_test(
+    NAME ${prefix}_can_Calculate_Angle_B
+    COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_angle_b
+)
+set_tests_properties (${prefix}_can_Calculate_Angle_B
+  PROPERTIES PASS_REGULAR_EXPRESSION "Angle B is equal 2.63682")
+
+add_test(
+    NAME ${prefix}_can_Calculate_Angle_C
+    COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_angle_c
+)
+set_tests_properties (${prefix}_can_Calculate_Angle_C
+  PROPERTIES PASS_REGULAR_EXPRESSION "Angle C is equal 0.0328321")
+
+add_test(
+    NAME ${prefix}_can_Calculate_Perimeter
+    COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_perimeter
+)
+set_tests_properties (${prefix}_can_Calculate_Perimeter
+  PROPERTIES PASS_REGULAR_EXPRESSION "Perimeter is equal 94.7071")
+
+add_test(
+    NAME ${prefix}_can_Calculate_Area
+    COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_area
+)
+set_tests_properties (${prefix}_can_Calculate_Area
+  PROPERTIES PASS_REGULAR_EXPRESSION "Area is equal 34.325")
+
+add_test(
+    NAME ${prefix}_can_Calculate_Inradius
+    COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_inradius
+)
+set_tests_properties (${prefix}_can_Calculate_Inradius
+  PROPERTIES PASS_REGULAR_EXPRESSION "Inradius is equal 0.724866")
+
+add_test(
+    NAME ${prefix}_can_Calculate_Circumradius
+    COMMAND ${APPLICATION} 2.0 5.5 4.0 3.0 11.5 -40.7 calc_circumradius
+)
+set_tests_properties (${prefix}_can_Calculate_Circumradius
+  PROPERTIES PASS_REGULAR_EXPRESSION "Circumradius is equal 48.7653")

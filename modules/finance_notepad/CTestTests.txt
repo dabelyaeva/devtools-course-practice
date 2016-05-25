@@ -1,0 +1,61 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_can_Print_Error_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Error_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "Error! Invalid number of Arguments.")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} a b c d f
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "Error! Invalid number of Arguments.")
+
+add_test(
+    NAME ${prefix}_can_Set_Pouch
+    COMMAND ${APPLICATION} -sp "test_read_write.txt" "100"
+)
+set_tests_properties (${prefix}_can_Set_Pouch
+  PROPERTIES PASS_REGULAR_EXPRESSION "Setted! Your pouch is 100")
+
+add_test(
+    NAME ${prefix}_can_Get_Pouch
+    COMMAND ${APPLICATION} -gp "test_read_write.txt"
+)
+set_tests_properties (${prefix}_can_Get_Pouch
+  PROPERTIES PASS_REGULAR_EXPRESSION "100")
+
+add_test(
+    NAME ${prefix}_can_Write_To_File
+    COMMAND ${APPLICATION} -w "test_read_write.txt" "2 1 2016 30 Debt ForNoname"
+)
+set_tests_properties (${prefix}_can_Write_To_File
+  PROPERTIES PASS_REGULAR_EXPRESSION "writed!")
+
+add_test(
+    NAME ${prefix}_can_Get_Potential_Pouch
+    COMMAND ${APPLICATION} -gpp "test_read_write.txt"
+)
+set_tests_properties (${prefix}_can_Get_Potential_Pouch
+  PROPERTIES PASS_REGULAR_EXPRESSION "100")
+
+add_test(
+    NAME ${prefix}_can_Read_From_File
+    COMMAND ${APPLICATION} -r "test_read_write.txt"
+)
+set_tests_properties (${prefix}_can_Read_From_File
+  PROPERTIES PASS_REGULAR_EXPRESSION "2 1 2016")

@@ -4,6 +4,7 @@ project(DevTools)
 #
 # Set configuration
 #
+
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configurations" FORCE)
 if(DEFINED CMAKE_BUILD_TYPE)
     set_property( CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS ${CMAKE_CONFIGURATION_TYPES} )
@@ -18,6 +19,7 @@ option(COVERAGE "Build with coverage support" OFF)
 #
 # Setup output directories
 #
+
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -32,8 +34,9 @@ foreach(cfg ${CMAKE_CONFIGURATION_TYPES})
 endforeach()
 
 #
-# Add compiler options: enable C++11, all warnings, break on warnings
+# Add compiler options: enable C++11, all warnings, fail on warnings
 #
+
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR
     "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -Werror")
@@ -46,6 +49,7 @@ endif()
 #
 # Add Google Test
 #
+
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/3rdparty")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/gtest")
 set(LIBRARY_DEPS "gtest")
@@ -53,6 +57,7 @@ set(LIBRARY_DEPS "gtest")
 #
 # Include all modules
 #
+
 file(GLOB SUBDIRS "${CMAKE_CURRENT_SOURCE_DIR}/modules/*")
 foreach(subdir ${SUBDIRS})
     add_subdirectory(${subdir})
@@ -61,6 +66,7 @@ endforeach()
 #
 # Report variables
 #
+
 message(STATUS "")
 message(STATUS "General configuration for ${PROJECT_NAME}")
 message(STATUS "==================================")
@@ -79,4 +85,17 @@ message(STATUS "")
 #
 # Enable testing with CTest
 #
+
 enable_testing()
+
+# function(test_function)
+#   foreach(subdir ${SUBDIRS})
+#       get_filename_component(DIR_NAME ${subdir} NAME)
+#       message(STATUS "    - ${DIR_NAME}")
+#   endforeach()
+# endfunction(test_function)
+#
+# add_test(
+#     NAME cpplint
+#     COMMAND test_function()
+# )

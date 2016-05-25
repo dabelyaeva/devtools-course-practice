@@ -1,0 +1,110 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is a vector3d calculator application")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 1 2
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 4, 5 or 7 arguments.")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Operation_Format
+    COMMAND ${APPLICATION} 1 2 3 mag
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation format!")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} e 2 3 2 *
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+add_test(
+    NAME ${prefix}_can_Add_Vector3D
+    COMMAND ${APPLICATION} 1.1 2.2 3.3 12.1 5.6 12.1 +
+)
+set_tests_properties (${prefix}_can_Add_Vector3D
+  PROPERTIES PASS_REGULAR_EXPRESSION "Sum = \\(13.2, 7.8, 15.4\\)")
+
+add_test(
+    NAME ${prefix}_can_Diff_Vector3D
+    COMMAND ${APPLICATION} 12.1 5.6 12.1 1.1 2.2 3.3 -
+)
+set_tests_properties (${prefix}_can_Diff_Vector3D
+  PROPERTIES PASS_REGULAR_EXPRESSION "Diff = \\(11, 3.4, 8.8\\)")
+
+add_test(
+    NAME ${prefix}_can_Mult_Vector3D_By_Number
+    COMMAND ${APPLICATION} 3.1 1.6 2.4 3 *
+)
+set_tests_properties (${prefix}_can_Mult_Vector3D_By_Number
+  PROPERTIES PASS_REGULAR_EXPRESSION "Mult = \\(9.3, 4.8, 7.2\\)")
+
+add_test(
+    NAME ${prefix}_can_Divide_Vector3D_By_Number
+    COMMAND ${APPLICATION} 3.4 1.6 2.4 2 /
+)
+set_tests_properties (${prefix}_can_Divide_Vector3D_By_Number
+  PROPERTIES PASS_REGULAR_EXPRESSION "Div = \\(1.7, 0.8, 1.2\\)")
+
+add_test(
+    NAME ${prefix}_can_Detect_Divide_By_Zero
+    COMMAND ${APPLICATION} 3.4 1.6 2.4 0 /
+)
+set_tests_properties (${prefix}_can_Detect_Divide_By_Zero
+  PROPERTIES PASS_REGULAR_EXPRESSION "Can't divide by zero")
+
+add_test(
+    NAME ${prefix}_can_Calculate_Cross_Product
+    COMMAND ${APPLICATION} 3.4 1.6 2.4 1.1 2.2 3.3 cross
+)
+set_tests_properties (${prefix}_can_Calculate_Cross_Product
+  PROPERTIES PASS_REGULAR_EXPRESSION "Cross = \\(0, -8.58, 5.72\\)")
+
+add_test(
+    NAME ${prefix}_can_Calculate_Magnitude
+    COMMAND ${APPLICATION} 3.4 1.6 2.4 magnitude
+)
+set_tests_properties (${prefix}_can_Calculate_Magnitude
+  PROPERTIES PASS_REGULAR_EXPRESSION "Magnitude = 4.4587")
+
+add_test(
+    NAME ${prefix}_can_Calculate_Scalar_Product
+    COMMAND ${APPLICATION} 3.4 1.6 2.4 1.1 2.2 3.3 dot
+)
+set_tests_properties (${prefix}_can_Calculate_Scalar_Product
+  PROPERTIES PASS_REGULAR_EXPRESSION "Dot = 15.18")
+
+add_test(
+    NAME ${prefix}_can_Normalize_Vector
+    COMMAND ${APPLICATION} 3 1 2 normalize
+)
+set_tests_properties (${prefix}_can_Normalize_Vector
+  PROPERTIES PASS_REGULAR_EXPRESSION "Normalize = \\(0.801784, 0.267261, 0.534522\\)")
+
+add_test(
+    NAME ${prefix}_can_Detect_Normalizing_Null_Vector
+    COMMAND ${APPLICATION} 0 0 0 normalize
+)
+set_tests_properties (${prefix}_can_Detect_Normalizing_Null_Vector
+  PROPERTIES PASS_REGULAR_EXPRESSION "Can't normalize null vector")

@@ -1,13 +1,12 @@
 set -e
 
 # Variables
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cmake_build_dir="${DIR}/../devtools_build"
-cpplint="${DIR}/3rdparty/cpplint.py"
+root_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cmake_build_dir="${root_dir}/../devtools_build"
+cpplint="${root_dir}/3rdparty/cpplint.py"
 github_api_repo="https://api.github.com/repos/UNN-VMK-Software/devtools-course-practice"
 
-# This function executes command and stops
-# execution if return status isn't 0
+# This function executes command and stops execution if return status isn't 0
 function try {
     "$@"
     status=$?
@@ -40,7 +39,7 @@ function CheckGoogleStyleInDir {
     #     retCode=1
     # fi
 
-    echo "Checking $dir"
+    echo "Checking $module"
     sources=`find . -name "*.hpp" -or -name "*.h" -or -name "*.cpp" -or -name "*.cxx"`
     for file in $sources;
     do
@@ -54,19 +53,15 @@ function CheckGoogleStyleInDir {
     return $retCode
 }
 
+# Go through all directories and check Google style
 function CheckGoogleStyle {
-    # Go through all directories and check Google style
     Header "Check \"Google C++ Style\""
 
-    for dir in */;
+    for module in modules/*;
     do
-        if [ "$dir" == "3rdparty/" ]; then
-            continue
-        fi
-
-        cd $dir
+        cd $module
         try CheckGoogleStyleInDir
-        cd ..
+        cd $root_dir
         echo ""
     done
 }
@@ -77,7 +72,7 @@ function BuildCMakeProject {
     dir=$cmake_build_dir
     mkdir -p $cmake_build_dir
     cd $cmake_build_dir
-    try cmake -DCOVERAGE=ON -DCMAKE_BUILD_TYPE=Debug $DIR
+    try cmake -DCOVERAGE=ON -DCMAKE_BUILD_TYPE=Debug $root_dir
     try make
 }
 
@@ -96,7 +91,7 @@ function GoogleTest {
     done
 }
 
-function valivatePullRequestTitle {
+function validatePullRequestTitle {
     retcode=0
 
     pattern=".* - Лабораторная работа #[0-9].*"
@@ -105,7 +100,7 @@ function valivatePullRequestTitle {
     else
         echo "FAILURE: Invalid title of the pull request"
         echo "Should be something like: Корняков - Лабораторная работа #1"
-        retcode=0 # Do not fail, since the check is not stable
+        retcode=0 # NOTE: Do not fail, since the check is not stable
     fi
 
     return $retcode
@@ -121,7 +116,7 @@ function CheckPullRequestNameFormat {
 
         pr_title=`curl $github_api_repo/pulls/$TRAVIS_PULL_REQUEST | grep title | cut -d \" -f4`
         echo "PR#$TRAVIS_PULL_REQUEST title: $pr_title"
-        try valivatePullRequestTitle
+        try validatePullRequestTitle
     fi
 }
 

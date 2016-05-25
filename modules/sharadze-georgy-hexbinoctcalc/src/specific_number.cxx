@@ -53,7 +53,8 @@ SpecificNumber SpecificNumber::operator/(const SpecificNumber & _sNum) const {
     } else if (_sNum.equalsZero()) {
         throw std::string("Can\'t divide with zero \n ");
     } else {
-        result.setIntValue(static_cast<int>(getIntValue() / _sNum.getIntValue()));
+        result.setIntValue(static_cast<int>(getIntValue() /
+                           _sNum.getIntValue()));
         result.setMode(getMode());
     }
     return result;
@@ -175,8 +176,7 @@ void SpecificNumber::setValue(std::string _number, TNumbers _mode) {
     int result = 0;
     unsigned int basis;
 
-    switch (_mode)
-    {
+    switch (_mode) {
     case TNumbers::HEX:
         for each(char n in _number) {
             if ((n < '0' || n > '9') && (n < 'A' || n > 'F')) {
@@ -211,7 +211,7 @@ void SpecificNumber::setValue(std::string _number, TNumbers _mode) {
         for (unsigned int i = 0; i < _number.length(); i++) {
             result *= basis;
             if (_number[i] >= '0' && _number[i] <= '9') {
-                result += (int)_number[i] - 48;
+                result += static_cast<int>(_number[i]) - 48;
             } else if (_number[i] == 'A') {
                 result += 10;
             } else if (_number[i] == 'B') {
@@ -230,13 +230,13 @@ void SpecificNumber::setValue(std::string _number, TNumbers _mode) {
     case TNumbers::BIN:
         for (unsigned int i = 0; i < _number.length(); i++) {
             result *= basis;
-            result += (int)_number[i] - 48;
+            result += static_cast<int>(_number[i]) - 48;
         }
         break;
     case TNumbers::OCT:
         for (unsigned int i = 0; i < _number.length(); i++) {
             result *= basis;
-            result += (int)_number[i] - 48;
+            result += static_cast<int>(_number[i]) - 48;
         }
         break;
     }

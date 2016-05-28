@@ -1,0 +1,67 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/win.txt"
+     "3 4 1 1 6 6 1 7 10 1 8 1 9 1 9 2 4 3 " 
+     ENCODING UTF-8)
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/lose.txt"
+     "3 4 2 7 " 
+     ENCODING UTF-8)
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_can_Print_Error_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Error_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "Error: invalid number of arguments.*")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments_TM
+    COMMAND ${APPLICATION} -tm win.txt
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_TM
+    PROPERTIES PASS_REGULAR_EXPRESSION "Error: invalid number of arguments or wrong command.*")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments_Help
+    COMMAND ${APPLICATION} -h win.txt
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_Help
+    PROPERTIES PASS_REGULAR_EXPRESSION "Error: invalid number of arguments or wrong command.*")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments_Rand
+    COMMAND ${APPLICATION} -r
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments_Rand
+    PROPERTIES PASS_REGULAR_EXPRESSION "Error: invalid number of arguments or wrong command.*")
+
+add_test(
+    NAME ${prefix}_can_win
+    COMMAND ${APPLICATION} -tm "${CMAKE_CURRENT_BINARY_DIR}/win.txt" -r 10
+)
+set_tests_properties (${prefix}_can_win
+    PROPERTIES PASS_REGULAR_EXPRESSION ".*You win!")
+
+add_test(
+    NAME ${prefix}_can_lose
+    COMMAND ${APPLICATION} -tm "${CMAKE_CURRENT_BINARY_DIR}/lose.txt" -r 10
+)
+set_tests_properties (${prefix}_can_lose
+    PROPERTIES PASS_REGULAR_EXPRESSION ".*You lose!")
+
+add_test(
+    NAME ${prefix}_can_print_help
+    COMMAND ${APPLICATION} -h
+)
+set_tests_properties (${prefix}_can_print_help
+    PROPERTIES PASS_REGULAR_EXPRESSION "This is a minesweeper application.*")

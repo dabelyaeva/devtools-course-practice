@@ -5,6 +5,7 @@
 #include <iostream>
 #include "include/mine_sweeper.h"
 
+
 const int MineSweeper::GAME_STATUS_WIN = 1;
 const int MineSweeper::GAME_STATUS_LOSE = -1;
 const int MineSweeper::GAME_STATUS_PLAYING = 0;

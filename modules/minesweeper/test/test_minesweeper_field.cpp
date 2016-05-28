@@ -1,3 +1,4 @@
+// Copyright 2016 Sirotkin Nikita
 // Copyright 2016 Magaziinik Ivan
 
 #include <gtest/gtest.h>
@@ -96,13 +97,17 @@ TEST(MINEsweeper_field, can_set_cell) {
 TEST(MINEsweeper_field, can_create_rihgt_copy) {
     // Arrange
     Field field1;
-    unsigned int x = 1;
-    unsigned int y = 1;
 
     // Act
     field1.set_cell(1, 1, 1);
     Field field2 = field1;
+    bool flag;
+    const unsigned int size = field1.get_field_size();
+    flag = (size == field2.get_field_size());
+    for (unsigned int i = 0; i < size; ++i)
+        for (unsigned int j = 0; j < size; ++j)
+            flag = field1.get_cell(i, j) == field2.get_cell(i, j);
 
     // Assert
-    EXPECT_EQ(field1.get_cell(x, y), field2.get_cell(x, y));
+    EXPECT_TRUE(flag);
 }

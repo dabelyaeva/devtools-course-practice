@@ -1,9 +1,9 @@
 // Copyright 2016 Litsov Alex
-#ifndef MODULES_LITSOV_ALEX_BINARYTREE_INCLUDE_BINARYTREE_H_
-#define MODULES_LITSOV_ALEX_BINARYTREE_INCLUDE_BINARYTREE_H_
+#ifndef MODULES_BINARYTREE_INCLUDE_BINARY_TREE_H_
+#define MODULES_BINARYTREE_INCLUDE_BINARY_TREE_H_
 
-#include "Element.h"
 #include <string>
+#include "include/element.h"
 using std::string;
 
 class BinaryTree {
@@ -41,4 +41,4 @@ class BinaryTree {
     Element* root_;
 };
 
-#endif  // MODULES_LITSOV_ALEX_BINARYTREE_INCLUDE_BINARYTREE_H_
+#endif  // MODULES_BINARYTREE_INCLUDE_BINARY_TREE_H_

@@ -1,10 +1,10 @@
 // Copyright 2016 Litsov Alex
-#include "include/Element.h"
-
 #include <stdlib.h>
 #include <string>
 
-Element::Element(const int& init_key, const string& init_value,
+#include "include/element.h"
+
+Element::Element(const int init_key, const string& init_value,
     Element* const init_parent, Element* const init_right,
                  Element* const init_left) {
     key_ = init_key;
@@ -23,7 +23,7 @@ Element::Element(const Element& init_element) {
 int Element::GetKey() const {
     return key_;
 }
-void Element::SetKey(const int& assigned_key) {
+void Element::SetKey(const int assigned_key) {
     key_ = assigned_key;
 }
 string Element::GetValue() const {

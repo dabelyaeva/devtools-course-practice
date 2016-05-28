@@ -1,8 +1,8 @@
 // Copyright 2016 Litsov Alex
-#include "include/BinaryTree.h"
-
 #include <stdlib.h>
 #include <string>
+
+#include "include/binary_tree.h"
 
 Element* BinaryTree::CopySubtree(Element* const subtree_root,
                                  Element* const roots_parent) const {
@@ -149,7 +149,7 @@ void BinaryTree::GetValuesOrderInSubtree(Element* const start_element,
                                          string* order) {
     if (start_element != nullptr) {
         GetValuesOrderInSubtree(start_element->GetLeft(), order);
-        *order += std::to_string(start_element->GetKey()) + ";";
+        *order += start_element->GetValue() + ";";
         GetValuesOrderInSubtree(start_element->GetRight(), order);
     }
 }

@@ -8,7 +8,6 @@ set(APPLICATION "app_${MODULE}")
 # Include directory with public headers
 include_directories("./")
 
-#
 # Add all submodules
 add_subdirectory(src)
 add_subdirectory(test)

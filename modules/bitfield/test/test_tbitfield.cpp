@@ -1,7 +1,7 @@
 // Copyright 2016 Baydina Olya
 
 #include "gtest/gtest.h"
-#include "include/tbitfield.h"
+#include "../include/tbitfield.h"
 
 
 TEST(TBitField, any_throw_with_negative_length) {
@@ -58,7 +58,7 @@ TEST(TBitField, throws_when_set_bit_with_too_large_index) {
     ASSERT_ANY_THROW(bf.SetBit(11));
 }
 
-TEST(TBitField, throw1_in_Clr) {
+TEST(TBitField, throw1_in_clr) {
     // Arrange
     TBitField field(10);
 
@@ -66,7 +66,7 @@ TEST(TBitField, throw1_in_Clr) {
     EXPECT_ANY_THROW(field.ClrBit(-1));
 }
 
-TEST(TBitField, throw2_in_Clr) {
+TEST(TBitField, throw2_in_clr) {
     // Arrange
     TBitField field(10);
 
@@ -88,7 +88,7 @@ TEST(TBitField, set_to_zero) {
     EXPECT_EQ(0, sum);
 }
 
-TEST(TBitField, any_throw_in_GetBit_with_negative_index) {
+TEST(TBitField, any_throw_in_getbit_with_negative_index) {
     // Arrange
     TBitField field(10);
 
@@ -108,11 +108,8 @@ TEST(TBitField, is_equally) {
     TBitField a(8);
     TBitField b(8);
 
-    // Act
-    bool result = (a == b);
-
-    // Assert
-    EXPECT_TRUE(result);
+    // Act & Assert
+    EXPECT_TRUE(a == b);
 }
 
 TEST(TBitField, is_not_equally) {
@@ -127,7 +124,7 @@ TEST(TBitField, is_not_equally) {
     EXPECT_FALSE(result);
 }
 
-TEST(TBitField, is_equally_Getbit) {
+TEST(TBitField, is_equally_getbit) {
     // Arrange
     TBitField a(3);
     TBitField b(3);
@@ -168,7 +165,7 @@ TEST(TBitField, is_not_equally_false) {
     EXPECT_FALSE(result);
 }
 
-TEST(TBitField, is_not_equally_Getbit) {
+TEST(TBitField, is_not_equally_getbit) {
     // Arrange
     TBitField a(3);
     TBitField b(3);
@@ -207,7 +204,7 @@ TEST(TBitField, is_not_equally_if_the_same_bf) {
     EXPECT_FALSE(result);
 }
 
-TEST(TBitField, Disjunction) {
+TEST(TBitField, can_disjugate_correct) {
     // Arrange
     const int size = 3;
     TBitField bf1(size), bf2(size), expField(size);
@@ -300,4 +297,24 @@ TEST(TBitField, can_right_make_2_operation) {
 
     // Assert
     EXPECT_EQ(tempSimp2, tempNotSimple);
+}
+
+TEST(TBitField, can_convert_to_string) {
+    // Arrange
+    TBitField bf(3);
+    // Act
+    bf.SetBit(1);
+    // Assert
+    EXPECT_EQ(strcmp(bf.ToString().c_str(), "010"), 0);
+}
+
+TEST(TBitField, can_invert_twice_correct) {
+    // Arrange
+    TBitField bf(2);
+    // Act
+    bf.SetBit(1);
+    bf = ~bf;
+    bf = ~bf;
+    // Assert
+    EXPECT_EQ(strcmp(bf.ToString().c_str(), "01"), 0);
 }

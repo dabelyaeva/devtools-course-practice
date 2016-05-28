@@ -1,6 +1,6 @@
 // Copyright 2016 Baydina Olya
 
-#include "include/tbitfield.h"
+#include "../include/tbitfield.h"
 #include <string>
 using std::string;
 
@@ -154,3 +154,9 @@ TBitField TBitField::operator~(void) {
     return tempRes;
 }
 
+string TBitField::ToString() const {
+    string result;
+    for (int i = 0; i < GetLength(); i++)
+        result += ('0' + GetBit(i));
+    return result;
+}

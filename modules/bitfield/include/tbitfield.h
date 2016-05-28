@@ -1,7 +1,7 @@
 // Copyright 2016 Baydina Olya
 
-#ifndef MODULES_BAYDINA_OLYA_BITFIELD_INCLUDE_TBITFIELD_H_
-#define MODULES_BAYDINA_OLYA_BITFIELD_INCLUDE_TBITFIELD_H_
+#ifndef MODULES_BITFIELD_INCLUDE_TBITFIELD_H_
+#define MODULES_BITFIELD_INCLUDE_TBITFIELD_H_
 
 #include <iostream>
 #include <string>
@@ -22,6 +22,7 @@ class TBitField {
     void SetBit(const int n);
     void ClrBit(const int n);
     int  GetBit(const int n) const;
+    string ToString() const;
 
     bool operator==(const TBitField &bf) const;
     bool operator!=(const TBitField &bf) const;
@@ -29,10 +30,11 @@ class TBitField {
     TBitField  operator|(const TBitField &bf);
     TBitField  operator&(const TBitField &bf);
     TBitField  operator~(void);
+
  private:
     int  BitLen;
     TELEM *pMem;
     int  MemLen;
 };
 
-#endif  // MODULES_BAYDINA_OLYA_BITFIELD_INCLUDE_TBITFIELD_H_
+#endif  // MODULES_BITFIELD_INCLUDE_TBITFIELD_H_

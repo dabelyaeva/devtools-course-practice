@@ -42,7 +42,7 @@ double Application::strToDouble(const char *str) {
     return value;
 }
 
-double sphereVol(double radius) {
+double Application::sphereVol(double radius) {
     volume_calc::VolumeCalculator<double> calc(
         [] (double, double theta, double r) {
             return r * r * cos(theta);
@@ -56,7 +56,7 @@ double sphereVol(double radius) {
     return calc.Calculate(200);
 }
 
-double cylinderVol(double radius, double height) {
+double Application::cylinderVol(double radius, double height) {
     volume_calc::VolumeCalculator<double> calc(
         [] (double, double r, double) {
             return r;
@@ -71,7 +71,7 @@ double cylinderVol(double radius, double height) {
     return calc.Calculate(200);
 }
 
-double coneVol(double radius, double height) {
+double Application::coneVol(double radius, double height) {
     volume_calc::VolumeCalculator<double> calc(
         [] (double, double r, double) {
             return r;

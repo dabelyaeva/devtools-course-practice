@@ -1,0 +1,102 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+#############################################
+
+add_test(
+    NAME ${prefix}_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_Print_Help_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is a Dijkstra's algorithm's path finder application.")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_Error_When_Wrong_Number_Of_Arguments
+    COMMAND ${APPLICATION} 2 1 2 1 2 0
+)
+set_tests_properties (${prefix}_Error_When_Wrong_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: wrong number of arguments.")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_Can_Add_Size_Of_Matrix
+    COMMAND ${APPLICATION} 2 1 2 1 2 0 1
+)
+set_tests_properties (${prefix}_Can_Add_Size_Of_Matrix
+  PROPERTIES PASS_REGULAR_EXPRESSION "Successful added size of matrix")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_Can_Add_First_Vertex
+    COMMAND ${APPLICATION} 2 1 2 1 2 0 1
+)
+set_tests_properties (${prefix}_Can_Add_First_Vertex
+  PROPERTIES PASS_REGULAR_EXPRESSION "Successful added first vertex")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_Can_Add_Second_Vertex
+    COMMAND ${APPLICATION} 2 1 2 1 2 0 1
+)
+set_tests_properties (${prefix}_Can_Add_Second_Vertex
+  PROPERTIES PASS_REGULAR_EXPRESSION "Successful added second vertex")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_Error_When_First_Vertex_More_Than_Matrix_Size
+    COMMAND ${APPLICATION} 2 1 2 1 2 2 1
+)
+set_tests_properties (${prefix}_Error_When_First_Vertex_More_Than_Matrix_Size
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: First vertex index more than matrix size")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_Error_When_Second_Vertex_More_Than_Matrix_Size
+    COMMAND ${APPLICATION} 2 1 2 1 2 0 2
+)
+set_tests_properties (${prefix}_Error_When_Second_Vertex_More_Than_Matrix_Size
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Second vertex index more than matrix size")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_Can_Write_Matrix
+    COMMAND ${APPLICATION} 2 1 2 1 2 0 1
+)
+set_tests_properties (${prefix}_Can_Write_Matrix
+  PROPERTIES PASS_REGULAR_EXPRESSION "Successful written matrix")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_Can_Set_Graph
+    COMMAND ${APPLICATION} 2 1 2 1 2 0 1
+)
+set_tests_properties (${prefix}_Can_Set_Graph
+  PROPERTIES PASS_REGULAR_EXPRESSION "Successful set graph")
+
+#############################################
+
+add_test(
+    NAME ${prefix}_Can_Get_Distanse
+    COMMAND ${APPLICATION} 2 1 2 1 2 0 1
+)
+set_tests_properties (${prefix}_Can_Get_Distanse
+  PROPERTIES PASS_REGULAR_EXPRESSION "Result: 2")

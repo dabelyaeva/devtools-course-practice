@@ -1,0 +1,83 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is an economic calculator application.")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 1 2
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 4 arguments.")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} 1 ip 2 3
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+ add_test(
+      NAME ${prefix}_can_Detect_Negative_Property
+      COMMAND ${APPLICATION} -1 5 3 3
+)
+set_tests_properties (${prefix}_can_Detect_Negative_Property
+    PROPERTIES PASS_REGULAR_EXPRESSION "Property cost must be bigger than 0")
+
+add_test(
+      NAME ${prefix}_can_Detect_Negative_Percent
+      COMMAND ${APPLICATION} 10 5 2 -3
+)
+set_tests_properties (${prefix}_can_Detect_Negative_Percent
+     PROPERTIES PASS_REGULAR_EXPRESSION "Percent must be bigger than 0 and lesser than [0-9]+")
+
+add_test(
+      NAME ${prefix}_can_Detect_Negative_Term
+      COMMAND ${APPLICATION} 10 5 -2 3
+)
+set_tests_properties (${prefix}_can_Detect_Negative_Term
+     PROPERTIES PASS_REGULAR_EXPRESSION "Term must be bigger than 0 and lesser than [0-9]+")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Term
+    COMMAND ${APPLICATION} 10 5 2000 10
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Term
+  PROPERTIES PASS_REGULAR_EXPRESSION "Term must be bigger than 0 and lesser than [0-9]+")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Percent
+    COMMAND ${APPLICATION} 10 5 10 200
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Percent
+  PROPERTIES PASS_REGULAR_EXPRESSION "Percent must be bigger than 0 and lesser than [0-9]+")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_First_Payment
+    COMMAND ${APPLICATION} 10 500 10 10
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_First_Payment
+  PROPERTIES PASS_REGULAR_EXPRESSION "First payment must be lesser than property cost")
+
+add_test(
+    NAME ${prefix}_can_Calc_Hypothec
+    COMMAND ${APPLICATION} 2000000 500000 120 19
+)
+set_tests_properties (${prefix}_can_Calc_Hypothec
+  PROPERTIES PASS_REGULAR_EXPRESSION "Monthly Payment = 28000.85; Overpayment = 1860102.40; Payment's Sum = 3360102.40")
+

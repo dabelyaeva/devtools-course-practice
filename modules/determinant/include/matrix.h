@@ -1,7 +1,7 @@
 // Copyright 2016 Koshechkin Vlad
 
-#ifndef MODULES_KOSHECHKIN_VLAD_DETERMINANT_INCLUDE_MATRIX_H_
-#define MODULES_KOSHECHKIN_VLAD_DETERMINANT_INCLUDE_MATRIX_H_
+#ifndef MODULES_DETERMINANT_INCLUDE_MATRIX_H_
+#define MODULES_DETERMINANT_INCLUDE_MATRIX_H_
 
 #include <string>
 #include <stdexcept>
@@ -19,10 +19,11 @@ class Matrix {
     int Get(const int i, const int j) const;
     int Set(const int i, const int j, const int value);
     vector <int> operator[](const int row_number);
+    std::string PrintMatrix();
 
  private:
-    int size_;
-    vector<int> data_;
+    int _size;
+    vector<int> _data;
 };
 
-#endif  // MODULES_KOSHECHKIN_VLAD_DETERMINANT_INCLUDE_MATRIX_H_
+#endif  // MODULES_DETERMINANT_INCLUDE_MATRIX_H_

@@ -5,6 +5,7 @@
 #include <map>
 #include <list>
 #include <string>
+#include <cctype>
 
 bool operator==(const Huff::Node& left, const Huff::Node& right) {
     if (left.number != right.number)
@@ -39,6 +40,35 @@ string Huff::printTable() {
                 result.append("1");
         }
         result.append("\n");
+    }
+    return result;
+}
+
+TableMap Huff::fillTable(string str) {
+    TableMap result;
+    vector<bool> vect;
+
+    for (auto iter = str.begin(); iter != str.end(); iter++) {
+        vect.clear();
+        if (isdigit(*iter)) {
+            while ((*iter == '0' || *iter == '1') && (iter != str.end())) {
+                if (*iter == '0')
+                    vect.push_back(false);
+                else if (*iter == '1')
+                    vect.push_back(true);
+                if (next(iter) == str.end())
+                    break;
+                else
+                    ++iter;
+            }
+            if (next(iter) != str.end()) {
+                ++iter;
+                if (isalpha(*iter))
+                    result[*iter] = vect;
+            }
+        } else if (isalpha(*iter)) {
+            throw string("Wrong input.\n");
+        }
     }
     return result;
 }
@@ -113,7 +143,7 @@ string Huff::decoding(TableMap Tbl, string str) {
     for (unsigned int i = 0; i < str.size(); i++) {
         if (str[i] != '0' && str[i] != '1') {
             cout << "String contains not only 0 or 1" << endl;
-            throw 1;
+            throw string("Wrong code to decode.\n");
         } else if (str[i] == '1') {
             buf.push_back(1);
         } else {

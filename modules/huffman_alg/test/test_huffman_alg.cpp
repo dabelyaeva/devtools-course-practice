@@ -269,3 +269,49 @@ TEST(huffman_alg, Can_Right_Decode) {
     string expected_str = "abacacb";
     EXPECT_EQ(expected_str, actual_str);
 }
+
+TEST(Huff, Can_Fill_Table) {
+    string str("0 a 01 b");
+    Huff huf;
+
+    TableMap result = huf.fillTable(str);
+
+    TableMap expected;
+    expected['a'] = { false };
+    expected['b'] = { false, true };
+    EXPECT_EQ(expected, result);
+}
+
+TEST(Huff, Can_Fill_Table_With_Unknow_Parametr) {
+    string str("1 a 01 b 1");
+    Huff huf;
+
+    TableMap result = huf.fillTable(str);
+
+    TableMap expected;
+    expected['a'] = { true };
+    expected['b'] = { false, true };
+    EXPECT_EQ(expected, result);
+}
+
+TEST(Huff, Can_Fill_Table_With_Many_Options) {
+    string str("0 a 001 b 010 c 011 d 101 e");
+    Huff huf;
+
+    TableMap result = huf.fillTable(str);
+
+    TableMap expected;
+    expected['a'] = { false };
+    expected['b'] = { false, false, true };
+    expected['c'] = { false, true, false };
+    expected['d'] = { false, true, true };
+    expected['e'] = { true, false, true };
+    EXPECT_EQ(expected, result);
+}
+
+TEST(Huff, Get_Throw_When_Wrong_fillTable_input) {
+    string str("A a 01 b");
+    Huff huf;
+
+    ASSERT_ANY_THROW(huf.fillTable(str));
+}

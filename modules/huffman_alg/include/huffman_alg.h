@@ -1,7 +1,7 @@
 // Copyright 2016 Orlov Georgy
 
-#ifndef MODULES_ORLOV_GEORGY_HUFFMAN_ALG_INCLUDE_HUFFMAN_ALG_H_
-#define MODULES_ORLOV_GEORGY_HUFFMAN_ALG_INCLUDE_HUFFMAN_ALG_H_
+#ifndef MODULES_HUFFMAN_ALG_INCLUDE_HUFFMAN_ALG_H_
+#define MODULES_HUFFMAN_ALG_INCLUDE_HUFFMAN_ALG_H_
 
 
 #include <iostream>
@@ -52,11 +52,14 @@ class Huff {
     void buildTable(Node* root);
     void coding(FreqMap);
     string decoding(TableMap, string);
+    string decoding(const string& str);
 
     list<Node*> getNodeList();
     Node* getRoot();
     TableMap getTable();
     string printTable();
+
+    TableMap fillTable(string str);
 
  private:
     vector<bool> code;
@@ -66,4 +69,4 @@ class Huff {
     friend bool operator==(const Node&, const Node&);
 };
 
-#endif  // MODULES_ORLOV_GEORGY_HUFFMAN_ALG_INCLUDE_HUFFMAN_ALG_H_
+#endif  // MODULES_HUFFMAN_ALG_INCLUDE_HUFFMAN_ALG_H_

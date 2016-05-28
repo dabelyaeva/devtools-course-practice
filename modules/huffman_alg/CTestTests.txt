@@ -1,0 +1,68 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "This application work with Huffman coding\\.")
+
+add_test(
+    NAME ${prefix}_Get_Error_When_Not_Right_Argument
+    COMMAND ${APPLICATION} -e absde
+)
+set_tests_properties (${prefix}_Get_Error_When_Not_Right_Argument
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong argument\\.\n Use -h for help\\.")
+
+add_test(
+    NAME ${prefix}_Get_Error_When_Wrong_Number_Of_Arguments
+    COMMAND ${APPLICATION} -c
+)
+set_tests_properties (${prefix}_Get_Error_When_Wrong_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "Should be 3 or more arguments\\.\n Use -h for help")
+  
+add_test(
+    NAME ${prefix}_Get_Error_When_Wrong_Number_Of_Arguments_For_Code
+    COMMAND ${APPLICATION} -c str excess
+)
+set_tests_properties (${prefix}_Get_Error_When_Wrong_Number_Of_Arguments_For_Code
+  PROPERTIES PASS_REGULAR_EXPRESSION "Encode must have 2 arguments\\.")
+  
+add_test(
+    NAME ${prefix}_Get_Error_When_Wrong_Number_Of_Arguments_For_Decode
+    COMMAND ${APPLICATION} -d 100101 0
+)
+set_tests_properties (${prefix}_Get_Error_When_Wrong_Number_Of_Arguments_For_Decode
+  PROPERTIES PASS_REGULAR_EXPRESSION "Decode must have 4 or more arguments\\.")
+  
+add_test(
+    NAME ${prefix}_Can_Encode_String
+    COMMAND ${APPLICATION} -c string
+)
+set_tests_properties (${prefix}_Can_Encode_String
+  PROPERTIES PASS_REGULAR_EXPRESSION "g: 100\ni: 101\nn: 110\nr: 111\ns: 00\nt: 01\n")
+  
+add_test(
+    NAME ${prefix}_Can_Encode_String_With_Dubl_Symbol
+    COMMAND ${APPLICATION} -c oxon
+)
+set_tests_properties (${prefix}_Can_Encode_String_With_Dubl_Symbol
+  PROPERTIES PASS_REGULAR_EXPRESSION "n: 10\no: 0\nx: 11\n")
+  
+  add_test(
+    NAME ${prefix}_Can_Get_Help
+    COMMAND ${APPLICATION} -h
+)
+set_tests_properties (${prefix}_Can_Get_Help
+  PROPERTIES PASS_REGULAR_EXPRESSION "This application work with Huffman coding\\.")

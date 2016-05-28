@@ -1,48 +1,50 @@
-// Copyright 2016 Muminov_Ruslan
+// Copyright 2016 Muminov Ruslan, Kursakov Evgeny
 
 #include "include/fraction.h"
 
+#include <cstdlib>
 #include <string>
+#include <stdexcept>
 
-fraction::fraction() : numerator_(0), denominator_(1) {}
+Fraction::Fraction() : numerator_(0), denominator_(1) { }
 
-fraction::fraction(int numerator, int denominator) {
+Fraction::Fraction(const int numerator, const int denominator) {
     if (denominator == 0)
-        throw std::string("Can't divide by zero");
+        throw std::invalid_argument("Can't divide by zero");
     numerator_ = numerator;
     denominator_ = denominator;
     this->reduction();
 }
 
-fraction::fraction(const fraction& z)
-            : numerator_(z.getNum()), denominator_(z.getDenom()) {}
+Fraction::Fraction(const Fraction &z)
+    : numerator_(z.getNum()), denominator_(z.getDenom()) { }
 
-fraction& fraction::operator=(const fraction& z) {
+Fraction &Fraction::operator=(const Fraction &z) {
     numerator_ = z.getNum();
     denominator_ = z.getDenom();
     return *this;
 }
 
-int fraction::getNum() const {
+int Fraction::getNum() const {
     return numerator_;
 }
 
-int fraction::getDenom() const {
+int Fraction::getDenom() const {
     return denominator_;
 }
 
-void fraction::setNum(int numerator) {
+void Fraction::setNum(const int numerator) {
     numerator_ = numerator;
 }
 
-void fraction::setDenom(int denominator) {
+void Fraction::setDenom(const int denominator) {
     if (denominator == 0)
-        throw std::string("Can't divide by zero");
+        throw std::invalid_argument("Can't divide by zero");
     denominator_ = denominator;
 }
 
-fraction fraction::operator+(const fraction& z) const {
-    fraction sum;
+Fraction Fraction::operator+(const Fraction &z) const {
+    Fraction sum;
 
     sum.setNum(this->getNum() * z.getDenom() + z.getNum() * this->getDenom());
     sum.setDenom(this->getDenom() * z.getDenom());
@@ -51,19 +53,19 @@ fraction fraction::operator+(const fraction& z) const {
     return sum;
 }
 
-fraction fraction::operator-(const fraction& z) const {
-    fraction difference;
+Fraction Fraction::operator-(const Fraction &z) const {
+    Fraction difference;
 
     difference.setNum(this->getNum() * z.getDenom()
-        - z.getNum() * this->getDenom());
+                          - z.getNum() * this->getDenom());
     difference.setDenom(this->getDenom() * z.getDenom());
     difference.reduction();
 
     return difference;
 }
 
-fraction fraction::operator*(const fraction& z) const {
-    fraction multiplication;
+Fraction Fraction::operator*(const Fraction &z) const {
+    Fraction multiplication;
 
     multiplication.setNum(this->getNum() * z.getNum());
     multiplication.setDenom(this->getDenom() * z.getDenom());
@@ -72,11 +74,11 @@ fraction fraction::operator*(const fraction& z) const {
     return multiplication;
 }
 
-fraction fraction::operator/(const fraction& z) const {
-    fraction division;
+Fraction Fraction::operator/(const Fraction &z) const {
+    Fraction division;
 
     if (equalsZero(z))
-        throw std::string("Can't divide by zero");
+        throw std::invalid_argument("Can't divide by zero");
     division.setNum(this->getNum() * z.getDenom());
     division.setDenom(this->getDenom() * z.getNum());
     division.reduction();
@@ -84,20 +86,20 @@ fraction fraction::operator/(const fraction& z) const {
     return division;
 }
 
-bool fraction::operator == (const fraction& z) const {
+bool Fraction::operator==(const Fraction &z) const {
     return equalsZero(*this - z);
 }
 
-bool fraction::operator != (const fraction& z) const {
+bool Fraction::operator!=(const Fraction &z) const {
     return !(*this == z);
 }
 
-bool fraction::equalsZero(const fraction& z) const {
+bool Fraction::equalsZero(const Fraction &z) const {
     return z.getNum() == 0;
 }
 
-int fraction::NOD() const {
-    int num = this->getNum();
+int Fraction::NOD() const {
+    int num = std::abs(this->getNum());
     if (num == 0)
         return 1;
     int denom = this->getDenom();
@@ -110,7 +112,12 @@ int fraction::NOD() const {
     return num;
 }
 
-void fraction::reduction() {
+void Fraction::reduction() {
+    if (getDenom() < 0) {
+        this->setNum(-this->getNum());
+        this->setDenom(-this->getDenom());
+    }
+
     int nod = this->NOD();
     this->setNum(this->getNum() / nod);
     this->setDenom(this->getDenom() / nod);

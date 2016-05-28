@@ -1,3 +1,4 @@
+// CopyRight 2016 Hramov Ilya
 // Copyright 2016 Zhiltsov Max
 
 #include <cmath>
@@ -5,7 +6,7 @@
 #include <limits>
 
 #include "gtest/gtest.h"
-#include "volumes_calc.hpp"
+#include "include/volumes_calc.h"
 
 
 static constexpr double pi = 3.1415926535897932384626433832795;
@@ -42,7 +43,7 @@ TEST(VolumeCalculatorTest, Example_2_Is_Working) {
             return r;
         },
         0.f,
-        2.f * pi,
+        2.f * static_cast<float>(pi),
         [] (float phi) { return 0.f; },
         [] (float phi) { return 5.f; },
         [] (float phi, float r) { return 0.f; },
@@ -157,10 +158,4 @@ TEST(IntegrateTest, Infinite_Boundaries_Leads_To_Nonfinite_Results) {
 
     // Assert
     ASSERT_FALSE(std::isfinite(result));
-}
-
-
-int main(int argc, char** argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
 }

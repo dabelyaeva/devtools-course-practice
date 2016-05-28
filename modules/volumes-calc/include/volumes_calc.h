@@ -1,8 +1,9 @@
 // Copyright 2016 Zhiltsov Max
 
-#ifndef VOLUMES_CALC_H_
-#define VOLUMES_CALC_H_
+#ifndef MODULES_VOLUMES_CALC_INCLUDE_VOLUMES_CALC_H_
+#define MODULES_VOLUMES_CALC_INCLUDE_VOLUMES_CALC_H_
 
+#include <cstdlib>
 #include <functional>
 
 namespace volume_calc {
@@ -237,4 +238,4 @@ NumberType VolumeCalculator<NumberType>::Calculate(size_t partitionCount1,
 
 }  // namespace volume_calc
 
-#endif  // VOLUMES_CALC_H_
+#endif  // MODULES_VOLUMES_CALC_INCLUDE_VOLUMES_CALC_H_

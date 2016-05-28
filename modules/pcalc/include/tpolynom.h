@@ -1,7 +1,7 @@
 // Copyright 2016 Petrov Kirill
 
-#ifndef MODULES_PETROV_KIRILL_PCALC_INCLUDE_TPOLYNOM_H_
-#define MODULES_PETROV_KIRILL_PCALC_INCLUDE_TPOLYNOM_H_
+#ifndef MODULES_PCALC_INCLUDE_TPOLYNOM_H_
+#define MODULES_PCALC_INCLUDE_TPOLYNOM_H_
 
 #include <iostream>
 #include <list>
@@ -24,5 +24,5 @@ class TPolynom : public std::list <TMonom> {
   void regulation(void);
 };
 
-#endif  // MODULES_PETROV_KIRILL_PCALC_INCLUDE_TPOLYNOM_H_
+#endif  // MODULES_PCALC_INCLUDE_TPOLYNOM_H_
 

@@ -1,7 +1,7 @@
 // Copyright 2016 Petrov Kirill
 
-#ifndef MODULES_PETROV_KIRILL_PCALC_INCLUDE_PARSE_H_
-#define MODULES_PETROV_KIRILL_PCALC_INCLUDE_PARSE_H_
+#ifndef MODULES_PCALC_INCLUDE_PARSE_H_
+#define MODULES_PCALC_INCLUDE_PARSE_H_
 
 #include <string>
 
@@ -19,4 +19,4 @@ namespace Parse {
   TOperation operation(const string& arg);
 };
 
-#endif  // MODULES_PETROV_KIRILL_PCALC_INCLUDE_PARSE_H_
+#endif  // MODULES_PCALC_INCLUDE_PARSE_H_

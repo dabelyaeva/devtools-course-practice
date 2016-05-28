@@ -9,10 +9,10 @@ PolynomCalculator::PolynomCalculator() : message_("") {}
 
 void PolynomCalculator::help(const char* appname) {
   message_ = string("") +
-    "This is a polynom calculator application.\n\n"      +
-    "Please provide arguments in the following format:\n\n" +
+    "This is the polynom calculator application.\n\n"      +
+    "Please enter the arguments in the following format:\n\n" +
 
-    "$ " + appname + " <number_polynoms(max=10)> <Polynom1> " +
+    "$ " + appname + " <number_of_polynoms(max=10)> <Polynom1> " +
     "[<Polynom2>] ... [<Polynom10>] <operation>\n\n" +
 
     "Where all polynomials have the following format: \n" +
@@ -21,11 +21,11 @@ void PolynomCalculator::help(const char* appname) {
 
     "<operation> is one of '+', '-', 'compute', 'sum_all'.\n\n" +
 
-    "If there is a sum or difference of numbers you need to write" +
-    "a number of two polynomials, which made action:\n" +
+    "If there is a sum or a subtraction of numbers you need to write" +
+    "the numbers of two polynomials, which made the action:\n" +
     "<id Polynom1> <id Polynom2>\n\n"+
-    "If the calculation, then after the operation must be in the "+
-    "following format :\n" +
+    "In case of calculation, the arguments after the operation"+
+    "must be in the following format :\n" +
     "<id Polynom> <double X> <double Y> <double Z>.\n\n";
 }
 
@@ -50,8 +50,8 @@ string PolynomCalculator::operator()(int argc, const char ** argv) {
       for (int i = 0; i < NUMBER_VARIABLES; i++)
         Arg.point[i] =  Parse::value(argv[id++]);
     } else if (Arg.operation == ADDITION || Arg.operation == SUBTRACTION) {
-      Arg.idPoly[0] = Parse::number(argv[id++], 1, Arg.numberPoly) - 1;
-      Arg.idPoly[1] = Parse::number(argv[id++], 1, Arg.numberPoly) - 1;
+        Arg.idPoly[0] = Parse::number(argv[id++], 1, Arg.numberPoly) - 1;
+        Arg.idPoly[1] = Parse::number(argv[id++], 1, Arg.numberPoly) - 1;
     }
   }
   catch (string str) {

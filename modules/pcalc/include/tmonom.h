@@ -1,7 +1,7 @@
 // Copyright 2016 Petrov Kirill
 
-#ifndef MODULES_PETROV_KIRILL_PCALC_INCLUDE_TMONOM_H_
-#define MODULES_PETROV_KIRILL_PCALC_INCLUDE_TMONOM_H_
+#ifndef MODULES_PCALC_INCLUDE_TMONOM_H_
+#define MODULES_PCALC_INCLUDE_TMONOM_H_
 
 #include <iostream>
 
@@ -35,4 +35,4 @@ class TMonom {
   int index_;
 };
 
-#endif  // MODULES_PETROV_KIRILL_PCALC_INCLUDE_TMONOM_H_
+#endif  // MODULES_PCALC_INCLUDE_TMONOM_H_

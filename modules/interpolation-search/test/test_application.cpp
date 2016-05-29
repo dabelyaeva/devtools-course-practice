@@ -62,7 +62,7 @@ TEST_F(TestApplication, can_perform_search_of_one_existing_key) {
     };
 
     // Act
-    const auto results = std::move(performSearch(query));
+    const auto results = (performSearch(query));
 
     // Assert
     for (size_t i = 0; i < expected.size(); ++i) {
@@ -79,7 +79,7 @@ TEST_F(TestApplication, can_perform_search_of_multiple_existing_keys) {
     };
 
     // Act
-    const auto results = std::move(performSearch(query));
+    const auto results = (performSearch(query));
 
     // Assert
     for (size_t i = 0; i < expected.size(); ++i) {
@@ -95,7 +95,7 @@ TEST_F(TestApplication, can_perform_search_of_one_unexisting_key) {
     };
 
     // Act
-    const auto results = std::move(performSearch(query));
+    const auto results = (performSearch(query));
 
     // Assert
     for (size_t i = 0; i < expected.size(); ++i) {
@@ -112,7 +112,7 @@ TEST_F(TestApplication, can_perform_search_of_multiple_unexisting_keys) {
     };
 
     // Act
-    const auto results = std::move(performSearch(query));
+    const auto results = (performSearch(query));
 
     // Assert
     for (size_t i = 0; i < expected.size(); ++i) {
@@ -133,7 +133,7 @@ TEST_F(TestApplication, can_perform_search_of_multiple_different_keys) {
     };
 
     // Act
-    const auto results = std::move(performSearch(query));
+    const auto results = (performSearch(query));
 
     // Assert
     for (size_t i = 0; i < expected.size(); ++i) {

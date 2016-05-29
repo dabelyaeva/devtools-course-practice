@@ -54,7 +54,7 @@ TEST_F(AreaConverterApplicationTest, Can_Detect_Dont_Existence_AreaUnits) {
 }
 
 TEST_F(AreaConverterApplicationTest, Can_Convert_From_m_To_g) {
-    vector<string> args = { "1000", "m", "g" };
+    vector<string> args = { "10000", "m", "g" };
     Act(args);
     Assert("1.0000 g.*");
 }

@@ -20,7 +20,7 @@ TEST(SplitStringTest,
     };
 
     // Act
-    const auto res = std::move(splitString(s, sep));
+    const auto res = (splitString(s, sep));
 
     // Assert
     ASSERT_EQ(expected, res);
@@ -35,7 +35,7 @@ TEST(SplitStringTest, split_string_by_string_if_string_ends_by_token) {
     };
 
     // Act
-    const auto res = std::move(splitString(s, sep));
+    const auto res = (splitString(s, sep));
 
     // Assert
     ASSERT_EQ(expected, res);
@@ -50,7 +50,7 @@ TEST(SplitStringTest, split_string_by_string_if_string_empty) {
     };
 
     // Act
-    const auto res = std::move(splitString(s, sep));
+    const auto res = (splitString(s, sep));
 
     // Assert
     ASSERT_EQ(expected, res);
@@ -65,7 +65,7 @@ TEST(SplitStringTest, split_string_by_string_if_string_only_from_delimiters) {
     };
 
     // Act
-    const auto res = std::move(splitString(s, sep));
+    const auto res = (splitString(s, sep));
 
     // Assert
     ASSERT_EQ(expected, res);
@@ -80,7 +80,7 @@ TEST(SplitStringTest, split_string_by_string_if_delimiter_is_empty) {
     };
 
     // Act
-    const auto res = std::move(splitString(s, sep));
+    const auto res = (splitString(s, sep));
 
     // Assert
     ASSERT_EQ(expected, res);

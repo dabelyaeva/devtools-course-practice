@@ -28,7 +28,7 @@ std::vector<std::string> splitString(const std::string& str,
     if (startIndex != str.npos) {
         result.emplace_back(&str[startIndex]);
     }
-    return std::move(result);
+    return result;
 }
 
 int findStringDifference(const std::string& a, const std::string& b) {

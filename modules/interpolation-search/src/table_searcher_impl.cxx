@@ -29,7 +29,7 @@ void Application::Run(int argc, const char* const* argv, std::string* result) {
     }
 
     try {
-        const auto parameters = std::move(parseCommandLine(argc, argv));
+        const auto parameters = (parseCommandLine(argc, argv));
         std::istream* inputStream = &std::cin;
         std::ifstream tableFile;
         if (parameters.tablePath.empty() == false) {
@@ -43,7 +43,7 @@ void Application::Run(int argc, const char* const* argv, std::string* result) {
         }
         readTable(inputStream);
 
-        const auto searchResults = std::move(performSearch(parameters.query));
+        const auto searchResults = (performSearch(parameters.query));
         for (const auto& entry : searchResults) {
             if (entry == table_.end()) {
                 continue;
@@ -96,7 +96,7 @@ Application::parseCommandLine(int argc, const char* const* argv) {
     Parameters parameters;
 
     if (argv == nullptr) {
-        return std::move(parameters);
+        return (parameters);
     }
 
     if ((argc == 1) || (5 < argc)) {
@@ -140,7 +140,7 @@ Application::parseCommandLine(int argc, const char* const* argv) {
         throw std::runtime_error("Query command line parameter is expected.");
     }
 
-    return std::move(parameters);
+    return (parameters);
 }
 
 void Application::readTable(std::istream* source) {
@@ -151,7 +151,7 @@ void Application::readTable(std::istream* source) {
     while (source->good() == true) {
         std::string line;
         std::getline(*source, line);
-        table_.emplace_back(std::move(splitString(line, ",")));
+        table_.emplace_back((splitString(line, ",")));
     }
 
     std::sort(table_.begin(), table_.end(),
@@ -164,7 +164,7 @@ std::vector<Application::Table::iterator>
 Application::performSearch(const std::string& query) {
     using interp_search::Find;
 
-    const auto queries = std::move(splitString(query, ","));
+    const auto queries = (splitString(query, ","));
     std::vector<Table::iterator> results;
     results.reserve(queries.size());
 
@@ -181,5 +181,5 @@ Application::performSearch(const std::string& query) {
             Find(table_.begin(), table_.end(), key, less, diff));
     }
 
-    return std::move(results);
+    return results;
 }

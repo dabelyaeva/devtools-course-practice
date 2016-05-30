@@ -1,0 +1,98 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+file(GLOB MY_TEST_DATA
+  "${CMAKE_CURRENT_SOURCE_DIR}/modules/todolist/test/data/test.txt"
+)
+file(COPY ${MY_TEST_DATA} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is a todo list application")
+
+add_test(
+    NAME ${prefix}_can_Not_Add_With_Wrong_Arguments_Count
+    COMMAND ${APPLICATION} add ""
+)
+set_tests_properties (${prefix}_can_Not_Add_With_Wrong_Arguments_Count
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Wrong arguments count for add operation")
+
+add_test(
+    NAME ${prefix}_can_Not_Print_Item_With_Wrong_Arguments_Count
+    COMMAND ${APPLICATION} print_item ""
+)
+set_tests_properties (${prefix}_can_Not_Print_Item_With_Wrong_Arguments_Count
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Wrong arguments count for print_item operation")
+
+add_test(
+    NAME ${prefix}_can_Not_Delete_With_Wrong_Arguments_Count
+    COMMAND ${APPLICATION} delete ""
+)
+set_tests_properties (${prefix}_can_Not_Delete_With_Wrong_Arguments_Count
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Wrong arguments count for delete operation")
+
+add_test(
+    NAME ${prefix}_can_Not_Print_File_With_Wrong_Arguments_Count
+    COMMAND ${APPLICATION} print_all
+)
+set_tests_properties (${prefix}_can_Not_Print_File_With_Wrong_Arguments_Count
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Wrong arguments count for print_all operation")
+
+add_test(
+    NAME ${prefix}_can_Not_Add_With_Wrong_File_Name
+    COMMAND ${APPLICATION} add "" t
+)
+set_tests_properties (${prefix}_can_Not_Add_With_Wrong_File_Name
+  PROPERTIES PASS_REGULAR_EXPRESSION "Can not open file")
+
+add_test(
+    NAME ${prefix}_can_Not_Delete_With_Wrong_File_Name
+    COMMAND ${APPLICATION} delete "" t
+)
+set_tests_properties (${prefix}_can_Not_Delete_With_Wrong_File_Name
+  PROPERTIES PASS_REGULAR_EXPRESSION "Can not open file")
+
+add_test(
+    NAME ${prefix}_can_Not_Print_Item_With_Wrong_File_Name
+    COMMAND ${APPLICATION} print_item "" t
+)
+set_tests_properties (${prefix}_can_Not_Print_Item_With_Wrong_File_Name
+  PROPERTIES PASS_REGULAR_EXPRESSION "Can not open file")
+
+add_test(
+    NAME ${prefix}_can_Add_Item
+    COMMAND ${APPLICATION} add "test/data/test.txt" t
+)
+set_tests_properties (${prefix}_can_Add_Item
+  PROPERTIES PASS_REGULAR_EXPRESSION "Item has been added")
+add_test(
+    NAME ${prefix}_can_Not_Add_Existing_Item
+    COMMAND ${APPLICATION} add "test/data/test.txt" "abc"
+)
+set_tests_properties (${prefix}_can_Not_Add_Existing_Item
+  PROPERTIES PASS_REGULAR_EXPRESSION "Can not add item")
+add_test(
+    NAME ${prefix}_can_Delete_Item
+    COMMAND ${APPLICATION} delete "test/data/test.txt" t
+)
+set_tests_properties (${prefix}_can_Delete_Item
+  PROPERTIES PASS_REGULAR_EXPRESSION "Item has been deleted")
+add_test(
+    NAME ${prefix}_can_Not_Delete_Non_Existing_Item
+    COMMAND ${APPLICATION} delete "test/data/test.txt" "abc1"
+)
+set_tests_properties (${prefix}_can_Not_Delete_Non_Existing_Item
+  PROPERTIES PASS_REGULAR_EXPRESSION "Could not delete item")

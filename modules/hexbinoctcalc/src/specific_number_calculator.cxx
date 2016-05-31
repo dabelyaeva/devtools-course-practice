@@ -123,7 +123,7 @@ std::string SpecificNumberCalculator::operator()(int argc, const char** argv) {
         result = num1 * num2;
         break;
     case '/':
-        try{
+        try {
             result = num1 / num2;
         }
         catch(std::string str) {

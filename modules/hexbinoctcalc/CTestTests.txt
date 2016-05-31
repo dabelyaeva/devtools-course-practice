@@ -26,11 +26,25 @@ set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
   PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 4 arguments.")
 
 add_test(
-    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    NAME ${prefix}_can_Detect_Wrong_BIN_Number_Format
     COMMAND ${APPLICATION} 1 + pi 2
 )
-set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format
+set_tests_properties (${prefix}_can_Detect_Wrong_BIN_Number_Format
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong BIN-number format")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_OCT_Number_Format
+    COMMAND ${APPLICATION} 1 + pi 8
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_OCT_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong OCT-number format")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_HEX_Number_Format
+    COMMAND ${APPLICATION} 1 + pi 16
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_HEX_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong HEX-number format")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Operation_Format

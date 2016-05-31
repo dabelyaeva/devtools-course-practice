@@ -57,12 +57,28 @@ TEST_F(ComplexCalculatorTest, Is_Checking_Number_Of_Arguments) {
     Assert("ERROR: Should be 4 arguments\\..*");
 }
 
-TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_Number_Format) {
+TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_BIN_Number_Format) {
     vector<string> args = {"1", "+", "pi", "2"};
 
     Act(args);
 
     Assert("Wrong BIN-number format*");
+}
+
+TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_OCT_Number_Format) {
+    vector<string> args = {"1", "+", "pi", "8"};
+
+    Act(args);
+
+    Assert("Wrong OCT-number format*");
+}
+
+TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_HEX_Number_Format) {
+    vector<string> args = {"1", "+", "pi", "16"};
+
+    Act(args);
+
+    Assert("Wrong HEX-number format*");
 }
 
 TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_Operation_Format) {

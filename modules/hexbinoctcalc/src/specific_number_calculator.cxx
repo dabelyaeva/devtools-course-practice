@@ -60,7 +60,7 @@ TNumbers parseMode(const std::string &arg) {
     int value = static_cast<int>(strtol(arg.c_str(), &end, 10));
 
     if (end[0]) {
-        throw std::invalid_argument("Wrong number format!");
+        throw std::invalid_argument("Wrong basis format!");
     }
 
     switch (value) {
@@ -79,6 +79,8 @@ TNumbers parseMode(const std::string &arg) {
 
     return mode;
 }
+
+
 
 std::string SpecificNumberCalculator::operator()(int argc, const char** argv) {
     Arguments args;
@@ -99,8 +101,13 @@ std::string SpecificNumberCalculator::operator()(int argc, const char** argv) {
     SpecificNumber num1;
     SpecificNumber num2;
 
-    num1.setValue(args.number1, args.mode);
-    num2.setValue(args.number2, args.mode);
+    try {
+        num1.setValue(args.number1, args.mode);
+        num2.setValue(args.number2, args.mode);
+    }
+    catch(std::string str) {
+        return str;
+    }
 
     SpecificNumber result;
     result.setMode(args.mode);
@@ -116,7 +123,12 @@ std::string SpecificNumberCalculator::operator()(int argc, const char** argv) {
         result = num1 * num2;
         break;
     case '/':
-        result = num1 / num2;
+        try{
+            result = num1 / num2;
+        }
+        catch(std::string str) {
+            return str;
+        }
         break;
     }
     stream << result.showNum();

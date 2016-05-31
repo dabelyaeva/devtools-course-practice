@@ -62,7 +62,7 @@ TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_Number_Format) {
 
     Act(args);
 
-    Assert("Wrong number format!.*");
+    Assert("Wrong BIN-number format*");
 }
 
 TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_Operation_Format) {

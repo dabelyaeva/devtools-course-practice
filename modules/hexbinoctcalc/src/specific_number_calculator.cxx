@@ -3,13 +3,13 @@
 #include "include/specific_number.h"
 #include "include/specific_number_calculator.h"
 
-#include <string>
-#include <sstream>
-#include <stdexcept>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
+#include <string>
+#include <sstream>
+#include <stdexcept>
 
 SpecificNumberCalculator::SpecificNumberCalculator() : message_("") {}
 

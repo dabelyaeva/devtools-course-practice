@@ -51,7 +51,7 @@ SpecificNumber SpecificNumber::operator/(const SpecificNumber & _sNum) const {
     if (getMode() != _sNum.getMode()) {
         throw std::string("Can\'t operate with different types of numbers \n ");
     } else if (_sNum.equalsZero()) {
-        throw std::string("Can\'t divide with zero \n ");
+        throw std::string("Can\'t divide by zero \n ");
     } else {
         result.setIntValue(static_cast<int>(getIntValue() /
                            _sNum.getIntValue()));
@@ -175,6 +175,7 @@ SpecificNumber calc(const SpecificNumber & _SpecificNumber1,
 void SpecificNumber::setValue(std::string _number, TNumbers _mode) {
     int result = 0;
     unsigned int basis;
+    mode = _mode;
 
     switch (_mode) {
     case TNumbers::HEX:

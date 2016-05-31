@@ -23,7 +23,7 @@ void SpecificNumberCalculator::help(const char* appname, const char* message) {
 }
 
 bool SpecificNumberCalculator::validateNumberOfArguments(int argc,
- const char** argv) {
+     const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;

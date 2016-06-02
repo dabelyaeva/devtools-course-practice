@@ -74,7 +74,7 @@ TNumbers parseMode(const std::string &arg) {
         mode = TNumbers::HEX;
         break;
      default:
-        throw std::string("Wrong basis format!");
+        throw std::string("Wrong basis!");
     }
 
     return mode;

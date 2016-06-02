@@ -54,11 +54,18 @@ set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation format!")
 
 add_test(
-    NAME ${prefix}_can_Detect_Wrong_Basis_Format
+    NAME ${prefix}_can_Detect_Wrong_Basis
     COMMAND ${APPLICATION} 1 + 1 3
 )
-set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format
-  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation format!")
+set_tests_properties (${prefix}_can_Detect_Wrong_Basis
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong basis!")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Basis_Format
+    COMMAND ${APPLICATION} 1 + 1 22
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Basis_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong basis format!")
 
 add_test(
     NAME ${prefix}_can_Add_Bin

@@ -95,14 +95,6 @@ TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_Basis) {
     Assert("Wrong basis!");
 }
 
-TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_Basis_Format) {
-    vector<string> args = {"1", "+", "1", "22"};
-
-    Act(args);
-
-    Assert("Wrong basis format!");
-}
-
 TEST_F(ComplexCalculatorTest, Can_Add_Bin) {
     vector<string> args = {"1", "+", "1", "2"};
 

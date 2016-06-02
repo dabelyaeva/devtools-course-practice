@@ -59,10 +59,6 @@ TNumbers parseMode(const std::string &arg) {
     char *end;
     int value = static_cast<int>(strtol(arg.c_str(), &end, 10));
 
-    if (end[0]) {
-        throw std::invalid_argument("Wrong basis format!");
-    }
-
     switch (value) {
      case 2:
         mode = TNumbers::BIN;

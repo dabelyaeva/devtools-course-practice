@@ -61,13 +61,6 @@ set_tests_properties (${prefix}_can_Detect_Wrong_Basis
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong basis!")
 
 add_test(
-    NAME ${prefix}_can_Detect_Wrong_Basis_Format
-    COMMAND ${APPLICATION} 1 + 1 22
-)
-set_tests_properties (${prefix}_can_Detect_Wrong_Basis_Format
-  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong basis format!")
-
-add_test(
     NAME ${prefix}_can_Add_Bin
     COMMAND ${APPLICATION} 1 + 1 2
 )

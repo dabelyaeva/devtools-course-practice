@@ -87,6 +87,14 @@ TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_Operation_Format) {
     Assert("Wrong operation format!");
 }
 
+TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_Basis_Format) {
+    vector<string> args = {"1", "+", "1", "two"};
+
+    Act(args);
+
+    Assert("Wrong basis!");
+}
+
 TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_Basis) {
     vector<string> args = {"1", "+", "1", "3"};
 

@@ -92,7 +92,7 @@ TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_Basis_Format) {
 
     Act(args);
 
-    Assert("Wrong basis!");
+    Assert("Wrong basis format!");
 }
 
 TEST_F(ComplexCalculatorTest, Can_Detect_Wrong_Basis) {

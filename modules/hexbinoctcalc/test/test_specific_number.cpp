@@ -335,10 +335,10 @@ TEST(Sharadze_Georgy_SpecificNumberTest, CanSetValueInHEX) {
     SpecificNumber sNum(TNumbers::HEX, 0);
 
     // Act
-    sNum.setValue("1E", TNumbers::HEX);
+    sNum.setValue("BDEF", TNumbers::HEX);
 
     // Assert
-    EXPECT_EQ(30, sNum.getIntValue());
+    EXPECT_EQ(48623, sNum.getIntValue());
 }
 
 TEST(Sharadze_Georgy_SpecificNumberTest, CanSetZeroValueInHEX) {

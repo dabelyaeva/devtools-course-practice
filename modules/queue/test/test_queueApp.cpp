@@ -16,7 +16,6 @@ using std::string;
 
 class QueueAppTest : public ::testing::Test {
  protected:
-
     void Act(vector<string> args_) {
         vector<const char*> options;
 

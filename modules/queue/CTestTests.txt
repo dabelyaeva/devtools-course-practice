@@ -1,0 +1,34 @@
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is a queue application")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} Get 1 2
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 2 arguments.")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} Get pi
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Operation_Format
+    COMMAND ${APPLICATION} Hello
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation format!")
+
+add_test(
+    NAME ${prefix}_can_Put_Element
+    COMMAND ${APPLICATION} Put 5
+)
+set_tests_properties (${prefix}_can_Put_Element
+  PROPERTIES PASS_REGULAR_EXPRESSION "Done")

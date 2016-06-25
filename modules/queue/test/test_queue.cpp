@@ -305,7 +305,7 @@ TEST(Queue, cant_find_min_with_incorrect_prior) {
 TEST(Queue, can_get_length) {
     // Arrange
     Queue Q;
-    //Act
+    // Act
     for (int i = 0; i < 5; i++)
         Q.put(i, 1);
     // Assert

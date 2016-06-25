@@ -1,5 +1,5 @@
 // Copyright 2016 Belyaeva Daria
- 
+
 #include "include/queueApp.h"
 
 #include <stdio.h>

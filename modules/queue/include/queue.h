@@ -1,3 +1,4 @@
+// Copyright 2016 Ovcharuk Oleg
 
 #ifndef MODULES_QUEUE_INCLUDE_QUEUE_H_
 #define MODULES_QUEUE_INCLUDE_QUEUE_H_

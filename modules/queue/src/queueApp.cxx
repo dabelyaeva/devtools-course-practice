@@ -1,3 +1,4 @@
+// Copyright 2016 Belyaeva Daria
  
  #include "include/queueApp.h"
  #include "include/queue.h"

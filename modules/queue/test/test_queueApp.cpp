@@ -1,3 +1,5 @@
+// Copyright 2016 Belyaeva Daria
+
 #include <gtest/gtest.h>
 
 #include <string>

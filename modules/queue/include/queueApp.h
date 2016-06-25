@@ -1,7 +1,7 @@
 // Copyright 2016 Belyaeva Daria
 
-#ifndef MODULES_QUEUE_INCLUDE_QUEUE_APPLICATION_H_
-#define MODULES_QUEUE_INCLUDE_QUEUE_APPLICATION_H_
+#ifndef MODULES_QUEUE_INCLUDE_QUEUEAPP_H_
+#define MODULES_QUEUE_INCLUDE_QUEUEAPP_H_
 
 #include <string>
 
@@ -20,4 +20,4 @@ class QueueApp {
     } Arguments;
 };
 
-#endif  // MODULES_QUEUE_INCLUDE_QUEUE_APPLICATION_H_
+#endif  // MODULES_QUEUE_INCLUDE_QUEUEAPP_H_

@@ -1,15 +1,15 @@
 // Copyright 2016 Belyaeva Daria
  
- #include "include/queueApp.h"
- #include "include/queue.h"
+#include "include/queueApp.h"
 
- #include <stdio.h>
- #include <stdlib.h>
- #include <stdint.h>
- #include <string.h>
- #include <string>
- #include <sstream>
- 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <string.h>
+#include <string>
+#include <sstream>
+#include "include/queue.h"
+
 QueueApp::QueueApp() : message_("") {}
 
 void QueueApp::help(const char* appname, const char* message) {
@@ -18,7 +18,7 @@ void QueueApp::help(const char* appname, const char* message) {
         "This is a queue application.\n\n" +
         "Please provide arguments in the following format:\n\n" +
 
-        "  $ " + appname + " <operation> <element (if you need to push or enter 1)>\n\n " +
+        "  $ " + appname + " <operation> <element (if push or enter 1)>\n\n " +
 
         "Where element is int-precision number, " +
         "and <operation> is one of 'Put', 'Get', 'Length', 'Max', 'Min'.\n";
@@ -57,7 +57,7 @@ char parseOperation(const char* arg) {
     } else if (strcmp(arg, "Max") == 0) {
         op = 'X';
     } else if (strcmp(arg, "Min") == 0) {
-        op = 'N';         
+        op = 'N';
     } else {
         throw std::string("Wrong operation format!");
     }
@@ -98,7 +98,7 @@ std::string QueueApp::operator()(int argc, const char** argv) {
         break;
      case 'N':
         stream << "Min element: " << myQueue.findMinElem();
-        break;	   
+        break;
     }
 
     message_ = stream.str();

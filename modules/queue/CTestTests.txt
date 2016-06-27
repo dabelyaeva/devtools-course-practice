@@ -32,3 +32,31 @@ add_test(
 )
 set_tests_properties (${prefix}_can_Put_Element
   PROPERTIES PASS_REGULAR_EXPRESSION "Done")
+
+add_test(
+    NAME ${prefix}_can_Get_Element
+    COMMAND ${APPLICATION} Get 1
+)
+set_tests_properties (${prefix}_can_Get_Element
+  PROPERTIES PASS_REGULAR_EXPRESSION "Your element: 1")
+
+add_test(
+    NAME ${prefix}_can_Get_Length
+    COMMAND ${APPLICATION} Length 1
+)
+set_tests_properties (${prefix}_can_Get_Length
+  PROPERTIES PASS_REGULAR_EXPRESSION "Length of queue: 1")
+
+add_test(
+    NAME ${prefix}_can_Get_Max_Element
+    COMMAND ${APPLICATION} Max 1
+)
+set_tests_properties (${prefix}_can_Get_Max_Element
+  PROPERTIES PASS_REGULAR_EXPRESSION "Max element: 1")
+
+add_test(
+    NAME ${prefix}_can_Get_Min_Element
+    COMMAND ${APPLICATION} Min 1
+)
+set_tests_properties (${prefix}_can_Get_Min_Element
+  PROPERTIES PASS_REGULAR_EXPRESSION "Min element: 1")
